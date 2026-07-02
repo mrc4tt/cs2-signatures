@@ -17,8 +17,12 @@ UPD=$?
 set -e
 [ "$UPD" -eq 1 ] && { echo "check_update failed"; exit 1; }
 
-# 2. Latest upstream sig set.
+# 2. Latest upstream sig set. Non-fatal: private fork needs GITHUB_TOKEN; if it
+#    fails we keep validating the committed snapshot.
+set +e
 python3 scripts/fetch_gamedata.py --out data/gamedata.json
+[ $? -ne 0 ] && echo "WARN: gamedata fetch failed — using existing snapshot"
+set -e
 
 # 3. Binaries (anonymous; set STEAM_USER/STEAM_PASS only if needed).
 eval "$(bash scripts/download_bins.sh | grep -E '^(LINUX_SO|LINUX_ENGINE2|WIN_DLL|WIN_ENGINE2)=')"

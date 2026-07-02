@@ -22,6 +22,9 @@ jobs:
           echo "changed=$([ "$CODE" -eq 10 ] && echo 1 || echo 0)" >> "$GITHUB_OUTPUT"
 
       - name: Fetch upstream gamedata.json
+        env:
+          # PAT with Contents:read on the private mrc4tt fork.
+          GITHUB_TOKEN: ${{ secrets.GAMEDATA_TOKEN }}
         run: python3 scripts/fetch_gamedata.py --out data/gamedata.json
 
       - name: Download server binaries
