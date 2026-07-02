@@ -7,7 +7,7 @@ gamedata signatures (from the **mrc4tt fork**) against live CS2 server
 binaries. Inspired by [ianlucas/cs2-signatures](https://github.com/ianlucas/cs2-signatures),
 scoped to one source and self-hosted on Forgejo.
 
-On each CS2 update it re-downloads `server.so` + `server.dll` and scans every
+On each CS2 update it re-downloads `libserver.so` + `server.dll` and scans every
 signature: which still match (unique), which broke (0 matches), which went
 ambiguous (>1 match). Full per-signature detail:
 [**docs/CounterStrikeSharp.md**](docs/CounterStrikeSharp.md).
@@ -15,13 +15,13 @@ ambiguous (>1 match). Full per-signature detail:
 <!-- STATUS:START -->
 ## Signatures
 
-* **Last updated:** July 2, 2026 at 12:00 PM UTC
+* **Last updated:** July 2, 2026
 * **Manifests:** unknown
-* **Validated:** 0 ok, 0 ambiguous, 0 broken (18 offset-only, 60 not-yet-validated)
+* **Validated:** 0 ok, 0 ambiguous, 0 broken (60 not-yet-validated)
 
 <table>
 <tr><th>Linux</th><th>Windows</th><th>Project</th><th></th></tr>
-<tr><td>❔</td><td>❔</td><td><a href="https://github.com/mrc4tt/CounterStrikeSharp">CounterStrikeSharp</a></td><td><a href="docs/CounterStrikeSharp.md">View signatures &rarr;</a></td></tr>
+<tr><td>❔</td><td>❔</td><td><a href="https://github.com/mrc4tt/CounterStrikeSharp">CounterStrikeSharp</a></td><td><a href="https://git.miksen.me/mikkel/cs2-signatures/src/branch/main/docs/CounterStrikeSharp.md">View signatures &rarr;</a></td></tr>
 </table>
 
 <!-- STATUS:END -->

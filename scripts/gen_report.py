@@ -21,7 +21,8 @@ from depots import DEPOTS, steamdb_link  # noqa: E402
 FORK = "https://github.com/mrc4tt/CounterStrikeSharp"
 GAMEDATA_URL = (FORK + "/blob/main/configs/addons/counterstrikesharp/"
                 "gamedata/gamedata.json")
-DOCS_REL = "docs/CounterStrikeSharp.md"
+DOCS_URL = ("https://git.miksen.me/mikkel/cs2-signatures/src/branch/main/"
+            "docs/CounterStrikeSharp.md")
 
 OK, WARN, BAD, GREY = "✅", "⚠️", "❌", "❔"
 START, END = "<!-- STATUS:START -->", "<!-- STATUS:END -->"
@@ -73,7 +74,9 @@ def manifest_links(manifest):
     return ", ".join(parts) if parts else "unknown"
 
 
-def broken_rows(results):
+def issue_rows(results):
+    """Entries where either platform is broken or ambiguous."""
+    bad = ("broken", "ambiguous")
     rows = []
     for r in results:
         if r["kind"] != "signature":
@@ -81,7 +84,7 @@ def broken_rows(results):
         p = r["platforms"]
         lin = p.get("linux", {}).get("status")
         win = p.get("windows", {}).get("status")
-        if lin == "broken" or win == "broken":
+        if lin in bad or win in bad:
             rows.append((emoji(lin), emoji(win), r["name"]))
     return rows
 
@@ -96,27 +99,27 @@ def render_readme_block(status, updated):
     L.append("")
     L.append("* **Last updated:** %s" % updated)
     L.append("* **Manifests:** %s" % manifest_links(status.get("manifest")))
-    L.append("* **Validated:** %d ok, %d ambiguous, %d broken (%d offset-only, "
-             "%d not-yet-validated)" % (t.get("ok", 0), t.get("ambiguous", 0),
-             t.get("broken", 0), t.get("offset_only", 0), t.get("no_binary", 0)))
+    L.append("* **Validated:** %d ok, %d ambiguous, %d broken (%d not-yet-"
+             "validated)" % (t.get("ok", 0), t.get("ambiguous", 0),
+             t.get("broken", 0), t.get("no_binary", 0)))
     L.append("")
     L.append("<table>")
     L.append("<tr><th>Linux</th><th>Windows</th><th>Project</th><th></th></tr>")
     L.append('<tr><td>%s</td><td>%s</td>'
              '<td><a href="%s">CounterStrikeSharp</a></td>'
              '<td><a href="%s">View signatures &rarr;</a></td></tr>'
-             % (lin, win, FORK, DOCS_REL))
+             % (lin, win, FORK, DOCS_URL))
     L.append("</table>")
     L.append("")
 
-    brk = broken_rows(results)
-    if brk:
-        L.append("<details open><summary>&#9660; CounterStrikeSharp broken "
-                 "signatures (%d)</summary>" % len(brk))
+    rows = issue_rows(results)
+    if rows:
+        L.append("<details open><summary>&#9660; CounterStrikeSharp broken / "
+                 "ambiguous signatures (%d)</summary>" % len(rows))
         L.append("")
         L.append("<table>")
         L.append("<tr><th>Linux</th><th>Windows</th><th>Subroutine</th></tr>")
-        for le, we, name in brk:
+        for le, we, name in rows:
             L.append("<tr><td>%s</td><td>%s</td><td>%s</td></tr>"
                      % (le, we, name))
         L.append("</table>")
@@ -142,12 +145,7 @@ def render_docs(status, updated):
     L.append("## Signatures")
     L.append("")
     for r in status["results"]:
-        if r["kind"] == "offset_only":
-            L.append("### %s" % r["name"])
-            L.append("")
-            L.append("_Offset-only entry (vtable slot) — not byte-validated._")
-            L.append("")
-            continue
+        # Offsets are not tracked here — signatures only.
         if r["kind"] != "signature":
             continue
         L.append("### %s" % r["name"])

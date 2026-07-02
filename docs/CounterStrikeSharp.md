@@ -1,6 +1,6 @@
 # CounterStrikeSharp
 
-Last updated: July 2, 2026 at 12:00 PM UTC
+Last updated: July 2, 2026
 
 * Manifests: unknown
 * Repository: https://github.com/mrc4tt/CounterStrikeSharp
@@ -81,14 +81,6 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 </pre>
 </td></tr>
 </table>
-
-### CCSPlayerController_ChangeTeam
-
-_Offset-only entry (vtable slot) — not byte-validated._
-
-### CCSPlayerController_Respawn
-
-_Offset-only entry (vtable slot) — not byte-validated._
 
 ### CBasePlayerController_SetPawn
 
@@ -258,10 +250,6 @@ _Offset-only entry (vtable slot) — not byte-validated._
 </td></tr>
 </table>
 
-### CCSPlayer_WeaponServices_SelectItem
-
-_Offset-only entry (vtable slot) — not byte-validated._
-
 ### CCSPlayer_ItemServices_CanAcquire
 
 <table>
@@ -310,22 +298,6 @@ _Offset-only entry (vtable slot) — not byte-validated._
 </td></tr>
 </table>
 
-### CCSPlayer_ItemServices_GiveNamedItem
-
-_Offset-only entry (vtable slot) — not byte-validated._
-
-### CCSPlayer_ItemServices_DropActivePlayerWeapon
-
-_Offset-only entry (vtable slot) — not byte-validated._
-
-### CCSPlayer_ItemServices_RemoveWeapons
-
-_Offset-only entry (vtable slot) — not byte-validated._
-
-### CGameSceneNode_GetSkeletonInstance
-
-_Offset-only entry (vtable slot) — not byte-validated._
-
 ### CCSGameRules_TerminateRound
 
 <table>
@@ -349,14 +321,6 @@ _Offset-only entry (vtable slot) — not byte-validated._
 </pre>
 </td></tr>
 </table>
-
-### CCSGameRules_FindPickerEntity
-
-_Offset-only entry (vtable slot) — not byte-validated._
-
-### CTakeDamageInfo_HitGroup
-
-_Offset-only entry (vtable slot) — not byte-validated._
 
 ### UTIL_CreateEntityByName
 
@@ -454,10 +418,6 @@ _Offset-only entry (vtable slot) — not byte-validated._
 </td></tr>
 </table>
 
-### CBaseEntity_IsPlayerPawn
-
-_Offset-only entry (vtable slot) — not byte-validated._
-
 ### CEntitySystem_AddEntityIOEvent
 
 <table>
@@ -506,10 +466,6 @@ _Offset-only entry (vtable slot) — not byte-validated._
 </td></tr>
 </table>
 
-### CBasePlayerPawn_CommitSuicide
-
-_Offset-only entry (vtable slot) — not byte-validated._
-
 ### CBasePlayerPawn_RemovePlayerItem
 
 <table>
@@ -533,10 +489,6 @@ _Offset-only entry (vtable slot) — not byte-validated._
 </pre>
 </td></tr>
 </table>
-
-### CBaseEntity_Teleport
-
-_Offset-only entry (vtable slot) — not byte-validated._
 
 ### CBaseEntity_TakeDamageOld
 
@@ -634,14 +586,6 @@ _Offset-only entry (vtable slot) — not byte-validated._
 </td></tr>
 </table>
 
-### GameEntitySystem
-
-_Offset-only entry (vtable slot) — not byte-validated._
-
-### GameEventManager
-
-_Offset-only entry (vtable slot) — not byte-validated._
-
 ### CEntityIOOutput_FireOutputInternal
 
 <table>
@@ -690,10 +634,6 @@ _Offset-only entry (vtable slot) — not byte-validated._
 </td></tr>
 </table>
 
-### CEntityResourceManifest_AddResource
-
-_Offset-only entry (vtable slot) — not byte-validated._
-
 ### CheckTransmit
 
 <table>
@@ -718,10 +658,6 @@ _Offset-only entry (vtable slot) — not byte-validated._
 </td></tr>
 </table>
 
-### CheckTransmitPlayerSlot
-
-_Offset-only entry (vtable slot) — not byte-validated._
-
 ### NetworkStateChanged
 
 <table>
@@ -745,14 +681,6 @@ _Offset-only entry (vtable slot) — not byte-validated._
 </pre>
 </td></tr>
 </table>
-
-### SetStateChanged
-
-_Offset-only entry (vtable slot) — not byte-validated._
-
-### ISource2GameEntities::CheckTransmit
-
-_Offset-only entry (vtable slot) — not byte-validated._
 
 ### Host_Say
 
