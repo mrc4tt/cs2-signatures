@@ -43,5 +43,19 @@ python3 scripts/gen_report.py --status reports/status.json \
   --readme README.md --docs docs/CounterStrikeSharp.md \
   --history-dir reports/history --date "$DISP" --iso "$ISO"
 
+# 6. Auto commit + push results (set NO_PUSH=1 to skip). Binaries are
+#    git-ignored, so only data/reports/docs/README get committed.
+if [ "${NO_PUSH:-0}" != "1" ]; then
+  git add data/manifest.json data/gamedata.json README.md docs/ reports/
+  if git diff --cached --quiet; then
+    echo "no changes to push"
+  else
+    git -c user.name="${GIT_NAME:-sig-tracker}" \
+        -c user.email="${GIT_EMAIL:-sig-tracker@localhost}" \
+        commit -q -m "track: $(tr -d '\n ' < data/manifest.json) ($ISO)"
+    git push -q origin HEAD && echo "pushed results"
+  fi
+fi
+
 echo "done (validate exit=$VAL, update=$UPD)"
 exit "$VAL"
