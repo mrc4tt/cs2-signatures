@@ -5,3 +5,6 @@ bin_win/
 *.dll
 # DepotDownloader session cache.
 .DepotDownloader/
+# Secrets + cron log.
+.env
+reports/cron.log

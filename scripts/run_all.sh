@@ -7,7 +7,7 @@ ROOT="$(cd "$HERE/.." && pwd)"
 cd "$ROOT"
 
 ISO="$(date -u +%F)"
-DISP="$(date -u '+%B %-d, %Y at %-I:%M %p UTC')"
+DISP="$(date -u '+%B %-d, %Y at %H:%M:%S GMT')"
 
 # 1. Game updated? (exit 10 = changed). Don't abort on "unchanged" — still
 #    refresh gamedata + regenerate report.

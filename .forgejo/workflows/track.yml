@@ -55,7 +55,7 @@ jobs:
             --status reports/status.json \
             --readme README.md --docs docs/CounterStrikeSharp.md \
             --history-dir reports/history \
-            --date "$(date -u '+%B %-d, %Y at %-I:%M %p UTC')" \
+            --date "$(date -u '+%B %-d, %Y at %H:%M:%S GMT')" \
             --iso "$(date -u +%F)"
 
       - name: Commit results
