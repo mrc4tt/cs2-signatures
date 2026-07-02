@@ -54,7 +54,9 @@ Steam login. The gamedata fetch needs a GitHub token because the fork is private
    */30 * * * * /root/cs2-signatures/scripts/cron.sh
    ```
    `cron.sh` loads `.env`, runs the pipeline, logs to `reports/cron.log`.
-4. Optional auto-issue: set `FORGEJO_TOKEN` in `.env` (write-issue scope).
+4. Optional auto-issue on broken sigs: set `FORGEJO_TOKEN` + `FORGEJO_SERVER` +
+   `FORGEJO_REPO` in `.env` (token needs write-issue scope). `run_all.sh` opens
+   the issue automatically and closes it when green again.
 
 > Binaries are git-ignored — only derived reports/docs are committed. Badge
 > needs the repo **public** so shields.io can read `reports/badge.json`.
@@ -78,5 +80,4 @@ docs/CounterStrikeSharp.md  per-signature detail (CODE + IDA style)
 reports/status.json       machine-readable result
 reports/badge.json        shields.io endpoint
 reports/history/*.json    per-run tally (drift over time)
-.forgejo/workflows/       Forgejo Actions alternative to cron
 ```

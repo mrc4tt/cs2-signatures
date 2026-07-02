@@ -70,5 +70,11 @@ if [ "${NO_PUSH:-0}" != "1" ]; then
   fi
 fi
 
+# 7. Optional Forgejo auto-issue on broken sigs (needs FORGEJO_TOKEN +
+#    FORGEJO_SERVER + FORGEJO_REPO in .env). Skipped silently if unset.
+if [ -n "${FORGEJO_TOKEN:-}" ]; then
+  python3 scripts/open_issue.py --status reports/status.json || true
+fi
+
 echo "done (validate exit=$VAL, update=$UPD)"
 exit "$VAL"

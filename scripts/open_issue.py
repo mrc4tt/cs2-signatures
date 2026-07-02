@@ -73,8 +73,10 @@ def find_open_issue(server, token, repo):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--status", default="reports/status.json")
-    ap.add_argument("--server", default=os.environ.get("GITHUB_SERVER_URL"))
-    ap.add_argument("--repo", default=os.environ.get("GITHUB_REPOSITORY"))
+    ap.add_argument("--server", default=os.environ.get("FORGEJO_SERVER")
+                    or os.environ.get("GITHUB_SERVER_URL"))
+    ap.add_argument("--repo", default=os.environ.get("FORGEJO_REPO")
+                    or os.environ.get("GITHUB_REPOSITORY"))
     ap.add_argument("--token", default=os.environ.get("FORGEJO_TOKEN"))
     args = ap.parse_args()
 
