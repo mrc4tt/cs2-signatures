@@ -38,13 +38,26 @@ python3 scripts/validate_sigs.py \
 VAL=$?
 set -e
 
-# 5. Report (always, even if broken sigs).
+# 5. Did anything MEANINGFUL change? status.json holds manifest + statuses +
+#    sig strings but NO timestamp, so it only differs on a real change. Compare
+#    it to the committed version so we don't churn a push every run just because
+#    the "Last updated" clock moved.
+CHANGED=1
+if git show HEAD:reports/status.json 2>/dev/null | diff -q - reports/status.json >/dev/null 2>&1; then
+  CHANGED=0
+fi
+
+if [ "$CHANGED" -eq 0 ]; then
+  echo "no signature/manifest change — skipping report + push"
+  echo "done (validate exit=$VAL, update=$UPD)"
+  exit "$VAL"
+fi
+
+# 6. Regenerate report (only now stamp a fresh timestamp) + commit + push.
 python3 scripts/gen_report.py --status reports/status.json \
   --readme README.md --docs docs/CounterStrikeSharp.md \
   --history-dir reports/history --date "$DISP" --iso "$ISO"
 
-# 6. Auto commit + push results (set NO_PUSH=1 to skip). Binaries are
-#    git-ignored, so only data/reports/docs/README get committed.
 if [ "${NO_PUSH:-0}" != "1" ]; then
   git add data/manifest.json data/gamedata.json README.md docs/ reports/
   if git diff --cached --quiet; then
