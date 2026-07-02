@@ -1,8 +1,8 @@
 # CounterStrikeSharp
 
-Last updated: July 2, 2026
+Last updated: July 2, 2026 at 8:44 PM UTC
 
-* Manifests: unknown
+* Manifests: [6854081659881519160](https://steamdb.info/depot/2347771/history/?changeid=M:6854081659881519160), [8851847688975518786](https://steamdb.info/depot/2347773/history/?changeid=M:8851847688975518786)
 * Repository: https://github.com/mrc4tt/CounterStrikeSharp
 * Gamedata: https://github.com/mrc4tt/CounterStrikeSharp/blob/main/configs/addons/counterstrikesharp/gamedata/gamedata.json
 
@@ -14,7 +14,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 
 <table>
 <tr><th>Status</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>❔</td><td>Windows</td><td>server</td><td>-</td><td>
+<tr><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x48\x89\x5C\x24\x08\x48\x89\x6C\x24\x10\x48\x89\x74\x24\x18\x57\x48\x83\xEC\x60\x8B\xE9\x49\x8B\xD9\x48\x8D\x4C\x24\x40\x49\x8B\xF8\x48\x8B\xF2\xE8\x2A\x2A\x2A\x2A\x48\x8D\x05\x2A\x2A\x2A\x2A\x48\x8D\x4C\x24\x40\x48\x89\x44\x24\x40\xE8\x2A\x2A\x2A\x2A
 </pre>
@@ -23,7 +23,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 48 89 5C 24 08 48 89 6C 24 10 48 89 74 24 18 57 48 83 EC 60 8B E9 49 8B D9 48 8D 4C 24 40 49 8B F8 48 8B F2 E8 ? ? ? ? 48 8D 05 ? ? ? ? 48 8D 4C 24 40 48 89 44 24 40 E8 ? ? ? ?
 </pre>
 </td></tr>
-<tr><td>❔</td><td>Linux</td><td>server</td><td>-</td><td>
+<tr><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
 \x55\x48\x89\xE5\x41\x57\x4D\x89\xCF\x41\x56\x4D\x89\xC6\x41\x55\x49\x89\xCD\x41\x54\x49\x89\xD4\x53\x48\x8D\x5D
 </pre>
@@ -38,7 +38,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 
 <table>
 <tr><th>Status</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>❔</td><td>Windows</td><td>server</td><td>-</td><td>
+<tr><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x48\x89\x5C\x24\x08\x48\x89\x74\x24\x18\x48\x89\x7C\x24\x20\x55\x41\x56\x41\x57\x48\x8D\x6C\x24\xD1\x48\x81\xEC\xC0\x00\x00\x00\x4D\x8B\xF0\x48\x89\x4D\xAF\x8B\xDA\xC6\x45\xCB\xFF\x48\x8D\x05\x2A\x2A\x2A\x2A
 </pre>
@@ -47,7 +47,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 48 89 5C 24 08 48 89 74 24 18 48 89 7C 24 20 55 41 56 41 57 48 8D 6C 24 D1 48 81 EC C0 00 00 00 4D 8B F0 48 89 4D AF 8B DA C6 45 CB FF 48 8D 05 ? ? ? ?
 </pre>
 </td></tr>
-<tr><td>❔</td><td>Linux</td><td>server</td><td>-</td><td>
+<tr><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
 \x55\x48\x8D\x05\x2A\x2A\x2A\x2A\x48\x89\xE5\x41\x57\x41\x89\xF7\x31\xF6
 </pre>
@@ -62,7 +62,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 
 <table>
 <tr><th>Status</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>❔</td><td>Windows</td><td>server</td><td>-</td><td>
+<tr><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x40\x53\x57\x48\x81\xEC\x88\x00\x00\x00\x48\x8B\xD9\x8B\xFA\x8B\xCA\xE8\x2A\x2A\x2A\x2A\x48\x85\xC0\x0F\x84\x2A\x2A\x2A\x2A\x8D\x47\xFE\x83\xF8\x01\x0F\x87\x2A\x2A\x2A\x2A\x0F\xB6\x83\x44\x03\x00\x00\x3B\xF8\x0F\x84\x2A\x2A\x2A\x2A
 </pre>
@@ -71,7 +71,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 40 53 57 48 81 EC 88 00 00 00 48 8B D9 8B FA 8B CA E8 ? ? ? ? 48 85 C0 0F 84 ? ? ? ? 8D 47 FE 83 F8 01 0F 87 ? ? ? ? 0F B6 83 44 03 00 00 3B F8 0F 84 ? ? ? ?
 </pre>
 </td></tr>
-<tr><td>❔</td><td>Linux</td><td>server</td><td>-</td><td>
+<tr><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
 \x55\x48\x89\xE5\x41\x54\x49\x89\xFC\x89\xF7
 </pre>
@@ -86,7 +86,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 
 <table>
 <tr><th>Status</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>❔</td><td>Windows</td><td>server</td><td>-</td><td>
+<tr><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x44\x88\x4C\x24\x2A\x53\x57
 </pre>
@@ -95,7 +95,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 44 88 4C 24 ? 53 57
 </pre>
 </td></tr>
-<tr><td>❔</td><td>Linux</td><td>server</td><td>-</td><td>
+<tr><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
 \x55\x48\x8D\x87\x2A\x2A\x2A\x2A\x48\x89\xE5\x41\x57\x41\x56\x41\x89\xCE\x41\x55\x45\x89\xCD
 </pre>
@@ -110,7 +110,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 
 <table>
 <tr><th>Status</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>❔</td><td>Windows</td><td>server</td><td>-</td><td>
+<tr><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x40\x55\x53\x56\x57\x41\x54\x48\x8D\x6C\x24\x2A\x48\x81\xEC\x2A\x2A\x2A\x2A\x4C\x89\xAC\x24\x2A\x2A\x2A\x2A
 </pre>
@@ -119,7 +119,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 40 55 53 56 57 41 54 48 8D 6C 24 ? 48 81 EC ? ? ? ? 4C 89 AC 24 ? ? ? ?
 </pre>
 </td></tr>
-<tr><td>❔</td><td>Linux</td><td>server</td><td>-</td><td>
+<tr><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
 \x55\x48\x89\xE5\x41\x57\x49\x89\xFF\x41\x56\x41\x55\x41\x54\x53\x48\x81\xEC\x2A\x2A\x2A\x2A\xE8\x2A\x2A\x2A\x2A\x41\x80\xBF
 </pre>
@@ -134,7 +134,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 
 <table>
 <tr><th>Status</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>❔</td><td>Windows</td><td>server</td><td>-</td><td>
+<tr><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x40\x53\x48\x83\xEC\x2A\x48\x8B\x01\x48\x8B\xD9\xFF\x50\x2A\x48\x8B\x03
 </pre>
@@ -143,7 +143,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 40 53 48 83 EC ? 48 8B 01 48 8B D9 FF 50 ? 48 8B 03
 </pre>
 </td></tr>
-<tr><td>❔</td><td>Linux</td><td>server</td><td>-</td><td>
+<tr><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
 \x55\x48\x89\xE5\x53\x48\x89\xFB\x48\x83\xEC\x08\x48\x8B\x07\xFF\x50\x2A\x48\x8B\x03
 </pre>
@@ -158,7 +158,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 
 <table>
 <tr><th>Status</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>❔</td><td>Windows</td><td>server</td><td>-</td><td>
+<tr><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x48\x89\x5C\x24\x08\x48\x89\x74\x24\x10\x48\x89\x7C\x24\x20\x44\x89\x44\x24\x18\x55\x41\x54\x41\x55\x41\x56\x41\x57\x48\x8D\xAC\x24\x40\xFF\xFF\xFF\x48\x81\xEC\xC0\x01\x00\x00\x4D\x8B\xE1\x45\x8B\xE8\x4C\x8B\xF2\x4C\x8B\xF9\x48\x85\xD2\x74\x2A\x80\x3A\x00
 </pre>
@@ -167,7 +167,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 48 89 5C 24 08 48 89 74 24 10 48 89 7C 24 20 44 89 44 24 18 55 41 54 41 55 41 56 41 57 48 8D AC 24 40 FF FF FF 48 81 EC C0 01 00 00 4D 8B E1 45 8B E8 4C 8B F2 4C 8B F9 48 85 D2 74 ? 80 3A 00
 </pre>
 </td></tr>
-<tr><td>❔</td><td>Linux</td><td>server</td><td>-</td><td>
+<tr><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
 \x55\x48\x89\xE5\x41\x57\x41\x56\x41\x55\x41\x54\x53\x48\x81\xEC\x2A\x2A\x2A\x2A\x48\x89\xBD\x2A\x2A\x2A\x2A\x89\x95\x2A\x2A\x2A\x2A\x48\x89\x8D\x2A\x2A\x2A\x2A\x44\x89\x85\x2A\x2A\x2A\x2A
 </pre>
@@ -182,7 +182,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 
 <table>
 <tr><th>Status</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>❔</td><td>Windows</td><td>server</td><td>-</td><td>
+<tr><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x48\x85\xC9\x74\x0F\x48\x8B\xD1\x48\x8B\x0D\x2A\x2A\x2A\x2A\xE9\x2A\x2A\x2A\x2A\xC3
 </pre>
@@ -191,7 +191,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 48 85 C9 74 0F 48 8B D1 48 8B 0D ? ? ? ? E9 ? ? ? ? C3
 </pre>
 </td></tr>
-<tr><td>❔</td><td>Linux</td><td>server</td><td>-</td><td>
+<tr><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
 \x48\x89\xFE\x48\x85\xFF\x74\x2A\x48\x8D\x05\x2A\x2A\x2A\x2A\x48
 </pre>
@@ -206,7 +206,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 
 <table>
 <tr><th>Status</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>❔</td><td>Windows</td><td>server</td><td>-</td><td>
+<tr><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x40\x53\x48\x83\xEC\x2A\x48\x8B\xD9\x4C\x8B\xC2\x48\x8B\x0D\x2A\x2A\x2A\x2A\x48\x8D\x54\x24\x2A\x48\x8B\x01\xFF\x50\x2A\x48\x8B\x54\x24\x2A\x48\x8B\xCB\xE8\x2A\x2A\x2A\x2A\x48\x83\xC4\x2A\x5B\xC3\xCC\xCC\xCC\xCC\xCC\xCC\xCC\xCC\xCC\xCC\xCC\xCC\xCC\xCC\xCC\x48\x89\x5C\x24\x2A
 </pre>
@@ -215,7 +215,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 40 53 48 83 EC ? 48 8B D9 4C 8B C2 48 8B 0D ? ? ? ? 48 8D 54 24 ? 48 8B 01 FF 50 ? 48 8B 54 24 ? 48 8B CB E8 ? ? ? ? 48 83 C4 ? 5B C3 CC CC CC CC CC CC CC CC CC CC CC CC CC CC CC 48 89 5C 24 ?
 </pre>
 </td></tr>
-<tr><td>❔</td><td>Linux</td><td>server</td><td>-</td><td>
+<tr><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
 \x55\x48\x89\xE5\x53\x48\x89\xFB\x48\x83\xEC\x2A\x48\x8D\x05\x2A\x2A\x2A\x2A\x48\x8B\x38\x48\x8B\x07\xFF\x50\x2A\x48\x89\xDF\x48\x8B\x5D\x2A\xC9\x48\x89\xC6\xE9\x2A\x2A\x2A\x2A\xCC\xCC\xCC\xCC\x55
 </pre>
@@ -230,7 +230,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 
 <table>
 <tr><th>Status</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>❔</td><td>Windows</td><td>server</td><td>-</td><td>
+<tr><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x48\x89\x5C\x24\x2A\x48\x89\x6C\x24\x2A\x48\x89\x74\x24\x2A\x57\x41\x54\x41\x55\x41\x56\x41\x57\x48\x83\xEC\x2A\x48\x8B\x01\x48\x8B\xFA
 </pre>
@@ -239,7 +239,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 48 89 5C 24 ? 48 89 6C 24 ? 48 89 74 24 ? 57 41 54 41 55 41 56 41 57 48 83 EC ? 48 8B 01 48 8B FA
 </pre>
 </td></tr>
-<tr><td>❔</td><td>Linux</td><td>server</td><td>-</td><td>
+<tr><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
 \x55\x48\x8D\x15\x2A\x2A\x2A\x2A\x48\x89\xE5\x41\x55\x41\x54\x49\x89\xFC\x53\x48\x89\xF3\x48\x83\xEC\x08\x48\x8B\x07
 </pre>
@@ -254,7 +254,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 
 <table>
 <tr><th>Status</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>❔</td><td>Windows</td><td>server</td><td>-</td><td>
+<tr><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x44\x89\x44\x24\x18\x48\x89\x54\x24\x10\x48\x89\x4C\x24\x08\x55\x53\x56\x57\x41\x55\x41\x56\x41\x57\x48\x8B\xEC\x48\x81\xEC\x2A\x2A\x2A\x2A\x48\x83\x79\x38\x00\x49\x8B\xD9\x45\x8B\xE8\x4C\x8B\xFA\x48\x8B\xF9\x75\x05\xE8\x2A\x2A\x2A\x2A
 </pre>
@@ -263,7 +263,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 44 89 44 24 18 48 89 54 24 10 48 89 4C 24 08 55 53 56 57 41 55 41 56 41 57 48 8B EC 48 81 EC ? ? ? ? 48 83 79 38 00 49 8B D9 45 8B E8 4C 8B FA 48 8B F9 75 05 E8 ? ? ? ?
 </pre>
 </td></tr>
-<tr><td>❔</td><td>Linux</td><td>server</td><td>-</td><td>
+<tr><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
 \x55\x48\x89\xE5\x41\x57\x41\x56\x41\x55\x49\x89\xCD\x41\x54\x49\x89\xFC\x53\x48\x89\xF3\x48\x83\xEC\x78\x4C\x8B\x77\x38\x89\x55\xBC\x4D\x85\xF6\x0F\x84\x2A\x2A\x2A\x2A\x48\x8D\x45\xCC\x4D\x85\xED\x4C\x0F\x44\xE8\x41\xC7\x45\x00\x00\x00\x00\x00\x48\x85\xDB
 </pre>
@@ -278,7 +278,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 
 <table>
 <tr><th>Status</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>❔</td><td>Windows</td><td>server</td><td>-</td><td>
+<tr><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x48\x89\x5C\x24\x08\x57\x48\x83\xEC\x20\x33\xFF\x4C\x8B\xCA\x8B\xD9\x8B\xC7\x48\x85\xD2\x74\x22\x38\x02\x74\x1E\x48\xC7\xC2\xFF\xFF\xFF\xFF\x48\xFF\xC2\x41\x38\x04\x11\x75\xF7\x41\xB8\x26\x59\x41\x31\x49\x8B\xC9\xE8\x2A\x2A\x2A\x2A\x89\x44\x24\x38\x85\xC0
 </pre>
@@ -287,7 +287,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 48 89 5C 24 08 57 48 83 EC 20 33 FF 4C 8B CA 8B D9 8B C7 48 85 D2 74 22 38 02 74 1E 48 C7 C2 FF FF FF FF 48 FF C2 41 38 04 11 75 F7 41 B8 26 59 41 31 49 8B C9 E8 ? ? ? ? 89 44 24 38 85 C0
 </pre>
 </td></tr>
-<tr><td>❔</td><td>Linux</td><td>server</td><td>-</td><td>
+<tr><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
 \x48\x85\xF6\x0F\x84\x2A\x2A\x2A\x2A\x55\x48\x89\xE5\x41\x57\x41\x56\x41\x55\x49\x89\xF5\x41\x54\x53\x48\x81\xEC\x2A\x2A\x2A\x2A\x80\x3E\x2A\x75\x2A\x31\xC0\x48\x81\xC4\x2A\x2A\x2A\x2A\x5B\x41\x5C\x41\x5D\x41\x5E\x41\x5F\x5D\xC3\x0F\x1F\x80\x2A\x2A\x2A\x2A\x4C\x8D\xA5\x2A\x2A\x2A\x2A
 </pre>
@@ -302,7 +302,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 
 <table>
 <tr><th>Status</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>❔</td><td>Windows</td><td>server</td><td>-</td><td>
+<tr><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x48\x8B\xC4\x4C\x89\x48\x2A\x48\x89\x48\x2A\x55\x56\x41\x56
 </pre>
@@ -311,7 +311,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 48 8B C4 4C 89 48 ? 48 89 48 ? 55 56 41 56
 </pre>
 </td></tr>
-<tr><td>❔</td><td>Linux</td><td>server</td><td>-</td><td>
+<tr><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
 \x55\x48\x89\xE5\x41\x57\x49\x89\xFF\x41\x56\x41\x55\x41\x54\x53\x48\x81\xEC\x2A\x2A\x2A\x2A\x48\x8D\x05\x2A\x2A\x2A\x2A\xF3\x0F\x11\x85
 </pre>
@@ -326,7 +326,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 
 <table>
 <tr><th>Status</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>❔</td><td>Windows</td><td>server</td><td>-</td><td>
+<tr><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x48\x83\xEC\x48\xC6\x44\x24\x30\x00\x4C\x8B\xC1\x48\x8B\x0D\x2A\x2A\x2A\x2A\x45\x33\xC9\xC7\x44\x24\x28\xFF\xFF\xFF\xFF\x89\x54\x24\x20\xBA\xFF\xFF\xFF\xFF\xE8\x2A\x2A\x2A\x2A\x48\x83\xC4\x48\xC3
 </pre>
@@ -335,7 +335,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 48 83 EC 48 C6 44 24 30 00 4C 8B C1 48 8B 0D ? ? ? ? 45 33 C9 C7 44 24 28 FF FF FF FF 89 54 24 20 BA FF FF FF FF E8 ? ? ? ? 48 83 C4 48 C3
 </pre>
 </td></tr>
-<tr><td>❔</td><td>Linux</td><td>server</td><td>-</td><td>
+<tr><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
 \x48\x8D\x05\x2A\x2A\x2A\x2A\x55\x48\x89\xFA
 </pre>
@@ -350,7 +350,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 
 <table>
 <tr><th>Status</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>❔</td><td>Windows</td><td>server</td><td>-</td><td>
+<tr><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x48\x89\x5C\x24\x10\x57\x48\x83\xEC\x30\x48\x8B\xDA\x48\x8B\xF9\x48\x85\xC9\x0F\x84\x2A\x2A\x2A\x2A\x48\x85\xD2\x75\x2A\xB9\x38\x00\x00\x00\x48\x89\x74\x24\x40\xE8\x2A\x2A\x2A\x2A\x48\x8B\xD8\x48\x85\xC0\x74\x2A\x45\x33\xC0\x33\xD2\x48\x8B\xC8\xE8
 </pre>
@@ -359,7 +359,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 48 89 5C 24 10 57 48 83 EC 30 48 8B DA 48 8B F9 48 85 C9 0F 84 ? ? ? ? 48 85 D2 75 ? B9 38 00 00 00 48 89 74 24 40 E8 ? ? ? ? 48 8B D8 48 85 C0 74 ? 45 33 C0 33 D2 48 8B C8 E8
 </pre>
 </td></tr>
-<tr><td>❔</td><td>Linux</td><td>server</td><td>-</td><td>
+<tr><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
 \x48\x85\xFF\x74\x2A\x55\x48\x89\xE5\x41\x55\x41\x54\x49\x89\xFC
 </pre>
@@ -374,7 +374,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 
 <table>
 <tr><th>Status</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>❔</td><td>Windows</td><td>server</td><td>-</td><td>
+<tr><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x48\x89\x74\x24\x18\x57\x41\x56\x41\x57\x48\x83\xEC\x40\xBE\xFF\xFF\xFF\xFF\x4C\x8B\xFA\x48\x8B\xF9\x89\x74\x24\x78\x8B\xD6\x48\x8D\x0D\x2A\x2A\x2A\x2A\x4D\x8B\xF0\xE8\x2A\x2A\x2A\x2A\x48\x85\xC0\x75\x0B\x48\x8B\x05\x2A\x2A\x2A\x2A\x48\x8B\x40\x08\x80\x38
 </pre>
@@ -383,7 +383,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 48 89 74 24 18 57 41 56 41 57 48 83 EC 40 BE FF FF FF FF 4C 8B FA 48 8B F9 89 74 24 78 8B D6 48 8D 0D ? ? ? ? 4D 8B F0 E8 ? ? ? ? 48 85 C0 75 0B 48 8B 05 ? ? ? ? 48 8B 40 08 80 38
 </pre>
 </td></tr>
-<tr><td>❔</td><td>Linux</td><td>server</td><td>-</td><td>
+<tr><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
 \x55\x48\x89\xE5\x53\x48\x89\xFB\x48\x83\xEC\x08\xE8\x2A\x2A\x2A\x2A\x48\x89\xD8\x48\x8B\x5D\xF8\xC9\xC3\xCC\xCC\xCC\xCC\xCC\xCC\x48\xB8
 </pre>
@@ -398,7 +398,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 
 <table>
 <tr><th>Status</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>❔</td><td>Windows</td><td>server</td><td>-</td><td>
+<tr><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x48\x89\x5C\x24\x2A\x48\x89\x74\x24\x2A\x57\x48\x83\xEC\x2A\x49\x8B\xF0\x48\x8B\xD9\x48\x8B\x0D\x2A\x2A\x2A\x2A
 </pre>
@@ -407,7 +407,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 48 89 5C 24 ? 48 89 74 24 ? 57 48 83 EC ? 49 8B F0 48 8B D9 48 8B 0D ? ? ? ?
 </pre>
 </td></tr>
-<tr><td>❔</td><td>Linux</td><td>server</td><td>-</td><td>
+<tr><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
 \x55\x48\x89\xF0\x48\x89\xE5\x41\x57\x49\x89\xFF\x41\x56\x48\x8D\x7D
 </pre>
@@ -422,7 +422,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 
 <table>
 <tr><th>Status</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>❔</td><td>Windows</td><td>server</td><td>-</td><td>
+<tr><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x48\x89\x5C\x24\x18\x4C\x89\x4C\x24\x20\x48\x89\x4C\x24\x08\x55\x56\x57\x41\x54\x41\x55\x41\x56\x41\x57\x48\x83\xEC\x20\x49\x8B\xF9\x4C\x8B\xC9\x41\xBD\xFF\x7F\x00\x00\x48\x85\xD2\x74\x2A\x48\x8B\x42\x10\x48\x85\xC0\x74\x2A\x8B\x50\x10
 </pre>
@@ -431,7 +431,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 48 89 5C 24 18 4C 89 4C 24 20 48 89 4C 24 08 55 56 57 41 54 41 55 41 56 41 57 48 83 EC 20 49 8B F9 4C 8B C9 41 BD FF 7F 00 00 48 85 D2 74 ? 48 8B 42 10 48 85 C0 74 ? 8B 50 10
 </pre>
 </td></tr>
-<tr><td>❔</td><td>Linux</td><td>server</td><td>-</td><td>
+<tr><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
 \x55\x48\x89\xE5\x41\x55\x49\x89\xCD\x41\x54\x49\x89\xFC\x53\xBB
 </pre>
@@ -446,7 +446,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 
 <table>
 <tr><th>Status</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>❔</td><td>Windows</td><td>server</td><td>-</td><td>
+<tr><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x48\x8B\x15\x2A\x2A\x2A\x2A\x48\x85\xD2\x74\x14\x83\xF9\x3F\x77\x0F\x48\x63\xC1\x48\x83\xC0\x04\x48\xC1\xE0\x04\x48\x03\xC2\xC3\x33\xC0\xC3
 </pre>
@@ -455,7 +455,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 48 8B 15 ? ? ? ? 48 85 D2 74 14 83 F9 3F 77 0F 48 63 C1 48 83 C0 04 48 C1 E0 04 48 03 C2 C3 33 C0 C3
 </pre>
 </td></tr>
-<tr><td>❔</td><td>Linux</td><td>server</td><td>-</td><td>
+<tr><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
 \x48\x8B\x05\x2A\x2A\x2A\x2A\x48\x85\xC0\x74\x2A\x83\xFF\x3F\x77\x2A\x48\x63\xFF\x48\xC1\xE7\x04\x48\x8D\x44\x38
 </pre>
@@ -470,7 +470,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 
 <table>
 <tr><th>Status</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>❔</td><td>Windows</td><td>server</td><td>-</td><td>
+<tr><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x48\x85\xD2\x0F\x84\x2A\x2A\x2A\x2A\x48\x89\x5C\x24\x08\x57\x48\x83\xEC\x30\x48\x8B\xDA\x48\x8B\xF9\xE8\x2A\x2A\x2A\x2A
 </pre>
@@ -479,7 +479,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 48 85 D2 0F 84 ? ? ? ? 48 89 5C 24 08 57 48 83 EC 30 48 8B DA 48 8B F9 E8 ? ? ? ?
 </pre>
 </td></tr>
-<tr><td>❔</td><td>Linux</td><td>server</td><td>-</td><td>
+<tr><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
 \x55\x48\x89\xE5\x41\x54\x49\x89\xFC\x53\x48\x89\xF3\xE8\x2A\x2A\x2A\x2A\x48\x39\xC3\x74\x2A\x4C\x89\xE7\xE8\x2A\x2A\x2A\x2A\x48\x39\xC3\x74\x2A\x4C\x89\xE7\x48\x89\xDE\xE8\x2A\x2A\x2A\x2A\x48\x89\xDF\x5B\x41\x5C\x5D\xE9\x2A\x2A\x2A\x2A\x0F\x1F\x44\x00\x00
 </pre>
@@ -494,7 +494,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 
 <table>
 <tr><th>Status</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>❔</td><td>Windows</td><td>server</td><td>-</td><td>
+<tr><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x40\x55\x53\x56\x57\x41\x54\x48\x8D\x6C\x24\x2A\x48\x81\xEC\x2A\x2A\x2A\x2A\x4D\x8B\xE0
 </pre>
@@ -503,7 +503,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 40 55 53 56 57 41 54 48 8D 6C 24 ? 48 81 EC ? ? ? ? 4D 8B E0
 </pre>
 </td></tr>
-<tr><td>❔</td><td>Linux</td><td>server</td><td>-</td><td>
+<tr><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
 \x55\x48\x89\xE5\x41\x57\x41\x56\x41\x55\x49\x89\xFD\x41\x54\x49\x89\xF4\x53\x48\x89\xD3\x48\x83\xEC\x2A\x48\x85\xD2
 </pre>
@@ -518,7 +518,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 
 <table>
 <tr><th>Status</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>❔</td><td>Windows</td><td>server</td><td>-</td><td>
+<tr><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x40\x55\x53\x56\x57\x41\x54\x48\x8D\x6C\x24\x2A\x48\x81\xEC\x2A\x2A\x2A\x2A\x4D\x8B\xE0
 </pre>
@@ -527,7 +527,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 40 55 53 56 57 41 54 48 8D 6C 24 ? 48 81 EC ? ? ? ? 4D 8B E0
 </pre>
 </td></tr>
-<tr><td>❔</td><td>Linux</td><td>server</td><td>-</td><td>
+<tr><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
 \x55\x48\x89\xE5\x41\x57\x41\x56\x41\x55\x49\x89\xFD\x31\xFF
 </pre>
@@ -542,7 +542,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 
 <table>
 <tr><th>Status</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>❔</td><td>Windows</td><td>server</td><td>-</td><td>
+<tr><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x40\x57\x41\x56\x48\x83\xEC\x28\x48\x8B\x01\x4C\x8B\xF2\x48\x8B\xF9\xFF\x90\x2A\x2A\x00\x00\x84\xC0\x0F\x84\x2A\x2A\x2A\x2A
 </pre>
@@ -551,7 +551,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 40 57 41 56 48 83 EC 28 48 8B 01 4C 8B F2 48 8B F9 FF 90 ? ? 00 00 84 C0 0F 84 ? ? ? ?
 </pre>
 </td></tr>
-<tr><td>❔</td><td>Linux</td><td>server</td><td>-</td><td>
+<tr><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
 \x55\x48\x89\xE5\x41\x56\x41\x55\x49\x89\xF5\x41\x54\x53\x48\x89\xFB\x48\x83\xEC\x10\x48\x8B\x07
 </pre>
@@ -566,7 +566,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 
 <table>
 <tr><th>Status</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>❔</td><td>Windows</td><td>server</td><td>-</td><td>
+<tr><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x48\x85\xD2\x0F\x84\x2A\x2A\x2A\x2A\x53\x55\x48\x83\xEC\x28\x4C\x8B\x42\x10\x48\x8B\xEA\x48\x8B\xD9\x4D\x85\xC0\x74\x2A
 </pre>
@@ -575,7 +575,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 48 85 D2 0F 84 ? ? ? ? 53 55 48 83 EC 28 4C 8B 42 10 48 8B EA 48 8B D9 4D 85 C0 74 ?
 </pre>
 </td></tr>
-<tr><td>❔</td><td>Linux</td><td>server</td><td>-</td><td>
+<tr><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
 \x55\xBA\xFF\xFF\xFF\xFF\x48\x89\xE5\x41\x57\x41\x56\x41\x55\x49\x89\xF5\x41
 </pre>
@@ -590,7 +590,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 
 <table>
 <tr><th>Status</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>❔</td><td>Windows</td><td>server</td><td>-</td><td>
+<tr><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x4C\x89\x4C\x24\x2A\x48\x89\x4C\x24\x2A\x53\x56\x57\x41\x55\x41\x56\x41\x57\x48\x81\xEC\x2A\x2A\x2A\x2A\x48\x8B\x05\x2A\x2A\x2A\x2A\x4D\x8B\xF0
 </pre>
@@ -599,7 +599,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 4C 89 4C 24 ? 48 89 4C 24 ? 53 56 57 41 55 41 56 41 57 48 81 EC ? ? ? ? 48 8B 05 ? ? ? ? 4D 8B F0
 </pre>
 </td></tr>
-<tr><td>❔</td><td>Linux</td><td>server</td><td>-</td><td>
+<tr><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
 \x55\x48\x89\xE5\x41\x57\x49\x89\xFF\x41\x56\x41\x55\x41\x54\x49\x89\xD4\x53\x48\x89\xF3\x48\x83\xEC\x2A\x48\x8D\x05
 </pre>
@@ -614,7 +614,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 
 <table>
 <tr><th>Status</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>❔</td><td>Windows</td><td>server</td><td>-</td><td>
+<tr><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x48\x8B\x1D\x2A\x2A\x2A\x2A\x48\x85\xDB\x0F\x84\x2A\x2A\x2A\x2A\xBD
 </pre>
@@ -623,7 +623,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 48 8B 1D ? ? ? ? 48 85 DB 0F 84 ? ? ? ? BD
 </pre>
 </td></tr>
-<tr><td>❔</td><td>Linux</td><td>server</td><td>-</td><td>
+<tr><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
 \x4C\x8B\x35\x2A\x2A\x2A\x2A\x4D\x85\xF6\x75\x2A\xE9
 </pre>
@@ -638,7 +638,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 
 <table>
 <tr><th>Status</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>❔</td><td>Windows</td><td>server</td><td>-</td><td>
+<tr><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x48\x8B\xC4\x4C\x89\x48\x2A\x48\x89\x50\x2A\x48\x89\x48\x2A\x55\x48\x8D\xA8\x2A\x2A\x2A\x2A\x48\x81\xEC\x2A\x2A\x2A\x2A\x48\x89\x58\x2A\x48\x89\x70\x2A
 </pre>
@@ -647,7 +647,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 48 8B C4 4C 89 48 ? 48 89 50 ? 48 89 48 ? 55 48 8D A8 ? ? ? ? 48 81 EC ? ? ? ? 48 89 58 ? 48 89 70 ?
 </pre>
 </td></tr>
-<tr><td>❔</td><td>Linux</td><td>server</td><td>-</td><td>
+<tr><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
 \x55\x48\x89\xE5\x41\x57\x49\x89\xFF\x41\x56\x48\x8D\x3D\x2A\x2A\x2A\x2A\x41\x55\x41\x89\xD5
 </pre>
@@ -662,7 +662,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 
 <table>
 <tr><th>Status</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>❔</td><td>Windows</td><td>server</td><td>-</td><td>
+<tr><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x48\x89\x5C\x24\x08\x48\x89\x6C\x24\x10\x48\x89\x74\x24\x18\x57\x48\x83\xEC\x20\x48\x8B\x42\x10\x48\x8D\x35\x2A\x2A\x2A\x2A\x48\x8B\xEA\x48\x8B\xD9\x48\x8B\xFE\x48\x8D\x15\x2A\x2A\x2A\x2A\x4C\x8B\x40\x20\x4D\x85\xC0\x49\x0F\x45\xF8
 </pre>
@@ -671,7 +671,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 48 89 5C 24 08 48 89 6C 24 10 48 89 74 24 18 57 48 83 EC 20 48 8B 42 10 48 8D 35 ? ? ? ? 48 8B EA 48 8B D9 48 8B FE 48 8D 15 ? ? ? ? 4C 8B 40 20 4D 85 C0 49 0F 45 F8
 </pre>
 </td></tr>
-<tr><td>❔</td><td>Linux</td><td>server</td><td>-</td><td>
+<tr><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
 \x55\x48\x89\xE5\x41\x55\x41\x54\x53\x48\x89\xFB\x48\x83\xEC\x58\x48\x8B\x46
 </pre>
@@ -686,7 +686,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 
 <table>
 <tr><th>Status</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>❔</td><td>Windows</td><td>server</td><td>-</td><td>
+<tr><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x44\x89\x4C\x24\x20\x44\x88\x44\x24\x18\x55\x53\x56\x57\x41\x54\x41\x56\x48\x8D\xAC\x24\x78\xFE\xFF\xFF\x48\x81\xEC\x88\x02\x00\x00\x8B\x82\x38\x04\x00\x00\x4C\x8D\x35\x2A\x2A\x2A\x2A\x41\x0F\xB6\xF0\x48\x8B\xDA\x4C\x8B\xE1\x85\xC0
 </pre>
@@ -695,7 +695,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 44 89 4C 24 20 44 88 44 24 18 55 53 56 57 41 54 41 56 48 8D AC 24 78 FE FF FF 48 81 EC 88 02 00 00 8B 82 38 04 00 00 4C 8D 35 ? ? ? ? 41 0F B6 F0 48 8B DA 4C 8B E1 85 C0
 </pre>
 </td></tr>
-<tr><td>❔</td><td>Linux</td><td>server</td><td>-</td><td>
+<tr><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
 \x55\x48\x89\xE5\x41\x57\x49\x89\xF7\x41\x56\x41\x55\x41\x54\x4D\x89\xC4
 </pre>
@@ -710,7 +710,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 
 <table>
 <tr><th>Status</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>❔</td><td>Windows</td><td>server</td><td>-</td><td>
+<tr><td>❌</td><td>Windows</td><td>server</td><td>0</td><td>
 <pre>
 \x48\x83\x3D\x2A\x2A\x2A\x2A\x2A\x0F\x95\xC0\xC3\xCC\xCC\xCC\xCC\xC2
 </pre>
@@ -719,7 +719,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 48 83 3D ? ? ? ? ? 0F 95 C0 C3 CC CC CC CC C2
 </pre>
 </td></tr>
-<tr><td>❔</td><td>Linux</td><td>server</td><td>-</td><td>
+<tr><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
 \x48\x8D\x05\x2A\x2A\x2A\x2A\x48\x83\x38\x2A\x0F\x95\xC0\xC3
 </pre>
