@@ -67,8 +67,15 @@ jobs:
             git push
           fi
 
-      # Optional: fail the run (red X in Forgejo) when a sig is broken, so you
-      # get notified. Remove if you'd rather never fail on broken sigs.
+      # Open/update a tracking issue on broken sigs; auto-close when green.
+      - name: Auto-issue on broken sigs
+        env:
+          FORGEJO_TOKEN: ${{ secrets.FORGEJO_TOKEN }}
+        run: |
+          python3 scripts/open_issue.py --status reports/status.json
+
+      # Optional: also fail the run (red X in Forgejo) when a sig is broken.
+      # Remove if the issue alone is enough.
       - name: Gate on broken sigs
         if: steps.val.outputs.exit != '0'
         run: |

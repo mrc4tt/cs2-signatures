@@ -93,7 +93,27 @@ def main():
         json.dump({"date": args.date, "tally": status["tally"],
                    "manifest": status.get("manifest")}, fh, indent=2)
 
-    print("wrote %s and %s" % (args.out, snap))
+    # shields.io endpoint badge (https://shields.io/endpoint).
+    badge_path = os.path.join(os.path.dirname(args.out) or ".", "badge.json")
+    with open(badge_path, "w") as fh:
+        json.dump(make_badge(status["tally"]), fh, indent=2)
+
+    print("wrote %s, %s, %s" % (args.out, snap, badge_path))
+
+
+def make_badge(t):
+    ok, brk, amb = t.get("ok", 0), t.get("broken", 0), t.get("ambiguous", 0)
+    validated = ok + brk + amb
+    if validated == 0:
+        msg, color = "not validated", "lightgrey"
+    elif brk:
+        msg, color = "%d broken / %d ok" % (brk, ok), "red"
+    elif amb:
+        msg, color = "%d ambiguous / %d ok" % (amb, ok), "yellow"
+    else:
+        msg, color = "%d ok" % ok, "brightgreen"
+    return {"schemaVersion": 1, "label": "cs2 sigs", "message": msg,
+            "color": color}
 
 
 if __name__ == "__main__":

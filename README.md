@@ -1,5 +1,7 @@
 # cs2-sig-tracker
 
+[![cs2 sigs](https://img.shields.io/endpoint?url=https%3A%2F%2Fgit.miksen.me%2Fmikkel%2Fcs2-signatures%2Fraw%2Fbranch%2Fmain%2Freports%2Fbadge.json)](reports/STATUS.md)
+
 Tracks the [CounterStrikeSharp](https://github.com/mrc4tt/CounterStrikeSharp)
 gamedata signatures (from the **mrc4tt fork**) against live CS2 server
 binaries. Inspired by [ianlucas/cs2-signatures](https://github.com/ianlucas/cs2-signatures),
