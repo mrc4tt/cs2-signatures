@@ -3,8 +3,12 @@ bin_linux/
 bin_win/
 *.so
 *.dll
-# DepotDownloader session cache.
+# DepotDownloader session cache + manifest/depot staging dir.
 .DepotDownloader/
+depots/
+# Python bytecode.
+__pycache__/
+*.pyc
 # Secrets + cron log.
 .env
 reports/cron.log
