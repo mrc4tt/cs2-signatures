@@ -1,0 +1,7 @@
+# Never commit game binaries (copyright + size).
+bin_linux/
+bin_win/
+*.so
+*.dll
+# DepotDownloader session cache.
+.DepotDownloader/

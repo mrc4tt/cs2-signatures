@@ -1,0 +1,76 @@
+name: track-signatures
+
+on:
+  schedule:
+    # Every 30 min. CS2 updates land irregularly; check_update short-circuits
+    # when the buildid is unchanged so this is cheap.
+    - cron: "*/30 * * * *"
+  workflow_dispatch: {}
+
+jobs:
+  track:
+    runs-on: self-hosted   # your x86-64 VPS runner (steamcmd + DepotDownloader)
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check for CS2 update
+        id: upd
+        run: |
+          set +e
+          BUILDID=$(python3 scripts/check_update.py --manifest data/manifest.txt)
+          CODE=$?
+          echo "buildid=$BUILDID" >> "$GITHUB_OUTPUT"
+          # 10 = changed, 0 = unchanged, 1 = error.
+          if [ "$CODE" -eq 1 ]; then echo "check failed"; exit 1; fi
+          echo "changed=$([ "$CODE" -eq 10 ] && echo 1 || echo 0)" >> "$GITHUB_OUTPUT"
+
+      - name: Fetch upstream gamedata.json
+        run: python3 scripts/fetch_gamedata.py --out data/gamedata.json
+
+      - name: Download server binaries
+        env:
+          STEAM_USER: ${{ secrets.STEAM_USER }}
+          STEAM_PASS: ${{ secrets.STEAM_PASS }}
+        run: |
+          eval "$(bash scripts/download_bins.sh | grep -E '^(LINUX_SO|WIN_DLL)=')"
+          echo "LINUX_SO=$LINUX_SO" >> "$GITHUB_ENV"
+          echo "WIN_DLL=$WIN_DLL" >> "$GITHUB_ENV"
+
+      - name: Validate signatures
+        id: val
+        run: |
+          set +e
+          python3 scripts/validate_sigs.py \
+            --gamedata data/gamedata.json \
+            --linux "$LINUX_SO" --windows "$WIN_DLL" \
+            --manifest data/manifest.txt \
+            --out reports/status.json
+          echo "exit=$?" >> "$GITHUB_OUTPUT"
+
+      - name: Generate report
+        run: |
+          python3 scripts/gen_report.py \
+            --status reports/status.json \
+            --out reports/STATUS.md \
+            --history-dir reports/history \
+            --date "$(date +%F)"
+
+      - name: Commit results
+        run: |
+          git config user.name "sig-tracker"
+          git config user.email "bot@localhost"
+          git add data/manifest.txt data/gamedata.json reports/
+          if git diff --cached --quiet; then
+            echo "no changes"
+          else
+            git commit -m "track: buildid ${{ steps.upd.outputs.buildid }} ($(date +%F))"
+            git push
+          fi
+
+      # Optional: fail the run (red X in Forgejo) when a sig is broken, so you
+      # get notified. Remove if you'd rather never fail on broken sigs.
+      - name: Gate on broken sigs
+        if: steps.val.outputs.exit != '0'
+        run: |
+          echo "::error::one or more signatures are BROKEN — see reports/STATUS.md"
+          exit 1

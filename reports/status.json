@@ -1,0 +1,524 @@
+{
+  "manifest": null,
+  "gamedata_source": "mrc4tt/CounterStrikeSharp configs/addons/counterstrikesharp/gamedata/gamedata.json",
+  "tally": {
+    "ok": 0,
+    "broken": 0,
+    "ambiguous": 0,
+    "no_binary": 60,
+    "missing_sig": 0,
+    "offset_only": 18
+  },
+  "results": [
+    {
+      "name": "UTIL_ClientPrintAll",
+      "kind": "signature",
+      "platforms": {
+        "linux": {
+          "status": "no_binary",
+          "matches": null
+        },
+        "windows": {
+          "status": "no_binary",
+          "matches": null
+        }
+      }
+    },
+    {
+      "name": "ClientPrint",
+      "kind": "signature",
+      "platforms": {
+        "linux": {
+          "status": "no_binary",
+          "matches": null
+        },
+        "windows": {
+          "status": "no_binary",
+          "matches": null
+        }
+      }
+    },
+    {
+      "name": "CCSPlayerController_SwitchTeam",
+      "kind": "signature",
+      "platforms": {
+        "linux": {
+          "status": "no_binary",
+          "matches": null
+        },
+        "windows": {
+          "status": "no_binary",
+          "matches": null
+        }
+      }
+    },
+    {
+      "name": "CCSPlayerController_ChangeTeam",
+      "kind": "offset_only",
+      "platforms": {}
+    },
+    {
+      "name": "CCSPlayerController_Respawn",
+      "kind": "offset_only",
+      "platforms": {}
+    },
+    {
+      "name": "CBasePlayerController_SetPawn",
+      "kind": "signature",
+      "platforms": {
+        "linux": {
+          "status": "no_binary",
+          "matches": null
+        },
+        "windows": {
+          "status": "no_binary",
+          "matches": null
+        }
+      }
+    },
+    {
+      "name": "CCSPlayerPawnBase_PostThink",
+      "kind": "signature",
+      "platforms": {
+        "linux": {
+          "status": "no_binary",
+          "matches": null
+        },
+        "windows": {
+          "status": "no_binary",
+          "matches": null
+        }
+      }
+    },
+    {
+      "name": "CGameEventManager_Init",
+      "kind": "signature",
+      "platforms": {
+        "linux": {
+          "status": "no_binary",
+          "matches": null
+        },
+        "windows": {
+          "status": "no_binary",
+          "matches": null
+        }
+      }
+    },
+    {
+      "name": "GiveNamedItem",
+      "kind": "signature",
+      "platforms": {
+        "linux": {
+          "status": "no_binary",
+          "matches": null
+        },
+        "windows": {
+          "status": "no_binary",
+          "matches": null
+        }
+      }
+    },
+    {
+      "name": "UTIL_Remove",
+      "kind": "signature",
+      "platforms": {
+        "linux": {
+          "status": "no_binary",
+          "matches": null
+        },
+        "windows": {
+          "status": "no_binary",
+          "matches": null
+        }
+      }
+    },
+    {
+      "name": "CBaseModelEntity_SetModel",
+      "kind": "signature",
+      "platforms": {
+        "linux": {
+          "status": "no_binary",
+          "matches": null
+        },
+        "windows": {
+          "status": "no_binary",
+          "matches": null
+        }
+      }
+    },
+    {
+      "name": "CCSPlayer_WeaponServices_CanUse",
+      "kind": "signature",
+      "platforms": {
+        "linux": {
+          "status": "no_binary",
+          "matches": null
+        },
+        "windows": {
+          "status": "no_binary",
+          "matches": null
+        }
+      }
+    },
+    {
+      "name": "CCSPlayer_WeaponServices_SelectItem",
+      "kind": "offset_only",
+      "platforms": {}
+    },
+    {
+      "name": "CCSPlayer_ItemServices_CanAcquire",
+      "kind": "signature",
+      "platforms": {
+        "linux": {
+          "status": "no_binary",
+          "matches": null
+        },
+        "windows": {
+          "status": "no_binary",
+          "matches": null
+        }
+      }
+    },
+    {
+      "name": "GetCSWeaponDataFromKey",
+      "kind": "signature",
+      "platforms": {
+        "linux": {
+          "status": "no_binary",
+          "matches": null
+        },
+        "windows": {
+          "status": "no_binary",
+          "matches": null
+        }
+      }
+    },
+    {
+      "name": "CCSPlayer_ItemServices_GiveNamedItem",
+      "kind": "offset_only",
+      "platforms": {}
+    },
+    {
+      "name": "CCSPlayer_ItemServices_DropActivePlayerWeapon",
+      "kind": "offset_only",
+      "platforms": {}
+    },
+    {
+      "name": "CCSPlayer_ItemServices_RemoveWeapons",
+      "kind": "offset_only",
+      "platforms": {}
+    },
+    {
+      "name": "CGameSceneNode_GetSkeletonInstance",
+      "kind": "offset_only",
+      "platforms": {}
+    },
+    {
+      "name": "CCSGameRules_TerminateRound",
+      "kind": "signature",
+      "platforms": {
+        "linux": {
+          "status": "no_binary",
+          "matches": null
+        },
+        "windows": {
+          "status": "no_binary",
+          "matches": null
+        }
+      }
+    },
+    {
+      "name": "CCSGameRules_FindPickerEntity",
+      "kind": "offset_only",
+      "platforms": {}
+    },
+    {
+      "name": "CTakeDamageInfo_HitGroup",
+      "kind": "offset_only",
+      "platforms": {}
+    },
+    {
+      "name": "UTIL_CreateEntityByName",
+      "kind": "signature",
+      "platforms": {
+        "linux": {
+          "status": "no_binary",
+          "matches": null
+        },
+        "windows": {
+          "status": "no_binary",
+          "matches": null
+        }
+      }
+    },
+    {
+      "name": "CBaseEntity_DispatchSpawn",
+      "kind": "signature",
+      "platforms": {
+        "linux": {
+          "status": "no_binary",
+          "matches": null
+        },
+        "windows": {
+          "status": "no_binary",
+          "matches": null
+        }
+      }
+    },
+    {
+      "name": "CBaseEntity_EmitSoundFilter",
+      "kind": "signature",
+      "platforms": {
+        "linux": {
+          "status": "no_binary",
+          "matches": null
+        },
+        "windows": {
+          "status": "no_binary",
+          "matches": null
+        }
+      }
+    },
+    {
+      "name": "CEntityInstance_AcceptInput",
+      "kind": "signature",
+      "platforms": {
+        "linux": {
+          "status": "no_binary",
+          "matches": null
+        },
+        "windows": {
+          "status": "no_binary",
+          "matches": null
+        }
+      }
+    },
+    {
+      "name": "CBaseEntity_IsPlayerPawn",
+      "kind": "offset_only",
+      "platforms": {}
+    },
+    {
+      "name": "CEntitySystem_AddEntityIOEvent",
+      "kind": "signature",
+      "platforms": {
+        "linux": {
+          "status": "no_binary",
+          "matches": null
+        },
+        "windows": {
+          "status": "no_binary",
+          "matches": null
+        }
+      }
+    },
+    {
+      "name": "LegacyGameEventListener",
+      "kind": "signature",
+      "platforms": {
+        "linux": {
+          "status": "no_binary",
+          "matches": null
+        },
+        "windows": {
+          "status": "no_binary",
+          "matches": null
+        }
+      }
+    },
+    {
+      "name": "CBasePlayerPawn_CommitSuicide",
+      "kind": "offset_only",
+      "platforms": {}
+    },
+    {
+      "name": "CBasePlayerPawn_RemovePlayerItem",
+      "kind": "signature",
+      "platforms": {
+        "linux": {
+          "status": "no_binary",
+          "matches": null
+        },
+        "windows": {
+          "status": "no_binary",
+          "matches": null
+        }
+      }
+    },
+    {
+      "name": "CBaseEntity_Teleport",
+      "kind": "offset_only",
+      "platforms": {}
+    },
+    {
+      "name": "CBaseEntity_TakeDamageOld",
+      "kind": "signature",
+      "platforms": {
+        "linux": {
+          "status": "no_binary",
+          "matches": null
+        },
+        "windows": {
+          "status": "no_binary",
+          "matches": null
+        }
+      }
+    },
+    {
+      "name": "CBaseEntity_TakeDamage",
+      "kind": "signature",
+      "platforms": {
+        "linux": {
+          "status": "no_binary",
+          "matches": null
+        },
+        "windows": {
+          "status": "no_binary",
+          "matches": null
+        }
+      }
+    },
+    {
+      "name": "CBaseTrigger_StartTouch",
+      "kind": "signature",
+      "platforms": {
+        "linux": {
+          "status": "no_binary",
+          "matches": null
+        },
+        "windows": {
+          "status": "no_binary",
+          "matches": null
+        }
+      }
+    },
+    {
+      "name": "CBaseTrigger_EndTouch",
+      "kind": "signature",
+      "platforms": {
+        "linux": {
+          "status": "no_binary",
+          "matches": null
+        },
+        "windows": {
+          "status": "no_binary",
+          "matches": null
+        }
+      }
+    },
+    {
+      "name": "GameEntitySystem",
+      "kind": "offset_only",
+      "platforms": {}
+    },
+    {
+      "name": "GameEventManager",
+      "kind": "offset_only",
+      "platforms": {}
+    },
+    {
+      "name": "CEntityIOOutput_FireOutputInternal",
+      "kind": "signature",
+      "platforms": {
+        "linux": {
+          "status": "no_binary",
+          "matches": null
+        },
+        "windows": {
+          "status": "no_binary",
+          "matches": null
+        }
+      }
+    },
+    {
+      "name": "IGameSystem_InitAllSystems_pFirst",
+      "kind": "signature",
+      "platforms": {
+        "linux": {
+          "status": "no_binary",
+          "matches": null
+        },
+        "windows": {
+          "status": "no_binary",
+          "matches": null
+        }
+      }
+    },
+    {
+      "name": "CEntityResourceManifest_AddResource",
+      "kind": "offset_only",
+      "platforms": {}
+    },
+    {
+      "name": "CheckTransmit",
+      "kind": "signature",
+      "platforms": {
+        "linux": {
+          "status": "no_binary",
+          "matches": null
+        },
+        "windows": {
+          "status": "no_binary",
+          "matches": null
+        }
+      }
+    },
+    {
+      "name": "CheckTransmitPlayerSlot",
+      "kind": "offset_only",
+      "platforms": {}
+    },
+    {
+      "name": "NetworkStateChanged",
+      "kind": "signature",
+      "platforms": {
+        "linux": {
+          "status": "no_binary",
+          "matches": null
+        },
+        "windows": {
+          "status": "no_binary",
+          "matches": null
+        }
+      }
+    },
+    {
+      "name": "SetStateChanged",
+      "kind": "offset_only",
+      "platforms": {}
+    },
+    {
+      "name": "ISource2GameEntities::CheckTransmit",
+      "kind": "offset_only",
+      "platforms": {}
+    },
+    {
+      "name": "Host_Say",
+      "kind": "signature",
+      "platforms": {
+        "linux": {
+          "status": "no_binary",
+          "matches": null
+        },
+        "windows": {
+          "status": "no_binary",
+          "matches": null
+        }
+      }
+    },
+    {
+      "name": "CCSNavArea_IsValidNavMesh",
+      "kind": "signature",
+      "platforms": {
+        "linux": {
+          "status": "no_binary",
+          "matches": null
+        },
+        "windows": {
+          "status": "no_binary",
+          "matches": null
+        }
+      }
+    }
+  ]
+}

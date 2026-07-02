@@ -1,0 +1,12 @@
+{
+  "date": "2026-07-02",
+  "tally": {
+    "ok": 0,
+    "broken": 0,
+    "ambiguous": 0,
+    "no_binary": 60,
+    "missing_sig": 0,
+    "offset_only": 18
+  },
+  "manifest": null
+}
