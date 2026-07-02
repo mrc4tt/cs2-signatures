@@ -1,25 +1,21 @@
 #!/usr/bin/env python3
 """Validate CSS gamedata signatures against real CS2 server binaries.
 
-For every entry that has a `signatures` block, scan the matching platform
+For every entry with a `signatures` block, scan the matching platform+library
 binary's executable sections and classify:
 
     matches == 1  -> ok        (unique, healthy)
     matches == 0  -> broken    (sig no longer present -> needs regen)
     matches  > 1  -> ambiguous (present but not unique -> weak sig)
 
-Entries with only `offsets` (vtable slots) can't be validated from raw bytes,
-so they're reported as `offset_only` and skipped.
+The CSS `library` field ("server" / "engine2") picks which binary to scan.
+Entries with only `offsets` (vtable slots) can't be byte-validated -> skipped.
 
-Writes status.json (consumed by gen_report.py). Exit code is non-zero when any
-signature is broken, so CI can gate on it.
+Writes status.json (consumed by gen_report.py). Exit non-zero if any sig broke.
 
-Usage:
-    validate_sigs.py --gamedata data/gamedata.json \
-        --linux bin_linux/.../libserver.so \
-        --windows bin_win/.../server.dll \
-        --manifest data/manifest.txt \
-        --out reports/status.json
+Edge over ianlucas/cs2-signatures: they scan the whole file and stop at the
+first hit (boolean ok/broken). We scan per executable section and COUNT hits,
+so we also flag `ambiguous` sigs (matches >1) that aren't actually unique.
 """
 import argparse
 import json
@@ -38,19 +34,14 @@ def classify(n):
     return "ambiguous"
 
 
-def validate(gamedata, binaries):
-    """binaries = {'linux': path_or_None, 'windows': path_or_None}.
+def load_sections(path):
+    if path and os.path.isfile(path):
+        return exec_sections(path)
+    return None
 
-    Returns (results_list, sections_cache) where results_list is per-entry.
-    """
-    # Parse each binary's exec sections once.
-    sections = {}
-    for plat, path in binaries.items():
-        if path and os.path.isfile(path):
-            sections[plat] = exec_sections(path)
-        else:
-            sections[plat] = None
 
+def validate(gamedata, bins):
+    """bins = {(platform, library): sections_or_None}."""
     results = []
     for name, entry in gamedata.items():
         sigs = entry.get("signatures")
@@ -62,29 +53,35 @@ def validate(gamedata, binaries):
             })
             continue
 
+        library = sigs.get("library", "server")
         plats = {}
         for plat in ("linux", "windows"):
             sig = sigs.get(plat)
             if not sig:
-                plats[plat] = {"status": "missing_sig", "matches": None}
+                plats[plat] = {"status": "missing_sig", "matches": None,
+                               "library": library, "sig": None}
                 continue
-            if sections.get(plat) is None:
-                plats[plat] = {"status": "no_binary", "matches": None}
+            secs = bins.get((plat, library))
+            if secs is None:
+                plats[plat] = {"status": "no_binary", "matches": None,
+                               "library": library, "sig": sig}
                 continue
-            pattern = sig_to_regex(sig)
-            n = count_matches(pattern, sections[plat])
-            plats[plat] = {"status": classify(n), "matches": n}
-
-        results.append({"name": name, "kind": "signature", "platforms": plats})
+            n = count_matches(sig_to_regex(sig), secs)
+            plats[plat] = {"status": classify(n), "matches": n,
+                           "library": library, "sig": sig}
+        results.append({"name": name, "kind": "signature",
+                        "library": library, "platforms": plats})
     return results
 
 
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--gamedata", default="data/gamedata.json")
-    ap.add_argument("--linux", default=None)
-    ap.add_argument("--windows", default=None)
-    ap.add_argument("--manifest", default="data/manifest.txt")
+    ap.add_argument("--linux", default=None, help="libserver.so")
+    ap.add_argument("--windows", default=None, help="server.dll")
+    ap.add_argument("--linux-engine2", default=None, help="libengine2.so")
+    ap.add_argument("--windows-engine2", default=None, help="engine2.dll")
+    ap.add_argument("--manifest", default="data/manifest.json")
     ap.add_argument("--out", default="reports/status.json")
     args = ap.parse_args()
 
@@ -94,11 +91,17 @@ def main():
     manifest = None
     if os.path.isfile(args.manifest):
         with open(args.manifest) as fh:
-            manifest = fh.read().strip()
+            manifest = json.load(fh)
 
-    results = validate(gamedata, {"linux": args.linux, "windows": args.windows})
+    bins = {
+        ("linux", "server"): load_sections(args.linux),
+        ("windows", "server"): load_sections(args.windows),
+        ("linux", "engine2"): load_sections(args.linux_engine2),
+        ("windows", "engine2"): load_sections(args.windows_engine2),
+    }
 
-    # Tally.
+    results = validate(gamedata, bins)
+
     tally = {"ok": 0, "broken": 0, "ambiguous": 0, "no_binary": 0,
              "missing_sig": 0, "offset_only": 0}
     broken = []

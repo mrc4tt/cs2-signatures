@@ -1,2 +1,2 @@
-regex:.*bin/linuxsteamrt64/libserver\.so$
-regex:.*bin/linuxsteamrt64/server\.so$
+game/csgo/bin/linuxsteamrt64/libserver.so
+game/bin/linuxsteamrt64/libengine2.so

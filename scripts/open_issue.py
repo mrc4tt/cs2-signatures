@@ -56,7 +56,8 @@ def body_text(status, broken):
              "", "**Broken (%d):**" % len(broken), ""]
     lines += ["- `%s`" % b for b in broken]
     lines += ["", "Regenerate with the Ghidra toolbox (`CS2Recipes.py`) and "
-              "PR the mrc4tt fork. See `reports/STATUS.md` for the full table."]
+              "PR the mrc4tt fork. See `docs/CounterStrikeSharp.md` for the "
+              "full per-signature table."]
     return "\n".join(lines)
 
 

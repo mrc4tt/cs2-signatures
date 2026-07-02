@@ -1,1 +1,2 @@
-regex:.*bin/win64/server\.dll$
+game/csgo/bin/win64/server.dll
+game/bin/win64/engine2.dll
