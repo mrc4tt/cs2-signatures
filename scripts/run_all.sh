@@ -6,8 +6,8 @@ HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ROOT="$(cd "$HERE/.." && pwd)"
 cd "$ROOT"
 
-ISO="$(date -u +%F)"
-DISP="$(date -u '+%B %-d, %Y at %H:%M:%S GMT')"
+ISO="$(LC_ALL=C date -u +%F)"
+DISP="$(LC_ALL=C date -u '+%B %-d, %Y at %H:%M:%S GMT')"
 
 # 1. Game updated? (exit 10 = changed). Don't abort on "unchanged" — still
 #    refresh gamedata + regenerate report.
