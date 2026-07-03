@@ -1,0 +1,15 @@
+{
+  "date": "July 3, 2026 at 20:00:01 GMT",
+  "tally": {
+    "ok": 59,
+    "broken": 1,
+    "ambiguous": 0,
+    "no_binary": 0,
+    "missing_sig": 0,
+    "offset_only": 18
+  },
+  "manifest": {
+    "2347771": "8344780363095656278",
+    "2347773": "8898904655046099225"
+  }
+}
