@@ -109,6 +109,8 @@ def post(webhook, payload):
     data = json.dumps(payload).encode()
     req = urllib.request.Request(webhook, data=data, method="POST")
     req.add_header("Content-Type", "application/json")
+    # Discord's Cloudflare edge 403s the default urllib UA (error 1010).
+    req.add_header("User-Agent", "cs2-signatures-tracker (urllib, +https://git.miksen.me/mikkel/cs2-signatures)")
     try:
         with urllib.request.urlopen(req, timeout=60) as r:
             return r.status
