@@ -76,5 +76,12 @@ if [ -n "${FORGEJO_TOKEN:-}" ]; then
   python3 scripts/open_issue.py --status reports/status.json || true
 fi
 
+# 8. Optional Discord webhook post (needs DISCORD_WEBHOOK in .env). Only runs on
+#    a real change since we reach here past the CHANGED gate. Preview locally
+#    with: python3 scripts/post_discord.py --preview [--example]
+if [ -n "${DISCORD_WEBHOOK:-}" ]; then
+  python3 scripts/post_discord.py --status reports/status.json || true
+fi
+
 echo "done (validate exit=$VAL, update=$UPD)"
 exit "$VAL"
