@@ -15,22 +15,14 @@ ambiguous (>1 match). Full per-signature detail:
 <!-- STATUS:START -->
 ## Signatures
 
-* **Last updated:** July 6, 2026 at 20:30:01 GMT
+* **Last updated:** July 8, 2026 at 00:45:01 GMT
 * **Manifests:** [3747240284300062741](https://steamdb.info/depot/2347771/history/?changeid=M:3747240284300062741), [801866638738702671](https://steamdb.info/depot/2347773/history/?changeid=M:801866638738702671)
-* **Validated:** 59 ok, 0 ambiguous, 1 broken (0 not-yet-validated)
+* **Validated:** 0 ok, 0 ambiguous, 0 broken (60 not-yet-validated)
 
 <table>
 <tr><th>Linux</th><th>Windows</th><th>Project</th><th></th></tr>
-<tr><td>✅</td><td>❌</td><td><a href="https://github.com/mrc4tt/CounterStrikeSharp">CounterStrikeSharp</a></td><td><a href="https://git.miksen.me/mikkel/cs2-signatures/src/branch/main/docs/CounterStrikeSharp.md">View signatures &rarr;</a></td></tr>
+<tr><td>❔</td><td>❔</td><td><a href="https://github.com/mrc4tt/CounterStrikeSharp">CounterStrikeSharp</a></td><td><a href="https://git.miksen.me/mikkel/cs2-signatures/src/branch/main/docs/CounterStrikeSharp.md">View signatures &rarr;</a></td></tr>
 </table>
-
-<details open><summary>&#9660; CounterStrikeSharp broken / ambiguous signatures (1)</summary>
-
-<table>
-<tr><th>Linux</th><th>Windows</th><th>Subroutine</th></tr>
-<tr><td>✅</td><td>❌</td><td>CCSNavArea_IsValidNavMesh</td></tr>
-</table>
-</details>
 
 <!-- STATUS:END -->
 

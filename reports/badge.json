@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
   "label": "cs2 sigs",
-  "message": "1 broken / 59 ok",
-  "color": "red"
+  "message": "not validated",
+  "color": "lightgrey"
 }
