@@ -15,8 +15,8 @@ ambiguous (>1 match). Full per-signature detail:
 <!-- STATUS:START -->
 ## Signatures
 
-* **Last updated:** July 9, 2026 at 01:00:01 GMT
-* **Manifests:** [1966178532936074640](https://steamdb.info/depot/2347771/history/?changeid=M:1966178532936074640), [8099352397812357222](https://steamdb.info/depot/2347773/history/?changeid=M:8099352397812357222)
+* **Last updated:** July 9, 2026 at 06:30:01 GMT
+* **Manifests:** [2853479544375896262](https://steamdb.info/depot/2347771/history/?changeid=M:2853479544375896262), [2410782554857596728](https://steamdb.info/depot/2347773/history/?changeid=M:2410782554857596728)
 * **Validated:** 44 ok, 2 ambiguous, 14 broken (0 not-yet-validated)
 
 <table>
