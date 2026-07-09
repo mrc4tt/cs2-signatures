@@ -1,6 +1,6 @@
 # CounterStrikeSharp
 
-Last updated: July 9, 2026 at 19:15:01 GMT
+Last updated: July 9, 2026 at 19:15:53 GMT
 
 * Manifests: [2853479544375896262](https://steamdb.info/depot/2347771/history/?changeid=M:2853479544375896262), [2410782554857596728](https://steamdb.info/depot/2347773/history/?changeid=M:2410782554857596728)
 * Repository: https://github.com/mrc4tt/CounterStrikeSharp
@@ -158,13 +158,13 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 
 <table>
 <tr><th>Status</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>❌</td><td>Windows</td><td>server</td><td>0</td><td>
+<tr><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
-\x48\x89\x5C\x24\x08\x48\x89\x74\x24\x10\x48\x89\x7C\x24\x20\x44\x89\x44\x24\x18\x55\x41\x54\x41\x55\x41\x56\x41\x57\x48\x8D\xAC\x24\x40\xFF\xFF\xFF\x48\x81\xEC\xC0\x01\x00\x00\x4D\x8B\xE1\x45\x8B\xE8\x4C\x8B\xF2\x4C\x8B\xF9\x48\x85\xD2\x74\x2A\x80\x3A\x00
+\x48\x89\x5C\x24\x2A\x48\x89\x74\x24\x2A\x48\x89\x7C\x24\x2A\x44\x89\x44\x24
 </pre>
 </td><td>
 <pre>
-48 89 5C 24 08 48 89 74 24 10 48 89 7C 24 20 44 89 44 24 18 55 41 54 41 55 41 56 41 57 48 8D AC 24 40 FF FF FF 48 81 EC C0 01 00 00 4D 8B E1 45 8B E8 4C 8B F2 4C 8B F9 48 85 D2 74 ? 80 3A 00
+48 89 5C 24 ? 48 89 74 24 ? 48 89 7C 24 ? 44 89 44 24
 </pre>
 </td></tr>
 <tr><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
@@ -542,13 +542,13 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 
 <table>
 <tr><th>Status</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>❌</td><td>Windows</td><td>server</td><td>0</td><td>
+<tr><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
-\x48\x85\xD2\x0F\x84\x2A\x2A\x2A\x2A\x53\x55\x48\x83\xEC\x28\x4C\x8B\x42\x10\x48\x8B\xEA\x48\x8B\xD9\x4D\x85\xC0\x74\x2A
+\x48\x85\xD2\x0F\x84\x2A\x2A\x2A\x2A\x53\x41\x57\x48\x83\xEC\x2A\x4C\x8B\x42
 </pre>
 </td><td>
 <pre>
-48 85 D2 0F 84 ? ? ? ? 53 55 48 83 EC 28 4C 8B 42 10 48 8B EA 48 8B D9 4D 85 C0 74 ?
+48 85 D2 0F 84 ? ? ? ? 53 41 57 48 83 EC ? 4C 8B 42
 </pre>
 </td></tr>
 <tr><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
