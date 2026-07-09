@@ -1,6 +1,6 @@
 # CounterStrikeSharp
 
-Last updated: July 9, 2026 at 16:35:41 GMT
+Last updated: July 9, 2026 at 19:15:01 GMT
 
 * Manifests: [2853479544375896262](https://steamdb.info/depot/2347771/history/?changeid=M:2853479544375896262), [2410782554857596728](https://steamdb.info/depot/2347773/history/?changeid=M:2410782554857596728)
 * Repository: https://github.com/mrc4tt/CounterStrikeSharp
@@ -110,13 +110,13 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 
 <table>
 <tr><th>Status</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>❌</td><td>Windows</td><td>server</td><td>0</td><td>
+<tr><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
-\x40\x55\x53\x56\x57\x41\x54\x48\x8D\x6C\x24\x2A\x48\x81\xEC\x2A\x2A\x2A\x2A\x4C\x89\xAC\x24\x2A\x2A\x2A\x2A
+\x40\x55\x56\x41\x54\x48\x8B\xEC
 </pre>
 </td><td>
 <pre>
-40 55 53 56 57 41 54 48 8D 6C 24 ? 48 81 EC ? ? ? ? 4C 89 AC 24 ? ? ? ?
+40 55 56 41 54 48 8B EC
 </pre>
 </td></tr>
 <tr><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
@@ -208,11 +208,11 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 <tr><th>Status</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
 <tr><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
-\x40\x53\x48\x83\xEC\x2A\x48\x8B\xD9\x4C\x8B\xC2\x48\x8B\x0D\x2A\x2A\x2A\x2A\x48\x8D\x54\x24\x2A\x48\x8B\x01\xFF\x50\x2A\x48\x8B\x54\x24\x2A\x48\x8B\xCB\xE8\x2A\x2A\x2A\x2A\x48\x83\xC4\x2A\x5B\xC3\xCC\xCC\xCC\xCC\xCC\xCC\xCC\xCC\xCC\xCC\xCC\xCC\xCC\xCC\xCC\x48\x89\x5C\x24\x2A
+\x40\x53\x48\x83\xEC\x2A\x48\x8B\xD9\x4C\x8B\xC2\x48\x8B\x0D\x2A\x2A\x2A\x2A\x48\x8D\x54\x24\x2A\x48\x8B\x01\xFF\x50\x2A\x48\x8B\x54\x24\x2A\x48\x8B\xCB\xE8\x2A\x2A\x2A\x2A\x48\x83\xC4\x2A\x5B\xC3\xCC\xCC\xCC\xCC\xCC\xCC\xCC\xCC\xCC\xCC\xCC\xCC\xCC\xCC\xCC\x48\x8B\x01
 </pre>
 </td><td>
 <pre>
-40 53 48 83 EC ? 48 8B D9 4C 8B C2 48 8B 0D ? ? ? ? 48 8D 54 24 ? 48 8B 01 FF 50 ? 48 8B 54 24 ? 48 8B CB E8 ? ? ? ? 48 83 C4 ? 5B C3 CC CC CC CC CC CC CC CC CC CC CC CC CC CC CC 48 89 5C 24 ?
+40 53 48 83 EC ? 48 8B D9 4C 8B C2 48 8B 0D ? ? ? ? 48 8D 54 24 ? 48 8B 01 FF 50 ? 48 8B 54 24 ? 48 8B CB E8 ? ? ? ? 48 83 C4 ? 5B C3 CC CC CC CC CC CC CC CC CC CC CC CC CC CC CC 48 8B 01
 </pre>
 </td></tr>
 <tr><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
@@ -230,13 +230,13 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 
 <table>
 <tr><th>Status</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>❌</td><td>Windows</td><td>server</td><td>0</td><td>
+<tr><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
-\x48\x89\x5C\x24\x2A\x48\x89\x6C\x24\x2A\x48\x89\x74\x24\x2A\x57\x41\x54\x41\x55\x41\x56\x41\x57\x48\x83\xEC\x2A\x48\x8B\x01\x48\x8B\xFA
+\x48\x89\x5C\x24\x2A\x48\x89\x6C\x24\x2A\x56\x57\x41\x54\x41\x56\x41\x57\x48\x83\xEC\x2A\x48\x8B\x01\x48\x8B\xFA
 </pre>
 </td><td>
 <pre>
-48 89 5C 24 ? 48 89 6C 24 ? 48 89 74 24 ? 57 41 54 41 55 41 56 41 57 48 83 EC ? 48 8B 01 48 8B FA
+48 89 5C 24 ? 48 89 6C 24 ? 56 57 41 54 41 56 41 57 48 83 EC ? 48 8B 01 48 8B FA
 </pre>
 </td></tr>
 <tr><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
@@ -302,13 +302,13 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 
 <table>
 <tr><th>Status</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>❌</td><td>Windows</td><td>server</td><td>0</td><td>
+<tr><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
-\x48\x8B\xC4\x4C\x89\x48\x2A\x48\x89\x48\x2A\x55\x56\x41\x56
+\x48\x8B\xC4\x4C\x89\x48\x2A\x48\x89\x48\x2A\x55\x41\x54
 </pre>
 </td><td>
 <pre>
-48 8B C4 4C 89 48 ? 48 89 48 ? 55 56 41 56
+48 8B C4 4C 89 48 ? 48 89 48 ? 55 41 54
 </pre>
 </td></tr>
 <tr><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
@@ -446,13 +446,13 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 
 <table>
 <tr><th>Status</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>❌</td><td>Windows</td><td>server</td><td>0</td><td>
+<tr><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
-\x48\x8B\x15\x2A\x2A\x2A\x2A\x48\x85\xD2\x74\x14\x83\xF9\x3F\x77\x0F\x48\x63\xC1\x48\x83\xC0\x04\x48\xC1\xE0\x04\x48\x03\xC2\xC3\x33\xC0\xC3
+\x48\x8B\x15\x2A\x2A\x2A\x2A\x48\x85\xD2\x74\x2A\x85\xC9
 </pre>
 </td><td>
 <pre>
-48 8B 15 ? ? ? ? 48 85 D2 74 14 83 F9 3F 77 0F 48 63 C1 48 83 C0 04 48 C1 E0 04 48 03 C2 C3 33 C0 C3
+48 8B 15 ? ? ? ? 48 85 D2 74 ? 85 C9
 </pre>
 </td></tr>
 <tr><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>

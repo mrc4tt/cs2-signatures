@@ -1,8 +1,8 @@
 {
-  "date": "July 9, 2026 at 16:35:41 GMT",
+  "date": "July 9, 2026 at 19:15:01 GMT",
   "tally": {
-    "ok": 52,
-    "broken": 6,
+    "ok": 56,
+    "broken": 2,
     "ambiguous": 0,
     "no_binary": 0,
     "missing_sig": 0,
