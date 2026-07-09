@@ -1,0 +1,15 @@
+{
+  "date": "July 9, 2026 at 01:00:01 GMT",
+  "tally": {
+    "ok": 44,
+    "broken": 14,
+    "ambiguous": 2,
+    "no_binary": 0,
+    "missing_sig": 0,
+    "offset_only": 18
+  },
+  "manifest": {
+    "2347771": "1966178532936074640",
+    "2347773": "8099352397812357222"
+  }
+}
