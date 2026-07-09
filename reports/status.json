@@ -5,9 +5,9 @@
   },
   "gamedata_source": "mrc4tt/CounterStrikeSharp configs/addons/counterstrikesharp/gamedata/gamedata.json",
   "tally": {
-    "ok": 44,
-    "broken": 14,
-    "ambiguous": 2,
+    "ok": 51,
+    "broken": 6,
+    "ambiguous": 1,
     "no_binary": 0,
     "missing_sig": 0,
     "offset_only": 18
@@ -38,10 +38,10 @@
       "library": "server",
       "platforms": {
         "linux": {
-          "status": "broken",
-          "matches": 0,
+          "status": "ok",
+          "matches": 1,
           "library": "server",
-          "sig": "55 48 8D 05 ? ? ? ? 48 89 E5 41 57 41 89 F7 31 F6"
+          "sig": "55 48 8D 05 ? ? ? ? 48 89 E5 41 57 4D 89 CF"
         },
         "windows": {
           "status": "ok",
@@ -89,7 +89,7 @@
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "55 48 8D 87 ? ? ? ? 48 89 E5 41 57 41 56 41 89 CE 41 55 45 89 CD"
+          "sig": "55 48 89 E5 41 57 41 56 41 55 4C 8D AF ? ? ? ? 41 54 41 89 CC"
         },
         "windows": {
           "status": "ok",
@@ -105,10 +105,10 @@
       "library": "server",
       "platforms": {
         "linux": {
-          "status": "broken",
-          "matches": 0,
+          "status": "ok",
+          "matches": 1,
           "library": "server",
-          "sig": "55 48 89 E5 41 57 49 89 FF 41 56 41 55 41 54 53 48 81 EC ? ? ? ? E8 ? ? ? ? 41 80 BF"
+          "sig": "55 48 89 E5 41 56 41 55 41 54 53 48 89 FB 48 83 EC ? E8 ? ? ? ? 80 BB"
         },
         "windows": {
           "status": "broken",
@@ -203,7 +203,7 @@
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "55 48 8D 15 ? ? ? ? 48 89 E5 41 55 41 54 49 89 FC 53 48 89 F3 48 83 EC 08 48 8B 07"
+          "sig": "55 48 8D 15 ? ? ? ? 48 89 E5 41 55 41 54 49 89 FC 53 48 89 F3 48 83 EC ? 48 8B 07 48 8B 80"
         },
         "windows": {
           "status": "broken",
@@ -243,10 +243,10 @@
       "library": "server",
       "platforms": {
         "linux": {
-          "status": "ambiguous",
-          "matches": 2,
+          "status": "ok",
+          "matches": 1,
           "library": "server",
-          "sig": "48 85 F6 0F 84 ? ? ? ? 55 48 89 E5 41 57 41 56 41 55 49 89 F5 41 54 53 48 81 EC ? ? ? ? 80 3E ? 75 ? 31 C0 48 81 C4 ? ? ? ? 5B 41 5C 41 5D 41 5E 41 5F 5D C3 0F 1F 80 ? ? ? ? 4C 8D A5 ? ? ? ?"
+          "sig": "48 85 F6 0F 84 ? ? ? ? 55 48 89 E5 41 57 41 56 41 55 49 89 F5 41 54 53 48 81 EC ? ? ? ? 80 3E ? 75 ? 31 C0 48 81 C4 ? ? ? ? 5B 41 5C 41 5D 41 5E 41 5F 5D C3 0F 1F 80 ? ? ? ? 4C 8D A5 ? ? ? ? 89 FB"
         },
         "windows": {
           "status": "ok",
@@ -282,10 +282,10 @@
       "library": "server",
       "platforms": {
         "linux": {
-          "status": "broken",
-          "matches": 0,
+          "status": "ok",
+          "matches": 1,
           "library": "server",
-          "sig": "55 48 89 E5 41 57 49 89 FF 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 48 8D 05 ? ? ? ? F3 0F 11 85"
+          "sig": "55 48 89 E5 41 57 41 89 F7 41 56 48 8D 35"
         },
         "windows": {
           "status": "broken",
@@ -368,10 +368,10 @@
       "library": "server",
       "platforms": {
         "linux": {
-          "status": "broken",
-          "matches": 0,
+          "status": "ok",
+          "matches": 1,
           "library": "server",
-          "sig": "55 48 89 F0 48 89 E5 41 57 49 89 FF 41 56 48 8D 7D"
+          "sig": "55 48 89 E5 41 56 49 89 FE 41 55 48 8D 7D"
         },
         "windows": {
           "status": "ok",
@@ -462,26 +462,7 @@
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "55 48 89 E5 41 57 41 56 41 55 49 89 FD 41 54 49 89 F4 53 48 89 D3 48 83 EC ? 48 85 D2"
-        },
-        "windows": {
-          "status": "ok",
-          "matches": 1,
-          "library": "server",
-          "sig": "40 55 53 56 57 41 54 48 8D 6C 24 ? 48 81 EC ? ? ? ? 4D 8B E0"
-        }
-      }
-    },
-    {
-      "name": "CBaseEntity_TakeDamage",
-      "kind": "signature",
-      "library": "server",
-      "platforms": {
-        "linux": {
-          "status": "broken",
-          "matches": 0,
-          "library": "server",
-          "sig": "55 48 89 E5 41 57 41 56 41 55 49 89 FD 31 FF"
+          "sig": "55 66 0F EF C0 48 89 E5 41 57 41 56 41 55 49 89 FD 31 FF"
         },
         "windows": {
           "status": "ok",
@@ -588,10 +569,10 @@
       "library": "server",
       "platforms": {
         "linux": {
-          "status": "broken",
-          "matches": 0,
+          "status": "ok",
+          "matches": 1,
           "library": "server",
-          "sig": "55 48 89 E5 41 57 49 89 FF 41 56 48 8D 3D ? ? ? ? 41 55 41 89 D5"
+          "sig": "55 48 89 E5 41 57 49 89 FF 41 56 48 8D 3D ? ? ? ? 41 55 4C 63 EA"
         },
         "windows": {
           "status": "ok",
@@ -612,10 +593,10 @@
       "library": "server",
       "platforms": {
         "linux": {
-          "status": "broken",
-          "matches": 0,
+          "status": "ok",
+          "matches": 1,
           "library": "server",
-          "sig": "55 48 89 E5 41 55 41 54 53 48 89 FB 48 83 EC 58 48 8B 46"
+          "sig": "55 48 89 E5 41 55 41 54 53 48 89 FB 48 83 EC ? 0F B6 7E"
         },
         "windows": {
           "status": "ok",
@@ -641,10 +622,10 @@
       "library": "server",
       "platforms": {
         "linux": {
-          "status": "broken",
-          "matches": 0,
+          "status": "ok",
+          "matches": 1,
           "library": "server",
-          "sig": "55 48 89 E5 41 57 49 89 F7 41 56 41 55 41 54 4D 89 C4"
+          "sig": "55 48 89 E5 41 57 49 89 F7 41 56 41 55 41 89 D5"
         },
         "windows": {
           "status": "ok",

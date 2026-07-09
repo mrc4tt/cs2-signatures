@@ -1,6 +1,6 @@
 # CounterStrikeSharp
 
-Last updated: July 9, 2026 at 06:30:01 GMT
+Last updated: July 9, 2026 at 16:30:02 GMT
 
 * Manifests: [2853479544375896262](https://steamdb.info/depot/2347771/history/?changeid=M:2853479544375896262), [2410782554857596728](https://steamdb.info/depot/2347773/history/?changeid=M:2410782554857596728)
 * Repository: https://github.com/mrc4tt/CounterStrikeSharp
@@ -47,13 +47,13 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 48 89 5C 24 08 48 89 74 24 18 48 89 7C 24 20 55 41 56 41 57 48 8D 6C 24 D1 48 81 EC C0 00 00 00 4D 8B F0 48 89 4D AF 8B DA C6 45 CB FF 48 8D 05 ? ? ? ?
 </pre>
 </td></tr>
-<tr><td>❌</td><td>Linux</td><td>server</td><td>0</td><td>
+<tr><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
-\x55\x48\x8D\x05\x2A\x2A\x2A\x2A\x48\x89\xE5\x41\x57\x41\x89\xF7\x31\xF6
+\x55\x48\x8D\x05\x2A\x2A\x2A\x2A\x48\x89\xE5\x41\x57\x4D\x89\xCF
 </pre>
 </td><td>
 <pre>
-55 48 8D 05 ? ? ? ? 48 89 E5 41 57 41 89 F7 31 F6
+55 48 8D 05 ? ? ? ? 48 89 E5 41 57 4D 89 CF
 </pre>
 </td></tr>
 </table>
@@ -97,11 +97,11 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 </td></tr>
 <tr><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
-\x55\x48\x8D\x87\x2A\x2A\x2A\x2A\x48\x89\xE5\x41\x57\x41\x56\x41\x89\xCE\x41\x55\x45\x89\xCD
+\x55\x48\x89\xE5\x41\x57\x41\x56\x41\x55\x4C\x8D\xAF\x2A\x2A\x2A\x2A\x41\x54\x41\x89\xCC
 </pre>
 </td><td>
 <pre>
-55 48 8D 87 ? ? ? ? 48 89 E5 41 57 41 56 41 89 CE 41 55 45 89 CD
+55 48 89 E5 41 57 41 56 41 55 4C 8D AF ? ? ? ? 41 54 41 89 CC
 </pre>
 </td></tr>
 </table>
@@ -119,13 +119,13 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 40 55 53 56 57 41 54 48 8D 6C 24 ? 48 81 EC ? ? ? ? 4C 89 AC 24 ? ? ? ?
 </pre>
 </td></tr>
-<tr><td>❌</td><td>Linux</td><td>server</td><td>0</td><td>
+<tr><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
-\x55\x48\x89\xE5\x41\x57\x49\x89\xFF\x41\x56\x41\x55\x41\x54\x53\x48\x81\xEC\x2A\x2A\x2A\x2A\xE8\x2A\x2A\x2A\x2A\x41\x80\xBF
+\x55\x48\x89\xE5\x41\x56\x41\x55\x41\x54\x53\x48\x89\xFB\x48\x83\xEC\x2A\xE8\x2A\x2A\x2A\x2A\x80\xBB
 </pre>
 </td><td>
 <pre>
-55 48 89 E5 41 57 49 89 FF 41 56 41 55 41 54 53 48 81 EC ? ? ? ? E8 ? ? ? ? 41 80 BF
+55 48 89 E5 41 56 41 55 41 54 53 48 89 FB 48 83 EC ? E8 ? ? ? ? 80 BB
 </pre>
 </td></tr>
 </table>
@@ -241,11 +241,11 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 </td></tr>
 <tr><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
-\x55\x48\x8D\x15\x2A\x2A\x2A\x2A\x48\x89\xE5\x41\x55\x41\x54\x49\x89\xFC\x53\x48\x89\xF3\x48\x83\xEC\x08\x48\x8B\x07
+\x55\x48\x8D\x15\x2A\x2A\x2A\x2A\x48\x89\xE5\x41\x55\x41\x54\x49\x89\xFC\x53\x48\x89\xF3\x48\x83\xEC\x2A\x48\x8B\x07\x48\x8B\x80
 </pre>
 </td><td>
 <pre>
-55 48 8D 15 ? ? ? ? 48 89 E5 41 55 41 54 49 89 FC 53 48 89 F3 48 83 EC 08 48 8B 07
+55 48 8D 15 ? ? ? ? 48 89 E5 41 55 41 54 49 89 FC 53 48 89 F3 48 83 EC ? 48 8B 07 48 8B 80
 </pre>
 </td></tr>
 </table>
@@ -287,13 +287,13 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 48 89 5C 24 08 57 48 83 EC 20 33 FF 4C 8B CA 8B D9 8B C7 48 85 D2 74 22 38 02 74 1E 48 C7 C2 FF FF FF FF 48 FF C2 41 38 04 11 75 F7 41 B8 26 59 41 31 49 8B C9 E8 ? ? ? ? 89 44 24 38 85 C0
 </pre>
 </td></tr>
-<tr><td>⚠️</td><td>Linux</td><td>server</td><td>2</td><td>
+<tr><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
-\x48\x85\xF6\x0F\x84\x2A\x2A\x2A\x2A\x55\x48\x89\xE5\x41\x57\x41\x56\x41\x55\x49\x89\xF5\x41\x54\x53\x48\x81\xEC\x2A\x2A\x2A\x2A\x80\x3E\x2A\x75\x2A\x31\xC0\x48\x81\xC4\x2A\x2A\x2A\x2A\x5B\x41\x5C\x41\x5D\x41\x5E\x41\x5F\x5D\xC3\x0F\x1F\x80\x2A\x2A\x2A\x2A\x4C\x8D\xA5\x2A\x2A\x2A\x2A
+\x48\x85\xF6\x0F\x84\x2A\x2A\x2A\x2A\x55\x48\x89\xE5\x41\x57\x41\x56\x41\x55\x49\x89\xF5\x41\x54\x53\x48\x81\xEC\x2A\x2A\x2A\x2A\x80\x3E\x2A\x75\x2A\x31\xC0\x48\x81\xC4\x2A\x2A\x2A\x2A\x5B\x41\x5C\x41\x5D\x41\x5E\x41\x5F\x5D\xC3\x0F\x1F\x80\x2A\x2A\x2A\x2A\x4C\x8D\xA5\x2A\x2A\x2A\x2A\x89\xFB
 </pre>
 </td><td>
 <pre>
-48 85 F6 0F 84 ? ? ? ? 55 48 89 E5 41 57 41 56 41 55 49 89 F5 41 54 53 48 81 EC ? ? ? ? 80 3E ? 75 ? 31 C0 48 81 C4 ? ? ? ? 5B 41 5C 41 5D 41 5E 41 5F 5D C3 0F 1F 80 ? ? ? ? 4C 8D A5 ? ? ? ?
+48 85 F6 0F 84 ? ? ? ? 55 48 89 E5 41 57 41 56 41 55 49 89 F5 41 54 53 48 81 EC ? ? ? ? 80 3E ? 75 ? 31 C0 48 81 C4 ? ? ? ? 5B 41 5C 41 5D 41 5E 41 5F 5D C3 0F 1F 80 ? ? ? ? 4C 8D A5 ? ? ? ? 89 FB
 </pre>
 </td></tr>
 </table>
@@ -311,13 +311,13 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 48 8B C4 4C 89 48 ? 48 89 48 ? 55 56 41 56
 </pre>
 </td></tr>
-<tr><td>❌</td><td>Linux</td><td>server</td><td>0</td><td>
+<tr><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
-\x55\x48\x89\xE5\x41\x57\x49\x89\xFF\x41\x56\x41\x55\x41\x54\x53\x48\x81\xEC\x2A\x2A\x2A\x2A\x48\x8D\x05\x2A\x2A\x2A\x2A\xF3\x0F\x11\x85
+\x55\x48\x89\xE5\x41\x57\x41\x89\xF7\x41\x56\x48\x8D\x35
 </pre>
 </td><td>
 <pre>
-55 48 89 E5 41 57 49 89 FF 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 48 8D 05 ? ? ? ? F3 0F 11 85
+55 48 89 E5 41 57 41 89 F7 41 56 48 8D 35
 </pre>
 </td></tr>
 </table>
@@ -407,13 +407,13 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 48 89 5C 24 ? 48 89 74 24 ? 57 48 83 EC ? 49 8B F0 48 8B D9 48 8B 0D ? ? ? ?
 </pre>
 </td></tr>
-<tr><td>❌</td><td>Linux</td><td>server</td><td>0</td><td>
+<tr><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
-\x55\x48\x89\xF0\x48\x89\xE5\x41\x57\x49\x89\xFF\x41\x56\x48\x8D\x7D
+\x55\x48\x89\xE5\x41\x56\x49\x89\xFE\x41\x55\x48\x8D\x7D
 </pre>
 </td><td>
 <pre>
-55 48 89 F0 48 89 E5 41 57 49 89 FF 41 56 48 8D 7D
+55 48 89 E5 41 56 49 89 FE 41 55 48 8D 7D
 </pre>
 </td></tr>
 </table>
@@ -505,35 +505,11 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 </td></tr>
 <tr><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
-\x55\x48\x89\xE5\x41\x57\x41\x56\x41\x55\x49\x89\xFD\x41\x54\x49\x89\xF4\x53\x48\x89\xD3\x48\x83\xEC\x2A\x48\x85\xD2
+\x55\x66\x0F\xEF\xC0\x48\x89\xE5\x41\x57\x41\x56\x41\x55\x49\x89\xFD\x31\xFF
 </pre>
 </td><td>
 <pre>
-55 48 89 E5 41 57 41 56 41 55 49 89 FD 41 54 49 89 F4 53 48 89 D3 48 83 EC ? 48 85 D2
-</pre>
-</td></tr>
-</table>
-
-### CBaseEntity_TakeDamage
-
-<table>
-<tr><th>Status</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
-<pre>
-\x40\x55\x53\x56\x57\x41\x54\x48\x8D\x6C\x24\x2A\x48\x81\xEC\x2A\x2A\x2A\x2A\x4D\x8B\xE0
-</pre>
-</td><td>
-<pre>
-40 55 53 56 57 41 54 48 8D 6C 24 ? 48 81 EC ? ? ? ? 4D 8B E0
-</pre>
-</td></tr>
-<tr><td>❌</td><td>Linux</td><td>server</td><td>0</td><td>
-<pre>
-\x55\x48\x89\xE5\x41\x57\x41\x56\x41\x55\x49\x89\xFD\x31\xFF
-</pre>
-</td><td>
-<pre>
-55 48 89 E5 41 57 41 56 41 55 49 89 FD 31 FF
+55 66 0F EF C0 48 89 E5 41 57 41 56 41 55 49 89 FD 31 FF
 </pre>
 </td></tr>
 </table>
@@ -647,13 +623,13 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 48 8B C4 4C 89 48 ? 48 89 50 ? 48 89 48 ? 55 48 8D A8 ? ? ? ? 48 81 EC ? ? ? ? 48 89 58 ? 48 89 70 ?
 </pre>
 </td></tr>
-<tr><td>❌</td><td>Linux</td><td>server</td><td>0</td><td>
+<tr><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
-\x55\x48\x89\xE5\x41\x57\x49\x89\xFF\x41\x56\x48\x8D\x3D\x2A\x2A\x2A\x2A\x41\x55\x41\x89\xD5
+\x55\x48\x89\xE5\x41\x57\x49\x89\xFF\x41\x56\x48\x8D\x3D\x2A\x2A\x2A\x2A\x41\x55\x4C\x63\xEA
 </pre>
 </td><td>
 <pre>
-55 48 89 E5 41 57 49 89 FF 41 56 48 8D 3D ? ? ? ? 41 55 41 89 D5
+55 48 89 E5 41 57 49 89 FF 41 56 48 8D 3D ? ? ? ? 41 55 4C 63 EA
 </pre>
 </td></tr>
 </table>
@@ -671,13 +647,13 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 48 89 5C 24 08 48 89 6C 24 10 48 89 74 24 18 57 48 83 EC 20 48 8B 42 10 48 8D 35 ? ? ? ? 48 8B EA 48 8B D9 48 8B FE 48 8D 15 ? ? ? ? 4C 8B 40 20 4D 85 C0 49 0F 45 F8
 </pre>
 </td></tr>
-<tr><td>❌</td><td>Linux</td><td>server</td><td>0</td><td>
+<tr><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
-\x55\x48\x89\xE5\x41\x55\x41\x54\x53\x48\x89\xFB\x48\x83\xEC\x58\x48\x8B\x46
+\x55\x48\x89\xE5\x41\x55\x41\x54\x53\x48\x89\xFB\x48\x83\xEC\x2A\x0F\xB6\x7E
 </pre>
 </td><td>
 <pre>
-55 48 89 E5 41 55 41 54 53 48 89 FB 48 83 EC 58 48 8B 46
+55 48 89 E5 41 55 41 54 53 48 89 FB 48 83 EC ? 0F B6 7E
 </pre>
 </td></tr>
 </table>
@@ -695,13 +671,13 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 44 89 4C 24 20 44 88 44 24 18 55 53 56 57 41 54 41 56 48 8D AC 24 78 FE FF FF 48 81 EC 88 02 00 00 8B 82 38 04 00 00 4C 8D 35 ? ? ? ? 41 0F B6 F0 48 8B DA 4C 8B E1 85 C0
 </pre>
 </td></tr>
-<tr><td>❌</td><td>Linux</td><td>server</td><td>0</td><td>
+<tr><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
-\x55\x48\x89\xE5\x41\x57\x49\x89\xF7\x41\x56\x41\x55\x41\x54\x4D\x89\xC4
+\x55\x48\x89\xE5\x41\x57\x49\x89\xF7\x41\x56\x41\x55\x41\x89\xD5
 </pre>
 </td><td>
 <pre>
-55 48 89 E5 41 57 49 89 F7 41 56 41 55 41 54 4D 89 C4
+55 48 89 E5 41 57 49 89 F7 41 56 41 55 41 89 D5
 </pre>
 </td></tr>
 </table>

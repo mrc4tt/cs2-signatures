@@ -15,33 +15,26 @@ ambiguous (>1 match). Full per-signature detail:
 <!-- STATUS:START -->
 ## Signatures
 
-* **Last updated:** July 9, 2026 at 06:30:01 GMT
+* **Last updated:** July 9, 2026 at 16:30:02 GMT
 * **Manifests:** [2853479544375896262](https://steamdb.info/depot/2347771/history/?changeid=M:2853479544375896262), [2410782554857596728](https://steamdb.info/depot/2347773/history/?changeid=M:2410782554857596728)
-* **Validated:** 44 ok, 2 ambiguous, 14 broken (0 not-yet-validated)
+* **Validated:** 51 ok, 1 ambiguous, 6 broken (0 not-yet-validated)
 
 <table>
 <tr><th>Linux</th><th>Windows</th><th>Project</th><th></th></tr>
-<tr><td>❌</td><td>❌</td><td><a href="https://github.com/mrc4tt/CounterStrikeSharp">CounterStrikeSharp</a></td><td><a href="https://git.miksen.me/mikkel/cs2-signatures/src/branch/main/docs/CounterStrikeSharp.md">View signatures &rarr;</a></td></tr>
+<tr><td>⚠️</td><td>❌</td><td><a href="https://github.com/mrc4tt/CounterStrikeSharp">CounterStrikeSharp</a></td><td><a href="https://git.miksen.me/mikkel/cs2-signatures/src/branch/main/docs/CounterStrikeSharp.md">View signatures &rarr;</a></td></tr>
 </table>
 
-<details open><summary>&#9660; CounterStrikeSharp broken / ambiguous signatures (14)</summary>
+<details open><summary>&#9660; CounterStrikeSharp broken / ambiguous signatures (7)</summary>
 
 <table>
 <tr><th>Linux</th><th>Windows</th><th>Subroutine</th></tr>
-<tr><td>❌</td><td>✅</td><td>ClientPrint</td></tr>
-<tr><td>❌</td><td>❌</td><td>CCSPlayerPawnBase_PostThink</td></tr>
+<tr><td>✅</td><td>❌</td><td>CCSPlayerPawnBase_PostThink</td></tr>
 <tr><td>✅</td><td>❌</td><td>GiveNamedItem</td></tr>
 <tr><td>✅</td><td>❌</td><td>CCSPlayer_WeaponServices_CanUse</td></tr>
-<tr><td>⚠️</td><td>✅</td><td>GetCSWeaponDataFromKey</td></tr>
-<tr><td>❌</td><td>❌</td><td>CCSGameRules_TerminateRound</td></tr>
-<tr><td>❌</td><td>✅</td><td>CEntityInstance_AcceptInput</td></tr>
+<tr><td>✅</td><td>❌</td><td>CCSGameRules_TerminateRound</td></tr>
 <tr><td>✅</td><td>❌</td><td>LegacyGameEventListener</td></tr>
-<tr><td>❌</td><td>✅</td><td>CBaseEntity_TakeDamage</td></tr>
 <tr><td>⚠️</td><td>✅</td><td>CBaseTrigger_StartTouch</td></tr>
 <tr><td>✅</td><td>❌</td><td>CBaseTrigger_EndTouch</td></tr>
-<tr><td>❌</td><td>✅</td><td>CheckTransmit</td></tr>
-<tr><td>❌</td><td>✅</td><td>NetworkStateChanged</td></tr>
-<tr><td>❌</td><td>✅</td><td>Host_Say</td></tr>
 </table>
 </details>
 
