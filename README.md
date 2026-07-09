@@ -15,16 +15,16 @@ ambiguous (>1 match). Full per-signature detail:
 <!-- STATUS:START -->
 ## Signatures
 
-* **Last updated:** July 9, 2026 at 16:30:02 GMT
+* **Last updated:** July 9, 2026 at 16:35:41 GMT
 * **Manifests:** [2853479544375896262](https://steamdb.info/depot/2347771/history/?changeid=M:2853479544375896262), [2410782554857596728](https://steamdb.info/depot/2347773/history/?changeid=M:2410782554857596728)
-* **Validated:** 51 ok, 1 ambiguous, 6 broken (0 not-yet-validated)
+* **Validated:** 52 ok, 0 ambiguous, 6 broken (0 not-yet-validated)
 
 <table>
 <tr><th>Linux</th><th>Windows</th><th>Project</th><th></th></tr>
-<tr><td>⚠️</td><td>❌</td><td><a href="https://github.com/mrc4tt/CounterStrikeSharp">CounterStrikeSharp</a></td><td><a href="https://git.miksen.me/mikkel/cs2-signatures/src/branch/main/docs/CounterStrikeSharp.md">View signatures &rarr;</a></td></tr>
+<tr><td>✅</td><td>❌</td><td><a href="https://github.com/mrc4tt/CounterStrikeSharp">CounterStrikeSharp</a></td><td><a href="https://git.miksen.me/mikkel/cs2-signatures/src/branch/main/docs/CounterStrikeSharp.md">View signatures &rarr;</a></td></tr>
 </table>
 
-<details open><summary>&#9660; CounterStrikeSharp broken / ambiguous signatures (7)</summary>
+<details open><summary>&#9660; CounterStrikeSharp broken / ambiguous signatures (6)</summary>
 
 <table>
 <tr><th>Linux</th><th>Windows</th><th>Subroutine</th></tr>
@@ -33,7 +33,6 @@ ambiguous (>1 match). Full per-signature detail:
 <tr><td>✅</td><td>❌</td><td>CCSPlayer_WeaponServices_CanUse</td></tr>
 <tr><td>✅</td><td>❌</td><td>CCSGameRules_TerminateRound</td></tr>
 <tr><td>✅</td><td>❌</td><td>LegacyGameEventListener</td></tr>
-<tr><td>⚠️</td><td>✅</td><td>CBaseTrigger_StartTouch</td></tr>
 <tr><td>✅</td><td>❌</td><td>CBaseTrigger_EndTouch</td></tr>
 </table>
 </details>

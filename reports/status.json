@@ -5,9 +5,9 @@
   },
   "gamedata_source": "mrc4tt/CounterStrikeSharp configs/addons/counterstrikesharp/gamedata/gamedata.json",
   "tally": {
-    "ok": 51,
+    "ok": 52,
     "broken": 6,
-    "ambiguous": 1,
+    "ambiguous": 0,
     "no_binary": 0,
     "missing_sig": 0,
     "offset_only": 18
@@ -478,10 +478,10 @@
       "library": "server",
       "platforms": {
         "linux": {
-          "status": "ambiguous",
-          "matches": 2,
+          "status": "ok",
+          "matches": 1,
           "library": "server",
-          "sig": "55 48 89 E5 41 56 41 55 49 89 F5 41 54 53 48 89 FB 48 83 EC 10 48 8B 07"
+          "sig": "55 48 89 E5 41 56 41 55 49 89 F5 41 54 53 48 89 FB 48 83 EC ? 48 8B 07 FF 90 ? ? ? ? 84 C0"
         },
         "windows": {
           "status": "ok",

@@ -1,6 +1,6 @@
 # CounterStrikeSharp
 
-Last updated: July 9, 2026 at 16:30:02 GMT
+Last updated: July 9, 2026 at 16:35:41 GMT
 
 * Manifests: [2853479544375896262](https://steamdb.info/depot/2347771/history/?changeid=M:2853479544375896262), [2410782554857596728](https://steamdb.info/depot/2347773/history/?changeid=M:2410782554857596728)
 * Repository: https://github.com/mrc4tt/CounterStrikeSharp
@@ -527,13 +527,13 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 40 57 41 56 48 83 EC 28 48 8B 01 4C 8B F2 48 8B F9 FF 90 ? ? 00 00 84 C0 0F 84 ? ? ? ?
 </pre>
 </td></tr>
-<tr><td>⚠️</td><td>Linux</td><td>server</td><td>2</td><td>
+<tr><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
-\x55\x48\x89\xE5\x41\x56\x41\x55\x49\x89\xF5\x41\x54\x53\x48\x89\xFB\x48\x83\xEC\x10\x48\x8B\x07
+\x55\x48\x89\xE5\x41\x56\x41\x55\x49\x89\xF5\x41\x54\x53\x48\x89\xFB\x48\x83\xEC\x2A\x48\x8B\x07\xFF\x90\x2A\x2A\x2A\x2A\x84\xC0
 </pre>
 </td><td>
 <pre>
-55 48 89 E5 41 56 41 55 49 89 F5 41 54 53 48 89 FB 48 83 EC 10 48 8B 07
+55 48 89 E5 41 56 41 55 49 89 F5 41 54 53 48 89 FB 48 83 EC ? 48 8B 07 FF 90 ? ? ? ? 84 C0
 </pre>
 </td></tr>
 </table>
