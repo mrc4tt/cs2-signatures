@@ -2,17 +2,29 @@
 
 [![cs2 sigs](https://img.shields.io/endpoint?url=https%3A%2F%2Fgit.miksen.me%2Fmikkel%2Fcs2-signatures%2Fraw%2Fbranch%2Fmain%2Freports%2Fbadge.json)](docs/CounterStrikeSharp.md)
 
-Tracks CS2 plugin gamedata signatures against live CS2 server binaries.
-Inspired by [ianlucas/cs2-signatures](https://github.com/ianlucas/cs2-signatures),
-self-hosted on Forgejo. Each tracked project is one CSS-format `gamedata.json`
-in some GitHub repo — listed in [`data/projects.json`](data/projects.json) —
-starting with the [CounterStrikeSharp](https://github.com/mrc4tt/CounterStrikeSharp)
-**mrc4tt fork**. Add a plugin by appending to that file (see
-[docs/DEVELOPMENT.md](docs/DEVELOPMENT.md)); no code change.
+Validates Counter-Strike 2 plugin gamedata signatures against the live CS2
+dedicated-server binaries. Each tracked project is a CounterStrikeSharp-format
+`gamedata.json`; on every game update the tracker re-downloads the server
+binaries and reports which signatures still resolve, which broke, and which
+became ambiguous.
 
-On each CS2 update it re-downloads `libserver.so` + `server.dll` and scans every
-project's signatures: which still match (unique), which broke (0 matches), which
-went ambiguous (>1 match). Per-project detail lives in `docs/<project>.md`.
+Tracked projects live in [`data/projects.json`](data/projects.json) — currently
+the [CounterStrikeSharp](https://github.com/mrc4tt/CounterStrikeSharp) fork and
+[cs2-retakes-allocator](https://github.com/mrc4tt/cs2-retakes-allocator). Adding
+a project needs no code change; see [docs/DEVELOPMENT.md](docs/DEVELOPMENT.md).
+
+Inspired by [ianlucas/cs2-signatures](https://github.com/ianlucas/cs2-signatures);
+self-hosted on Forgejo.
+
+## How it works
+
+1. Detects a CS2 update by comparing per-depot manifest IDs.
+2. Downloads only the server/engine binaries — a handful of files via
+   DepotDownloader, not the full install.
+3. Scans each signature against the binary's executable sections and counts
+   matches: exactly one is healthy, zero is broken, more than one is ambiguous.
+4. Regenerates the table below, the per-project pages under `docs/`, the status
+   badge, and — when configured — a Discord post and a Forgejo issue on breakage.
 
 <!-- STATUS:START -->
 ## Signatures
@@ -32,4 +44,4 @@ went ambiguous (>1 match). Per-project detail lives in `docs/<project>.md`.
 
 ---
 
-Dev / ops notes (setup, cron, layout): [docs/DEVELOPMENT.md](docs/DEVELOPMENT.md).
+Setup, cron, and layout notes: [docs/DEVELOPMENT.md](docs/DEVELOPMENT.md).
