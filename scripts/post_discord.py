@@ -249,9 +249,8 @@ def overall_color(statuses):
     return COLOR_OK
 
 
-def build_combined_embed(statuses, version, ts, width, projects_path):
-    """All projects in ONE embed: a section per project (header + rows),
-    with a shared legend + manifest at the bottom."""
+def combined_blocks(statuses, width, projects_path):
+    """One text block per project (header line + its signature rows)."""
     blocks = []
     for pid, status in statuses:
         entries = sig_entries(status)
@@ -262,7 +261,22 @@ def build_combined_embed(statuses, version, ts, width, projects_path):
                      c["windows"][0], c["windows"][1],
                      c["linux"][0], c["linux"][1]))
         blocks.append("\n".join([header] + sig_rows(entries, width)))
-    desc = clamp_desc_blocks(blocks)
+    return blocks
+
+
+def combined_fits(statuses, width, projects_path):
+    """True if every project's rows fit in one combined description (no project
+    would be dropped). Used to pick combined vs per-project cards."""
+    total = 0
+    for block in combined_blocks(statuses, width, projects_path):
+        total += len(block) + 2  # blank line between blocks
+    return total <= DESC_MAX
+
+
+def build_combined_embed(statuses, version, ts, width, projects_path):
+    """All projects in ONE embed: a section per project (header + rows),
+    with a shared legend + manifest at the bottom."""
+    desc = clamp_desc_blocks(combined_blocks(statuses, width, projects_path))
 
     fields = [{"name": "Legend", "value": LEGEND, "inline": False}]
     links = manifest_links(next((s.get("manifest") for _, s in statuses
@@ -433,15 +447,24 @@ def main():
     if not statuses:
         print("no project statuses found — nothing to post", file=sys.stderr)
         return 1
+    def per_project():
+        return [build_project_embed(pid, display_name(pid, args.projects),
+                                    status, version, ts, width)
+                for pid, status in statuses]
+
     if args.summary:
         embeds = [build_summary_embed(statuses, version, ts, args.projects)]
     elif args.separate:
-        embeds = [build_project_embed(pid, display_name(pid, args.projects),
-                                      status, version, ts, width)
-                  for pid, status in statuses]
-    else:
+        embeds = per_project()
+    elif combined_fits(statuses, width, args.projects):
+        # Default: one combined card while every project's rows fit.
         embeds = [build_combined_embed(statuses, version, ts, width,
                                        args.projects)]
+    else:
+        # Too many/large plugins for one card — fall back to per-project cards
+        # (each gets its own budget) rather than silently dropping projects.
+        print("combined post too large -> per-project cards", file=sys.stderr)
+        embeds = per_project()
 
     # Ping only when something needs attention. Mention must live in top-level
     # `content` (embeds never trigger notifications), and allowed_mentions must
