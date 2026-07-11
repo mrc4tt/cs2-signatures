@@ -94,9 +94,18 @@ fi
 #    change reuses the same version tag, so republishing would just re-upload
 #    identical binaries and churn the Releases page — skip it.
 if [ -n "${FORGEJO_TOKEN:-}" ] && [ "$UPD" -eq 10 ]; then
+  # Also pull items_game.txt out of the content-depot VPK (~100 MB one-off) and
+  # attach it to the same release. Non-fatal: a VPK layout change must not block
+  # the binary release.
+  ITEMS_GAME=""
+  set +e
+  IG_LINE="$(bash scripts/extract_items_game.sh | grep -E '^ITEMS_GAME=')"
+  [ $? -eq 0 ] && eval "$IG_LINE" || echo "WARN: items_game.txt extract failed"
+  set -e
   python3 scripts/publish_bins.py \
     --linux "${LINUX_SO:-}" --windows "${WIN_DLL:-}" \
     --linux-engine2 "${LINUX_ENGINE2:-}" --windows-engine2 "${WIN_ENGINE2:-}" \
+    ${ITEMS_GAME:+--items-game "$ITEMS_GAME"} \
     --keep "${BINS_KEEP:-2}" --iso "$ISO" || true
 elif [ -n "${FORGEJO_TOKEN:-}" ]; then
   echo "no game update (UPD=$UPD) — skipping binary release"

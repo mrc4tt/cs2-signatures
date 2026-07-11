@@ -195,11 +195,14 @@ def release_name(info, version):
     return "CS2 binaries %s" % version
 
 
-def release_body(info, version):
+def release_body(info, version, items_game=False):
     lines = [MARKER,
              "CS2 dedicated-server binaries (`libserver.so`, `libengine2.so`, "
              "`server.dll`, `engine2.dll`) the signatures were validated "
              "against.", ""]
+    if items_game:
+        lines += ["Includes `items_game.txt` extracted from this build's "
+                  "content depot (`game/csgo/scripts/items/`).", ""]
     if info:
         lines.append("| Field | Value |")
         lines.append("| --- | --- |")
@@ -218,6 +221,8 @@ def main():
     ap.add_argument("--linux-engine2", dest="linux_engine2", help="libengine2.so")
     ap.add_argument("--windows", help="server.dll path")
     ap.add_argument("--windows-engine2", dest="windows_engine2", help="engine2.dll")
+    ap.add_argument("--items-game", dest="items_game",
+                    help="items_game.txt extracted from the content depot VPK")
     ap.add_argument("--version", default=None, help="release tag override")
     ap.add_argument("--steam-inf", default="bin_linux/game/csgo/steam.inf",
                     help="steam.inf to read PatchVersion/ClientVersion from")
@@ -240,6 +245,8 @@ def main():
         return 1
 
     paths = [getattr(args, k) for k in ASSET_ARGS]
+    if args.items_game:
+        paths.append(args.items_game)
     paths = [p for p in paths if p and os.path.isfile(p)]
     if not paths:
         print("no binary files found to upload", file=sys.stderr)
@@ -251,9 +258,10 @@ def main():
         info["BuildID"] = bid  # surface in the release body table too
     version = resolve_version(args, info)
     tag = "bins-%s" % version
+    has_ig = bool(args.items_game and os.path.isfile(args.items_game))
     rel = ensure_release(args.server, args.token, args.repo, tag,
                          release_name(info, version),
-                         release_body(info, version))
+                         release_body(info, version, has_ig))
     replace_assets(args.server, args.token, args.repo, rel, paths)
     prune(args.server, args.token, args.repo, args.keep, tag)
     print("published %d assets to release %s (%s)"
