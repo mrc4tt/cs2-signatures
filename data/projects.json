@@ -18,7 +18,8 @@
   {
     "id": "RayTrace",
     "name": "Ray-Trace",
-    "repo": "mrc4tt/Ray-Trace",
+    "repo": "mikkel/Ray-Trace",
+    "host": "git.miksen.me",
     "branch": "main",
     "path": "configs/addons/RayTrace/gamedata.json",
     "private": false
