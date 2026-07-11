@@ -250,17 +250,19 @@ def overall_color(statuses):
 
 
 def combined_blocks(statuses, width, projects_path):
-    """One text block per project (header line + its signature rows)."""
+    """One text block per project: a name header, its signature rows, then a
+    Total / Windows / Linux count line below the rows."""
     blocks = []
     for pid, status in statuses:
         entries = sig_entries(status)
         c = platform_counts(entries)
         name = display_name(pid, projects_path)
-        header = ("%s **%s** — Win %d/%d · Lin %d/%d"
-                  % (verdict_dot(status.get("tally", {})), name,
-                     c["windows"][0], c["windows"][1],
-                     c["linux"][0], c["linux"][1]))
-        blocks.append("\n".join([header] + sig_rows(entries, width)))
+        header = "%s **%s**" % (verdict_dot(status.get("tally", {})), name)
+        total = c["windows"][1] + c["linux"][1]
+        summary = ("**Total** %d · **Windows** %d/%d · **Linux** %d/%d"
+                   % (total, c["windows"][0], c["windows"][1],
+                      c["linux"][0], c["linux"][1]))
+        blocks.append("\n".join([header] + sig_rows(entries, width) + [summary]))
     return blocks
 
 
