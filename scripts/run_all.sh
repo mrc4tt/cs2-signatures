@@ -90,11 +90,16 @@ fi
 #    download the exact .so/.dll this run validated against. Git-ignored in the
 #    tree; kept as the newest 2 releases (tag = CS2 ClientVersion). Needs
 #    FORGEJO_TOKEN + server/repo. Skipped silently if unset or bins missing.
-if [ -n "${FORGEJO_TOKEN:-}" ]; then
+#    ONLY on a real game update (check_update exit 10 = new bins). A sig-only
+#    change reuses the same version tag, so republishing would just re-upload
+#    identical binaries and churn the Releases page — skip it.
+if [ -n "${FORGEJO_TOKEN:-}" ] && [ "$UPD" -eq 10 ]; then
   python3 scripts/publish_bins.py \
     --linux "${LINUX_SO:-}" --windows "${WIN_DLL:-}" \
     --linux-engine2 "${LINUX_ENGINE2:-}" --windows-engine2 "${WIN_ENGINE2:-}" \
     --keep "${BINS_KEEP:-2}" --iso "$ISO" || true
+elif [ -n "${FORGEJO_TOKEN:-}" ]; then
+  echo "no game update (UPD=$UPD) — skipping binary release"
 fi
 
 echo "done (validate exit=$VAL, update=$UPD)"

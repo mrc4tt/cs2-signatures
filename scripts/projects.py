@@ -4,10 +4,11 @@
 
     id       stable slug -> data/<id>/, reports/<id>/, docs/<id>.md
     name     display name (defaults to id)
-    repo     GitHub "owner/name"
+    repo     "owner/name" on `host`
+    host     forge hostname (default "github.com"; e.g. "git.miksen.me")
     branch   branch to pull the gamedata from
     path     path to the gamedata.json inside that repo
-    private  true -> fetch needs GITHUB_TOKEN; false -> anonymous raw URL works
+    private  true -> fetch needs a token; false -> anonymous fetch works
 
 All the tracked gamedata files share the CS2 game binaries, so the download +
 manifest-diff steps stay game-global; only fetch / validate / report loop over
@@ -35,6 +36,14 @@ def name(p):
     return p.get("name", p["id"])
 
 
+def host(p):
+    return p.get("host", "github.com")
+
+
+def is_github(p):
+    return host(p) == "github.com"
+
+
 def gamedata_path(p):
     return os.path.join("data", p["id"], "gamedata.json")
 
@@ -48,8 +57,13 @@ def docs_path(p):
 
 
 def repo_url(p):
-    return "https://github.com/%s" % p["repo"]
+    return "https://%s/%s" % (host(p), p["repo"])
 
 
 def blob_url(p):
-    return "https://github.com/%s/blob/%s/%s" % (p["repo"], p["branch"], p["path"])
+    if is_github(p):
+        return "https://github.com/%s/blob/%s/%s" % (
+            p["repo"], p["branch"], p["path"])
+    # Forgejo/Gitea web file view.
+    return "https://%s/%s/src/branch/%s/%s" % (
+        host(p), p["repo"], p["branch"], p["path"])
