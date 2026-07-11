@@ -14,3 +14,4 @@ __pycache__/
 reports/cron.log
 # Private development rules — not for public repo.
 CLAUDE.md
+hm
