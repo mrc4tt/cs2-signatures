@@ -17,6 +17,7 @@ import argparse
 import json
 import os
 import sys
+import urllib.parse
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from depots import DEPOTS, steamdb_link  # noqa: E402
@@ -24,6 +25,17 @@ import projects as P  # noqa: E402
 
 DOCS_URL_TMPL = ("https://git.miksen.me/mikkel/cs2-signatures/src/branch/main/"
                  "docs/%s.md")
+# Raw badge.json served by Forgejo -> wrapped by shields.io's endpoint badge.
+BADGE_RAW_TMPL = ("https://git.miksen.me/mikkel/cs2-signatures/raw/branch/main/"
+                  "reports/%s/badge.json")
+
+
+def badge_md(project_id, alt):
+    """shields.io endpoint badge <img> for a project's badge.json. HTML (not
+    markdown ![]) so it renders reliably inside the HTML status table."""
+    raw = BADGE_RAW_TMPL % project_id
+    return ('<img src="https://img.shields.io/endpoint?url=%s" alt="%s">'
+            % (urllib.parse.quote(raw, safe=""), alt))
 
 OK, WARN, BAD, GREY = "✅", "⚠️", "❌", "❔"
 START, END = "<!-- STATUS:START -->", "<!-- STATUS:END -->"
@@ -118,15 +130,17 @@ def render_readme_block(projects, statuses, updated):
              t.get("broken", 0), t.get("no_binary", 0)))
     L.append("")
     L.append("<table>")
-    L.append("<tr><th>Linux</th><th>Windows</th><th>Project</th><th></th></tr>")
+    L.append("<tr><th>Status</th><th>Linux</th><th>Windows</th><th>Project</th>"
+             "<th></th></tr>")
     for proj, status in zip(projects, statuses):
         results = status["results"]
         lin = platform_agg(results, "linux")
         win = platform_agg(results, "windows")
-        L.append('<tr><td>%s</td><td>%s</td>'
+        L.append('<tr><td>%s</td><td>%s</td><td>%s</td>'
                  '<td><a href="%s">%s</a></td>'
                  '<td><a href="%s">View signatures &rarr;</a></td></tr>'
-                 % (lin, win, P.repo_url(proj), P.name(proj), docs_url(proj)))
+                 % (badge_md(proj["id"], P.name(proj)), lin, win,
+                    P.repo_url(proj), P.name(proj), docs_url(proj)))
     L.append("</table>")
     L.append("")
 
@@ -245,6 +259,15 @@ def main():
     os.makedirs(os.path.dirname(args.badge) or ".", exist_ok=True)
     with open(args.badge, "w") as fh:
         json.dump(make_badge(total), fh, indent=2)
+
+    # Per-project badge (reports/<id>/badge.json) for the README table.
+    for proj, status in zip(projects, statuses):
+        b = make_badge(status["tally"])
+        b["label"] = P.name(proj)
+        path = os.path.join("reports", proj["id"], "badge.json")
+        os.makedirs(os.path.dirname(path), exist_ok=True)
+        with open(path, "w") as fh:
+            json.dump(b, fh, indent=2)
 
     manifest = next((s.get("manifest") for s in statuses if s.get("manifest")),
                     None)
