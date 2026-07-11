@@ -98,8 +98,6 @@ scripts/lib_sig.py        sig->regex + ELF/PE exec-section reader
 scripts/check_update.py   per-depot manifest diff (game-global)
 scripts/fetch_gamedata.py pull each project's gamedata.json (authenticated)
 scripts/download_bins.sh  DepotDownloader depot download (shared bins)
-scripts/vpk.py            Valve VPK (v1/v2) index reader + file extractor (stdlib)
-scripts/extract_items_game.sh  pull items_game.txt out of the content-depot VPK
 scripts/validate_sigs.py  scan + classify per project -> reports/<id>/status.json
 scripts/gen_report.py     -> README block + docs/<id>.md + aggregate badge + history
 scripts/open_issue.py     Forgejo auto-issue on broken sigs (across all projects)
