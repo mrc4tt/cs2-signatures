@@ -15,13 +15,15 @@ ambiguous (>1 match). Full per-signature detail:
 <!-- STATUS:START -->
 ## Signatures
 
-* **Last updated:** July 9, 2026 at 22:00:01 GMT
+* **Last updated:** July 11, 2026 at 09:30:01 GMT
 * **Manifests:** [7679405674131902105](https://steamdb.info/depot/2347771/history/?changeid=M:7679405674131902105), [5502194087696430282](https://steamdb.info/depot/2347773/history/?changeid=M:5502194087696430282)
-* **Validated:** 58 ok, 0 ambiguous, 0 broken (0 not-yet-validated)
+* **Tracked projects:** 2
+* **Validated:** 60 ok, 0 ambiguous, 0 broken (0 not-yet-validated)
 
 <table>
 <tr><th>Linux</th><th>Windows</th><th>Project</th><th></th></tr>
 <tr><td>✅</td><td>✅</td><td><a href="https://github.com/mrc4tt/CounterStrikeSharp">CounterStrikeSharp</a></td><td><a href="https://git.miksen.me/mikkel/cs2-signatures/src/branch/main/docs/CounterStrikeSharp.md">View signatures &rarr;</a></td></tr>
+<tr><td>✅</td><td>✅</td><td><a href="https://github.com/mrc4tt/cs2-retakes-allocator">cs2-retakes-allocator</a></td><td><a href="https://git.miksen.me/mikkel/cs2-signatures/src/branch/main/docs/RetakesAllocator.md">View signatures &rarr;</a></td></tr>
 </table>
 
 <!-- STATUS:END -->

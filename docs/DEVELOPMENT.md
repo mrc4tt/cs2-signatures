@@ -3,12 +3,37 @@
 ## How it works
 
 ```
+projects.py         registry: data/projects.json -> tracked projects + path/URL layout
 check_update.py     DepotDownloader -manifest-only per depot -> changed?
-fetch_gamedata.py   pull mrc4tt fork gamedata.json (authenticated; fork is private)
+fetch_gamedata.py   pull each project's gamedata.json -> data/<id>/gamedata.json
 download_bins.sh    DepotDownloader depots 2347771/2347773 -> server + engine2 (MB not GB)
-validate_sigs.py    each sig -> bytes regex -> scan ELF/PE exec sections -> count
-gen_report.py       -> README table + docs/CounterStrikeSharp.md + badge + history
+validate_sigs.py    each sig -> bytes regex -> scan ELF/PE exec sections -> count (per project)
+gen_report.py       -> README table (one row/project) + docs/<id>.md + aggregate badge + history
 ```
+
+### Multiple projects
+
+Every tracked plugin is one CSS-format `gamedata.json` (signatures + offsets)
+in some GitHub repo. They all share the same CS2 game binaries, so the download
++ manifest-diff steps stay game-global; only fetch / validate / report loop over
+projects.
+
+Add a project by appending to `data/projects.json` — no code change:
+
+```json
+{
+  "id": "MyPlugin",
+  "name": "cs2-my-plugin",
+  "repo": "owner/cs2-my-plugin",
+  "branch": "main",
+  "path": "Resources/MyPlugin_gamedata.json",
+  "private": false
+}
+```
+
+`id` is the stable slug driving `data/<id>/`, `reports/<id>/status.json`, and
+`docs/<id>.md`. `private: true` means the fetch needs `GITHUB_TOKEN`. Next run
+picks it up: fetches, validates, adds a README row + `docs/<id>.md`.
 
 Validation is pure-stdlib Python — no Ghidra, no third-party deps. It parses
 ELF and PE section tables itself (`scripts/lib_sig.py`) and counts matches
@@ -64,20 +89,23 @@ Steam login. The gamedata fetch needs a GitHub token because the fork is private
 ## Layout
 
 ```
-data/gamedata.json        snapshot of the fork's sigs (auto-refreshed)
-data/manifest.json        last-seen per-depot manifest IDs
+data/projects.json        tracked-project registry (id/repo/branch/path/private)
+data/<id>/gamedata.json   snapshot of each project's sigs (auto-refreshed)
+data/manifest.json        last-seen per-depot manifest IDs (game-global)
+scripts/projects.py       project registry loader + path/URL layout
 scripts/depots.py         depot IDs + file paths (single source of truth)
 scripts/lib_sig.py        sig->regex + ELF/PE exec-section reader
-scripts/check_update.py   per-depot manifest diff
-scripts/fetch_gamedata.py pull upstream gamedata.json (authenticated)
-scripts/download_bins.sh  DepotDownloader depot download
-scripts/validate_sigs.py  scan + classify -> status.json
-scripts/gen_report.py     -> README block + docs + badge + history
-scripts/open_issue.py     Forgejo auto-issue on broken sigs
+scripts/check_update.py   per-depot manifest diff (game-global)
+scripts/fetch_gamedata.py pull each project's gamedata.json (authenticated)
+scripts/download_bins.sh  DepotDownloader depot download (shared bins)
+scripts/validate_sigs.py  scan + classify per project -> reports/<id>/status.json
+scripts/gen_report.py     -> README block + docs/<id>.md + aggregate badge + history
+scripts/open_issue.py     Forgejo auto-issue on broken sigs (across all projects)
+scripts/post_discord.py   Discord webhook summary (across all projects)
 scripts/run_all.sh        full pipeline (validate + commit + push)
 scripts/cron.sh           cron entrypoint (loads .env, logs)
-docs/CounterStrikeSharp.md  per-signature detail (CODE + IDA style)
-reports/status.json       machine-readable result
-reports/badge.json        shields.io endpoint
-reports/history/*.json    per-run tally (drift over time)
+docs/<id>.md              per-signature detail per project (CODE + IDA style)
+reports/<id>/status.json  machine-readable result per project
+reports/badge.json        shields.io endpoint (aggregate)
+reports/history/*.json    per-run tally + per-project breakdown (drift over time)
 ```

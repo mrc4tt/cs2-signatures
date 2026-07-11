@@ -1,0 +1,9 @@
+{
+	"GiveNamedItem2": {
+		"signatures": {
+			"library": "server",
+			"windows": "48 83 EC ? 48 C7 44 24 ? ? ? ? ? 45 33 C9 45 33 C0 C6 44 24 ? ? E8 ? ? ? ? 48 83 C4 ? C3 CC CC CC CC CC CC CC CC CC CC CC CC CC CC 48 83 EC",
+			"linux": "45 31 C9 45 31 C0 31 C9 31 D2 E9 ? ? ? ? CC 55 45 31 C9"
+		}
+	}
+}
