@@ -21,6 +21,9 @@ import sys
 import urllib.error
 import urllib.request
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import projects as P  # noqa: E402
+
 # Discord embed color (decimal). Green ok, yellow ambiguous, red broken.
 COLOR_OK = 0x2ECC71
 COLOR_WARN = 0xF1C40F
@@ -30,15 +33,39 @@ COLOR_BAD = 0xE74C3C
 STEAMDB = "https://steamdb.info/depot/%s/history/?changeid=M:%s"
 
 
-def issue_list(status):
-    """(name, platform, status) for every broken/ambiguous platform entry."""
+def load_statuses(projects_path, status_override=None):
+    """[(project_id, status_dict), ...] across all tracked projects."""
+    if status_override:
+        with open(status_override) as fh:
+            s = json.load(fh)
+        return [(s.get("project", "project"), s)]
     out = []
-    for r in status.get("results", []):
-        for plat, info in r.get("platforms", {}).items():
-            st = info.get("status")
-            if st in ("broken", "ambiguous"):
-                out.append((r["name"], plat, st))
+    for proj in P.load(projects_path):
+        path = P.status_path(proj)
+        if os.path.isfile(path):
+            with open(path) as fh:
+                out.append((proj["id"], json.load(fh)))
     return out
+
+
+def issue_list(statuses):
+    """(project, name, platform, status) for every broken/ambiguous entry."""
+    out = []
+    for pid, status in statuses:
+        for r in status.get("results", []):
+            for plat, info in r.get("platforms", {}).items():
+                st = info.get("status")
+                if st in ("broken", "ambiguous"):
+                    out.append((pid, r["name"], plat, st))
+    return out
+
+
+def sum_tallies(statuses):
+    t = {}
+    for _, status in statuses:
+        for k, v in status.get("tally", {}).items():
+            t[k] = t.get(k, 0) + v
+    return t
 
 
 def manifest_links(manifest):
@@ -48,13 +75,15 @@ def manifest_links(manifest):
                     for depot, mid in sorted(manifest.items()))
 
 
-def build_embed(status):
-    t = status.get("tally", {})
+def build_embed(statuses):
+    t = sum_tallies(statuses)
     ok = t.get("ok", 0)
     amb = t.get("ambiguous", 0)
     brk = t.get("broken", 0)
     novb = t.get("no_binary", 0)
-    issues = issue_list(status)
+    issues = issue_list(statuses)
+    manifest = next((s.get("manifest") for _, s in statuses if s.get("manifest")),
+                    None)
 
     if brk:
         color, verdict = COLOR_BAD, "\U0001F534 %d broken" % brk
@@ -68,12 +97,21 @@ def build_embed(status):
          "value": "%d ok · %d ambiguous · %d broken · %d "
                   "not-yet-validated" % (ok, amb, brk, novb),
          "inline": False},
+        {"name": "Projects (%d)" % len(statuses),
+         "value": "\n".join(
+             "• `%s` — %d ok · %d amb · %d broken"
+             % (pid, s.get("tally", {}).get("ok", 0),
+                s.get("tally", {}).get("ambiguous", 0),
+                s.get("tally", {}).get("broken", 0))
+             for pid, s in statuses) or "none",
+         "inline": False},
         {"name": "Manifests",
-         "value": manifest_links(status.get("manifest")),
+         "value": manifest_links(manifest),
          "inline": False},
     ]
     if issues:
-        lines = ["• `%s` (%s, %s)" % (n, p, s) for n, p, s in issues[:20]]
+        lines = ["• `[%s] %s` (%s, %s)" % (pid, n, p, s)
+                 for pid, n, p, s in issues[:20]]
         if len(issues) > 20:
             lines.append("…and %d more" % (len(issues) - 20))
         fields.append({"name": "Broken / ambiguous (%d)" % len(issues),
@@ -83,26 +121,34 @@ def build_embed(status):
         "title": "CS2 signatures — %s" % verdict,
         "color": color,
         "fields": fields,
-        "footer": {"text": "source: %s" % status.get("gamedata_source", "?")},
+        "footer": {"text": "%d project(s) tracked" % len(statuses)},
     }
 
 
-def example_status():
-    """Synthetic status with a broken + ambiguous entry, for --preview demos."""
-    return {
-        "manifest": {"2347771": "8344780363095656278",
-                     "2347773": "8898904655046099225"},
-        "gamedata_source": "mrc4tt/CounterStrikeSharp (example)",
-        "tally": {"ok": 57, "ambiguous": 1, "broken": 2, "no_binary": 0},
-        "results": [
-            {"name": "CCSNavArea_IsValidNavMesh",
-             "platforms": {"windows": {"status": "broken"}}},
-            {"name": "UTIL_ClientPrintAll",
-             "platforms": {"linux": {"status": "broken"}}},
-            {"name": "CBaseEntity_Teleport",
-             "platforms": {"windows": {"status": "ambiguous"}}},
-        ],
-    }
+def example_statuses():
+    """Synthetic multi-project data (broken + ambiguous) for --preview demos."""
+    manifest = {"2347771": "8344780363095656278",
+                "2347773": "8898904655046099225"}
+    return [
+        ("CounterStrikeSharp", {
+            "manifest": manifest,
+            "tally": {"ok": 57, "ambiguous": 1, "broken": 1, "no_binary": 0},
+            "results": [
+                {"name": "CCSNavArea_IsValidNavMesh",
+                 "platforms": {"windows": {"status": "broken"}}},
+                {"name": "CBaseEntity_Teleport",
+                 "platforms": {"windows": {"status": "ambiguous"}}},
+            ],
+        }),
+        ("RetakesAllocator", {
+            "manifest": manifest,
+            "tally": {"ok": 0, "ambiguous": 0, "broken": 1, "no_binary": 0},
+            "results": [
+                {"name": "GiveNamedItem2",
+                 "platforms": {"linux": {"status": "broken"}}},
+            ],
+        }),
+    ]
 
 
 def post(webhook, payload):
@@ -122,7 +168,9 @@ def post(webhook, payload):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--status", default="reports/status.json")
+    ap.add_argument("--projects", default=P.REGISTRY)
+    ap.add_argument("--status", default=None,
+                    help="single status.json override (default: all projects)")
     ap.add_argument("--webhook", default=os.environ.get("DISCORD_WEBHOOK"))
     ap.add_argument("--username", default="cs2-sig-tracker")
     ap.add_argument("--mention", default=os.environ.get("DISCORD_MENTION"),
@@ -139,17 +187,16 @@ def main():
         return 1
 
     if args.example:
-        status = example_status()
+        statuses = example_statuses()
     else:
-        with open(args.status) as fh:
-            status = json.load(fh)
+        statuses = load_statuses(args.projects, args.status)
 
-    payload = {"username": args.username, "embeds": [build_embed(status)]}
+    payload = {"username": args.username, "embeds": [build_embed(statuses)]}
 
     # Ping only when something needs attention. Mention must live in top-level
     # `content` (embeds never trigger notifications), and allowed_mentions must
     # whitelist the target or Discord silently drops the ping.
-    if args.mention and issue_list(status):
+    if args.mention and issue_list(statuses):
         m = args.mention.strip().lstrip("@")
         if m in ("here", "everyone"):
             payload["content"] = "@%s" % m

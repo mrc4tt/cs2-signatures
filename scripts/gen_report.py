@@ -1,11 +1,14 @@
 #!/usr/bin/env python3
-"""status.json -> README dashboard block + docs/CounterStrikeSharp.md + badge.
+"""Per-project status.json -> README dashboard + docs/<id>.md + aggregate badge.
 
-Presentation matches ianlucas/cs2-signatures:
-  * README: summary table (Linux | Windows | Project | View signatures ->) plus
-    a collapsible "broken signatures" list and SteamDB manifest links.
-  * docs/CounterStrikeSharp.md: per-entry detail table with Status / Platform /
-    Library / CODE-Style / IDA-Style.
+Reads data/projects.json and each project's reports/<id>/status.json, then:
+  * README: one summary-table row per project (Linux | Windows | Project |
+    View signatures ->), a collapsible broken/ambiguous list per project, and
+    the shared SteamDB manifest links.
+  * docs/<id>.md: per-entry detail table (Status / Platform / Library /
+    CODE-Style / IDA-Style) for that project.
+  * reports/badge.json: aggregate verdict across all projects.
+  * reports/history/<iso>.json: aggregate tally + per-project breakdown.
 
 The README dashboard is injected between the STATUS:START / STATUS:END markers
 so the static header/badge/instructions are preserved.
@@ -17,15 +20,17 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from depots import DEPOTS, steamdb_link  # noqa: E402
+import projects as P  # noqa: E402
 
-FORK = "https://github.com/mrc4tt/CounterStrikeSharp"
-GAMEDATA_URL = (FORK + "/blob/main/configs/addons/counterstrikesharp/"
-                "gamedata/gamedata.json")
-DOCS_URL = ("https://git.miksen.me/mikkel/cs2-signatures/src/branch/main/"
-            "docs/CounterStrikeSharp.md")
+DOCS_URL_TMPL = ("https://git.miksen.me/mikkel/cs2-signatures/src/branch/main/"
+                 "docs/%s.md")
 
 OK, WARN, BAD, GREY = "✅", "⚠️", "❌", "❔"
 START, END = "<!-- STATUS:START -->", "<!-- STATUS:END -->"
+
+
+def docs_url(proj):
+    return DOCS_URL_TMPL % proj["id"]
 
 
 def code_style(ida_sig):
@@ -89,33 +94,48 @@ def issue_rows(results):
     return rows
 
 
-def render_readme_block(status, updated):
-    results = status["results"]
-    lin = platform_agg(results, "linux")
-    win = platform_agg(results, "windows")
-    t = status["tally"]
+def sum_tallies(statuses):
+    total = {}
+    for s in statuses:
+        for k, v in s.get("tally", {}).items():
+            total[k] = total.get(k, 0) + v
+    return total
+
+
+def render_readme_block(projects, statuses, updated):
+    """projects/statuses are parallel lists (same order)."""
+    manifest = next((s.get("manifest") for s in statuses if s.get("manifest")),
+                    None)
+    t = sum_tallies(statuses)
     L = []
     L.append("## Signatures")
     L.append("")
     L.append("* **Last updated:** %s" % updated)
-    L.append("* **Manifests:** %s" % manifest_links(status.get("manifest")))
+    L.append("* **Manifests:** %s" % manifest_links(manifest))
+    L.append("* **Tracked projects:** %d" % len(projects))
     L.append("* **Validated:** %d ok, %d ambiguous, %d broken (%d not-yet-"
              "validated)" % (t.get("ok", 0), t.get("ambiguous", 0),
              t.get("broken", 0), t.get("no_binary", 0)))
     L.append("")
     L.append("<table>")
     L.append("<tr><th>Linux</th><th>Windows</th><th>Project</th><th></th></tr>")
-    L.append('<tr><td>%s</td><td>%s</td>'
-             '<td><a href="%s">CounterStrikeSharp</a></td>'
-             '<td><a href="%s">View signatures &rarr;</a></td></tr>'
-             % (lin, win, FORK, DOCS_URL))
+    for proj, status in zip(projects, statuses):
+        results = status["results"]
+        lin = platform_agg(results, "linux")
+        win = platform_agg(results, "windows")
+        L.append('<tr><td>%s</td><td>%s</td>'
+                 '<td><a href="%s">%s</a></td>'
+                 '<td><a href="%s">View signatures &rarr;</a></td></tr>'
+                 % (lin, win, P.repo_url(proj), P.name(proj), docs_url(proj)))
     L.append("</table>")
     L.append("")
 
-    rows = issue_rows(results)
-    if rows:
-        L.append("<details open><summary>&#9660; CounterStrikeSharp broken / "
-                 "ambiguous signatures (%d)</summary>" % len(rows))
+    for proj, status in zip(projects, statuses):
+        rows = issue_rows(status["results"])
+        if not rows:
+            continue
+        L.append("<details open><summary>&#9660; %s broken / ambiguous "
+                 "signatures (%d)</summary>" % (P.name(proj), len(rows)))
         L.append("")
         L.append("<table>")
         L.append("<tr><th>Linux</th><th>Windows</th><th>Subroutine</th></tr>")
@@ -128,15 +148,15 @@ def render_readme_block(status, updated):
     return "\n".join(L)
 
 
-def render_docs(status, updated):
+def render_docs(proj, status, updated):
     L = []
-    L.append("# CounterStrikeSharp")
+    L.append("# %s" % P.name(proj))
     L.append("")
     L.append("Last updated: %s" % updated)
     L.append("")
     L.append("* Manifests: %s" % manifest_links(status.get("manifest")))
-    L.append("* Repository: %s" % FORK)
-    L.append("* Gamedata: %s" % GAMEDATA_URL)
+    L.append("* Repository: %s" % P.repo_url(proj))
+    L.append("* Gamedata: %s" % P.blob_url(proj))
     L.append("")
     L.append("Cell status: %s unique (1 match) &middot; %s ambiguous (>1) "
              "&middot; %s broken (0) &middot; %s binary not downloaded."
@@ -199,35 +219,43 @@ def make_badge(t):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--status", default="reports/status.json")
+    ap.add_argument("--projects", default=P.REGISTRY)
     ap.add_argument("--readme", default="README.md")
-    ap.add_argument("--docs", default="docs/CounterStrikeSharp.md")
+    ap.add_argument("--docs-dir", default="docs")
     ap.add_argument("--badge", default="reports/badge.json")
     ap.add_argument("--history-dir", default="reports/history")
     ap.add_argument("--date", required=True, help="display date e.g. 'July 2, 2026'")
     ap.add_argument("--iso", required=True, help="YYYY-MM-DD for history filename")
     args = ap.parse_args()
 
-    with open(args.status) as fh:
-        status = json.load(fh)
+    projects = P.load(args.projects)
+    statuses = []
+    for proj in projects:
+        with open(P.status_path(proj)) as fh:
+            statuses.append(json.load(fh))
 
-    inject_readme(args.readme, render_readme_block(status, args.date))
+    inject_readme(args.readme, render_readme_block(projects, statuses, args.date))
 
-    os.makedirs(os.path.dirname(args.docs) or ".", exist_ok=True)
-    with open(args.docs, "w") as fh:
-        fh.write(render_docs(status, args.date))
+    os.makedirs(args.docs_dir, exist_ok=True)
+    for proj, status in zip(projects, statuses):
+        with open(os.path.join(args.docs_dir, "%s.md" % proj["id"]), "w") as fh:
+            fh.write(render_docs(proj, status, args.date))
 
+    total = sum_tallies(statuses)
     os.makedirs(os.path.dirname(args.badge) or ".", exist_ok=True)
     with open(args.badge, "w") as fh:
-        json.dump(make_badge(status["tally"]), fh, indent=2)
+        json.dump(make_badge(total), fh, indent=2)
 
+    manifest = next((s.get("manifest") for s in statuses if s.get("manifest")),
+                    None)
     os.makedirs(args.history_dir, exist_ok=True)
     snap = os.path.join(args.history_dir, "%s.json" % args.iso)
     with open(snap, "w") as fh:
-        json.dump({"date": args.date, "tally": status["tally"],
-                   "manifest": status.get("manifest")}, fh, indent=2)
+        json.dump({"date": args.date, "tally": total, "manifest": manifest,
+                   "projects": {p["id"]: s["tally"]
+                                for p, s in zip(projects, statuses)}}, fh, indent=2)
 
-    print("updated %s, %s, %s" % (args.readme, args.docs, args.badge))
+    print("updated %s, %s/*.md, %s" % (args.readme, args.docs_dir, args.badge))
 
 
 if __name__ == "__main__":

@@ -22,6 +22,9 @@ import sys
 import urllib.error
 import urllib.request
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import projects as P  # noqa: E402
+
 MARKER = "[sig-tracker] Broken signatures"
 
 
@@ -41,23 +44,45 @@ def api(server, token, method, path, body=None):
         raise
 
 
-def broken_list(status):
+def load_statuses(projects_path, status_override=None):
+    """Return [(project_id, status_dict), ...] across all tracked projects.
+
+    status_override forces a single explicit status.json (single-project mode,
+    used by tests / manual runs)."""
+    if status_override:
+        with open(status_override) as fh:
+            s = json.load(fh)
+        return [(s.get("project", "project"), s)]
     out = []
-    for r in status["results"]:
-        for plat, info in r.get("platforms", {}).items():
-            if info.get("status") == "broken":
-                out.append("%s (%s)" % (r["name"], plat))
+    for proj in P.load(projects_path):
+        path = P.status_path(proj)
+        if os.path.isfile(path):
+            with open(path) as fh:
+                out.append((proj["id"], json.load(fh)))
     return out
 
 
-def body_text(status, broken):
+def broken_list(statuses):
+    """[(project_id, "name (plat)"), ...] for every broken platform entry."""
+    out = []
+    for pid, status in statuses:
+        for r in status["results"]:
+            for plat, info in r.get("platforms", {}).items():
+                if info.get("status") == "broken":
+                    out.append((pid, "%s (%s)" % (r["name"], plat)))
+    return out
+
+
+def body_text(statuses, broken):
+    manifest = next((s.get("manifest") for _, s in statuses if s.get("manifest")),
+                    None)
     lines = ["%s" % MARKER, "",
-             "Manifest / buildid: `%s`" % (status.get("manifest") or "unknown"),
+             "Manifest / buildid: `%s`" % (manifest or "unknown"),
              "", "**Broken (%d):**" % len(broken), ""]
-    lines += ["- `%s`" % b for b in broken]
-    lines += ["", "Regenerate with the Ghidra toolbox (`CS2Recipes.py`) and "
-              "PR the mrc4tt fork. See `docs/CounterStrikeSharp.md` for the "
-              "full per-signature table."]
+    lines += ["- `[%s] %s`" % (pid, b) for pid, b in broken]
+    lines += ["", "Regenerate the affected project's gamedata with the Ghidra "
+              "toolbox and PR its repo. See `docs/<project>.md` for the full "
+              "per-signature table."]
     return "\n".join(lines)
 
 
@@ -72,7 +97,9 @@ def find_open_issue(server, token, repo):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--status", default="reports/status.json")
+    ap.add_argument("--projects", default=P.REGISTRY)
+    ap.add_argument("--status", default=None,
+                    help="single status.json override (default: all projects)")
     ap.add_argument("--server", default=os.environ.get("FORGEJO_SERVER")
                     or os.environ.get("GITHUB_SERVER_URL"))
     ap.add_argument("--repo", default=os.environ.get("FORGEJO_REPO")
@@ -84,9 +111,8 @@ def main():
         print("missing --server/--repo/--token (or env)", file=sys.stderr)
         return 1
 
-    with open(args.status) as fh:
-        status = json.load(fh)
-    broken = broken_list(status)
+    statuses = load_statuses(args.projects, args.status)
+    broken = broken_list(statuses)
     existing = find_open_issue(args.server, args.token, args.repo)
 
     if not broken:
@@ -103,7 +129,7 @@ def main():
         return 0
 
     title = "%s (%d)" % (MARKER, len(broken))
-    body = body_text(status, broken)
+    body = body_text(statuses, broken)
     if existing:
         api(args.server, args.token, "POST",
             "/repos/%s/issues/%d/comments" % (args.repo, existing["number"]),

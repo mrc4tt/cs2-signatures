@@ -2,15 +2,17 @@
 
 [![cs2 sigs](https://img.shields.io/endpoint?url=https%3A%2F%2Fgit.miksen.me%2Fmikkel%2Fcs2-signatures%2Fraw%2Fbranch%2Fmain%2Freports%2Fbadge.json)](docs/CounterStrikeSharp.md)
 
-Tracks the [CounterStrikeSharp](https://github.com/mrc4tt/CounterStrikeSharp)
-gamedata signatures (from the **mrc4tt fork**) against live CS2 server
-binaries. Inspired by [ianlucas/cs2-signatures](https://github.com/ianlucas/cs2-signatures),
-scoped to one source and self-hosted on Forgejo.
+Tracks CS2 plugin gamedata signatures against live CS2 server binaries.
+Inspired by [ianlucas/cs2-signatures](https://github.com/ianlucas/cs2-signatures),
+self-hosted on Forgejo. Each tracked project is one CSS-format `gamedata.json`
+in some GitHub repo — listed in [`data/projects.json`](data/projects.json) —
+starting with the [CounterStrikeSharp](https://github.com/mrc4tt/CounterStrikeSharp)
+**mrc4tt fork**. Add a plugin by appending to that file (see
+[docs/DEVELOPMENT.md](docs/DEVELOPMENT.md)); no code change.
 
 On each CS2 update it re-downloads `libserver.so` + `server.dll` and scans every
-signature: which still match (unique), which broke (0 matches), which went
-ambiguous (>1 match). Full per-signature detail:
-[**docs/CounterStrikeSharp.md**](docs/CounterStrikeSharp.md).
+project's signatures: which still match (unique), which broke (0 matches), which
+went ambiguous (>1 match). Per-project detail lives in `docs/<project>.md`.
 
 <!-- STATUS:START -->
 ## Signatures
