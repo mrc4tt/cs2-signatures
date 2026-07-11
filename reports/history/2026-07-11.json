@@ -1,12 +1,12 @@
 {
-  "date": "July 11, 2026 at 13:20:00 GMT",
+  "date": "July 11, 2026 at 19:22:57 GMT",
   "tally": {
-    "ok": 60,
+    "ok": 68,
     "broken": 0,
     "ambiguous": 0,
     "no_binary": 0,
     "missing_sig": 0,
-    "offset_only": 18
+    "offset_only": 22
   },
   "manifest": {
     "2347771": "7679405674131902105",
@@ -28,6 +28,14 @@
       "no_binary": 0,
       "missing_sig": 0,
       "offset_only": 0
+    },
+    "RayTrace": {
+      "ok": 8,
+      "broken": 0,
+      "ambiguous": 0,
+      "no_binary": 0,
+      "missing_sig": 0,
+      "offset_only": 4
     }
   }
 }
