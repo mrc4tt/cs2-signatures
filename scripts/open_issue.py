@@ -34,6 +34,10 @@ def api(server, token, method, path, body=None):
     req = urllib.request.Request(url, data=data, method=method)
     req.add_header("Authorization", "token %s" % token)
     req.add_header("Content-Type", "application/json")
+    # Forgejo behind Cloudflare 403s the default urllib UA (error 1010).
+    req.add_header("User-Agent",
+                   "cs2-signatures-tracker (urllib, "
+                   "+https://git.miksen.me/mikkel/cs2-signatures)")
     try:
         with urllib.request.urlopen(req, timeout=60) as r:
             raw = r.read()

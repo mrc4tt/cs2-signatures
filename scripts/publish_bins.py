@@ -34,23 +34,30 @@ from depots import DEPOTS  # noqa: E402
 # releases someone made by hand.
 MARKER = "<!-- cs2-sig-tracker:bins -->"
 
+# Forgejo behind Cloudflare 403s the default urllib UA (error 1010) — send a
+# real UA like post_discord.py does.
+UA = "cs2-signatures-tracker (urllib, +https://git.miksen.me/mikkel/cs2-signatures)"
+
 # The four assets, resolved from the download dirs by run_all / CLI.
 ASSET_ARGS = ("linux", "linux_engine2", "windows", "windows_engine2")
 
 
-def api(server, token, method, path, body=None):
+def api(server, token, method, path, body=None, quiet=()):
+    """quiet = HTTP codes the caller handles, so we don't print them as errors."""
     url = "%s/api/v1%s" % (server.rstrip("/"), path)
     data = json.dumps(body).encode() if body is not None else None
     req = urllib.request.Request(url, data=data, method=method)
     req.add_header("Authorization", "token %s" % token)
     req.add_header("Content-Type", "application/json")
+    req.add_header("User-Agent", UA)
     try:
         with urllib.request.urlopen(req, timeout=60) as r:
             raw = r.read()
             return json.loads(raw) if raw else None
     except urllib.error.HTTPError as e:
-        print("API %s %s -> %s: %s" % (method, path, e.code, e.read()[:300]),
-              file=sys.stderr)
+        if e.code not in quiet:
+            print("API %s %s -> %s: %s" % (method, path, e.code, e.read()[:300]),
+                  file=sys.stderr)
         raise
 
 
@@ -71,23 +78,31 @@ def upload_asset(server, token, repo, release_id, path):
     req = urllib.request.Request(url, data=data, method="POST")
     req.add_header("Authorization", "token %s" % token)
     req.add_header("Content-Type", "multipart/form-data; boundary=%s" % boundary)
+    req.add_header("User-Agent", UA)
     with urllib.request.urlopen(req, timeout=300) as r:
         return r.status
 
 
-def ensure_release(server, token, repo, tag, name):
-    """Get the release for `tag`, creating it (marked) if missing."""
+def ensure_release(server, token, repo, tag, name, body):
+    """Get the release for `tag`, creating it (marked) if missing.
+
+    If it exists, refresh name/body so an added steam.inf enriches an older
+    release created before the version fields were available."""
     try:
         rel = api(server, token, "GET",
-                  "/repos/%s/releases/tags/%s" % (repo, urllib.parse.quote(tag)))
+                  "/repos/%s/releases/tags/%s" % (repo, urllib.parse.quote(tag)),
+                  quiet=(404,))
         if rel:
+            api(server, token, "PATCH",
+                "/repos/%s/releases/%d" % (repo, rel["id"]),
+                {"name": name, "body": body})
             return rel
     except urllib.error.HTTPError as e:
         if e.code != 404:
             raise
+        print("release %s not found -> creating" % tag)
     return api(server, token, "POST", "/repos/%s/releases" % repo,
-               {"tag_name": tag, "name": name,
-                "body": "%s\nCS2 server + engine2 binaries for `%s`." % (MARKER, tag)})
+               {"tag_name": tag, "name": name, "body": body})
 
 
 def replace_assets(server, token, repo, rel, paths):
@@ -121,21 +136,41 @@ def prune(server, token, repo, keep, current_tag):
         print("pruned release %s" % (tag or rid))
 
 
-def client_version(steam_inf):
+def parse_steaminf(steam_inf):
+    """steam.inf 'Key=Value' lines -> dict. {} if the file is missing."""
+    info = {}
     if steam_inf and os.path.isfile(steam_inf):
         with open(steam_inf, errors="ignore") as fh:
-            m = re.search(r"ClientVersion=(\d+)", fh.read())
+            for line in fh:
+                if "=" in line:
+                    k, v = line.split("=", 1)
+                    info[k.strip()] = v.strip()
+    return info
+
+
+def buildid(appmanifest):
+    """Steam buildid from an appmanifest_730.acf (`"buildid" "24134959"`)."""
+    if appmanifest and os.path.isfile(appmanifest):
+        with open(appmanifest, errors="ignore") as fh:
+            m = re.search(r'"buildid"\s+"(\d+)"', fh.read())
             if m:
                 return m.group(1)
     return None
 
 
-def resolve_version(args):
+def resolve_version(args, info):
+    """Tag version, most-authoritative first: --version override, else the
+    Steam buildid from appmanifest_730.acf, else the short PatchVersion
+    (1.41.6.9), else ClientVersion, else the linux manifest id."""
     if args.version:
         return args.version
-    cv = client_version(args.steam_inf)
-    if cv:
-        return cv
+    bid = buildid(args.appmanifest)
+    if bid:
+        return bid
+    if info.get("PatchVersion"):
+        return info["PatchVersion"]
+    if info.get("ClientVersion"):
+        return info["ClientVersion"]
     if os.path.isfile(args.manifest):
         with open(args.manifest) as fh:
             man = json.load(fh)
@@ -143,6 +178,38 @@ def resolve_version(args):
         if mid:
             return mid
     return args.iso or "unknown"
+
+
+def release_name(info, version):
+    """Human title so the Releases page shows the real game version."""
+    patch = info.get("PatchVersion")
+    build = info.get("ClientVersion")
+    date = info.get("VersionDate")
+    if patch:
+        title = "CS2 %s" % patch
+        if build and build != patch:
+            title += " · build %s" % build
+        if date:
+            title += " · %s" % date
+        return title
+    return "CS2 binaries %s" % version
+
+
+def release_body(info, version):
+    lines = [MARKER,
+             "CS2 dedicated-server binaries (`libserver.so`, `libengine2.so`, "
+             "`server.dll`, `engine2.dll`) the signatures were validated "
+             "against.", ""]
+    if info:
+        lines.append("| Field | Value |")
+        lines.append("| --- | --- |")
+        for k in ("BuildID", "PatchVersion", "ClientVersion", "ServerVersion",
+                  "SourceRevision", "VersionDate", "VersionTime"):
+            if info.get(k):
+                lines.append("| %s | `%s` |" % (k, info[k]))
+    else:
+        lines.append("Version: `%s`" % version)
+    return "\n".join(lines)
 
 
 def main():
@@ -153,7 +220,10 @@ def main():
     ap.add_argument("--windows-engine2", dest="windows_engine2", help="engine2.dll")
     ap.add_argument("--version", default=None, help="release tag override")
     ap.add_argument("--steam-inf", default="bin_linux/game/csgo/steam.inf",
-                    help="steam.inf to read CS2 ClientVersion from")
+                    help="steam.inf to read PatchVersion/ClientVersion from")
+    ap.add_argument("--appmanifest", default=os.environ.get("APPMANIFEST"),
+                    help="path to a steamcmd appmanifest_730.acf; its buildid "
+                         "becomes the release tag when present")
     ap.add_argument("--manifest", default="data/manifest.json")
     ap.add_argument("--iso", default=None, help="date fallback for the tag")
     ap.add_argument("--keep", type=int, default=2,
@@ -175,13 +245,19 @@ def main():
         print("no binary files found to upload", file=sys.stderr)
         return 1
 
-    version = resolve_version(args)
+    info = parse_steaminf(args.steam_inf)
+    bid = buildid(args.appmanifest)
+    if bid:
+        info["BuildID"] = bid  # surface in the release body table too
+    version = resolve_version(args, info)
     tag = "bins-%s" % version
     rel = ensure_release(args.server, args.token, args.repo, tag,
-                         "CS2 binaries %s" % version)
+                         release_name(info, version),
+                         release_body(info, version))
     replace_assets(args.server, args.token, args.repo, rel, paths)
     prune(args.server, args.token, args.repo, args.keep, tag)
-    print("published %d assets to release %s" % (len(paths), tag))
+    print("published %d assets to release %s (%s)"
+          % (len(paths), tag, release_name(info, version)))
     return 0
 
 

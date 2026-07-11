@@ -18,6 +18,7 @@ ROOT="$(cd "$HERE/.." && pwd)"
 APP=730
 DEPOT_WIN=2347771
 DEPOT_LINUX=2347773
+DEPOT_CONTENT=2347770   # game content depot — holds game/csgo/steam.inf (version)
 
 auth=()
 if [ -n "${STEAM_USER:-}" ]; then
@@ -33,6 +34,13 @@ echo ">> windows depot $DEPOT_WIN"
 "$DD" -app "$APP" -depot "$DEPOT_WIN" \
   -filelist "$HERE/filelist_windows.txt" \
   -dir "$ROOT/bin_win" "${auth[@]}"
+
+# steam.inf (a few KB) from the content depot -> ClientVersion for release tags.
+# Non-fatal: if it fails, publish_bins falls back to the manifest id.
+echo ">> content depot $DEPOT_CONTENT (steam.inf)"
+"$DD" -app "$APP" -depot "$DEPOT_CONTENT" \
+  -filelist "$HERE/filelist_steaminf.txt" \
+  -dir "$ROOT/bin_linux" "${auth[@]}" || echo "WARN: steam.inf fetch failed"
 
 # Emit resolved paths for the caller (server is what the sigs target).
 echo "LINUX_SO=$(find "$ROOT/bin_linux" -name 'libserver.so' | head -1 || true)"
