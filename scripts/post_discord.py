@@ -415,10 +415,10 @@ def main():
                     help="render payload to stdout, do not send")
     ap.add_argument("--example", action="store_true",
                     help="use synthetic data (for --preview, or a live test post)")
-    ap.add_argument("--detailed", action="store_true",
-                    help="per-signature report instead of the summary")
+    ap.add_argument("--summary", action="store_true",
+                    help="compact summary card instead of the per-signature report")
     ap.add_argument("--separate", action="store_true",
-                    help="with --detailed: one embed card per project")
+                    help="one per-signature card per project")
     args = ap.parse_args()
 
     if args.example:
@@ -433,15 +433,15 @@ def main():
     if not statuses:
         print("no project statuses found — nothing to post", file=sys.stderr)
         return 1
-    if args.detailed and args.separate:
+    if args.summary:
+        embeds = [build_summary_embed(statuses, version, ts, args.projects)]
+    elif args.separate:
         embeds = [build_project_embed(pid, display_name(pid, args.projects),
                                       status, version, ts, width)
                   for pid, status in statuses]
-    elif args.detailed:
+    else:
         embeds = [build_combined_embed(statuses, version, ts, width,
                                        args.projects)]
-    else:
-        embeds = [build_summary_embed(statuses, version, ts, args.projects)]
 
     # Ping only when something needs attention. Mention must live in top-level
     # `content` (embeds never trigger notifications), and allowed_mentions must
