@@ -14,5 +14,13 @@
     "branch": "main",
     "path": "Resources/RetakesAllocator_gamedata.json",
     "private": false
+  },
+  {
+    "id": "RayTrace",
+    "name": "Ray-Trace",
+    "repo": "mrc4tt/Ray-Trace",
+    "branch": "main",
+    "path": "configs/addons/RayTrace/gamedata.json",
+    "private": false
   }
 ]
