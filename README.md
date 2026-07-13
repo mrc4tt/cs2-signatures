@@ -29,10 +29,10 @@ self-hosted on Forgejo.
 <!-- STATUS:START -->
 ## Signatures
 
-* **Last updated:** July 11, 2026 at 19:30:01 GMT
+* **Last updated:** July 13, 2026 at 17:15:01 GMT
 * **Manifests:** [7679405674131902105](https://steamdb.info/depot/2347771/history/?changeid=M:7679405674131902105), [5502194087696430282](https://steamdb.info/depot/2347773/history/?changeid=M:5502194087696430282)
 * **Tracked projects:** 3
-* **Validated:** 68 ok, 0 ambiguous, 0 broken (0 not-yet-validated)
+* **Validated:** 72 ok, 0 ambiguous, 0 broken (0 not-yet-validated)
 
 <table>
 <tr><th>Status</th><th>Linux</th><th>Windows</th><th>Project</th><th></th></tr>
