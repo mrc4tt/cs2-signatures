@@ -6,7 +6,7 @@ still want them downloadable. Each CS2 update this attaches the four files to a
 release tagged by the CS2 patch version, so users can grab the exact `.so`/`.dll`
 that a signature set was validated against — without bloating git history.
 
-    libserver.so  libengine2.so  server.dll  engine2.dll  ->  release <version>
+    libserver.so  libengine2.so  libclient.so  server.dll  engine2.dll  ->  release <version>
 
 Retention: keep only the newest --keep releases that WE manage (marked in the
 release body); older managed releases + their tags are deleted. Unrelated
@@ -38,8 +38,9 @@ MARKER = "<!-- cs2-sig-tracker:bins -->"
 # real UA like post_discord.py does.
 UA = "cs2-signatures-tracker (urllib, +https://git.miksen.me/mikkel/cs2-signatures)"
 
-# The four assets, resolved from the download dirs by run_all / CLI.
-ASSET_ARGS = ("linux", "linux_engine2", "windows", "windows_engine2")
+# The assets, resolved from the download dirs by run_all / CLI. libclient.so is
+# linux-only (no windows client.dll counterpart tracked).
+ASSET_ARGS = ("linux", "linux_engine2", "linux_client", "windows", "windows_engine2")
 
 
 def api(server, token, method, path, body=None, quiet=()):
@@ -197,9 +198,9 @@ def release_name(info, version):
 
 def release_body(info, version):
     lines = [MARKER,
-             "CS2 dedicated-server binaries (`libserver.so`, `libengine2.so`, "
-             "`server.dll`, `engine2.dll`) the signatures were validated "
-             "against.", ""]
+             "CS2 server + client binaries (`libserver.so`, `libengine2.so`, "
+             "`libclient.so`, `server.dll`, `engine2.dll`) the signatures were "
+             "validated against.", ""]
     if info:
         lines.append("| Field | Value |")
         lines.append("| --- | --- |")
@@ -218,6 +219,7 @@ def main():
     ap.add_argument("--linux-engine2", dest="linux_engine2", help="libengine2.so")
     ap.add_argument("--windows", help="server.dll path")
     ap.add_argument("--windows-engine2", dest="windows_engine2", help="engine2.dll")
+    ap.add_argument("--linux-client", dest="linux_client", help="libclient.so")
     ap.add_argument("--version", default=None, help="release tag override")
     ap.add_argument("--steam-inf", default="bin_linux/game/csgo/steam.inf",
                     help="steam.inf to read PatchVersion/ClientVersion from")

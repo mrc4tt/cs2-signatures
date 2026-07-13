@@ -26,7 +26,7 @@ set -e
 
 # 3. Binaries (anonymous; set STEAM_USER/STEAM_PASS only if needed). Shared by
 #    all projects — the game binaries are the same regardless of plugin.
-eval "$(bash scripts/download_bins.sh | grep -E '^(LINUX_SO|LINUX_ENGINE2|WIN_DLL|WIN_ENGINE2)=')"
+eval "$(bash scripts/download_bins.sh | grep -E '^(LINUX_SO|LINUX_ENGINE2|LINUX_CLIENT|WIN_DLL|WIN_ENGINE2)=')"
 
 # 4. Validate every project against the shared binaries -> reports/<id>/status.json.
 set +e
@@ -97,6 +97,7 @@ if [ -n "${FORGEJO_TOKEN:-}" ] && [ "$UPD" -eq 10 ]; then
   python3 scripts/publish_bins.py \
     --linux "${LINUX_SO:-}" --windows "${WIN_DLL:-}" \
     --linux-engine2 "${LINUX_ENGINE2:-}" --windows-engine2 "${WIN_ENGINE2:-}" \
+    --linux-client "${LINUX_CLIENT:-}" \
     --keep "${BINS_KEEP:-2}" --iso "$ISO" || true
 elif [ -n "${FORGEJO_TOKEN:-}" ]; then
   echo "no game update (UPD=$UPD) — skipping binary release"

@@ -3,7 +3,7 @@
 # exact per-OS depots + a filelist so it pulls a few MB, not the ~40 GB install.
 #
 #   depot 2347771  windows  -> server.dll, engine2.dll
-#   depot 2347773  linux    -> libserver.so, libengine2.so
+#   depot 2347773  linux    -> libserver.so, libengine2.so, libclient.so
 #
 # These depots are downloadable ANONYMOUSLY — no Steam login required. If your
 # setup needs a login, export STEAM_USER/STEAM_PASS and they'll be used.
@@ -45,5 +45,6 @@ echo ">> content depot $DEPOT_CONTENT (steam.inf)"
 # Emit resolved paths for the caller (server is what the sigs target).
 echo "LINUX_SO=$(find "$ROOT/bin_linux" -name 'libserver.so' | head -1 || true)"
 echo "LINUX_ENGINE2=$(find "$ROOT/bin_linux" -name 'libengine2.so' | head -1 || true)"
+echo "LINUX_CLIENT=$(find "$ROOT/bin_linux" -name 'libclient.so' | head -1 || true)"
 echo "WIN_DLL=$(find "$ROOT/bin_win" -name 'server.dll' | head -1 || true)"
 echo "WIN_ENGINE2=$(find "$ROOT/bin_win" -name 'engine2.dll' | head -1 || true)"
