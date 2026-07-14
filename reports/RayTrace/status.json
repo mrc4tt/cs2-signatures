@@ -6,10 +6,10 @@
   },
   "gamedata_source": "mikkel/Ray-Trace configs/addons/RayTrace/gamedata.json",
   "tally": {
-    "ok": 0,
+    "ok": 8,
     "broken": 0,
     "ambiguous": 0,
-    "no_binary": 8,
+    "no_binary": 0,
     "missing_sig": 0,
     "offset_only": 4
   },
@@ -20,14 +20,14 @@
       "library": "server",
       "platforms": {
         "linux": {
-          "status": "no_binary",
-          "matches": null,
+          "status": "ok",
+          "matches": 1,
           "library": "server",
           "sig": "48 8D 05 ? ? ? ? 55 48 89 FA"
         },
         "windows": {
-          "status": "no_binary",
-          "matches": null,
+          "status": "ok",
+          "matches": 1,
           "library": "server",
           "sig": "48 83 EC 48 C6 44 24 30 00"
         }
@@ -39,14 +39,14 @@
       "library": "server",
       "platforms": {
         "linux": {
-          "status": "no_binary",
-          "matches": null,
+          "status": "ok",
+          "matches": 1,
           "library": "server",
           "sig": "48 85 FF 74 ? 55 48 89 E5 41 55 41 54 49 89 FC"
         },
         "windows": {
-          "status": "no_binary",
-          "matches": null,
+          "status": "ok",
+          "matches": 1,
           "library": "server",
           "sig": "48 89 5C 24 10 57 48 83 EC 30 48 8B DA 48 8B F9 48 85 C9"
         }
@@ -58,14 +58,14 @@
       "library": "server",
       "platforms": {
         "linux": {
-          "status": "no_binary",
-          "matches": null,
+          "status": "ok",
+          "matches": 1,
           "library": "server",
           "sig": "55 48 89 E5 41 56 49 89 FE 41 55 48 8D 7D"
         },
         "windows": {
-          "status": "no_binary",
-          "matches": null,
+          "status": "ok",
+          "matches": 1,
           "library": "server",
           "sig": "48 89 5C 24 ? 48 89 74 24 ? 57 48 83 EC ? 49 8B F0 48 8B D9 48 8B 0D"
         }
@@ -77,14 +77,14 @@
       "library": "server",
       "platforms": {
         "linux": {
-          "status": "no_binary",
-          "matches": null,
+          "status": "ok",
+          "matches": 1,
           "library": "server",
           "sig": "55 48 89 E5 41 55 49 89 CD 41 54 49 89 FC 53 BB"
         },
         "windows": {
-          "status": "no_binary",
-          "matches": null,
+          "status": "ok",
+          "matches": 1,
           "library": "server",
           "sig": "48 89 5C 24 18 4C 89 4C 24 20 48 89 4C 24 08 55 56 57 41 54 41 55 41 56 41 57 48 83 EC 20"
         }

@@ -1,10 +1,10 @@
 {
-  "date": "July 14, 2026 at 03:15:01 GMT",
+  "date": "July 14, 2026 at 03:30:01 GMT",
   "tally": {
-    "ok": 0,
+    "ok": 72,
     "broken": 0,
     "ambiguous": 0,
-    "no_binary": 72,
+    "no_binary": 0,
     "missing_sig": 0,
     "offset_only": 22
   },
@@ -14,26 +14,26 @@
   },
   "projects": {
     "CounterStrikeSharp": {
-      "ok": 0,
+      "ok": 58,
       "broken": 0,
       "ambiguous": 0,
-      "no_binary": 58,
+      "no_binary": 0,
       "missing_sig": 0,
       "offset_only": 18
     },
     "RetakesAllocator": {
-      "ok": 0,
+      "ok": 6,
       "broken": 0,
       "ambiguous": 0,
-      "no_binary": 6,
+      "no_binary": 0,
       "missing_sig": 0,
       "offset_only": 0
     },
     "RayTrace": {
-      "ok": 0,
+      "ok": 8,
       "broken": 0,
       "ambiguous": 0,
-      "no_binary": 8,
+      "no_binary": 0,
       "missing_sig": 0,
       "offset_only": 4
     }
