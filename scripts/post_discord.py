@@ -287,7 +287,7 @@ def build_combined_embed(statuses, version, ts, width, projects_path):
         fields.append({"name": "Manifests", "value": links, "inline": False})
 
     embed = {
-        "title": "Signature Tracking Report — %s" % (version or "unknown"),
+        "title": "Signature Tracking Report - %s" % (version or "unknown"),
         "color": overall_color(statuses),
         "description": desc,
         "fields": fields,
@@ -338,7 +338,7 @@ def build_project_embed(pid, name, status, version, ts, width):
 
     embed = {
         "author": {"name": name},
-        "title": "Signature Tracking Report — %s" % (version or "unknown"),
+        "title": "Signature Tracking Report - %s" % (version or "unknown"),
         "color": color,
         "description": clamp_desc(sig_rows(entries, width)),
         "fields": fields,
