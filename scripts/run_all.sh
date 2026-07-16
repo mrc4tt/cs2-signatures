@@ -28,6 +28,15 @@ set -e
 #    all projects — the game binaries are the same regardless of plugin.
 eval "$(bash scripts/download_bins.sh | grep -E '^(LINUX_SO|LINUX_ENGINE2|LINUX_CLIENT|WIN_DLL|WIN_ENGINE2)=')"
 
+# The eval|grep above swallows a download_bins.sh failure (command substitution
+# exit status is lost), so check the result explicitly. Without binaries,
+# validation would mark every sig no_binary and step 5 would commit + post that
+# as a "change". Abort instead — the next cron tick retries in 15 minutes.
+if [ -z "${LINUX_SO:-}" ] || [ -z "${WIN_DLL:-}" ]; then
+  echo "binary download failed (LINUX_SO='${LINUX_SO:-}', WIN_DLL='${WIN_DLL:-}') — aborting before validate/commit/post"
+  exit 1
+fi
+
 # 4. Validate every project against the shared binaries -> reports/<id>/status.json.
 set +e
 python3 scripts/validate_sigs.py \
