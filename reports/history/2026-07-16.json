@@ -1,5 +1,5 @@
 {
-  "date": "July 16, 2026 at 10:00:01 GMT",
+  "date": "July 16, 2026 at 10:55:49 GMT",
   "tally": {
     "ok": 82,
     "broken": 0,
@@ -14,7 +14,7 @@
   },
   "projects": {
     "CounterStrikeSharp": {
-      "ok": 68,
+      "ok": 58,
       "broken": 0,
       "ambiguous": 0,
       "no_binary": 0,
@@ -36,6 +36,14 @@
       "no_binary": 0,
       "missing_sig": 0,
       "offset_only": 4
+    },
+    "MatchZy": {
+      "ok": 10,
+      "broken": 0,
+      "ambiguous": 0,
+      "no_binary": 0,
+      "missing_sig": 0,
+      "offset_only": 0
     }
   }
 }
