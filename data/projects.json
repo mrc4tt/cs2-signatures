@@ -23,5 +23,14 @@
     "branch": "main",
     "path": "configs/addons/RayTrace/gamedata.json",
     "private": false
+  },
+  {
+    "id": "MatchZy",
+    "name": "MatchZy",
+    "repo": "mikkel/matchzy",
+    "host": "git.miksen.me",
+    "branch": "main",
+    "path": "gamedata/matchzy.json",
+    "private": true
   }
 ]
