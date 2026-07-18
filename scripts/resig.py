@@ -34,6 +34,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from lib_sig import sig_to_regex, exec_sections  # noqa: E402
+from lib_x86 import wildcard_mask  # noqa: E402
 
 WINDOW = 256        # bytes of function context taken from the old binary
 ANCHOR_LEN = 12     # length of exact-match seeds searched in the new binary
@@ -103,15 +104,14 @@ def map_window(window, new_sections):
 
 
 def build_candidate(old_window, new_sections, sec_idx, off):
-    """Candidate sig at the mapped location: literal where old==new bytes
-    agree, wildcard where they drifted, grown until unique in the new build."""
+    """Candidate sig at the mapped location, grown until unique in the new
+    build. Wildcards are instruction-aware (lib_x86): whole drifted operand
+    fields plus always-volatile rel32/RIP-relative fields, so the candidate
+    survives the next relink instead of breaking on the first moved address."""
     new_window = window_at(new_sections, sec_idx, off, MAX_SIG)
-    toks = []
-    for i, nb in enumerate(new_window):
-        if i < len(old_window) and old_window[i] == nb:
-            toks.append("%02X" % nb)
-        else:
-            toks.append("?")
+    mask = wildcard_mask(new_window, old_window)
+    toks = ["?" if mask[i] else "%02X" % nb
+            for i, nb in enumerate(new_window)]
     if not toks or toks[0] == "?":
         return None  # prologue itself changed; too weak to anchor a sig
 
