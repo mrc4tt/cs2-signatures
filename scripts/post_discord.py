@@ -25,6 +25,7 @@ import re
 import sys
 import urllib.error
 import urllib.request
+import uuid
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import projects as P  # noqa: E402
@@ -421,12 +422,41 @@ def display_name(pid, projects_path):
     return pid
 
 
-def post(webhook, payload):
-    data = json.dumps(payload).encode()
-    req = urllib.request.Request(webhook, data=data, method="POST")
-    req.add_header("Content-Type", "application/json")
+UA = ("cs2-signatures-tracker (urllib, "
+      "+https://git.miksen.me/mikkel/cs2-signatures)")
+
+
+def post(webhook, payload, files=None):
+    """POST a webhook message. With `files` ([(filename, bytes), ...]) the
+    payload is sent as multipart/form-data with attachments; otherwise plain
+    JSON. Discord allows up to 10 files per message."""
+    if files:
+        boundary = "----cs2sigtracker%s" % uuid.uuid4().hex
+        body = bytearray()
+
+        def part(headers, content):
+            body.extend(b"--%s\r\n" % boundary.encode())
+            body.extend(("\r\n".join(headers) + "\r\n\r\n").encode())
+            body.extend(content)
+            body.extend(b"\r\n")
+
+        part(['Content-Disposition: form-data; name="payload_json"',
+              "Content-Type: application/json"],
+             json.dumps(payload).encode())
+        for i, (fname, data) in enumerate(files[:10]):
+            part(['Content-Disposition: form-data; name="files[%d]"; '
+                  'filename="%s"' % (i, fname),
+                  "Content-Type: application/json"], data)
+        body.extend(b"--%s--\r\n" % boundary.encode())
+        req = urllib.request.Request(webhook, data=bytes(body), method="POST")
+        req.add_header("Content-Type",
+                       "multipart/form-data; boundary=%s" % boundary)
+    else:
+        req = urllib.request.Request(webhook, data=json.dumps(payload).encode(),
+                                     method="POST")
+        req.add_header("Content-Type", "application/json")
     # Discord's Cloudflare edge 403s the default urllib UA (error 1010).
-    req.add_header("User-Agent", "cs2-signatures-tracker (urllib, +https://git.miksen.me/mikkel/cs2-signatures)")
+    req.add_header("User-Agent", UA)
     try:
         with urllib.request.urlopen(req, timeout=60) as r:
             return r.status
@@ -434,6 +464,23 @@ def post(webhook, payload):
         print("webhook POST -> %s: %s" % (e.code, e.read()[:300]),
               file=sys.stderr)
         raise
+
+
+def proposed_files(projects_path):
+    """[(attachment_name, bytes), ...] of patched gamedata files written by
+    propose_sigs.py — drop-in gamedata with candidate sigs applied."""
+    out = []
+    try:
+        projects = P.load(projects_path)
+    except Exception:  # noqa: BLE001 — attachments are optional decoration
+        return out
+    for proj in projects:
+        path = P.proposed_gamedata_path(proj)
+        if os.path.isfile(path):
+            with open(path, "rb") as fh:
+                out.append(("%s-gamedata-proposed.json" % proj["id"],
+                            fh.read()))
+    return out
 
 
 def now_iso():
@@ -505,25 +552,43 @@ def main():
         else:
             content, allowed = "<@%s>" % m, {"users": [m]}
 
+    # Patched gamedata files (candidate sigs applied) ride the first message.
+    # Unique-match verified, NOT runtime-tested — say so in the message.
+    files = [] if args.example else proposed_files(args.projects)
+    if files:
+        warn = ("⚠️ Auto-generated gamedata with proposed replacement "
+                "signatures attached — unique-match verified, not "
+                "runtime-tested. Review before use.")
+        content = "%s\n%s" % (content, warn) if content else warn
+
     if args.preview:
         payload = {"username": args.username, "embeds": embeds}
         if content:
-            payload["content"], payload["allowed_mentions"] = content, allowed
+            payload["content"] = content
+            if allowed:
+                payload["allowed_mentions"] = allowed
         print(json.dumps(payload, indent=2, ensure_ascii=False))
+        for fname, data in files:
+            print("attachment: %s (%d bytes)" % (fname, len(data)),
+                  file=sys.stderr)
         return 0
 
     if not args.webhook:
         print("missing --webhook (or DISCORD_WEBHOOK env)", file=sys.stderr)
         return 1
 
-    # Discord caps embeds per message; batch into chunks. Ping rides the first.
+    # Discord caps embeds per message; batch into chunks. Ping + attachments
+    # ride the first message.
     for start in range(0, len(embeds), EMBEDS_PER_MSG):
         chunk = embeds[start:start + EMBEDS_PER_MSG]
         payload = {"username": args.username, "embeds": chunk}
         if start == 0 and content:
-            payload["content"], payload["allowed_mentions"] = content, allowed
-        post(args.webhook, payload)
-    print("posted %d embed(s) to discord" % len(embeds))
+            payload["content"] = content
+            if allowed:
+                payload["allowed_mentions"] = allowed
+        post(args.webhook, payload, files=files if start == 0 else None)
+    print("posted %d embed(s), %d attachment(s) to discord"
+          % (len(embeds), len(files)))
     return 0
 
 
