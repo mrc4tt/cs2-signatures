@@ -14,18 +14,32 @@ import struct
 WILDCARD_TOKENS = ("?", "??", "*", "2A", "2a")
 
 
+def sig_tokens(sig):
+    """Split a sig string into hex/wildcard tokens, accepting both styles.
+
+    Space style:  '48 89 ? ? E8'          (CSS windows sigs, IDA-style 2A)
+    Escape style: '\\x48\\x89\\x2A\\xE8'  (CSS linux sigs; \\x2A = wildcard)
+    Mixed spacing in escape style is tolerated.
+    """
+    sig = sig.strip()
+    if "\\x" in sig:
+        return [t for t in sig.replace(" ", "").split("\\x") if t]
+    return sig.split()
+
+
 def sig_to_regex(sig):
     """CSS sig string -> compiled bytes regex.
 
     '48 89 ? ? E8' -> re.compile(b'\\x48\\x89..\\xe8', re.S)
-    Accepts '?' wildcards (CSS style) and raw 0x2A wildcards (IDA style).
+    Accepts '?' wildcards (CSS style), raw 0x2A wildcards (IDA style) and
+    \\x-escaped sigs where \\x2A is the wildcard.
     """
     out = []
-    for tok in sig.split():
+    for tok in sig_tokens(sig):
         tok = tok.strip()
         if not tok:
             continue
-        if tok in WILDCARD_TOKENS or tok == "\\x2A":
+        if tok in WILDCARD_TOKENS:
             out.append(b".")
         else:
             out.append(re.escape(bytes([int(tok, 16)])))
