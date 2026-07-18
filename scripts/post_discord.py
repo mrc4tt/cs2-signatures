@@ -159,6 +159,29 @@ def bar(ok, total, n=10):
     return "█" * filled + "░" * (n - filled)
 
 
+def load_proposal_keys(projects_path):
+    """{(project_id, name, platform), ...} of broken sigs that have a
+    replacement candidate in proposals.json (written by propose_sigs.py)."""
+    out = set()
+    try:
+        projects = P.load(projects_path)
+    except Exception:  # noqa: BLE001 — proposals are optional decoration
+        return out
+    for proj in projects:
+        path = P.proposals_path(proj)
+        if not os.path.isfile(path):
+            continue
+        try:
+            with open(path) as fh:
+                data = json.load(fh)
+        except (OSError, ValueError):
+            continue
+        for pr in data.get("proposals", []):
+            if pr.get("candidate"):
+                out.add((proj["id"], pr["name"], pr["platform"]))
+    return out
+
+
 def sum_tallies(statuses):
     t = {}
     for _, s in statuses:
@@ -210,9 +233,12 @@ def build_summary_embed(statuses, version, ts, projects_path):
 
     issues = issue_list(statuses)
     if issues:
-        rows = ["%s `%s` · %s (%s)"
-                % (circle(st), n, plat, "broken" if st == "broken" else "ambiguous")
-                for _, n, plat, st in
+        props = load_proposal_keys(projects_path)
+        rows = ["%s `%s` · %s (%s)%s"
+                % (circle(st), n, plat,
+                   "broken" if st == "broken" else "ambiguous",
+                   " · 🔧 fix proposed" if (pid, n, plat) in props else "")
+                for pid, n, plat, st in
                 sorted(issues, key=lambda x: (x[3] != "broken", x[0], x[1]))]
         shown = rows[:15]
         if len(rows) > 15:

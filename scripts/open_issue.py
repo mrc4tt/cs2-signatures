@@ -77,13 +77,45 @@ def broken_list(statuses):
     return out
 
 
-def body_text(statuses, broken):
+def load_proposals(projects_path):
+    """{(project_id, "name (plat)"): candidate_sig} from proposals.json files
+    written by propose_sigs.py. Empty dict when none exist."""
+    out = {}
+    try:
+        projects = P.load(projects_path)
+    except Exception:  # noqa: BLE001 — proposals are optional decoration
+        return out
+    for proj in projects:
+        path = P.proposals_path(proj)
+        if not os.path.isfile(path):
+            continue
+        try:
+            with open(path) as fh:
+                data = json.load(fh)
+        except (OSError, ValueError):
+            continue
+        for pr in data.get("proposals", []):
+            if pr.get("candidate"):
+                key = (proj["id"], "%s (%s)" % (pr["name"], pr["platform"]))
+                out[key] = pr["candidate"]
+    return out
+
+
+def body_text(statuses, broken, proposals=None):
     manifest = next((s.get("manifest") for _, s in statuses if s.get("manifest")),
                     None)
+    proposals = proposals or {}
     lines = ["%s" % MARKER, "",
              "Manifest / buildid: `%s`" % (manifest or "unknown"),
              "", "**Broken (%d):**" % len(broken), ""]
     lines += ["- `[%s] %s`" % (pid, b) for pid, b in broken]
+    proposed = [(pid, b) for pid, b in broken if (pid, b) in proposals]
+    if proposed:
+        lines += ["", "**Proposed replacements** (diffed against the previous "
+                  "build — verify `matches == 1` before PRing upstream):", ""]
+        for pid, b in proposed:
+            lines += ["- `[%s] %s`" % (pid, b),
+                      "  ```", "  %s" % proposals[(pid, b)], "  ```"]
     lines += ["", "Regenerate the affected project's gamedata with the Ghidra "
               "toolbox and PR its repo. See `docs/<project>.md` for the full "
               "per-signature table."]
@@ -133,7 +165,7 @@ def main():
         return 0
 
     title = "%s (%d)" % (MARKER, len(broken))
-    body = body_text(statuses, broken)
+    body = body_text(statuses, broken, load_proposals(args.projects))
     if existing:
         api(args.server, args.token, "POST",
             "/repos/%s/issues/%d/comments" % (args.repo, existing["number"]),

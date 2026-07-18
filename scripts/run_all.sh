@@ -24,6 +24,22 @@ python3 scripts/fetch_gamedata.py
 [ $? -ne 0 ] && echo "WARN: gamedata fetch failed for a project — using existing snapshot"
 set -e
 
+# 2.5 Game updated -> the binaries on disk are still the PREVIOUS build.
+#     Snapshot them (git-ignored bin_prev/) before step 3 overwrites them, so
+#     propose_sigs.py can diff old vs new when a signature breaks.
+if [ "$UPD" -eq 10 ]; then
+  mkdir -p "$ROOT/bin_prev"
+  for n in libserver.so libengine2.so; do
+    src="$(find "$ROOT/bin_linux" -name "$n" 2>/dev/null | head -1 || true)"
+    [ -n "$src" ] && cp -f "$src" "$ROOT/bin_prev/$n"
+  done
+  for n in server.dll engine2.dll; do
+    src="$(find "$ROOT/bin_win" -name "$n" 2>/dev/null | head -1 || true)"
+    [ -n "$src" ] && cp -f "$src" "$ROOT/bin_prev/$n"
+  done
+  echo "snapshotted previous build to bin_prev/"
+fi
+
 # 3. Binaries (anonymous; set STEAM_USER/STEAM_PASS only if needed). Shared by
 #    all projects — the game binaries are the same regardless of plugin.
 eval "$(bash scripts/download_bins.sh | grep -E '^(LINUX_SO|LINUX_ENGINE2|LINUX_CLIENT|WIN_DLL|WIN_ENGINE2)=')"
@@ -45,6 +61,18 @@ python3 scripts/validate_sigs.py \
   --manifest data/manifest.json
 VAL=$?
 set -e
+
+# 4.5 Anything broken? Try to propose replacement sigs by diffing the previous
+#     build (bin_prev/, step 2.5) against the new one. Advisory only — writes
+#     reports/<id>/proposals.json for the issue/Discord steps, never edits
+#     gamedata. Also removes stale proposals once sigs pass again.
+if [ "$VAL" -ne 0 ] || ls reports/*/proposals.json >/dev/null 2>&1; then
+  python3 scripts/propose_sigs.py \
+    --old-dir "$ROOT/bin_prev" \
+    --linux "${LINUX_SO:-}" --windows "${WIN_DLL:-}" \
+    --linux-engine2 "${LINUX_ENGINE2:-}" --windows-engine2 "${WIN_ENGINE2:-}" \
+    || true
+fi
 
 # 5. Did anything MEANINGFUL change? Each status.json holds manifest + statuses
 #    + sig strings but NO timestamp, so it only differs on a real change. Diff

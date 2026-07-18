@@ -1,6 +1,7 @@
 # Never commit game binaries (copyright + size).
 bin_linux/
 bin_win/
+bin_prev/
 *.so
 *.dll
 # DepotDownloader session cache + manifest/depot staging dir.
