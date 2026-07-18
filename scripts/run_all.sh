@@ -154,6 +154,13 @@ if [ -n "${FORGEJO_TOKEN:-}" ]; then
   python3 scripts/open_issue.py || true
 fi
 
+# 7.5 Optional: draft PR with the patched gamedata against each project repo
+#     that opts in via "propose_pr": true (needs a push-capable token). Stable
+#     branch -> re-runs update the same PR. Human reviews and merges.
+if ls reports/*/proposals.json >/dev/null 2>&1; then
+  python3 scripts/open_pr.py || true
+fi
+
 # 8. Optional Discord webhook post, across all projects (needs DISCORD_WEBHOOK).
 #    Only runs on a real change (past the CHANGED gate). Preview locally with:
 #    python3 scripts/post_discord.py --preview [--example]

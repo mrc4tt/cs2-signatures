@@ -5,7 +5,8 @@
     "repo": "mrc4tt/CounterStrikeSharp",
     "branch": "main",
     "path": "configs/addons/counterstrikesharp/gamedata/gamedata.json",
-    "private": true
+    "private": true,
+    "propose_pr": true
   },
   {
     "id": "RetakesAllocator",
@@ -13,7 +14,8 @@
     "repo": "mrc4tt/cs2-retakes-allocator",
     "branch": "main",
     "path": "Resources/RetakesAllocator_gamedata.json",
-    "private": false
+    "private": false,
+    "propose_pr": true
   },
   {
     "id": "RayTrace",
@@ -22,7 +24,8 @@
     "host": "git.miksen.me",
     "branch": "main",
     "path": "configs/addons/RayTrace/gamedata.json",
-    "private": false
+    "private": false,
+    "propose_pr": true
   },
   {
     "id": "MatchZy",
@@ -31,6 +34,7 @@
     "host": "git.miksen.me",
     "branch": "main",
     "path": "gamedata/matchzy.json",
-    "private": true
+    "private": true,
+    "propose_pr": true
   }
 ]
