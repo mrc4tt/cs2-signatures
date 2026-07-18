@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
-"""Propose replacement signatures for broken entries by diffing builds.
+"""Propose replacement signatures for broken/ambiguous entries by diffing
+builds.
 
 Runs after validate_sigs.py. For every project whose status.json lists a
-`broken` platform entry, re-locate the function in the previous build
+`broken` platform entry (sig vanished) or an `ambiguous` one (sig matches
+more than once — proposal = the same function's sig extended until unique
+again), re-locate the function in the previous build
 (bin_prev/, snapshotted by run_all.sh before a game update overwrites the
 binaries) and emit a candidate signature for the new build via resig.
 
@@ -49,14 +52,17 @@ class BinCache:
                           self.new_paths.get((plat, library)))
 
 
-def broken_entries(status):
-    """[(name, platform, library, sig), ...] for broken entries with a sig."""
+def problem_entries(status):
+    """[(name, platform, library, sig, reason), ...] for entries needing a
+    proposal: broken (sig gone) and ambiguous (sig matches more than once —
+    still resolvable via the old build, where the intended function matched
+    uniquely, so we can extend the sig until it is unique again)."""
     out = []
     for r in status.get("results", []):
         for plat, info in r.get("platforms", {}).items():
-            if info.get("status") == "broken" and info.get("sig"):
+            if info.get("status") in ("broken", "ambiguous") and info.get("sig"):
                 out.append((r["name"], plat, info.get("library", "server"),
-                            info["sig"]))
+                            info["sig"], info["status"]))
     return out
 
 
@@ -93,21 +99,22 @@ def propose_project(proj, bins):
     with open(spath) as fh:
         status = json.load(fh)
 
-    broken = broken_entries(status)
-    if not broken:
+    problems = problem_entries(status)
+    if not problems:
         removed = False
         for stale in (ppath, P.proposed_gamedata_path(proj)):
             if os.path.isfile(stale):
                 os.remove(stale)
                 removed = True
         if removed:
-            print("[%s] nothing broken — removed stale proposals" % proj["id"])
+            print("[%s] nothing broken/ambiguous — removed stale proposals"
+                  % proj["id"])
         return 0
 
     proposals = []
-    for name, plat, library, sig in broken:
+    for name, plat, library, sig, reason in problems:
         entry = {"name": name, "platform": plat, "library": library,
-                 "old_sig": sig}
+                 "reason": reason, "old_sig": sig}
         old_secs = bins.old(plat, library)
         new_secs = bins.new(plat, library)
         if old_secs is None:
