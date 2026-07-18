@@ -6,6 +6,15 @@ HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ROOT="$(cd "$HERE/.." && pwd)"
 cd "$ROOT"
 
+# Load repo env (DEPOTDOWNLOADER, tokens, GIT_NAME/EMAIL, ...) so manual runs
+# work like cron runs; cron.sh loading it first is harmless (same values).
+if [ -f "$ROOT/.env" ]; then
+  set -a
+  # shellcheck disable=SC1091
+  . "$ROOT/.env"
+  set +a
+fi
+
 ISO="$(LC_ALL=C date -u +%F)"
 DISP="$(LC_ALL=C date -u '+%B %-d, %Y at %H:%M:%S GMT')"
 
