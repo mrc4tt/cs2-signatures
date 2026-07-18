@@ -10,7 +10,7 @@ Private repos (e.g. the mrc4tt CounterStrikeSharp fork) need a token:
   - github.com  -> GITHUB_TOKEN / GH_TOKEN (fine-grained Contents:read, or
                    classic `repo` scope)
   - Forgejo/Gitea host -> FORGEJO_TOKEN (scope: read:repository)
-Public repos fetch anonymously — the token is sent anyway when present, which
+Public repos fetch anonymously - the token is sent anyway when present, which
 is harmless.
 
 Use --project ID to fetch a single project. stdlib only. Exit non-zero if any
@@ -44,7 +44,7 @@ def fetch(proj, token):
             P.host(proj), repo, path, branch)
         accept, auth = None, "token %s" % token
     req = urllib.request.Request(url)
-    # Descriptive UA — some hosts (Cloudflare) 403 the default urllib UA.
+    # Descriptive UA - some hosts (Cloudflare) 403 the default urllib UA.
     req.add_header("User-Agent",
                    "cs2-sig-tracker (+https://git.miksen.me/mikkel/cs2-signatures)")
     if accept:
@@ -78,7 +78,7 @@ def fetch_project(proj, gh_token, fj_token):
     except urllib.error.HTTPError as e:
         if e.code in (401, 403, 404) and proj.get("private") and not token:
             env = "GITHUB_TOKEN/GH_TOKEN" if P.is_github(proj) else "FORGEJO_TOKEN"
-            print("[%s] HTTP %d — repo is private; set %s to a token that can "
+            print("[%s] HTTP %d - repo is private; set %s to a token that can "
                   "read it." % (proj["id"], e.code, env), file=sys.stderr)
         else:
             print("[%s] HTTP %d fetching %s: %s"

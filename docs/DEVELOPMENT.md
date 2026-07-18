@@ -18,7 +18,7 @@ in some GitHub repo. They all share the same CS2 game binaries, so the download
 + manifest-diff steps stay game-global; only fetch / validate / report loop over
 projects.
 
-Add a project by appending to `data/projects.json` — no code change:
+Add a project by appending to `data/projects.json` - no code change:
 
 ```json
 {
@@ -35,7 +35,7 @@ Add a project by appending to `data/projects.json` — no code change:
 `docs/<id>.md`. `private: true` means the fetch needs `GITHUB_TOKEN`. Next run
 picks it up: fetches, validates, adds a README row + `docs/<id>.md`.
 
-Validation is pure-stdlib Python — no Ghidra, no third-party deps. It parses
+Validation is pure-stdlib Python - no Ghidra, no third-party deps. It parses
 ELF and PE section tables itself (`scripts/lib_sig.py`) and counts matches
 **per executable section**.
 
@@ -45,19 +45,19 @@ Classification per entry/platform:
 - `matches == 0` → **❌ broken** (open Ghidra, regen with `CS2Recipes.py`, PR the fork)
 - `matches  > 1` → **⚠️ ambiguous** (sig too short / not unique)
 
-Offset-only entries (vtable slots) are not tracked here — signatures only.
+Offset-only entries (vtable slots) are not tracked here - signatures only.
 
 ### Better than the upstream tracker
 
 - **Match count, not boolean.** ianlucas stops at the first hit (✅/❌). We count
   hits per executable section, so we also catch **⚠️ ambiguous** sigs.
-- **History trend** (`reports/history/*.json`) — per-run tally over time.
+- **History trend** (`reports/history/*.json`) - per-run tally over time.
 - **Auto-issue** on Forgejo when a sig breaks; auto-closes when green again.
 - **Status badge** driven by `reports/badge.json`.
 
 ## VPS setup (x86-64)
 
-Depots `2347771` (Windows) / `2347773` (Linux) download **anonymously** — no
+Depots `2347771` (Windows) / `2347773` (Linux) download **anonymously** - no
 Steam login. The gamedata fetch needs a GitHub token because the fork is private.
 
 1. Clone + configure env:
@@ -83,7 +83,7 @@ Steam login. The gamedata fetch needs a GitHub token because the fork is private
    `FORGEJO_REPO` in `.env` (token needs write-issue scope). `run_all.sh` opens
    the issue automatically and closes it when green again.
 
-> Binaries are git-ignored — only derived reports/docs are committed. Badge
+> Binaries are git-ignored - only derived reports/docs are committed. Badge
 > needs the repo **public** so shields.io can read `reports/badge.json`.
 
 ## Layout

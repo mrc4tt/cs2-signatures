@@ -18,7 +18,7 @@ fi
 ISO="$(LC_ALL=C date -u +%F)"
 DISP="$(LC_ALL=C date -u '+%B %-d, %Y at %H:%M:%S GMT')"
 
-# 1. Game updated? (exit 10 = changed). Don't abort on "unchanged" — still
+# 1. Game updated? (exit 10 = changed). Don't abort on "unchanged" - still
 #    refresh gamedata + regenerate report.
 set +e
 python3 scripts/check_update.py --manifest data/manifest.json
@@ -30,7 +30,7 @@ set -e
 #    repos need GITHUB_TOKEN; if a fetch fails we keep the committed snapshot.
 set +e
 FETCH_OUT="$(python3 scripts/fetch_gamedata.py 2>&1)"
-[ $? -ne 0 ] && echo "WARN: gamedata fetch failed for a project — using existing snapshot"
+[ $? -ne 0 ] && echo "WARN: gamedata fetch failed for a project - using existing snapshot"
 set -e
 echo "$FETCH_OUT"
 
@@ -49,14 +49,14 @@ broken = 0
 for proj in P.load():
     path = P.status_path(proj)
     if not os.path.isfile(path):
-        sys.exit(2)  # new project — needs a full run
+        sys.exit(2)  # new project - needs a full run
     with open(path) as fh:
         broken += json.load(fh).get("tally", {}).get("broken", 0)
 print(broken)
 PY
 ) || BROKEN=""
   if [ -n "$BROKEN" ]; then
-    echo "no game/gamedata change — skipping binary scan (broken=$BROKEN)"
+    echo "no game/gamedata change - skipping binary scan (broken=$BROKEN)"
     [ "$BROKEN" -gt 0 ] && exit 1
     exit 0
   fi
@@ -79,15 +79,15 @@ if [ "$UPD" -eq 10 ]; then
 fi
 
 # 3. Binaries (anonymous; set STEAM_USER/STEAM_PASS only if needed). Shared by
-#    all projects — the game binaries are the same regardless of plugin.
+#    all projects - the game binaries are the same regardless of plugin.
 eval "$(bash scripts/download_bins.sh | grep -E '^(LINUX_SO|LINUX_ENGINE2|LINUX_CLIENT|WIN_DLL|WIN_ENGINE2)=')"
 
 # The eval|grep above swallows a download_bins.sh failure (command substitution
 # exit status is lost), so check the result explicitly. Without binaries,
 # validation would mark every sig no_binary and step 5 would commit + post that
-# as a "change". Abort instead — the next cron tick retries in 15 minutes.
+# as a "change". Abort instead - the next cron tick retries in 15 minutes.
 if [ -z "${LINUX_SO:-}" ] || [ -z "${WIN_DLL:-}" ]; then
-  echo "binary download failed (LINUX_SO='${LINUX_SO:-}', WIN_DLL='${WIN_DLL:-}') — aborting before validate/commit/post"
+  echo "binary download failed (LINUX_SO='${LINUX_SO:-}', WIN_DLL='${WIN_DLL:-}') - aborting before validate/commit/post"
   exit 1
 fi
 
@@ -101,7 +101,7 @@ VAL=$?
 set -e
 
 # 4.5 Propose replacement sigs for broken/ambiguous entries by diffing the
-#     previous build (bin_prev/, step 2.5) against the new one. Advisory only —
+#     previous build (bin_prev/, step 2.5) against the new one. Advisory only -
 #     writes reports/<id>/proposals.json for the issue/Discord steps, never
 #     edits gamedata. Cheap when everything is healthy (reads statuses, exits);
 #     also removes stale proposals once sigs pass again. Runs unconditionally
@@ -125,7 +125,7 @@ for f in reports/*/status.json; do
 done
 
 if [ "$CHANGED" -eq 0 ]; then
-  echo "no signature/manifest change — skipping report + push"
+  echo "no signature/manifest change - skipping report + push"
   echo "done (validate exit=$VAL, update=$UPD)"
   exit "$VAL"
 fi
@@ -175,7 +175,7 @@ fi
 #    FORGEJO_TOKEN + server/repo. Skipped silently if unset or bins missing.
 #    ONLY on a real game update (check_update exit 10 = new bins). A sig-only
 #    change reuses the same version tag, so republishing would just re-upload
-#    identical binaries and churn the Releases page — skip it.
+#    identical binaries and churn the Releases page - skip it.
 if [ -n "${FORGEJO_TOKEN:-}" ] && [ "$UPD" -eq 10 ]; then
   python3 scripts/publish_bins.py \
     --linux "${LINUX_SO:-}" --windows "${WIN_DLL:-}" \
@@ -183,7 +183,7 @@ if [ -n "${FORGEJO_TOKEN:-}" ] && [ "$UPD" -eq 10 ]; then
     --linux-client "${LINUX_CLIENT:-}" \
     --keep "${BINS_KEEP:-2}" --iso "$ISO" || true
 elif [ -n "${FORGEJO_TOKEN:-}" ]; then
-  echo "no game update (UPD=$UPD) — skipping binary release"
+  echo "no game update (UPD=$UPD) - skipping binary release"
 fi
 
 echo "done (validate exit=$VAL, update=$UPD)"

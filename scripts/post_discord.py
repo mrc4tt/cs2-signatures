@@ -12,7 +12,7 @@ The embed colour and an optional @mention escalate on any breakage.
 Auth: webhook URL via env DISCORD_WEBHOOK (or --webhook). Never hard-code it.
 
 Preview: --preview prints the JSON payload without sending. Add --example for
-synthetic data — also usable as a live test post (send without --preview) to
+synthetic data - also usable as a live test post (send without --preview) to
 see the layout in Discord before a real breakage happens.
 
 stdlib only (urllib).
@@ -77,7 +77,7 @@ def is_problem(r):
 
 
 def issue_list(statuses):
-    """(project, name, platform, status) for every broken/ambiguous entry —
+    """(project, name, platform, status) for every broken/ambiguous entry -
     used only to decide whether to @mention."""
     out = []
     for pid, status in statuses:
@@ -166,7 +166,7 @@ def load_proposal_keys(projects_path):
     out = set()
     try:
         projects = P.load(projects_path)
-    except Exception:  # noqa: BLE001 — proposals are optional decoration
+    except Exception:  # noqa: BLE001 - proposals are optional decoration
         return out
     for proj in projects:
         path = P.proposals_path(proj)
@@ -200,10 +200,10 @@ def build_summary_embed(statuses, version, ts, projects_path):
 
     if brk:
         color = COLOR_BAD
-        verdict = "%s **%d broken** — signatures need regenerating" % (CIRCLE["broken"], brk)
+        verdict = "%s **%d broken** - signatures need regenerating" % (CIRCLE["broken"], brk)
     elif amb:
         color = COLOR_WARN
-        verdict = "%s **%d ambiguous** — weak signatures" % (CIRCLE["ambiguous"], amb)
+        verdict = "%s **%d ambiguous** - weak signatures" % (CIRCLE["ambiguous"], amb)
     else:
         color = COLOR_OK
         verdict = "%s **All signatures valid**" % CIRCLE["ok"]
@@ -248,7 +248,7 @@ def build_summary_embed(statuses, version, ts, projects_path):
                        "value": "\n".join(shown), "inline": False})
 
     embed = {
-        "title": "CS2 Signatures — %s" % (version or "unknown"),
+        "title": "CS2 Signatures - %s" % (version or "unknown"),
         "color": color,
         "description": "\n".join(lines),
         "fields": fields,
@@ -490,11 +490,11 @@ def delete_message(webhook, message_id):
 
 def proposed_files(projects_path):
     """[(attachment_name, bytes), ...] of patched gamedata files written by
-    propose_sigs.py — drop-in gamedata with candidate sigs applied."""
+    propose_sigs.py - drop-in gamedata with candidate sigs applied."""
     out = []
     try:
         projects = P.load(projects_path)
-    except Exception:  # noqa: BLE001 — attachments are optional decoration
+    except Exception:  # noqa: BLE001 - attachments are optional decoration
         return out
     for proj in projects:
         path = P.proposed_gamedata_path(proj)
@@ -552,7 +552,7 @@ def main():
     ts = now_iso()
     width = name_width(statuses)
     if not statuses:
-        print("no project statuses found — nothing to post", file=sys.stderr)
+        print("no project statuses found - nothing to post", file=sys.stderr)
         return 1
     def per_project():
         return [build_project_embed(pid, display_name(pid, args.projects),
@@ -568,7 +568,7 @@ def main():
         embeds = [build_combined_embed(statuses, version, ts, width,
                                        args.projects)]
     else:
-        # Too many/large plugins for one card — fall back to per-project cards
+        # Too many/large plugins for one card - fall back to per-project cards
         # (each gets its own budget) rather than silently dropping projects.
         print("combined post too large -> per-project cards", file=sys.stderr)
         embeds = per_project()
@@ -585,11 +585,11 @@ def main():
             content, allowed = "<@%s>" % m, {"users": [m]}
 
     # Patched gamedata files (candidate sigs applied) ride the first message.
-    # Unique-match verified, NOT runtime-tested — say so in the message.
+    # Unique-match verified, NOT runtime-tested - say so in the message.
     files = [] if args.example else proposed_files(args.projects)
     if files:
         warn = ("⚠️ Auto-generated gamedata with proposed replacement "
-                "signatures attached — unique-match verified, not "
+                "signatures attached - unique-match verified, not "
                 "runtime-tested. Review before use.")
         content = "%s\n%s" % (content, warn) if content else warn
 

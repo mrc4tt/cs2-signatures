@@ -93,7 +93,7 @@ def render(all_stats, date):
         clean = sum(1 for s in stats.values()
                     if not (s["breaks"] or s["ambiguous"]))
         obs = max((s["observations"] for s in stats.values()), default=0)
-        lines.append("- **%s** — %d tracked sig/platform pairs, %d breakage "
+        lines.append("- **%s** - %d tracked sig/platform pairs, %d breakage "
                      "episode(s), %d never broken, %d snapshot(s) of history."
                      % (pid, total, episodes, clean, obs))
     lines.append("")

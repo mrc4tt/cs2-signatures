@@ -8,7 +8,7 @@ matching after the next recompile shifts an address by a few bytes.
 
 Deliberately incomplete: covers the encodings compilers actually emit in
 function bodies. decode_insn returns None on anything unknown and the
-caller falls back to plain byte-diff wildcarding from that point — a
+caller falls back to plain byte-diff wildcarding from that point - a
 wrong guess can only cost signature robustness, never correctness,
 because every candidate is still uniqueness-checked afterwards.
 
@@ -101,7 +101,7 @@ def _decode(b, start):
             field("disp32", 4)
         return m
 
-    if op == 0x0F:                       # two-byte map — must be checked
+    if op == 0x0F:                       # two-byte map - must be checked
         if i >= n:                       # before the generic <0x40 block
             raise _Trunc
         op2 = b[i]

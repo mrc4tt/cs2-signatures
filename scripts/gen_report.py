@@ -179,7 +179,7 @@ def render_docs(proj, status, updated):
     L.append("## Signatures")
     L.append("")
     for r in status["results"]:
-        # Offsets are not tracked here — signatures only.
+        # Offsets are not tracked here - signatures only.
         if r["kind"] != "signature":
             continue
         L.append("### %s" % r["name"])

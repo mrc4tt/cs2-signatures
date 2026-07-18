@@ -1,4 +1,4 @@
-"""Registry of tracked plugin projects — one CSS-format gamedata.json each.
+"""Registry of tracked plugin projects - one CSS-format gamedata.json each.
 
 `data/projects.json` is the single source of truth. Each entry:
 

@@ -4,7 +4,7 @@
 The binaries are git-ignored (copyright + size), but on a self-hosted Forgejo we
 still want them downloadable. Each CS2 update this attaches the four files to a
 release tagged by the CS2 patch version, so users can grab the exact `.so`/`.dll`
-that a signature set was validated against — without bloating git history.
+that a signature set was validated against - without bloating git history.
 
     libserver.so  libengine2.so  libclient.so  server.dll  engine2.dll  ->  release <version>
 
@@ -34,7 +34,7 @@ from depots import DEPOTS  # noqa: E402
 # releases someone made by hand.
 MARKER = "<!-- cs2-sig-tracker:bins -->"
 
-# Forgejo behind Cloudflare 403s the default urllib UA (error 1010) — send a
+# Forgejo behind Cloudflare 403s the default urllib UA (error 1010) - send a
 # real UA like post_discord.py does.
 UA = "cs2-signatures-tracker (urllib, +https://git.miksen.me/mikkel/cs2-signatures)"
 

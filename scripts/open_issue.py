@@ -83,7 +83,7 @@ def load_proposals(projects_path):
     out = {}
     try:
         projects = P.load(projects_path)
-    except Exception:  # noqa: BLE001 — proposals are optional decoration
+    except Exception:  # noqa: BLE001 - proposals are optional decoration
         return out
     for proj in projects:
         path = P.proposals_path(proj)
@@ -112,7 +112,7 @@ def body_text(statuses, broken, proposals=None):
     proposed = [(pid, b) for pid, b in broken if (pid, b) in proposals]
     if proposed:
         lines += ["", "**Proposed replacements** (diffed against the previous "
-                  "build — verify `matches == 1` before PRing upstream):", ""]
+                  "build - verify `matches == 1` before PRing upstream):", ""]
         for pid, b in proposed:
             lines += ["- `[%s] %s`" % (pid, b),
                       "  ```", "  %s" % proposals[(pid, b)], "  ```"]
@@ -155,7 +155,7 @@ def main():
         if existing:
             api(args.server, args.token, "POST",
                 "/repos/%s/issues/%d/comments" % (args.repo, existing["number"]),
-                {"body": "All signatures pass again — closing."})
+                {"body": "All signatures pass again - closing."})
             api(args.server, args.token, "PATCH",
                 "/repos/%s/issues/%d" % (args.repo, existing["number"]),
                 {"state": "closed"})

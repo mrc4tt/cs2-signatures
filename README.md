@@ -8,7 +8,7 @@ dedicated-server binaries. Each tracked project is a CounterStrikeSharp-format
 binaries and reports which signatures still resolve, which broke, and which
 became ambiguous.
 
-Tracked projects live in [`data/projects.json`](data/projects.json) — currently
+Tracked projects live in [`data/projects.json`](data/projects.json) - currently
 the [CounterStrikeSharp](https://github.com/mrc4tt/CounterStrikeSharp) fork and
 [cs2-retakes-allocator](https://github.com/mrc4tt/cs2-retakes-allocator). Adding
 a project needs no code change; see [docs/DEVELOPMENT.md](docs/DEVELOPMENT.md).
@@ -19,12 +19,12 @@ self-hosted on Forgejo.
 ## How it works
 
 1. Detects a CS2 update by comparing per-depot manifest IDs.
-2. Downloads only the server/engine binaries — a handful of files via
+2. Downloads only the server/engine binaries - a handful of files via
    DepotDownloader, not the full install.
 3. Scans each signature against the binary's executable sections and counts
    matches: exactly one is healthy, zero is broken, more than one is ambiguous.
 4. Regenerates the table below, the per-project pages under `docs/`, the status
-   badge, and — when configured — a Discord post and a Forgejo issue on breakage.
+   badge, and - when configured - a Discord post and a Forgejo issue on breakage.
 
 <!-- STATUS:START -->
 ## Signatures

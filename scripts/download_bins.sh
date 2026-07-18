@@ -5,7 +5,7 @@
 #   depot 2347771  windows  -> server.dll, engine2.dll
 #   depot 2347773  linux    -> libserver.so, libengine2.so, libclient.so
 #
-# These depots are downloadable ANONYMOUSLY — no Steam login required. If your
+# These depots are downloadable ANONYMOUSLY - no Steam login required. If your
 # setup needs a login, export STEAM_USER/STEAM_PASS and they'll be used.
 #
 # Requires DepotDownloader on PATH (or set DEPOTDOWNLOADER=/path/to/it):
@@ -18,7 +18,7 @@ ROOT="$(cd "$HERE/.." && pwd)"
 APP=730
 DEPOT_WIN=2347771
 DEPOT_LINUX=2347773
-DEPOT_CONTENT=2347770   # game content depot — holds game/csgo/steam.inf (version)
+DEPOT_CONTENT=2347770   # game content depot - holds game/csgo/steam.inf (version)
 
 auth=()
 if [ -n "${STEAM_USER:-}" ]; then

@@ -8,12 +8,12 @@ branch in that project's repo and open a PR against its tracked branch.
 
 The branch name is stable, so a later run with fresher proposals updates
 the same branch/PR instead of spamming new ones. Once nothing is broken,
-proposals disappear and the PR is simply left for a human to close/merge —
+proposals disappear and the PR is simply left for a human to close/merge -
 we never merge or close anything automatically.
 
 Works for repos the token can push to (all tracked projects live under the
 user's own accounts). GitHub uses GITHUB_TOKEN/GH_TOKEN, Forgejo/Gitea
-hosts use FORGEJO_TOKEN — same selection as fetch_gamedata.py.
+hosts use FORGEJO_TOKEN - same selection as fetch_gamedata.py.
 
 --dry-run prints what would happen without calling any API.
 stdlib only (urllib). Never hard-code a token.
@@ -70,7 +70,7 @@ def pr_body(proposals):
              "The previous game build was diffed against the current one to "
              "re-locate each function and regenerate its signature. Every "
              "candidate matches exactly once in the current build, but has "
-             "NOT been runtime-tested — review before merging.",
+             "NOT been runtime-tested - review before merging.",
              ""]
     for pr in proposals:
         if not pr.get("candidate"):
@@ -86,7 +86,7 @@ def pr_body(proposals):
 
 def ensure_branch(proj, token, base):
     """Create BRANCH at base's head (reset it there if it already exists on
-    GitHub; Forgejo keeps the existing branch — contents update still works)."""
+    GitHub; Forgejo keeps the existing branch - contents update still works)."""
     repo = proj["repo"]
     if P.is_github(proj):
         ref = api(proj, token, "GET",
@@ -181,7 +181,7 @@ def process(proj, dry):
     token = (os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_TOKEN")
              if P.is_github(proj) else os.environ.get("FORGEJO_TOKEN"))
     if not token:
-        print("[%s] no token for %s — skipping PR"
+        print("[%s] no token for %s - skipping PR"
               % (proj["id"], P.host(proj)), file=sys.stderr)
         return
 
@@ -209,7 +209,7 @@ def main():
     for proj in P.load(args.projects, only=args.project):
         try:
             process(proj, args.dry_run)
-        except Exception as e:  # noqa: BLE001 — advisory step, never fatal
+        except Exception as e:  # noqa: BLE001 - advisory step, never fatal
             print("[%s] PR step failed: %s" % (proj["id"], e), file=sys.stderr)
     return 0
 

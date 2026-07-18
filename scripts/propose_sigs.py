@@ -4,16 +4,16 @@ builds.
 
 Runs after validate_sigs.py. For every project whose status.json lists a
 `broken` platform entry (sig vanished) or an `ambiguous` one (sig matches
-more than once — proposal = the same function's sig extended until unique
+more than once - proposal = the same function's sig extended until unique
 again), re-locate the function in the previous build
 (bin_prev/, snapshotted by run_all.sh before a game update overwrites the
 binaries) and emit a candidate signature for the new build via resig.
 
-Writes reports/<id>/proposals.json per affected project (no timestamps —
+Writes reports/<id>/proposals.json per affected project (no timestamps -
 see the status.json rule in the docs) and deletes it again once nothing is
 broken, so stale proposals never linger. The candidates are ADVISORY: they
 are surfaced in the tracker issue and Discord post for a human to verify
-and PR upstream — nothing edits gamedata automatically.
+and PR upstream - nothing edits gamedata automatically.
 
 Exit 0 always; failing to propose is never a pipeline error. stdlib only.
 """
@@ -54,7 +54,7 @@ class BinCache:
 
 def problem_entries(status):
     """[(name, platform, library, sig, reason), ...] for entries needing a
-    proposal: broken (sig gone) and ambiguous (sig matches more than once —
+    proposal: broken (sig gone) and ambiguous (sig matches more than once -
     still resolvable via the old build, where the intended function matched
     uniquely, so we can extend the sig until it is unique again)."""
     out = []
@@ -68,7 +68,7 @@ def problem_entries(status):
 
 def write_patched_gamedata(proj, proposals):
     """Drop-in gamedata.json with candidate sigs applied, for projects with at
-    least one candidate. Attached to the Discord post as an UNVERIFIED file —
+    least one candidate. Attached to the Discord post as an UNVERIFIED file -
     candidates are unique-match checked but not runtime-tested."""
     gpath = P.proposed_gamedata_path(proj)
     candidates = [pr for pr in proposals if pr.get("candidate")]
@@ -107,7 +107,7 @@ def propose_project(proj, bins):
                 os.remove(stale)
                 removed = True
         if removed:
-            print("[%s] nothing broken/ambiguous — removed stale proposals"
+            print("[%s] nothing broken/ambiguous - removed stale proposals"
                   % proj["id"])
         return 0
 
@@ -169,7 +169,7 @@ def main():
     for proj in P.load(args.projects, only=args.project):
         try:
             propose_project(proj, bins)
-        except Exception as e:  # noqa: BLE001 — advisory step, never fatal
+        except Exception as e:  # noqa: BLE001 - advisory step, never fatal
             print("[%s] proposal failed: %s" % (proj["id"], e),
                   file=sys.stderr)
     return 0

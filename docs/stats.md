@@ -8,7 +8,7 @@ No breakage episodes recorded so far.
 
 ## Per project
 
-- **CounterStrikeSharp** — 68 tracked sig/platform pairs, 0 breakage episode(s), 68 never broken, 9 snapshot(s) of history.
-- **RetakesAllocator** — 6 tracked sig/platform pairs, 0 breakage episode(s), 6 never broken, 8 snapshot(s) of history.
-- **RayTrace** — 8 tracked sig/platform pairs, 0 breakage episode(s), 8 never broken, 8 snapshot(s) of history.
-- **MatchZy** — 10 tracked sig/platform pairs, 0 breakage episode(s), 10 never broken, 2 snapshot(s) of history.
+- **CounterStrikeSharp** - 68 tracked sig/platform pairs, 0 breakage episode(s), 68 never broken, 9 snapshot(s) of history.
+- **RetakesAllocator** - 6 tracked sig/platform pairs, 0 breakage episode(s), 6 never broken, 8 snapshot(s) of history.
+- **RayTrace** - 8 tracked sig/platform pairs, 0 breakage episode(s), 8 never broken, 8 snapshot(s) of history.
+- **MatchZy** - 10 tracked sig/platform pairs, 0 breakage episode(s), 10 never broken, 2 snapshot(s) of history.

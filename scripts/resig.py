@@ -15,7 +15,7 @@ not one that vanished. We don't need a disassembler to re-find it:
   4. build a candidate sig at the new location: literal where old==new,
      wildcard where the bytes drifted, extended until unique.
 
-The candidate is a proposal — a human (or the validate step) still confirms
+The candidate is a proposal - a human (or the validate step) still confirms
 `matches == 1` before it lands in gamedata.
 
 Usage (single sig):
