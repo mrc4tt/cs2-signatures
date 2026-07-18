@@ -134,6 +134,7 @@ fi
 python3 scripts/gen_report.py \
   --readme README.md --docs-dir docs \
   --history-dir reports/history --date "$DISP" --iso "$ISO"
+python3 scripts/gen_stats.py --out docs/stats.md --date "$DISP" || true
 
 if [ "${NO_PUSH:-0}" != "1" ]; then
   git add data/manifest.json data/projects.json data/*/gamedata.json \
