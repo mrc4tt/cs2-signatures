@@ -429,7 +429,11 @@ UA = ("cs2-signatures-tracker (urllib, "
 def post(webhook, payload, files=None):
     """POST a webhook message. With `files` ([(filename, bytes), ...]) the
     payload is sent as multipart/form-data with attachments; otherwise plain
-    JSON. Discord allows up to 10 files per message."""
+    JSON. Discord allows up to 10 files per message.
+
+    Posts with ?wait=true so Discord returns the created message; prints its
+    id, which `--delete-message <id>` accepts to remove a post again."""
+    webhook = "%s%swait=true" % (webhook, "&" if "?" in webhook else "?")
     if files:
         boundary = "----cs2sigtracker%s" % uuid.uuid4().hex
         body = bytearray()
@@ -459,9 +463,27 @@ def post(webhook, payload, files=None):
     req.add_header("User-Agent", UA)
     try:
         with urllib.request.urlopen(req, timeout=60) as r:
+            raw = r.read()
+            msg = json.loads(raw) if raw else {}
+            if msg.get("id"):
+                print("message id: %s" % msg["id"])
             return r.status
     except urllib.error.HTTPError as e:
         print("webhook POST -> %s: %s" % (e.code, e.read()[:300]),
+              file=sys.stderr)
+        raise
+
+
+def delete_message(webhook, message_id):
+    """DELETE a previously posted webhook message by its id."""
+    url = "%s/messages/%s" % (webhook.split("?")[0].rstrip("/"), message_id)
+    req = urllib.request.Request(url, method="DELETE")
+    req.add_header("User-Agent", UA)
+    try:
+        with urllib.request.urlopen(req, timeout=60) as r:
+            return r.status
+    except urllib.error.HTTPError as e:
+        print("webhook DELETE -> %s: %s" % (e.code, e.read()[:300]),
               file=sys.stderr)
         raise
 
@@ -502,6 +524,8 @@ def main():
                          "(numeric id, or 'here'/'everyone')")
     ap.add_argument("--preview", action="store_true",
                     help="render payload to stdout, do not send")
+    ap.add_argument("--delete-message", default=None, metavar="ID",
+                    help="delete a previously posted message by id, then exit")
     ap.add_argument("--example", action="store_true",
                     help="use synthetic data (for --preview, or a live test post)")
     ap.add_argument("--summary", action="store_true",
@@ -509,6 +533,14 @@ def main():
     ap.add_argument("--separate", action="store_true",
                     help="one per-signature card per project")
     args = ap.parse_args()
+
+    if args.delete_message:
+        if not args.webhook:
+            print("missing --webhook (or DISCORD_WEBHOOK env)", file=sys.stderr)
+            return 1
+        delete_message(args.webhook, args.delete_message)
+        print("deleted message %s" % args.delete_message)
+        return 0
 
     if args.example:
         statuses = example_statuses()
