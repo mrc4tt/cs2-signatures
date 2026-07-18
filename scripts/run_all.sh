@@ -29,9 +29,38 @@ set -e
 # 2. Latest upstream sig set for every tracked project. Non-fatal: private
 #    repos need GITHUB_TOKEN; if a fetch fails we keep the committed snapshot.
 set +e
-python3 scripts/fetch_gamedata.py
+FETCH_OUT="$(python3 scripts/fetch_gamedata.py 2>&1)"
 [ $? -ne 0 ] && echo "WARN: gamedata fetch failed for a project — using existing snapshot"
 set -e
+echo "$FETCH_OUT"
+
+# 2.1 Nothing to do? Game unchanged + every gamedata unchanged + every project
+#     already has a status.json + no half-finished state in the tree -> the
+#     validate result cannot differ from last run. Skip the binary download and
+#     the ~80 MB scans; exit with the same ok/broken code a full run would.
+if [ "$UPD" -eq 0 ] \
+   && ! echo "$FETCH_OUT" | grep -q " gamedata changed" \
+   && [ -z "$(git status --porcelain data/ reports/)" ]; then
+  BROKEN=$(python3 - <<'PY'
+import json, os, sys
+sys.path.insert(0, "scripts")
+import projects as P
+broken = 0
+for proj in P.load():
+    path = P.status_path(proj)
+    if not os.path.isfile(path):
+        sys.exit(2)  # new project — needs a full run
+    with open(path) as fh:
+        broken += json.load(fh).get("tally", {}).get("broken", 0)
+print(broken)
+PY
+) || BROKEN=""
+  if [ -n "$BROKEN" ]; then
+    echo "no game/gamedata change — skipping binary scan (broken=$BROKEN)"
+    [ "$BROKEN" -gt 0 ] && exit 1
+    exit 0
+  fi
+fi
 
 # 2.5 Game updated -> the binaries on disk are still the PREVIOUS build.
 #     Snapshot them (git-ignored bin_prev/) before step 3 overwrites them, so
