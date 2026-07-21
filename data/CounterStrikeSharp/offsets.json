@@ -1,0 +1,115 @@
+{
+  "_comment": "Offset-validation recipes for cs2-sig-tracker (linux/Itanium). Merged from regen-gamedata-linux skill: offsets-anchors.json (kind/vtable_class) + offset-target-sigs.json (cached target func sig). kind=vtable + target_sig -> anchored validation; kind=vtable no sig -> structural; structoffset/global/unknown -> not auto-validated (GDT/manual).",
+  "generated_from_build": "14171",
+  "symbols": {
+    "CCSPlayerController_ChangeTeam": {
+      "kind": "vtable",
+      "linux": 102,
+      "vtable_class": "CCSPlayerController",
+      "target_sig": "55 48 89 E5 41 57 41 56 41 55 41 54 53 48 83 EC ? 44 0F B6 B7 ? 06 00 00"
+    },
+    "CCSPlayerController_Respawn": {
+      "kind": "vtable",
+      "linux": 272,
+      "vtable_class": "CCSPlayerController",
+      "target_sig": "55 48 89 E5 41 57 41 56 41 55 41 54 53 48 89 FB 48 81 EC ? ? ? ? E8 ? ? ? ? 80 BB ? 0B 00 00 ? C6 83 ? 0B 00 00 ?"
+    },
+    "CCSPlayer_WeaponServices_SelectItem": {
+      "kind": "vtable",
+      "linux": 31,
+      "vtable_class": "CCSPlayer_WeaponServices",
+      "target_sig": "55 48 89 E5 41 57 41 56 41 89 D6 41 55 49 89 FD 41 54 49 89 F4 53 48 83 EC ?"
+    },
+    "CCSPlayer_ItemServices_GiveNamedItem": {
+      "kind": "vtable",
+      "linux": 24,
+      "vtable_class": "CCSPlayer_ItemServices"
+    },
+    "CCSPlayer_ItemServices_DropActivePlayerWeapon": {
+      "kind": "vtable",
+      "linux": 27,
+      "vtable_class": "CCSPlayer_ItemServices",
+      "target_sig": "55 0F B6 C9 48 89 E5 41 56"
+    },
+    "CCSPlayer_ItemServices_RemoveWeapons": {
+      "kind": "vtable",
+      "linux": 28,
+      "vtable_class": "CCSPlayer_ItemServices",
+      "target_sig": "55 48 89 E5 41 55 41 54 41 89 F4 53 48 89 FB 48 83 EC ? 80 7F ? ? 0F 85 ? ? ? ?"
+    },
+    "CGameSceneNode_GetSkeletonInstance": {
+      "kind": "vtable",
+      "linux": 14,
+      "vtable_class": "CGameSceneNode"
+    },
+    "CCSGameRules_FindPickerEntity": {
+      "kind": "vtable",
+      "linux": 27,
+      "vtable_class": "CCSGameRules",
+      "target_sig": "55 48 89 E5 41 57 41 56 41 55 49 89 D5 41 54 48 8D 15 ? ? ? ?"
+    },
+    "CTakeDamageInfo_HitGroup": {
+      "kind": "structoffset",
+      "linux": 104,
+      "resolve": "gdt",
+      "note": "m_iHitGroup in CTakeDamageInfo (104). offset_sig not yet cached (anchor TraceAttack must be relocated first; ref-YAML VA is stale). Until then -> GDT."
+    },
+    "CBaseEntity_IsPlayerPawn": {
+      "kind": "vtable",
+      "linux": 168,
+      "vtable_class": "CBaseEntity"
+    },
+    "CBasePlayerPawn_CommitSuicide": {
+      "kind": "vtable",
+      "linux": 384,
+      "vtable_class": "CBasePlayerPawn",
+      "target_sig": "55 48 89 E5 41 55 41 89 F5 41 54 41 89 D4"
+    },
+    "CBaseEntity_Teleport": {
+      "kind": "vtable",
+      "linux": 162,
+      "vtable_class": "CBaseEntity",
+      "target_sig": "8B 05 ? ? ? ? 55 49 89 F9"
+    },
+    "GameEntitySystem": {
+      "kind": "structoffset",
+      "linux": 80,
+      "resolve": "gdt",
+      "note": "MEMBER offset service+80 on CGameResourceService. CONFIRMED actively used by CSS + plugify (identical 80/88) + CS2Fixes (GetOffset('GameEntitySystem')). Keep. No self-describing byte anchor -> GDT calibrated relocate on updates."
+    },
+    "GameEventManager": {
+      "kind": "structoffset",
+      "linux": 93,
+      "resolve": "deprecated",
+      "note": "DEAD across 3 SDKs: no GameEventManager offset in CSS core, plugify, or CS2Fixes (all hook IGameEventManager2::LoadEventsFromFile via SourceHook/FindVirtualTable by name, not an offset). Offset 93 = legacy -> safe to remove after checking your own plugins."
+    },
+    "CEntityResourceManifest_AddResource": {
+      "kind": "vtable",
+      "linux": 0,
+      "vtable_class": "IEntityResourceManifest",
+      "resolve": "gdt",
+      "note": "IEntityResourceManifest::AddResource vtable slot (0 linux / 2 win). Abstract interface -> no RTTI typeinfo; concrete manifest vtable not cheaply locatable -> GDT."
+    },
+    "CheckTransmitPlayerSlot": {
+      "kind": "structoffset",
+      "linux": 576,
+      "offset_sig": "4C 8B 34 D8 41 8B BE ? ? ? ?",
+      "disp_tok_pos": 7,
+      "disp_size": 4,
+      "note": "m_nPlayerSlot in CCheckTransmitInfo. offset_sig pins mov edi,[r14+disp32] in CheckTransmit; disp read back = offset. Confirmed 576 on 14171."
+    },
+    "SetStateChanged": {
+      "kind": "vtable",
+      "linux": 29,
+      "vtable_class": "CBaseEntity",
+      "target_sig": "55 48 89 E5 53 48 89 FB 48 83 C7 ? 48 83 EC ? 8B 06",
+      "resolve_vtable_class": "CBaseEntity"
+    },
+    "ISource2GameEntities::CheckTransmit": {
+      "kind": "vtable",
+      "linux": 13,
+      "vtable_class": "CSource2GameEntities",
+      "target_sig": "55 48 89 E5 41 57 49 89 FF 41 56 48 8D 3D ? ? ? ? 41 55 4C 63 EA"
+    }
+  }
+}

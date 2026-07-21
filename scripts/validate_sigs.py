@@ -29,6 +29,8 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from lib_sig import sig_to_regex, count_matches, exec_sections  # noqa: E402
+from lib_rtti import open_image  # noqa: E402
+from lib_offset import validate_offsets  # noqa: E402
 import projects as P  # noqa: E402
 
 
@@ -46,15 +48,31 @@ def load_sections(path):
     return None
 
 
-def validate(gamedata, bins):
-    """bins = {(platform, library): sections_or_None}."""
+def _load_offset_recipe(proj):
+    """Per-project offset-validation recipe: data/<id>/offsets.json -> symbols."""
+    path = os.path.join("data", proj["id"], "offsets.json")
+    if os.path.isfile(path):
+        with open(path) as fh:
+            return json.load(fh).get("symbols", {})
+    return {}
+
+
+def validate(gamedata, bins, offset_recipe=None, image_linux=None):
+    """bins = {(platform, library): sections_or_None}.
+
+    Signature entries are byte-scanned as before. `offsets` entries are validated
+    via lib_offset (Itanium RTTI walk + cached target sig) when image_linux is
+    given; otherwise they surface as no_binary. Windows offsets: not yet.
+    """
     results = []
     for name, entry in gamedata.items():
         sigs = entry.get("signatures")
         if not sigs:
+            if "offsets" in entry:
+                continue  # handled by validate_offsets() below
             results.append({
                 "name": name,
-                "kind": "offset_only" if entry.get("offsets") else "unknown",
+                "kind": "unknown",
                 "platforms": {},
             })
             continue
@@ -77,32 +95,51 @@ def validate(gamedata, bins):
                            "library": library, "sig": sig}
         results.append({"name": name, "kind": "signature",
                         "library": library, "platforms": plats})
+
+    # Offset entries: RTTI-walk validation (linux/Itanium). Always emitted so
+    # every `offsets` entry appears with a real status instead of offset_only.
+    results.extend(validate_offsets(gamedata, offset_recipe or {}, image_linux))
     return results
+
+
+_OFFSET_STATUS_KEY = {
+    "ok": "offset_ok", "stale": "offset_stale", "review": "offset_review",
+    "no_recipe": "offset_no_recipe", "no_binary": "no_binary",
+}
 
 
 def tally_and_broken(results):
     tally = {"ok": 0, "broken": 0, "ambiguous": 0, "no_binary": 0,
-             "missing_sig": 0, "offset_only": 0}
+             "missing_sig": 0,
+             "offset_ok": 0, "offset_stale": 0, "offset_review": 0,
+             "offset_no_recipe": 0}
     broken = []
     for r in results:
-        if r["kind"] == "offset_only":
-            tally["offset_only"] += 1
+        if r["kind"] == "unknown":
             continue
         for plat, info in r["platforms"].items():
             st = info["status"]
-            tally[st] = tally.get(st, 0) + 1
-            if st == "broken":
-                broken.append("%s (%s)" % (r["name"], plat))
+            if r["kind"] == "offset":
+                tally[_OFFSET_STATUS_KEY.get(st, "offset_review")] += 1
+                if st == "stale":
+                    broken.append("%s (%s offset stale)" % (r["name"], plat))
+            else:
+                tally[st] = tally.get(st, 0) + 1
+                if st == "broken":
+                    broken.append("%s (%s)" % (r["name"], plat))
     return tally, broken
 
 
-def validate_project(proj, bins, manifest):
+def validate_project(proj, bins, manifest, images=None):
     """Validate one project; write reports/<id>/status.json. Return broken list."""
     gd_path = P.gamedata_path(proj)
     with open(gd_path) as fh:
         gamedata = json.load(fh)
 
-    results = validate(gamedata, bins)
+    offset_recipe = _load_offset_recipe(proj)
+    image_linux = (images or {}).get("linux")
+    results = validate(gamedata, bins, offset_recipe=offset_recipe,
+                       image_linux=image_linux)
     tally, broken = tally_and_broken(results)
 
     out = {
@@ -146,11 +183,14 @@ def main():
         ("linux", "engine2"): load_sections(args.linux_engine2),
         ("windows", "engine2"): load_sections(args.windows_engine2),
     }
+    # Full VA-mapped image for RTTI offset validation (linux/server only for
+    # now; windows/MSVC RTTI is the follow-up).
+    images = {"linux": open_image(args.linux)}
 
     projects = P.load(args.projects, only=args.project)
     any_broken = False
     for proj in projects:
-        broken = validate_project(proj, bins, manifest)
+        broken = validate_project(proj, bins, manifest, images)
         any_broken = any_broken or bool(broken)
 
     return 1 if any_broken else 0
