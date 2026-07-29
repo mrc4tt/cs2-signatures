@@ -1,8 +1,8 @@
 {
   "project": "RetakesAllocator",
   "manifest": {
-    "2347771": "1756429801267405217",
-    "2347773": "4042805601783611185"
+    "2347771": "5814144478477689230",
+    "2347773": "56114211749641557"
   },
   "gamedata_source": "mrc4tt/cs2-retakes-allocator Resources/RetakesAllocator_gamedata.json",
   "tally": {
@@ -11,7 +11,10 @@
     "ambiguous": 0,
     "no_binary": 0,
     "missing_sig": 0,
-    "offset_only": 0
+    "offset_ok": 0,
+    "offset_stale": 0,
+    "offset_review": 0,
+    "offset_no_recipe": 0
   },
   "results": [
     {

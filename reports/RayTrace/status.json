@@ -1,8 +1,8 @@
 {
   "project": "RayTrace",
   "manifest": {
-    "2347771": "1756429801267405217",
-    "2347773": "4042805601783611185"
+    "2347771": "5814144478477689230",
+    "2347773": "56114211749641557"
   },
   "gamedata_source": "mikkel/Ray-Trace configs/addons/RayTrace/gamedata.json",
   "tally": {
@@ -11,7 +11,10 @@
     "ambiguous": 0,
     "no_binary": 0,
     "missing_sig": 0,
-    "offset_only": 4
+    "offset_ok": 0,
+    "offset_stale": 0,
+    "offset_review": 0,
+    "offset_no_recipe": 4
   },
   "results": [
     {
@@ -92,23 +95,71 @@
     },
     {
       "name": "CNavPhysicsInterface_TraceShape",
-      "kind": "offset_only",
-      "platforms": {}
+      "kind": "offset",
+      "offsets": {
+        "windows": 3,
+        "linux": 5
+      },
+      "platforms": {
+        "linux": {
+          "status": "no_recipe",
+          "linux": 5,
+          "kind": null,
+          "resolve": "gdt",
+          "note": null
+        }
+      }
     },
     {
       "name": "CBaseEntity_CollisionRulesChanged",
-      "kind": "offset_only",
-      "platforms": {}
+      "kind": "offset",
+      "offsets": {
+        "windows": 186,
+        "linux": 185
+      },
+      "platforms": {
+        "linux": {
+          "status": "no_recipe",
+          "linux": 185,
+          "kind": null,
+          "resolve": "gdt",
+          "note": null
+        }
+      }
     },
     {
       "name": "CBaseEntity_Teleport",
-      "kind": "offset_only",
-      "platforms": {}
+      "kind": "offset",
+      "offsets": {
+        "windows": 163,
+        "linux": 162
+      },
+      "platforms": {
+        "linux": {
+          "status": "no_recipe",
+          "linux": 162,
+          "kind": null,
+          "resolve": "gdt",
+          "note": null
+        }
+      }
     },
     {
       "name": "GameEntitySystem",
-      "kind": "offset_only",
-      "platforms": {}
+      "kind": "offset",
+      "offsets": {
+        "windows": 88,
+        "linux": 80
+      },
+      "platforms": {
+        "linux": {
+          "status": "no_recipe",
+          "linux": 80,
+          "kind": null,
+          "resolve": "gdt",
+          "note": null
+        }
+      }
     }
   ]
 }
