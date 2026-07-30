@@ -1,6 +1,6 @@
 # MatchZy
 
-Last updated: July 29, 2026 at 00:45:01 GMT
+Last updated: July 30, 2026 at 19:03:09 GMT
 
 * Manifests: [5814144478477689230](https://steamdb.info/depot/2347771/history/?changeid=M:5814144478477689230), [56114211749641557](https://steamdb.info/depot/2347773/history/?changeid=M:56114211749641557)
 * Repository: https://git.miksen.me/mikkel/matchzy
@@ -9,6 +9,30 @@ Last updated: July 29, 2026 at 00:45:01 GMT
 Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ broken (0) &middot; ❔ binary not downloaded.
 
 ## Signatures
+
+### CCSPlayerController_HandleCommandJoinTeam
+
+<table>
+<tr><th>Status</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
+<tr><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
+<pre>
+\x48\x89\x5C\x24\x2A\x44\x88\x44\x24\x2A\x55\x56\x57\x41\x54\x41\x55\x41\x56\x41\x57\x48\x8D\x6C\x24\x2A\x48\x81\xEC\x2A\x2A\x2A\x2A\x48\x8B\x3D
+</pre>
+</td><td>
+<pre>
+48 89 5C 24 ? 44 88 44 24 ? 55 56 57 41 54 41 55 41 56 41 57 48 8D 6C 24 ? 48 81 EC ? ? ? ? 48 8B 3D
+</pre>
+</td></tr>
+<tr><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
+<pre>
+\x55\x48\x89\xE5\x41\x57\x41\x56\x41\x89\xD6\x41\x55\x41\x54\x41\x89\xF4\x53\x48\x89\xFB\x48\x81\xEC
+</pre>
+</td><td>
+<pre>
+55 48 89 E5 41 57 41 56 41 89 D6 41 55 41 54 41 89 F4 53 48 89 FB 48 81 EC
+</pre>
+</td></tr>
+</table>
 
 ### CCSGameRules_PostCleanUp
 
