@@ -1,0 +1,37 @@
+{
+  "_comment": "Offset-validation recipes for cs2-sig-tracker (linux/Itanium). Anchors derived from the WeaponPaints loadout-path RE notes and re-verified against the libserver.so on disk. kind=vtable + target_sig -> anchored validation; kind=structoffset + offset_sig/disp_tok_pos -> displacement re-read. Windows offsets are not validated by the tracker yet (linux first), so only linux values appear here; the gamedata still carries both.",
+  "generated_from_build": "14174",
+  "symbols": {
+    "CCSPlayerController_InventoryServices::m_pInventory": {
+      "kind": "structoffset",
+      "linux": 112,
+      "offset_sig": "55 31 F6 BA 36 00 00 00 48 89 E5 41 55 41 54 53 48 89 FB 48 83 C7 ? 48 83 EC ? E8",
+      "disp_tok_pos": 22,
+      "disp_size": 1,
+      "note": "Embedded CCSPlayerInventory sub-object, not a pointer field - take the address (InventoryServices + 112), do not dereference. Anchor is the music-kit call site (sub_15994A0 on 14174): xor esi,esi = team 0, mov edx,0x36 = slot 54, then add rdi,0x70 before the GetItemInLoadout call. The plain thunk (add rdi,0x70; jmp) was rejected as an anchor: 8 matches in the image."
+    },
+    "CCSPlayerInventory::m_pSOCache": {
+      "kind": "structoffset",
+      "linux": 104,
+      "offset_sig": "48 8B 7F ? 48 85 FF 74 ? 55 BE 07 00 00 00",
+      "disp_tok_pos": 3,
+      "disp_size": 1,
+      "note": "Read side: CPlayerInventory::GetMaxItemCount (sub_14AF790 on 14174) opens with mov rdi,[rdi+0x68] then mov esi,7 for the FindTypeCache type argument. The mov esi,7 is what makes the pattern unique; the je displacement is wildcarded."
+    },
+    "CGCClientSharedObjectCache::m_Owner": {
+      "kind": "structoffset",
+      "linux": 40,
+      "offset_sig": "48 8B 47 ? 48 8B 57 30 C3 CC CC CC CC CC CC CC",
+      "disp_tok_pos": 3,
+      "disp_size": 1,
+      "note": "Field is a SOID_t: 64-bit SteamID at +40, type tag at +48. Anchor is the getter reached as vtable+16 (sub_1B50490 on 14174): mov rax,[rdi+0x28]; mov rdx,[rdi+0x30]; ret. The +0x30 load and the trailing padding are kept literal for uniqueness, so a struct shift reports review rather than silently re-reading the wrong displacement."
+    },
+    "CCSPlayer_WeaponServices::DropWeapon": {
+      "kind": "vtable",
+      "linux": 29,
+      "vtable_class": "CCSPlayer_WeaponServices",
+      "target_sig": "48 85 F6 0F 84 ? ? ? ? 55 48 89 E5 41 57 41 56 41 55 41 54 53 48 89 F3 48 81 EC ? ? ? ?",
+      "note": "Virtual DropWeapon(this, weapon, a3, Vector* a4) - substitutes a default vector when a4 is null. Slot 29 of the CCSPlayer_WeaponServices vtable (0x2491218, 46 slots on 14174) = 0x1598770. Do NOT anchor this to the DropWeapon byte signature published by rosetta-cs2: that sig points at 0x159d420, a different non-virtual (this, weapon, bool bSilent) drop-command handler that never appears in the vtable. Windows index is 28, legitimately different from linux 29."
+    }
+  }
+}

@@ -1,15 +1,15 @@
 {
-  "date": "August 4, 2026 at 11:30:01 GMT",
+  "date": "August 4, 2026 at 11:35:33 GMT",
   "tally": {
     "ok": 101,
     "broken": 1,
     "ambiguous": 0,
     "no_binary": 0,
     "missing_sig": 0,
-    "offset_ok": 14,
+    "offset_ok": 18,
     "offset_stale": 0,
     "offset_review": 1,
-    "offset_no_recipe": 11
+    "offset_no_recipe": 7
   },
   "manifest": {
     "2347771": "3132779792492138697",
@@ -66,10 +66,10 @@
       "ambiguous": 0,
       "no_binary": 0,
       "missing_sig": 0,
-      "offset_ok": 0,
+      "offset_ok": 4,
       "offset_stale": 0,
       "offset_review": 0,
-      "offset_no_recipe": 4
+      "offset_no_recipe": 0
     }
   }
 }

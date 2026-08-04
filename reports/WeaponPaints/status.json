@@ -11,10 +11,10 @@
     "ambiguous": 0,
     "no_binary": 0,
     "missing_sig": 0,
-    "offset_ok": 0,
+    "offset_ok": 4,
     "offset_stale": 0,
     "offset_review": 0,
-    "offset_no_recipe": 4
+    "offset_no_recipe": 0
   },
   "results": [
     {
@@ -197,11 +197,9 @@
       },
       "platforms": {
         "linux": {
-          "status": "no_recipe",
+          "status": "ok",
           "linux": 112,
-          "kind": null,
-          "resolve": "gdt",
-          "note": null
+          "method": "structoffset"
         }
       }
     },
@@ -214,11 +212,9 @@
       },
       "platforms": {
         "linux": {
-          "status": "no_recipe",
+          "status": "ok",
           "linux": 104,
-          "kind": null,
-          "resolve": "gdt",
-          "note": null
+          "method": "structoffset"
         }
       }
     },
@@ -231,11 +227,9 @@
       },
       "platforms": {
         "linux": {
-          "status": "no_recipe",
+          "status": "ok",
           "linux": 40,
-          "kind": null,
-          "resolve": "gdt",
-          "note": null
+          "method": "structoffset"
         }
       }
     },
@@ -248,11 +242,10 @@
       },
       "platforms": {
         "linux": {
-          "status": "no_recipe",
+          "status": "ok",
           "linux": 29,
-          "kind": null,
-          "resolve": "gdt",
-          "note": null
+          "method": "anchored",
+          "func_va": "0x1598770"
         }
       }
     }
