@@ -1,8 +1,8 @@
 {
-  "date": "August 4, 2026 at 11:35:33 GMT",
+  "date": "August 4, 2026 at 11:50:01 GMT",
   "tally": {
-    "ok": 101,
-    "broken": 1,
+    "ok": 102,
+    "broken": 0,
     "ambiguous": 0,
     "no_binary": 0,
     "missing_sig": 0,
@@ -61,8 +61,8 @@
       "offset_no_recipe": 0
     },
     "WeaponPaints": {
-      "ok": 17,
-      "broken": 1,
+      "ok": 18,
+      "broken": 0,
       "ambiguous": 0,
       "no_binary": 0,
       "missing_sig": 0,

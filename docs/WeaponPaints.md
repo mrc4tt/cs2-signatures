@@ -1,6 +1,6 @@
 # WeaponPaints
 
-Last updated: August 4, 2026 at 11:35:33 GMT
+Last updated: August 4, 2026 at 11:50:01 GMT
 
 * Manifests: [3132779792492138697](https://steamdb.info/depot/2347771/history/?changeid=M:3132779792492138697), [8127770850217610141](https://steamdb.info/depot/2347773/history/?changeid=M:8127770850217610141)
 * Repository: https://git.miksen.me/mikkel/weaponpaints
@@ -38,13 +38,13 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 
 <table>
 <tr><th>Status</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>❌</td><td>Windows</td><td>server</td><td>0</td><td>
+<tr><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
-\x48\x89\x54\x24\x2A\x48\x89\x4C\x24\x2A\x55\x56\x57\x48\x8D\x6C\x24
+\x48\x89\x54\x24\x2A\x48\x89\x4C\x24\x2A\x53\x57\x48\x81\xEC
 </pre>
 </td><td>
 <pre>
-48 89 54 24 ? 48 89 4C 24 ? 55 56 57 48 8D 6C 24
+48 89 54 24 ? 48 89 4C 24 ? 53 57 48 81 EC
 </pre>
 </td></tr>
 <tr><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
