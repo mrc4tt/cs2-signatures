@@ -11,7 +11,8 @@
       "library": "server",
       "reason": "broken",
       "old_sig": "48 89 54 24 ? 48 89 4C 24 ? 55 56 57 48 8D 6C 24",
-      "error": "sig not unique in old binary (0 hits)"
+      "candidate": "48 89 54 24 ? 48 89 4C 24 ? 53 57 48 81 EC",
+      "source": "supplied by maintainer; unique in both the current and the previous build. The shipped sig matches 0 times in both, so it was wrong before this update rather than broken by it."
     }
   ]
 }

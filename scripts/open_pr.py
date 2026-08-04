@@ -80,7 +80,12 @@ def pr_body(proposals):
                   "```",
                   "- %s" % pr["old_sig"],
                   "+ %s" % pr["candidate"],
-                  "```", ""]
+                  "```"]
+        # Not every candidate comes from the build diff; a hand-supplied one
+        # must say so rather than inherit the blurb above.
+        if pr.get("source"):
+            lines.append("Source: %s" % pr["source"])
+        lines.append("")
     return "\n".join(lines)
 
 
