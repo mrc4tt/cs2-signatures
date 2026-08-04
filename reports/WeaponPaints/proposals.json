@@ -1,0 +1,17 @@
+{
+  "project": "WeaponPaints",
+  "manifest": {
+    "2347771": "3132779792492138697",
+    "2347773": "8127770850217610141"
+  },
+  "proposals": [
+    {
+      "name": "UpdateItemView",
+      "platform": "windows",
+      "library": "server",
+      "reason": "broken",
+      "old_sig": "48 89 54 24 ? 48 89 4C 24 ? 55 56 57 48 8D 6C 24",
+      "error": "sig not unique in old binary (0 hits)"
+    }
+  ]
+}

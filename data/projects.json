@@ -36,5 +36,15 @@
     "path": "gamedata/matchzy.json",
     "private": true,
     "propose_pr": true
+  },
+  {
+    "id": "WeaponPaints",
+    "name": "WeaponPaints",
+    "repo": "mikkel/weaponpaints",
+    "host": "git.miksen.me",
+    "branch": "main",
+    "path": "gamedata/weaponpaints.json",
+    "private": false,
+    "propose_pr": true
   }
 ]
