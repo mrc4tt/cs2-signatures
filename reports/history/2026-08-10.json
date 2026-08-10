@@ -1,0 +1,75 @@
+{
+  "date": "August 10, 2026 at 21:55:01 GMT",
+  "tally": {
+    "ok": 102,
+    "broken": 0,
+    "ambiguous": 0,
+    "no_binary": 0,
+    "missing_sig": 0,
+    "offset_ok": 18,
+    "offset_stale": 0,
+    "offset_review": 1,
+    "offset_no_recipe": 7
+  },
+  "manifest": {
+    "2347771": "3218384253253746367",
+    "2347773": "1309483716239998645"
+  },
+  "projects": {
+    "CounterStrikeSharp": {
+      "ok": 58,
+      "broken": 0,
+      "ambiguous": 0,
+      "no_binary": 0,
+      "missing_sig": 0,
+      "offset_ok": 14,
+      "offset_stale": 0,
+      "offset_review": 1,
+      "offset_no_recipe": 3
+    },
+    "RetakesAllocator": {
+      "ok": 6,
+      "broken": 0,
+      "ambiguous": 0,
+      "no_binary": 0,
+      "missing_sig": 0,
+      "offset_ok": 0,
+      "offset_stale": 0,
+      "offset_review": 0,
+      "offset_no_recipe": 0
+    },
+    "RayTrace": {
+      "ok": 8,
+      "broken": 0,
+      "ambiguous": 0,
+      "no_binary": 0,
+      "missing_sig": 0,
+      "offset_ok": 0,
+      "offset_stale": 0,
+      "offset_review": 0,
+      "offset_no_recipe": 4
+    },
+    "MatchZy": {
+      "ok": 12,
+      "broken": 0,
+      "ambiguous": 0,
+      "no_binary": 0,
+      "missing_sig": 0,
+      "offset_ok": 0,
+      "offset_stale": 0,
+      "offset_review": 0,
+      "offset_no_recipe": 0
+    },
+    "WeaponPaints": {
+      "ok": 18,
+      "broken": 0,
+      "ambiguous": 0,
+      "no_binary": 0,
+      "missing_sig": 0,
+      "offset_ok": 4,
+      "offset_stale": 0,
+      "offset_review": 0,
+      "offset_no_recipe": 0
+    }
+  }
+}
