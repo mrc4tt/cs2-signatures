@@ -29,8 +29,8 @@ self-hosted on Forgejo.
 <!-- STATUS:START -->
 ## Signatures
 
-* **Last updated:** August 12, 2026 at 22:50:01 GMT
-* **Manifests:** [358563799254497787](https://steamdb.info/depot/2347771/history/?changeid=M:358563799254497787), [3612056480687749066](https://steamdb.info/depot/2347773/history/?changeid=M:3612056480687749066)
+* **Last updated:** August 19, 2026 at 23:40:01 GMT
+* **Manifests:** [4846265837652631529](https://steamdb.info/depot/2347771/history/?changeid=M:4846265837652631529), [1670443425869204360](https://steamdb.info/depot/2347773/history/?changeid=M:1670443425869204360)
 * **Tracked projects:** 5
 * **Validated:** 102 ok, 0 ambiguous, 0 broken (0 not-yet-validated)
 

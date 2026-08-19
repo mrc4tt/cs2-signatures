@@ -1,8 +1,8 @@
 {
   "project": "CounterStrikeSharp",
   "manifest": {
-    "2347771": "358563799254497787",
-    "2347773": "3612056480687749066"
+    "2347771": "4846265837652631529",
+    "2347773": "1670443425869204360"
   },
   "gamedata_source": "mrc4tt/CounterStrikeSharp configs/addons/counterstrikesharp/gamedata/gamedata.json",
   "tally": {
@@ -612,7 +612,7 @@
           "status": "ok",
           "linux": 31,
           "method": "anchored",
-          "func_va": "0x158e710"
+          "func_va": "0x158ec50"
         }
       }
     },
@@ -644,7 +644,7 @@
           "status": "ok",
           "linux": 27,
           "method": "anchored",
-          "func_va": "0x157f570"
+          "func_va": "0x157fab0"
         }
       }
     },
@@ -660,7 +660,7 @@
           "status": "ok",
           "linux": 28,
           "method": "anchored",
-          "func_va": "0x157f6b0"
+          "func_va": "0x157fbf0"
         }
       }
     },
@@ -692,7 +692,7 @@
           "status": "ok",
           "linux": 27,
           "method": "anchored",
-          "func_va": "0x18e54b0"
+          "func_va": "0x18e59f0"
         }
       }
     },
@@ -741,7 +741,7 @@
           "status": "ok",
           "linux": 384,
           "method": "anchored",
-          "func_va": "0x17e0360"
+          "func_va": "0x17e08a0"
         }
       }
     },
@@ -854,7 +854,7 @@
           "status": "ok",
           "linux": 13,
           "method": "anchored",
-          "func_va": "0x18f6d60"
+          "func_va": "0x18f72a0"
         }
       }
     }

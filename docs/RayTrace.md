@@ -1,8 +1,8 @@
 # Ray-Trace
 
-Last updated: August 12, 2026 at 22:50:01 GMT
+Last updated: August 19, 2026 at 23:40:01 GMT
 
-* Manifests: [358563799254497787](https://steamdb.info/depot/2347771/history/?changeid=M:358563799254497787), [3612056480687749066](https://steamdb.info/depot/2347773/history/?changeid=M:3612056480687749066)
+* Manifests: [4846265837652631529](https://steamdb.info/depot/2347771/history/?changeid=M:4846265837652631529), [1670443425869204360](https://steamdb.info/depot/2347773/history/?changeid=M:1670443425869204360)
 * Repository: https://git.miksen.me/mikkel/Ray-Trace
 * Gamedata: https://git.miksen.me/mikkel/Ray-Trace/src/branch/main/configs/addons/RayTrace/gamedata.json
 
