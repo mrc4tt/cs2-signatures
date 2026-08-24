@@ -1,13 +1,13 @@
 {
   "project": "CounterStrikeSharp",
   "manifest": {
-    "2347771": "4846265837652631529",
-    "2347773": "1670443425869204360"
+    "2347771": "4506841409834636555",
+    "2347773": "3204075245827788235"
   },
   "gamedata_source": "mrc4tt/CounterStrikeSharp configs/addons/counterstrikesharp/gamedata/gamedata.json",
   "tally": {
-    "ok": 58,
-    "broken": 0,
+    "ok": 57,
+    "broken": 1,
     "ambiguous": 0,
     "no_binary": 0,
     "missing_sig": 0,
@@ -251,8 +251,8 @@
       "library": "server",
       "platforms": {
         "linux": {
-          "status": "ok",
-          "matches": 1,
+          "status": "broken",
+          "matches": 0,
           "library": "server",
           "sig": "55 48 89 E5 41 57 41 89 F7 41 56 48 8D 35 ? ? ? ?"
         },
@@ -580,7 +580,7 @@
           "status": "ok",
           "linux": 102,
           "method": "anchored",
-          "func_va": "0x152a7b0"
+          "func_va": "0x15564f0"
         }
       }
     },
@@ -596,7 +596,7 @@
           "status": "ok",
           "linux": 272,
           "method": "anchored",
-          "func_va": "0x14ebcf0"
+          "func_va": "0x1517a60"
         }
       }
     },
@@ -612,7 +612,7 @@
           "status": "ok",
           "linux": 31,
           "method": "anchored",
-          "func_va": "0x158ec50"
+          "func_va": "0x15ba990"
         }
       }
     },
@@ -644,7 +644,7 @@
           "status": "ok",
           "linux": 27,
           "method": "anchored",
-          "func_va": "0x157fab0"
+          "func_va": "0x15ab7f0"
         }
       }
     },
@@ -660,7 +660,7 @@
           "status": "ok",
           "linux": 28,
           "method": "anchored",
-          "func_va": "0x157fbf0"
+          "func_va": "0x15ab930"
         }
       }
     },
@@ -692,7 +692,7 @@
           "status": "ok",
           "linux": 27,
           "method": "anchored",
-          "func_va": "0x18e59f0"
+          "func_va": "0x1911730"
         }
       }
     },
@@ -741,7 +741,7 @@
           "status": "ok",
           "linux": 384,
           "method": "anchored",
-          "func_va": "0x17e08a0"
+          "func_va": "0x180c5e0"
         }
       }
     },
@@ -757,7 +757,7 @@
           "status": "ok",
           "linux": 162,
           "method": "anchored",
-          "func_va": "0xd63900"
+          "func_va": "0xd75c80"
         }
       }
     },
@@ -838,7 +838,7 @@
           "status": "ok",
           "linux": 29,
           "method": "anchored",
-          "func_va": "0xa31c90"
+          "func_va": "0xa39050"
         }
       }
     },
@@ -854,7 +854,7 @@
           "status": "ok",
           "linux": 13,
           "method": "anchored",
-          "func_va": "0x18f72a0"
+          "func_va": "0x1922fe0"
         }
       }
     }

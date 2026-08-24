@@ -1,0 +1,26 @@
+{
+  "project": "CounterStrikeSharp",
+  "manifest": {
+    "2347771": "4506841409834636555",
+    "2347773": "3204075245827788235"
+  },
+  "proposals": [
+    {
+      "name": "CCSGameRules_TerminateRound",
+      "platform": "linux",
+      "library": "server",
+      "reason": "broken",
+      "old_sig": "55 48 89 E5 41 57 41 89 F7 41 56 48 8D 35 ? ? ? ?",
+      "old_pos": [
+        4,
+        10062336
+      ],
+      "new_pos": [
+        4,
+        10304208
+      ],
+      "score": 0.652,
+      "candidate": "55 48 89 E5 41 57 41 ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? 48 89 FB 48 81 EC C8"
+    }
+  ]
+}
