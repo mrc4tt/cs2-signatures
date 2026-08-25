@@ -1,8 +1,8 @@
 # MatchZy
 
-Last updated: August 25, 2026 at 19:15:01 GMT
+Last updated: August 25, 2026 at 19:55:01 GMT
 
-* Manifests: [4506841409834636555](https://steamdb.info/depot/2347771/history/?changeid=M:4506841409834636555), [3204075245827788235](https://steamdb.info/depot/2347773/history/?changeid=M:3204075245827788235)
+* Manifests: [3075687913968839709](https://steamdb.info/depot/2347771/history/?changeid=M:3075687913968839709), [4438670448538289168](https://steamdb.info/depot/2347773/history/?changeid=M:4438670448538289168)
 * Repository: https://git.miksen.me/mikkel/matchzy
 * Gamedata: https://git.miksen.me/mikkel/matchzy/src/branch/main/gamedata/matchzy.json
 
