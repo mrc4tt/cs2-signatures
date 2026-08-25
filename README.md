@@ -29,7 +29,7 @@ self-hosted on Forgejo.
 <!-- STATUS:START -->
 ## Signatures
 
-* **Last updated:** August 24, 2026 at 23:40:01 GMT
+* **Last updated:** August 25, 2026 at 19:10:02 GMT
 * **Manifests:** [4506841409834636555](https://steamdb.info/depot/2347771/history/?changeid=M:4506841409834636555), [3204075245827788235](https://steamdb.info/depot/2347773/history/?changeid=M:3204075245827788235)
 * **Tracked projects:** 5
 * **Validated:** 101 ok, 0 ambiguous, 1 broken (0 not-yet-validated)

@@ -1,6 +1,6 @@
 # Signature fragility
 
-Last updated: August 24, 2026 at 23:40:01 GMT
+Last updated: August 25, 2026 at 19:10:02 GMT
 
 How often each signature has gone broken or ambiguous across the tracked history (each counted transition is one episode, not one run). Signatures with no episodes are summarised, not listed.
 
@@ -10,11 +10,12 @@ How often each signature has gone broken or ambiguous across the tracked history
 |---|---|---|---|---|---|
 | CounterStrikeSharp | `CBaseModelEntity_SetModel` | linux | 1 | 0 | ok |
 | CounterStrikeSharp | `CBaseModelEntity_SetModel` | windows | 1 | 0 | ok |
+| CounterStrikeSharp | `CCSGameRules_TerminateRound` | linux | 1 | 0 | broken |
 
 ## Per project
 
-- **CounterStrikeSharp** - 86 tracked sig/platform pairs, 2 breakage episode(s), 84 never broken, 19 snapshot(s) of history.
-- **RetakesAllocator** - 6 tracked sig/platform pairs, 0 breakage episode(s), 6 never broken, 15 snapshot(s) of history.
-- **RayTrace** - 12 tracked sig/platform pairs, 0 breakage episode(s), 12 never broken, 15 snapshot(s) of history.
-- **MatchZy** - 12 tracked sig/platform pairs, 0 breakage episode(s), 12 never broken, 10 snapshot(s) of history.
-- **WeaponPaints** - 22 tracked sig/platform pairs, 0 breakage episode(s), 22 never broken, 7 snapshot(s) of history.
+- **CounterStrikeSharp** - 86 tracked sig/platform pairs, 3 breakage episode(s), 83 never broken, 20 snapshot(s) of history.
+- **RetakesAllocator** - 6 tracked sig/platform pairs, 0 breakage episode(s), 6 never broken, 16 snapshot(s) of history.
+- **RayTrace** - 12 tracked sig/platform pairs, 0 breakage episode(s), 12 never broken, 16 snapshot(s) of history.
+- **MatchZy** - 12 tracked sig/platform pairs, 0 breakage episode(s), 12 never broken, 11 snapshot(s) of history.
+- **WeaponPaints** - 22 tracked sig/platform pairs, 0 breakage episode(s), 22 never broken, 8 snapshot(s) of history.
