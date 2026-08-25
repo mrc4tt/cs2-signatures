@@ -1,8 +1,8 @@
 {
-  "date": "August 25, 2026 at 19:10:02 GMT",
+  "date": "August 25, 2026 at 19:15:01 GMT",
   "tally": {
-    "ok": 101,
-    "broken": 1,
+    "ok": 102,
+    "broken": 0,
     "ambiguous": 0,
     "no_binary": 0,
     "missing_sig": 0,
@@ -17,8 +17,8 @@
   },
   "projects": {
     "CounterStrikeSharp": {
-      "ok": 57,
-      "broken": 1,
+      "ok": 58,
+      "broken": 0,
       "ambiguous": 0,
       "no_binary": 0,
       "missing_sig": 0,
