@@ -1,6 +1,6 @@
 # WeaponPaints
 
-Last updated: August 28, 2026 at 20:55:01 GMT
+Last updated: September 1, 2026 at 17:00:01 GMT
 
 * Manifests: [5122228181560116426](https://steamdb.info/depot/2347771/history/?changeid=M:5122228181560116426), [3098867400317391293](https://steamdb.info/depot/2347773/history/?changeid=M:3098867400317391293)
 * Repository: https://git.miksen.me/mikkel/weaponpaints
@@ -10,7 +10,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 
 ## Signatures
 
-### CAttributeList_SetOrAddAttributeValueByName
+### CAttributeList::SetOrAddAttributeValueByName
 
 <table>
 <tr><th>Status</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>

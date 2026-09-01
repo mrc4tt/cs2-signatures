@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "name": "CAttributeList_SetOrAddAttributeValueByName",
+      "name": "CAttributeList::SetOrAddAttributeValueByName",
       "kind": "signature",
       "library": "server",
       "platforms": {
