@@ -1,6 +1,6 @@
 # Signature fragility
 
-Last updated: September 9, 2026 at 18:45:01 GMT
+Last updated: September 9, 2026 at 20:55:01 GMT
 
 How often each signature has gone broken or ambiguous across the tracked history (each counted transition is one episode, not one run). Signatures with no episodes are summarised, not listed.
 
@@ -14,7 +14,7 @@ How often each signature has gone broken or ambiguous across the tracked history
 
 ## Per project
 
-- **CounterStrikeSharp** - 86 tracked sig/platform pairs, 3 breakage episode(s), 83 never broken, 29 snapshot(s) of history.
-- **RetakesAllocator** - 6 tracked sig/platform pairs, 0 breakage episode(s), 6 never broken, 21 snapshot(s) of history.
-- **MatchZy** - 15 tracked sig/platform pairs, 0 breakage episode(s), 15 never broken, 18 snapshot(s) of history.
-- **WeaponPaints** - 24 tracked sig/platform pairs, 0 breakage episode(s), 24 never broken, 15 snapshot(s) of history.
+- **CounterStrikeSharp** - 104 tracked sig/platform pairs, 3 breakage episode(s), 101 never broken, 30 snapshot(s) of history.
+- **RetakesAllocator** - 6 tracked sig/platform pairs, 0 breakage episode(s), 6 never broken, 22 snapshot(s) of history.
+- **MatchZy** - 16 tracked sig/platform pairs, 0 breakage episode(s), 16 never broken, 19 snapshot(s) of history.
+- **WeaponPaints** - 28 tracked sig/platform pairs, 0 breakage episode(s), 28 never broken, 16 snapshot(s) of history.
