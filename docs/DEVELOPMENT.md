@@ -172,6 +172,20 @@ Anchor outranks both the recipe and the reference, because those describe how a
 value was derived somewhere else and this one is measured here. A disagreement is
 a real `stale`, not a version gap.
 
+A third anchor source covers the case where the analysis files a member as a plain
+`function` whose pattern happens to span the access instruction:
+
+```
+48 83 C1 70 E9 D7 EC 44 00      add rcx, 0x70
+```
+
+There is no recorded integer to pair that with, so the gamedata's own value is
+used to locate the displacement, and the check becomes "does our binary still
+encode that offset at the site the analysis found". Weaker, since it cannot
+produce a value from nothing, but it still catches a moved offset: once the exact
+pattern stops matching, the read back reports what replaced it. The status block
+records which source answered under `anchor.via`.
+
 A separate cheap check needs no anchor at all: an index at or past
 `vtable_numvfunc` is wrong on its own terms, and the vtable dumps cover every
 class on both platforms.

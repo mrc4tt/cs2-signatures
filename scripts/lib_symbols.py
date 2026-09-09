@@ -190,25 +190,42 @@ class Snapshot(object):
         hits = [s for s, addr in slots.items() if addr == int(va, 16)]
         return hits[0] if len(hits) == 1 else None
 
-    def anchor(self, name, platform):
+    def anchor(self, name, platform, expected=None):
         """The byte anchor that pins this entry's offset, or None.
 
-        Returns {"sig", "expected", "disp_index", "kind"} for lib_anchor to
-        re-derive the value from the binary we actually downloaded, instead of
+        Returns {"sig", "expected", "disp_index", "kind", "via"} for lib_anchor
+        to re-derive the value from the binary we actually downloaded, instead of
         trusting an integer recorded against some other build.
+
+        The two dedicated anchor kinds carry their own expected value, so they
+        derive the offset independently. `func_sig` is the fallback: the analysis
+        sometimes files a member as a plain `function` whose pattern happens to
+        span the access instruction, for example
+
+            48 83 C1 70 E9 D7 EC 44 00      add rcx, 0x70
+
+        where 0x70 is the member offset. There is no recorded integer to pair it
+        with, so the caller supplies one (`expected`, in practice the gamedata's
+        own value) and the check becomes "does our binary still encode that
+        offset at the site the analysis found". Weaker, because it cannot produce
+        a value from nothing, but it still catches a moved offset: once the exact
+        pattern stops matching, the read back reports what replaced it.
         """
         rec = self.record(name, platform)
         if not rec:
             return None
         p = rec["payload"]
         if rec["kind"] == "virtualFunction" and p.get("vfunc_sig"):
-            return {"sig": p["vfunc_sig"], "kind": "vfunc",
+            return {"sig": p["vfunc_sig"], "kind": "vfunc", "via": "vfunc_sig",
                     "expected": int(str(p["vfunc_offset"]), 16),
                     "disp_index": None}
         if rec["kind"] == "structMember" and p.get("offset_sig"):
-            return {"sig": p["offset_sig"], "kind": "member",
+            return {"sig": p["offset_sig"], "kind": "member", "via": "offset_sig",
                     "expected": int(str(p["offset"]), 16),
                     "disp_index": p.get("offset_sig_disp")}
+        if expected is not None and p.get("func_sig"):
+            return {"sig": p["func_sig"], "kind": "member", "via": "func_sig",
+                    "expected": int(expected), "disp_index": None}
         return None
 
     def vtable_len(self, name, platform, vtable_class=None):

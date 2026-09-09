@@ -215,7 +215,7 @@ def _apply_anchor(info, snap, name, plat, ours, bins):
     was derived somewhere else, this one is measured here. A disagreement is
     therefore a real `stale`, not a version gap.
     """
-    anchor = snap.anchor(name, plat)
+    anchor = snap.anchor(name, plat, expected=ours)
     if not anchor:
         return
     sections = _sections_for(snap, name, plat, bins)
@@ -229,7 +229,8 @@ def _apply_anchor(info, snap, name, plat, ours, bins):
     if value is None:
         info["anchor"] = {"status": status}
         return
-    info["anchor"] = {"status": status, "value": value, "kind": anchor["kind"]}
+    info["anchor"] = {"status": status, "value": value, "kind": anchor["kind"],
+                      "via": anchor["via"]}
     if ours is None:
         return
     if int(ours) == value:

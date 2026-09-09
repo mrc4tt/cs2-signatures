@@ -1,8 +1,9 @@
 {
-  "CheckTransmit": "CSource2GameEntities_CheckTransmit",
-  "ISource2GameEntities::CheckTransmit": "CSource2GameEntities_CheckTransmit",
-  "CheckTransmitPlayerSlot": "CCheckTransmitInfo_m_nPlayerSlot",
+  "CCSPlayerPawnBase_PostThink": "CCSPlayerPawn_PostThink",
   "CTakeDamageInfo_HitGroup": "CTakeDamageInfo_HitGroupInfo",
-  "SetStateChanged": "CEntityInstance_NetworkStateChanged",
-  "CCSPlayerPawnBase_PostThink": "CCSPlayerPawn_PostThink"
+  "CheckTransmit": "CSource2GameEntities_CheckTransmit",
+  "CheckTransmitPlayerSlot": "CCheckTransmitInfo_m_nPlayerSlot",
+  "GameEntitySystem": "CGameResourceService_m_pEntitySystem",
+  "ISource2GameEntities::CheckTransmit": "CSource2GameEntities_CheckTransmit",
+  "SetStateChanged": "CEntityInstance_NetworkStateChanged"
 }

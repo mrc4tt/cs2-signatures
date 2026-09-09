@@ -25,6 +25,7 @@ SNAPSHOT = {
         record("CCSPlayerController_ChangeTeam", "windows", "virtualFunction",
                {"func_name": "CCSPlayerController_ChangeTeam",
                 "vfunc_index": 103, "vtable_name": "CCSPlayerController",
+                "vfunc_offset": "0x338", "vfunc_sig": "FF 90 38 03 00 00",
                 "func_va": "0x180aa0000"}),
         record("CBaseAnimGraph_m_skeletonInstance", "linux", "structMember",
                {"struct_name": "CBaseAnimGraph", "member_name": "m_skeleton",
@@ -32,6 +33,8 @@ SNAPSHOT = {
         record("CCSPlayerController_Teleport", "windows", "function",
                {"func_name": "CCSPlayerController_Teleport",
                 "func_va": "0x180bb0000"}),
+        record("CGCClientSharedObjectCache_m_Owner", "windows", "function",
+               {"func_name": "m_Owner", "func_sig": "0F 10 41 28 48 8B C2"}),
         record("CCSPlayerController_vtable", "windows", "vtable",
                {"vtable_class": "CCSPlayerController",
                 "vtable_entries": {"0": "0x1", "7": "0x180bb0000"}}),
@@ -114,6 +117,26 @@ class TestSnapshot(unittest.TestCase):
     def test_offset_without_any_record(self):
         self.assertEqual(self.snap.offset("GameEntitySystem", "linux"),
                          (None, "no_reference"))
+
+    def test_anchor_prefers_the_dedicated_kinds(self):
+        a = self.snap.anchor("CCSPlayerController_ChangeTeam", "windows")
+        self.assertEqual((a["via"], a["kind"], a["expected"]),
+                         ("vfunc_sig", "vfunc", 0x338))
+        # A structMember with no offset_sig has nothing to anchor on.
+        self.assertIsNone(
+            self.snap.anchor("CBaseAnimGraph_m_skeletonInstance", "linux"))
+
+    def test_function_record_serves_as_an_anchor_when_told_what_to_expect(self):
+        # The analysis files some members as a plain function whose pattern spans
+        # the access instruction; 0x28 is the member offset.
+        a = self.snap.anchor("CGCClientSharedObjectCache::m_Owner", "windows",
+                             expected=40)
+        self.assertEqual((a["via"], a["kind"], a["expected"]),
+                         ("func_sig", "member", 40))
+
+    def test_function_record_is_not_an_anchor_without_an_expected_value(self):
+        self.assertIsNone(
+            self.snap.anchor("CGCClientSharedObjectCache::m_Owner", "windows"))
 
     def test_alias_redirects_lookup(self):
         snap = Snapshot(SNAPSHOT,
