@@ -16,6 +16,12 @@ call news:
     signature entries -> (platform, status, sig bytes)
     offset entries    -> (platform, status, offset value)
 
+A signature the reference analysis has moved past adds one extra item, so the
+first `outdated` on an entry is announced. What is deliberately NOT news is
+reference COVERAGE: a symbol appearing in a newer snapshot flips an offset from
+`no_recipe` to a real verdict without anything about the game or the gamedata
+having changed, so `no_recipe` blocks are left out of the fingerprint entirely.
+
 Names are NOT part of it - entries are compared as an unordered multiset, so a
 pure rename is invisible. Deliberately excluded too: `matches` counts, `library`,
 `method`, and `func_va` (a resolved address moves on every game build). The
@@ -62,6 +68,10 @@ def fingerprint(status):
             st = info.get("status")
             if kind == "signature":
                 items.append((kind, plat, st, info.get("sig")))
+                if (info.get("reference") or {}).get("status") == "outdated":
+                    items.append((kind, plat, "outdated", info.get("sig")))
+            elif st == "no_recipe":
+                continue  # "no verdict available" is not a result
             else:
                 # Offset value lives under the platform key in `offsets`, and is
                 # echoed inside the platform block; prefer the former.

@@ -110,9 +110,38 @@ Name spellings are folded (`A::b`, `A.b` and `A_b` are one key). A genuine
 rename is not a spelling problem, so feed those in through the optional
 `data/symbol_aliases.json` (`{"gamedata name": "reference name"}`).
 
-Nothing here is wired into `run_all.sh` yet: `check_reference.py` is read-only,
-writes nothing under `reports/`, and changes no exit code the pipeline depends
-on.
+`run_all.sh` step 3.5 does this automatically. It resolves the game version from
+`data/manifest.json` against `binary_locks/`, fetches that snapshot if it is not
+cached, and passes it to `validate_sigs.py`. The whole step is optional and
+non-fatal: no network, no git, or an analysis that has not caught up with the
+current build all leave the pipeline byte-scanning exactly as it did before.
+
+```bash
+NO_SYMBOLS=1 bash scripts/run_all.sh                    # skip the reference tier
+SYMBOLS_REPO=https://github.com/HLND2T/CS2_VibeSignatures.git bash scripts/run_all.sh
+```
+
+`check_reference.py` stays a read-only debugging view of the same comparison.
+
+What the reference adds to `reports/<id>/status.json`:
+
+- every signature platform block gains a `reference` sub-block (`match`,
+  `outdated`, `no_sig`, `no_reference`). The scan still owns the
+  ok/broken/ambiguous verdict, so an outdated signature never fails the run: it
+  resolves fine, it has just been replaced upstream.
+- offset entries gain a **windows** platform block. Nothing else produces one;
+  the RTTI walk in `lib_offset` is Linux-only. Where the recipe path had no
+  answer (`no_recipe`/`review`) the reference supplies a real verdict, and a
+  disagreement between the two routes is kept visible rather than resolved
+  silently.
+- the tally gains `sig_outdated`, and `reference` names the game version. The
+  snapshot commit sha is deliberately **not** stored: it moves on every upstream
+  push and would churn a commit out of every run.
+
+`post_gate.py` announces the first `outdated` on an entry, and ignores reference
+COVERAGE changes: a symbol appearing in a newer snapshot flips an offset from
+`no_recipe` to a real verdict without anything about the game or the gamedata
+having changed, so `no_recipe` blocks are left out of the fingerprint.
 
 ## VPS setup (x86-64)
 

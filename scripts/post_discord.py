@@ -80,6 +80,23 @@ def is_problem(r):
                for p in ("windows", "linux"))
 
 
+def outdated_list(statuses):
+    """(project, name, platform) per signature the reference has replaced.
+
+    Kept out of issue_list on purpose: an outdated sig still resolves, so it is
+    worth showing but never worth an @mention.
+    """
+    out = []
+    for pid, status in statuses:
+        for r in status.get("results", []):
+            if r.get("kind") != "signature":
+                continue
+            for plat, info in sorted(r.get("platforms", {}).items()):
+                if (info.get("reference") or {}).get("status") == "outdated":
+                    out.append((pid, r["name"], plat))
+    return out
+
+
 def issue_list(statuses):
     """(project, name, platform, status) for every broken/ambiguous entry -
     used only to decide whether to @mention."""
@@ -216,6 +233,17 @@ def build_summary_embed(statuses, version, ts, projects_path):
              "`%d ok`  ·  `%d ambiguous`  ·  `%d broken`  ·  `%d not validated`"
              % (ok, amb, brk, novb)]
 
+    off_ok = total.get("offset_ok", 0)
+    off_bad = total.get("offset_stale", 0)
+    off_none = total.get("offset_no_recipe", 0) + total.get("offset_review", 0)
+    if off_ok or off_bad or off_none:
+        lines.append("Offsets: `%d ok`  ·  `%d stale`  ·  `%d no reference`"
+                     % (off_ok, off_bad, off_none))
+    if total.get("sig_outdated"):
+        lines.append("%s `%d` still resolve but the reference analysis has "
+                     "moved on" % (CIRCLE.get("ambiguous", ""),
+                                   total["sig_outdated"]))
+
     proj_lines = []
     for pid, status in statuses:
         c = platform_counts(sig_entries(status))
@@ -235,6 +263,18 @@ def build_summary_embed(statuses, version, ts, projects_path):
                                  if s.get("manifest")), None))
     if links:
         fields.append({"name": "Manifests", "value": links, "inline": False})
+
+    stale_refs = outdated_list(statuses)
+    if stale_refs:
+        by_name = {}
+        for pid, name, plat in stale_refs:
+            by_name.setdefault((pid, name), []).append(plat)
+        fields.append({
+            "name": "Outdated vs reference (%d)" % len(by_name),
+            "value": "\n".join("`%s` %s" % (name, ", ".join(plats))
+                                for (_, name), plats in
+                                sorted(by_name.items()))[:1024],
+            "inline": False})
 
     issues = issue_list(statuses)
     if issues:

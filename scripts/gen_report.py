@@ -38,6 +38,9 @@ def badge_md(project_id, alt):
             % (urllib.parse.quote(raw, safe=""), alt))
 
 OK, WARN, BAD, GREY = "✅", "⚠️", "❌", "❔"
+# The sig still resolves, but the reference analysis has moved to another
+# pattern. Advisory, so it gets its own mark rather than colouring the verdict.
+STALE_REF = "🕓"
 START, END = "<!-- STATUS:START -->", "<!-- STATUS:END -->"
 
 
@@ -91,6 +94,58 @@ def manifest_links(manifest):
     return ", ".join(parts) if parts else "unknown"
 
 
+def ref_emoji(info):
+    st = (info.get("reference") or {}).get("status")
+    return {"match": OK, "outdated": STALE_REF}.get(st, GREY)
+
+
+def outdated_rows(results):
+    """Signature entries the reference analysis has replaced upstream."""
+    rows = []
+    for r in results:
+        if r["kind"] != "signature":
+            continue
+        plats = [p for p, i in sorted(r["platforms"].items())
+                 if (i.get("reference") or {}).get("status") == "outdated"]
+        if plats:
+            rows.append((r["name"], ", ".join(plats)))
+    return rows
+
+
+def offset_rows(results):
+    """Every offsets entry with its per-platform verdict and how it was reached."""
+    rows = []
+    for r in results:
+        if r["kind"] != "offset":
+            continue
+        cells = []
+        for plat in ("windows", "linux"):
+            info = r["platforms"].get(plat)
+            if not info:
+                cells.append(("-", GREY))
+                continue
+            value = info.get(plat)
+            found = info.get("found_%s" % plat)
+            text = str(value) if value is not None else "-"
+            if info.get("status") == "stale" and found is not None:
+                text = "%s &rarr; %s" % (text, found)
+            cells.append((text, offset_emoji(info.get("status"))))
+        # Windows and linux can be reached by different routes, so name both
+        # rather than letting one platform speak for the entry.
+        methods = []
+        for plat in ("windows", "linux"):
+            m = (r["platforms"].get(plat) or {}).get("method")
+            if m and m not in methods:
+                methods.append(m)
+        rows.append((r["name"], cells, " / ".join(methods) or "-"))
+    return rows
+
+
+def offset_emoji(status):
+    return {"ok": OK, "stale": BAD, "review": WARN,
+            "no_recipe": GREY, "no_binary": GREY}.get(status, GREY)
+
+
 def issue_rows(results):
     """Entries where either platform is broken or ambiguous."""
     bad = ("broken", "ambiguous")
@@ -128,6 +183,12 @@ def render_readme_block(projects, statuses, updated):
     L.append("* **Validated:** %d ok, %d ambiguous, %d broken (%d not-yet-"
              "validated)" % (t.get("ok", 0), t.get("ambiguous", 0),
              t.get("broken", 0), t.get("no_binary", 0)))
+    L.append("* **Offsets:** %d ok, %d stale, %d without a reference"
+             % (t.get("offset_ok", 0), t.get("offset_stale", 0),
+                t.get("offset_no_recipe", 0) + t.get("offset_review", 0)))
+    if t.get("sig_outdated"):
+        L.append("* **Outdated:** %d signature(s) still resolve but have been "
+                 "replaced upstream" % t["sig_outdated"])
     L.append("")
     L.append("<table>")
     L.append("<tr><th>Status</th><th>Linux</th><th>Windows</th><th>Project</th>"
@@ -159,6 +220,24 @@ def render_readme_block(projects, statuses, updated):
         L.append("</table>")
         L.append("</details>")
         L.append("")
+
+    for proj, status in zip(projects, statuses):
+        rows = outdated_rows(status["results"])
+        if not rows:
+            continue
+        L.append("<details><summary>&#9660; %s outdated vs reference (%d)"
+                 "</summary>" % (P.name(proj), len(rows)))
+        L.append("")
+        L.append("These still resolve in the current binaries. The upstream "
+                 "analysis has moved to a different pattern.")
+        L.append("")
+        L.append("<table>")
+        L.append("<tr><th>Subroutine</th><th>Platform</th></tr>")
+        for name, plats in rows:
+            L.append("<tr><td>%s</td><td>%s</td></tr>" % (name, plats))
+        L.append("</table>")
+        L.append("</details>")
+        L.append("")
     return "\n".join(L)
 
 
@@ -175,6 +254,12 @@ def render_docs(proj, status, updated):
     L.append("Cell status: %s unique (1 match) &middot; %s ambiguous (>1) "
              "&middot; %s broken (0) &middot; %s binary not downloaded."
              % (OK, WARN, BAD, GREY))
+    if status.get("reference"):
+        L.append("")
+        L.append("Reference column: %s matches the %s analysis &middot; %s the "
+                 "analysis uses a different pattern &middot; %s no reference "
+                 "for this symbol."
+                 % (OK, status["reference"], STALE_REF, GREY))
     L.append("")
     L.append("## Signatures")
     L.append("")
@@ -185,8 +270,9 @@ def render_docs(proj, status, updated):
         L.append("### %s" % r["name"])
         L.append("")
         L.append("<table>")
-        L.append("<tr><th>Status</th><th>Platform</th><th>Library</th>"
-                 "<th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>")
+        L.append("<tr><th>Status</th><th>Ref</th><th>Platform</th>"
+                 "<th>Library</th><th>Matches</th><th>CODE-Style</th>"
+                 "<th>IDA-Style</th></tr>")
         for plat, disp in (("windows", "Windows"), ("linux", "Linux")):
             info = r["platforms"].get(plat, {})
             sig = info.get("sig")
@@ -194,11 +280,43 @@ def render_docs(proj, status, updated):
                 continue
             m = info.get("matches")
             L.append("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td>"
+                     "<td>%s</td>"
                      "<td>\n<pre>\n%s\n</pre>\n</td><td>\n<pre>\n%s\n</pre>\n</td></tr>"
-                     % (emoji(info.get("status")), disp,
+                     % (emoji(info.get("status")), ref_emoji(info), disp,
                         info.get("library", "server"),
                         "-" if m is None else str(m),
                         code_style(sig), sig))
+        L.append("</table>")
+        ref = (r["platforms"].get("linux", {}).get("reference") or {})
+        alt = (r["platforms"].get("windows", {}).get("reference") or {})
+        for plat, block in (("linux", ref), ("windows", alt)):
+            if block.get("status") == "outdated":
+                L.append("")
+                L.append("%s Reference %s pattern (%s):" % (STALE_REF, plat,
+                                                            status["reference"]))
+                L.append("")
+                L.append("```")
+                L.append(block["sig"])
+                L.append("```")
+        L.append("")
+
+    rows = offset_rows(status["results"])
+    if rows:
+        L.append("## Offsets")
+        L.append("")
+        L.append("A vtable slot index or a struct-member byte offset. There are "
+                 "no bytes to scan, so these are checked by re-deriving the "
+                 "integer: `reference` reads it from the analysis snapshot "
+                 "(both platforms), `anchored` / `structural` / `structoffset` "
+                 "re-derive it from the binary itself (Linux only).")
+        L.append("")
+        L.append("<table>")
+        L.append("<tr><th>Entry</th><th>Windows</th><th>Linux</th>"
+                 "<th>Checked by</th></tr>")
+        for name, cells, method in rows:
+            L.append("<tr><td>%s</td><td>%s %s</td><td>%s %s</td><td>%s</td></tr>"
+                     % (name, cells[0][1], cells[0][0],
+                        cells[1][1], cells[1][0], method))
         L.append("</table>")
         L.append("")
     return "\n".join(L)

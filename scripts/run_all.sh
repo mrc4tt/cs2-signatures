@@ -34,6 +34,40 @@ FETCH_OUT="$(python3 scripts/fetch_gamedata.py 2>&1)"
 set -e
 echo "$FETCH_OUT"
 
+# 2.05 Reference snapshot. binary_locks/<ver>.json binds a game version to the
+#      exact depot manifests, so the version is resolved from data/manifest.json
+#      rather than guessed. Runs before the skip below because the reference is
+#      now one of the things that can change a verdict: a symbol appearing in a
+#      newer snapshot turns a no_recipe offset into a real one without the game
+#      or the gamedata having moved at all.
+#
+#      Entirely optional and entirely non-fatal: no network, no git, or an
+#      analysis that has not caught up with this build all leave SYMBOLS empty
+#      and the pipeline byte-scanning exactly as it did before. Set NO_SYMBOLS=1
+#      to skip, SYMBOLS_REPO to read another fork.
+SYMBOLS=""
+GAMEVER=""
+if [ "${NO_SYMBOLS:-0}" != "1" ]; then
+  SYM_ARGS=()
+  [ -n "${SYMBOLS_REPO:-}" ] && SYM_ARGS+=(--repo "$SYMBOLS_REPO")
+  set +e
+  GAMEVER="$(python3 scripts/fetch_symbols.py --resolve "${SYM_ARGS[@]+"${SYM_ARGS[@]}"}" 2>/dev/null)"
+  set -e
+  if [ -n "$GAMEVER" ]; then
+    if [ ! -f "data/symbols/$GAMEVER.json" ]; then
+      python3 scripts/fetch_symbols.py --backend git --gamever "$GAMEVER" \
+        "${SYM_ARGS[@]+"${SYM_ARGS[@]}"}" || true
+    fi
+    [ -f "data/symbols/$GAMEVER.json" ] && SYMBOLS="data/symbols/$GAMEVER.json"
+  fi
+  if [ -n "$SYMBOLS" ]; then
+    echo "reference snapshot $GAMEVER"
+  else
+    echo "no reference snapshot for this build - scanning only"
+    GAMEVER=""
+  fi
+fi
+
 # 2.1 Nothing to do? Game unchanged + every gamedata unchanged + every project
 #     already has a status.json + no half-finished state in the tree -> the
 #     validate result cannot differ from last run. Skip the binary download and
@@ -41,17 +75,23 @@ echo "$FETCH_OUT"
 if [ "$UPD" -eq 0 ] \
    && ! echo "$FETCH_OUT" | grep -q " gamedata changed" \
    && [ -z "$(git status --porcelain data/ reports/)" ]; then
-  BROKEN=$(python3 - <<'PY'
+  BROKEN=$(REF="${GAMEVER:-}" python3 - <<'PY'
 import json, os, sys
 sys.path.insert(0, "scripts")
 import projects as P
+want = os.environ.get("REF") or None
 broken = 0
 for proj in P.load():
     path = P.status_path(proj)
     if not os.path.isfile(path):
         sys.exit(2)  # new project - needs a full run
     with open(path) as fh:
-        broken += json.load(fh).get("tally", {}).get("broken", 0)
+        status = json.load(fh)
+    # The reference moved (or arrived, or went away) since the last run, so a
+    # verdict can differ even though the game and the gamedata did not.
+    if status.get("reference") != want:
+        sys.exit(2)
+    broken += status.get("tally", {}).get("broken", 0)
 print(broken)
 PY
 ) || BROKEN=""
@@ -96,7 +136,8 @@ set +e
 python3 scripts/validate_sigs.py \
   --linux "${LINUX_SO:-}" --windows "${WIN_DLL:-}" \
   --linux-engine2 "${LINUX_ENGINE2:-}" --windows-engine2 "${WIN_ENGINE2:-}" \
-  --manifest data/manifest.json
+  --manifest data/manifest.json \
+  ${SYMBOLS:+--symbols "$SYMBOLS"}
 VAL=$?
 set -e
 

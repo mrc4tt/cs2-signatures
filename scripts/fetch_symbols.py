@@ -143,6 +143,42 @@ def run(cmd):
                    stderr=subprocess.STDOUT)
 
 
+def resolve_gamever(repo, manifest_path="data/manifest.json", binaries=None):
+    """Which game version describes the build sitting on disk?
+
+    binary_locks/<ver>.json binds each version to the exact depot manifests and
+    to a SHA-256 per module and platform. Matching on the manifest ids is enough
+    and costs nothing extra, since check_update.py already tracks them; the hash
+    path is the fallback for a checkout whose manifest file is missing.
+
+    Returns the version string, or None when no lock describes this build - which
+    is the normal state right after a game update, before the analysis catches up.
+    """
+    sparse_clone(repo, ["binary_locks"])
+    lock_dir = os.path.join(CLONE_DIR, "binary_locks")
+    manifest = None
+    if os.path.isfile(manifest_path):
+        with open(manifest_path) as fh:
+            manifest = {str(k): str(v) for k, v in json.load(fh).items()}
+
+    for fname in sorted(os.listdir(lock_dir), reverse=True):
+        if not fname.endswith(".json"):
+            continue
+        with open(os.path.join(lock_dir, fname)) as fh:
+            lock = json.load(fh)
+        if manifest:
+            have = {str(k): str(v) for k, v in
+                    lock.get("download", {}).get("manifests", {}).items()}
+            if have == manifest:
+                return lock.get("game_version", fname[:-5])
+        if binaries:
+            locked = lock.get("binaries", {})
+            if all(locked.get(m, {}).get(p, {}).get("sha256") == digest
+                   for (m, p), digest in binaries.items()):
+                return lock.get("game_version", fname[:-5])
+    return None
+
+
 def git_versions(repo):
     sparse_clone(repo, ["binary_locks"])
     d = os.path.join(CLONE_DIR, "binary_locks")
@@ -230,8 +266,22 @@ def main():
     ap.add_argument("--repo", default=REPO, help="git backend source repo")
     ap.add_argument("--upstream", action="store_true",
                     help="git backend: read %s instead" % UPSTREAM)
+    ap.add_argument("--resolve", action="store_true",
+                    help="print the game version matching data/manifest.json "
+                         "and exit; empty output means no analysis covers this "
+                         "build yet")
+    ap.add_argument("--manifest", default="data/manifest.json")
     args = ap.parse_args()
     repo = UPSTREAM if args.upstream else args.repo
+
+    if args.resolve:
+        found = resolve_gamever(repo, args.manifest)
+        if found:
+            print(found)
+            return 0
+        print("no binary_lock in %s matches %s" % (repo, args.manifest),
+              file=sys.stderr)
+        return 1
 
     if args.backend == "site":
         versions = site_index()["versions"]
