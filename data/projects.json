@@ -5,7 +5,7 @@
     "repo": "mrc4tt/CounterStrikeSharp",
     "branch": "main",
     "path": "configs/addons/counterstrikesharp/gamedata/gamedata.json",
-    "private": true,
+    "private": false,
     "propose_pr": true
   },
   {

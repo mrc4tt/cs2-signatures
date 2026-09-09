@@ -178,13 +178,13 @@
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "55 48 89 E5 53 48 89 FB 48 83 EC ? 48 8D 05 ? ? ? ? 48 8B 38 48 8B 07 FF 50 ? 48 89 DF 48 8B 5D ? C9 48 89 C6 E9 ? ? ? ? CC CC CC CC 55"
+          "sig": "55 48 89 E5 53 48 89 FB 48 83 EC ? 48 8D 05 BD ? ? ? 48 8B 38"
         },
         "windows": {
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "40 53 48 83 EC ? 48 8B D9 4C 8B C2 48 8B 0D ? ? ? ? 48 8D 54 24 ? 48 8B 01 FF 50 ? 48 8B 54 24 ? 48 8B CB E8 ? ? ? ? 48 83 C4 ? 5B C3 CC CC CC CC CC CC CC CC CC CC CC CC CC CC CC 48 89 5C 24"
+          "sig": "40 53 48 83 EC ? 48 8B D9 4C 8B C2 48 8B 0D 9D E1 4D ?"
         }
       }
     },
@@ -254,13 +254,13 @@
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "55 48 89 E5 41 57 41 56 41 55 41 54 41 89 F4 53 48 8D 35 ?? ?? ?? ?? 48 89 FB"
+          "sig": "55 48 89 E5 41 57 41 56 41 55 41 54 41 89 F4 53 48 8D 35 ? ? ? ? 48 89 FB"
         },
         "windows": {
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "48 8B C4 4C 89 48 ?? 48 89 48 ?? 55 41 54"
+          "sig": "48 8B C4 4C 89 48 ? 48 89 48 ? 55 41 54"
         }
       }
     },
@@ -311,13 +311,13 @@
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "48 B8 00 00 00 00 FF FF FF FF 55 48 89 E5 41 57 41 56 41 55 41 54 53 48 89 FB 48 81 EC ? ? ? ? 48 89 07 48 8D 05 ? ? ? ? 48 C7 47 08 00 00 00 00"
+          "sig": "55 48 89 E5 41 57 41 56 49 89 F6 BE ? ? ? ? 41 55 49 89 D5 41 54 53 48 89 FB 48 8D 3D ? ? ? ?"
         },
         "windows": {
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "40 53 48 83 EC ? 4C 89 4C 24 ? 48 8B D9 45 8B C8"
+          "sig": "48 89 74 24 ? 57 41 56 41 57 48 83 EC ? BE ? ? ? ?"
         }
       }
     },
