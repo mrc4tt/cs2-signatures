@@ -1,0 +1,85 @@
+{
+  "project": "CounterStrikeSharp",
+  "manifest": {
+    "2347771": "5806169188224907599",
+    "2347773": "8639120305802825922"
+  },
+  "proposals": [
+    {
+      "name": "CBaseModelEntity_SetModel",
+      "platform": "windows",
+      "library": "server",
+      "reason": "broken",
+      "old_sig": "40 53 48 83 EC ? 48 8B D9 4C 8B C2 48 8B 0D 9D E1 4D ?",
+      "old_pos": [
+        0,
+        11739376
+      ],
+      "new_pos": [
+        0,
+        11770048
+      ],
+      "score": 0.965,
+      "candidate": "40 53 48 83 EC 20 48 8B D9 4C 8B C2 48 8B 0D ? ? ? ? 48 8D 54 24 40 48 8B 01 FF 50 60 48 8B 54 24 40 48 8B CB E8 ? ? ? ? 48 83 C4 20 5B C3 CC CC CC CC CC CC CC CC CC CC CC CC CC CC CC 48 89"
+    },
+    {
+      "name": "CCSCustomHudLayout_SetDialogVariableStringForPlayer",
+      "platform": "linux",
+      "library": "server",
+      "reason": "broken",
+      "old_sig": "55 48 89 E5 41 56 41 55 41 54 41 89 F4 53 48 83 EC 10 3B B7 90 07 00 00 7C 16 48 83 C4 10 5B 41 5C 41 5D 41 5E 5D C3 66 0F 1F 84 00 00 00 00 00 48 89 D6 31 D2 48 89 FB 66 89 55 DC 48 8D 55 DC 49 89 CD 4D 89 C6 E8 C5",
+      "old_pos": [
+        4,
+        9535920
+      ],
+      "new_pos": [
+        4,
+        9554624
+      ],
+      "score": 0.598,
+      "candidate": "55 48 89 E5 41 56 41 55 41 54 41 89 F4 53 48 83 EC 10 3B B7 ? ? ? ? 7C 16 48 83 C4 10 5B 41 5C 41 5D 41 5E 5D C3 66 0F 1F 84 00 00 00 00 00 48 89 D6 31 D2 48 89 FB 66 89 55 DC 48 8D 55 DC 49 89 CD 4D"
+    },
+    {
+      "name": "CCSCustomHudLayout_SetDialogVariableStringForPlayer",
+      "platform": "windows",
+      "library": "server",
+      "reason": "broken",
+      "old_sig": "40 53 56 57 48 83 EC 20 48 63 DA 49 8B F1 49 8B C0 48 8B F9 3B 99 B0 04 00 00 7D 5E 48 89 6C 24 50 4C 8D 44 24 40 33 ED 48 8B D0 66 89 6C 24 40 E8 DB 3E FF FF 84 C0 74",
+      "old_pos": [
+        0,
+        9055376
+      ],
+      "new_pos": [
+        0,
+        9093280
+      ],
+      "score": 0.566,
+      "candidate": "40 53 56 57 48 83 EC 20 48 63 DA 49 8B F1 49 8B C0 48 8B F9 3B 99 ? ? ? ? 7D 5E 48 89 6C 24 50 4C 8D 44 24 40 33 ED 48 8B D0 66 89 6C 24 40 E8 ? ? ? ? 84 C0 74 3C 4C 8D 44 24 48 66 89 6C 24 48 48 8B D6 48 8B CF E8 ? ? ? ? 84 C0 74 23 4C"
+    },
+    {
+      "name": "CCSCustomHudLayout_SetHasClass",
+      "platform": "linux",
+      "library": "server",
+      "reason": "broken",
+      "old_sig": "55 48 89 E5 41 57 49 89 D7 41 56 48 8D 55 ? 41 55 41 54 49 89 FC 53 48 83 EC 48",
+      "error": "function not found in new binary (score < 0.55)"
+    },
+    {
+      "name": "CCSCustomHudLayout_SetHasClassForPlayer",
+      "platform": "windows",
+      "library": "server",
+      "reason": "broken",
+      "old_sig": "40 53 56 57 48 83 EC 20 48 63 DA 49 8B F1 49 8B C0 48 8B F9 3B 99 B0 04 00 00 7D 5E 48 89 6C 24 50 4C 8D 44 24 40 33 ED 48 8B D0 66 89 6C 24 40 E8 AB 3B FF FF 84 C0 74",
+      "old_pos": [
+        0,
+        9056192
+      ],
+      "new_pos": [
+        0,
+        9095872
+      ],
+      "score": 0.926,
+      "candidate": "40 53 56 57 48 83 EC 20 48 63 DA 49 8B F1 49 8B C0 48 8B F9 3B 99 ? ? ? ? 7D 5E 48 89 6C 24 50 4C 8D 44 24 40 33 ED 48 8B D0 66 89 6C 24 40 E8 ? ? ? ? 84 C0 74 3C 4C 8D 44 24 48 66 89 6C 24 48 48 8B D6 48 8B CF E8 ? ? ? ? 84 C0 74 23 44"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
   "label": "cs2 sigs",
-  "message": "106 ok",
-  "color": "brightgreen"
+  "message": "6 broken / 100 ok",
+  "color": "red"
 }

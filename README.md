@@ -29,28 +29,36 @@ self-hosted on Forgejo.
 <!-- STATUS:START -->
 ## Signatures
 
-* **Last updated:** September 9, 2026 at 22:35:01 GMT
-* **Manifests:** [7475134589078180787](https://steamdb.info/depot/2347771/history/?changeid=M:7475134589078180787), [7308152089951763351](https://steamdb.info/depot/2347773/history/?changeid=M:7308152089951763351)
+* **Last updated:** September 9, 2026 at 22:50:01 GMT
+* **Manifests:** [5806169188224907599](https://steamdb.info/depot/2347771/history/?changeid=M:5806169188224907599), [8639120305802825922](https://steamdb.info/depot/2347773/history/?changeid=M:8639120305802825922)
 * **Tracked projects:** 4
-* **Validated:** 106 ok, 0 ambiguous, 0 broken (0 not-yet-validated)
-* **Offsets:** 42 ok, 0 stale, 4 without a reference
-* **Outdated:** 2 signature(s) still resolve but have been replaced upstream
+* **Validated:** 100 ok, 0 ambiguous, 6 broken (0 not-yet-validated)
+* **Offsets:** 18 ok, 0 stale, 5 without a reference
 
 <table>
 <tr><th>Status</th><th>Linux</th><th>Windows</th><th>Project</th><th></th></tr>
-<tr><td><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fgit.miksen.me%2Fmikkel%2Fcs2-signatures%2Fraw%2Fbranch%2Fmain%2Freports%2FCounterStrikeSharp%2Fbadge.json" alt="CounterStrikeSharp"></td><td>✅</td><td>✅</td><td><a href="https://github.com/mrc4tt/CounterStrikeSharp">CounterStrikeSharp</a></td><td><a href="https://git.miksen.me/mikkel/cs2-signatures/src/branch/main/docs/CounterStrikeSharp.md">View signatures &rarr;</a></td></tr>
+<tr><td><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fgit.miksen.me%2Fmikkel%2Fcs2-signatures%2Fraw%2Fbranch%2Fmain%2Freports%2FCounterStrikeSharp%2Fbadge.json" alt="CounterStrikeSharp"></td><td>❌</td><td>❌</td><td><a href="https://github.com/mrc4tt/CounterStrikeSharp">CounterStrikeSharp</a></td><td><a href="https://git.miksen.me/mikkel/cs2-signatures/src/branch/main/docs/CounterStrikeSharp.md">View signatures &rarr;</a></td></tr>
 <tr><td><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fgit.miksen.me%2Fmikkel%2Fcs2-signatures%2Fraw%2Fbranch%2Fmain%2Freports%2FRetakesAllocator%2Fbadge.json" alt="cs2-retakes-allocator"></td><td>✅</td><td>✅</td><td><a href="https://github.com/mrc4tt/cs2-retakes-allocator">cs2-retakes-allocator</a></td><td><a href="https://git.miksen.me/mikkel/cs2-signatures/src/branch/main/docs/RetakesAllocator.md">View signatures &rarr;</a></td></tr>
-<tr><td><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fgit.miksen.me%2Fmikkel%2Fcs2-signatures%2Fraw%2Fbranch%2Fmain%2Freports%2FMatchZy%2Fbadge.json" alt="MatchZy"></td><td>✅</td><td>✅</td><td><a href="https://git.miksen.me/mikkel/matchzy">MatchZy</a></td><td><a href="https://git.miksen.me/mikkel/cs2-signatures/src/branch/main/docs/MatchZy.md">View signatures &rarr;</a></td></tr>
+<tr><td><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fgit.miksen.me%2Fmikkel%2Fcs2-signatures%2Fraw%2Fbranch%2Fmain%2Freports%2FMatchZy%2Fbadge.json" alt="MatchZy"></td><td>❌</td><td>✅</td><td><a href="https://git.miksen.me/mikkel/matchzy">MatchZy</a></td><td><a href="https://git.miksen.me/mikkel/cs2-signatures/src/branch/main/docs/MatchZy.md">View signatures &rarr;</a></td></tr>
 <tr><td><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fgit.miksen.me%2Fmikkel%2Fcs2-signatures%2Fraw%2Fbranch%2Fmain%2Freports%2FWeaponPaints%2Fbadge.json" alt="WeaponPaints"></td><td>✅</td><td>✅</td><td><a href="https://git.miksen.me/mikkel/weaponpaints">WeaponPaints</a></td><td><a href="https://git.miksen.me/mikkel/cs2-signatures/src/branch/main/docs/WeaponPaints.md">View signatures &rarr;</a></td></tr>
 </table>
 
-<details><summary>&#9660; CounterStrikeSharp outdated vs reference (1)</summary>
-
-These still resolve in the current binaries. The upstream analysis has moved to a different pattern.
+<details open><summary>&#9660; CounterStrikeSharp broken / ambiguous signatures (4)</summary>
 
 <table>
-<tr><th>Subroutine</th><th>Platform</th></tr>
-<tr><td>ClientPrint</td><td>linux, windows</td></tr>
+<tr><th>Linux</th><th>Windows</th><th>Subroutine</th></tr>
+<tr><td>✅</td><td>❌</td><td>CBaseModelEntity_SetModel</td></tr>
+<tr><td>❌</td><td>❌</td><td>CCSCustomHudLayout_SetDialogVariableStringForPlayer</td></tr>
+<tr><td>❌</td><td>✅</td><td>CCSCustomHudLayout_SetHasClass</td></tr>
+<tr><td>✅</td><td>❌</td><td>CCSCustomHudLayout_SetHasClassForPlayer</td></tr>
+</table>
+</details>
+
+<details open><summary>&#9660; MatchZy broken / ambiguous signatures (1)</summary>
+
+<table>
+<tr><th>Linux</th><th>Windows</th><th>Subroutine</th></tr>
+<tr><td>❌</td><td>✅</td><td>CDecoyProjectile_Create</td></tr>
 </table>
 </details>
 
