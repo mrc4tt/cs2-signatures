@@ -18,23 +18,13 @@
     "propose_pr": true
   },
   {
-    "id": "RayTrace",
-    "name": "Ray-Trace",
-    "repo": "mikkel/Ray-Trace",
-    "host": "git.miksen.me",
-    "branch": "main",
-    "path": "configs/addons/RayTrace/gamedata.json",
-    "private": false,
-    "propose_pr": true
-  },
-  {
     "id": "MatchZy",
     "name": "MatchZy",
     "repo": "mikkel/matchzy",
     "host": "git.miksen.me",
     "branch": "main",
     "path": "gamedata/matchzy.json",
-    "private": true,
+    "private": false,
     "propose_pr": true
   },
   {
