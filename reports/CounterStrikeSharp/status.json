@@ -12,10 +12,10 @@
     "ambiguous": 0,
     "no_binary": 0,
     "missing_sig": 0,
-    "offset_ok": 30,
+    "offset_ok": 32,
     "offset_stale": 0,
     "offset_review": 1,
-    "offset_no_recipe": 5,
+    "offset_no_recipe": 3,
     "sig_outdated": 2
   },
   "results": [
@@ -810,6 +810,9 @@
             "source": "vfunc_index",
             "status": "match"
           },
+          "anchor": {
+            "status": "anchor_unlocatable"
+          },
           "bounds": {
             "vtable_len": 275,
             "in_range": true
@@ -823,6 +826,9 @@
             "value": 103,
             "source": "vfunc_index",
             "status": "match"
+          },
+          "anchor": {
+            "status": "anchor_unlocatable"
           },
           "bounds": {
             "vtable_len": 273,
@@ -849,6 +855,9 @@
             "source": "vfunc_index",
             "status": "match"
           },
+          "anchor": {
+            "status": "anchor_unlocatable"
+          },
           "bounds": {
             "vtable_len": 275,
             "in_range": true
@@ -862,6 +871,9 @@
             "value": 270,
             "source": "vfunc_index",
             "status": "match"
+          },
+          "anchor": {
+            "status": "anchor_unlocatable"
           },
           "bounds": {
             "vtable_len": 273,
@@ -888,6 +900,9 @@
             "source": "vfunc_index",
             "status": "match"
           },
+          "anchor": {
+            "status": "anchor_unlocatable"
+          },
           "bounds": {
             "vtable_len": 46,
             "in_range": true
@@ -901,6 +916,9 @@
             "value": 30,
             "source": "vfunc_index",
             "status": "match"
+          },
+          "anchor": {
+            "status": "anchor_unlocatable"
           },
           "bounds": {
             "vtable_len": 43,
@@ -930,7 +948,8 @@
           "anchor": {
             "status": "confirmed",
             "value": 24,
-            "kind": "vfunc"
+            "kind": "vfunc",
+            "via": "vfunc_sig"
           },
           "bounds": {
             "vtable_len": 29,
@@ -949,7 +968,8 @@
           "anchor": {
             "status": "confirmed",
             "value": 23,
-            "kind": "vfunc"
+            "kind": "vfunc",
+            "via": "vfunc_sig"
           },
           "bounds": {
             "vtable_len": 28,
@@ -979,7 +999,8 @@
           "anchor": {
             "status": "confirmed",
             "value": 27,
-            "kind": "vfunc"
+            "kind": "vfunc",
+            "via": "vfunc_sig"
           },
           "bounds": {
             "vtable_len": 29,
@@ -998,7 +1019,8 @@
           "anchor": {
             "status": "confirmed",
             "value": 26,
-            "kind": "vfunc"
+            "kind": "vfunc",
+            "via": "vfunc_sig"
           },
           "bounds": {
             "vtable_len": 28,
@@ -1025,6 +1047,9 @@
             "source": "vfunc_index",
             "status": "match"
           },
+          "anchor": {
+            "status": "anchor_unlocatable"
+          },
           "bounds": {
             "vtable_len": 29,
             "in_range": true
@@ -1038,6 +1063,9 @@
             "value": 27,
             "source": "vfunc_index",
             "status": "match"
+          },
+          "anchor": {
+            "status": "anchor_unlocatable"
           },
           "bounds": {
             "vtable_len": 28,
@@ -1067,7 +1095,8 @@
           "anchor": {
             "status": "confirmed",
             "value": 14,
-            "kind": "vfunc"
+            "kind": "vfunc",
+            "via": "vfunc_sig"
           },
           "bounds": {
             "vtable_len": 32,
@@ -1086,7 +1115,8 @@
           "anchor": {
             "status": "confirmed",
             "value": 12,
-            "kind": "vfunc"
+            "kind": "vfunc",
+            "via": "vfunc_sig"
           },
           "bounds": {
             "vtable_len": 31,
@@ -1113,6 +1143,9 @@
             "source": "vfunc_index",
             "status": "match"
           },
+          "anchor": {
+            "status": "anchor_unlocatable"
+          },
           "bounds": {
             "vtable_len": 132,
             "in_range": true
@@ -1126,6 +1159,9 @@
             "value": 26,
             "source": "vfunc_index",
             "status": "match"
+          },
+          "anchor": {
+            "status": "anchor_unlocatable"
           },
           "bounds": {
             "vtable_len": 131,
@@ -1157,7 +1193,8 @@
           "anchor": {
             "status": "read",
             "value": 104,
-            "kind": "member"
+            "kind": "member",
+            "via": "offset_sig"
           }
         },
         "windows": {
@@ -1172,7 +1209,8 @@
           "anchor": {
             "status": "read",
             "value": 104,
-            "kind": "member"
+            "kind": "member",
+            "via": "offset_sig"
           }
         }
       }
@@ -1198,7 +1236,8 @@
           "anchor": {
             "status": "confirmed",
             "value": 168,
-            "kind": "vfunc"
+            "kind": "vfunc",
+            "via": "vfunc_sig"
           },
           "bounds": {
             "vtable_len": 237,
@@ -1217,7 +1256,8 @@
           "anchor": {
             "status": "confirmed",
             "value": 169,
-            "kind": "vfunc"
+            "kind": "vfunc",
+            "via": "vfunc_sig"
           },
           "bounds": {
             "vtable_len": 236,
@@ -1247,7 +1287,8 @@
           "anchor": {
             "status": "confirmed",
             "value": 384,
-            "kind": "vfunc"
+            "kind": "vfunc",
+            "via": "vfunc_sig"
           },
           "bounds": {
             "vtable_len": 398,
@@ -1266,7 +1307,8 @@
           "anchor": {
             "status": "confirmed",
             "value": 384,
-            "kind": "vfunc"
+            "kind": "vfunc",
+            "via": "vfunc_sig"
           },
           "bounds": {
             "vtable_len": 397,
@@ -1296,7 +1338,8 @@
           "anchor": {
             "status": "confirmed",
             "value": 162,
-            "kind": "vfunc"
+            "kind": "vfunc",
+            "via": "vfunc_sig"
           },
           "bounds": {
             "vtable_len": 237,
@@ -1315,7 +1358,8 @@
           "anchor": {
             "status": "confirmed",
             "value": 163,
-            "kind": "vfunc"
+            "kind": "vfunc",
+            "via": "vfunc_sig"
           },
           "bounds": {
             "vtable_len": 236,
@@ -1333,23 +1377,38 @@
       },
       "platforms": {
         "linux": {
-          "status": "no_recipe",
+          "status": "ok",
           "linux": 80,
           "kind": "structoffset",
           "resolve": "gdt",
           "reason": "offset_sig-missing",
           "reference": {
-            "status": "no_reference",
-            "reason": "no_reference"
+            "value": 80,
+            "source": "struct_member",
+            "status": "match"
+          },
+          "method": "anchor",
+          "anchor": {
+            "status": "read",
+            "value": 80,
+            "kind": "member",
+            "via": "offset_sig"
           }
         },
         "windows": {
-          "status": "no_recipe",
+          "status": "ok",
           "windows": 88,
-          "method": "reference",
+          "method": "anchor",
           "reference": {
-            "status": "no_reference",
-            "reason": "no_reference"
+            "value": 88,
+            "source": "struct_member",
+            "status": "match"
+          },
+          "anchor": {
+            "status": "read",
+            "value": 88,
+            "kind": "member",
+            "via": "offset_sig"
           }
         }
       }
@@ -1433,7 +1492,8 @@
           "anchor": {
             "status": "read",
             "value": 576,
-            "kind": "member"
+            "kind": "member",
+            "via": "offset_sig"
           }
         },
         "windows": {
@@ -1448,7 +1508,8 @@
           "anchor": {
             "status": "read",
             "value": 576,
-            "kind": "member"
+            "kind": "member",
+            "via": "offset_sig"
           }
         }
       }
@@ -1510,6 +1571,9 @@
             "source": "vfunc_index",
             "status": "match"
           },
+          "anchor": {
+            "status": "anchor_unlocatable"
+          },
           "bounds": {
             "vtable_len": 21,
             "in_range": true
@@ -1523,6 +1587,9 @@
             "value": 12,
             "source": "vfunc_index",
             "status": "match"
+          },
+          "anchor": {
+            "status": "anchor_unlocatable"
           },
           "bounds": {
             "vtable_len": 18,

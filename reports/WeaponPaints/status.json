@@ -12,10 +12,10 @@
     "ambiguous": 0,
     "no_binary": 0,
     "missing_sig": 0,
-    "offset_ok": 5,
+    "offset_ok": 8,
     "offset_stale": 0,
     "offset_review": 0,
-    "offset_no_recipe": 3,
+    "offset_no_recipe": 0,
     "sig_outdated": 0
   },
   "results": [
@@ -30,7 +30,8 @@
           "library": "server",
           "sig": "55 48 89 E5 41 57 41 56 49 89 FE 41 55 41 54 53 48 89 F3 48 83 EC ? F3 0F 11 85 ? ? ? ?",
           "reference": {
-            "status": "no_reference"
+            "status": "match",
+            "relation": "equal"
           }
         },
         "windows": {
@@ -39,7 +40,8 @@
           "library": "server",
           "sig": "48 89 5C 24 ? 48 89 74 24 ? 57 48 83 EC ? 49 8B F8 8B DA 48 8B F1 83 FA ?",
           "reference": {
-            "status": "no_reference"
+            "status": "match",
+            "relation": "equal"
           }
         }
       }
@@ -55,7 +57,8 @@
           "library": "server",
           "sig": "55 49 89 F0 48 89 E5 41 57 41 56 49 89 FE 41 55 41 54 53 48 81 EC ? ? ? ?",
           "reference": {
-            "status": "no_reference"
+            "status": "match",
+            "relation": "equal"
           }
         },
         "windows": {
@@ -64,7 +67,8 @@
           "library": "server",
           "sig": "48 89 5C 24 ? 48 89 74 24 ? 57 48 83 EC ? 49 8B F8 8B DA 48 8B F1 83 FA ?",
           "reference": {
-            "status": "no_reference"
+            "status": "match",
+            "relation": "equal"
           }
         }
       }
@@ -80,7 +84,8 @@
           "library": "server",
           "sig": "55 48 89 E5 41 57 41 56 41 55 41 54 53 48 83 EC ? 83 FA ?",
           "reference": {
-            "status": "no_reference"
+            "status": "match",
+            "relation": "equal"
           }
         },
         "windows": {
@@ -89,7 +94,8 @@
           "library": "server",
           "sig": "48 89 5C 24 ? 48 89 74 24 ? 57 48 83 EC ? 49 8B F8 8B DA 48 8B F1 83 FA ?",
           "reference": {
-            "status": "no_reference"
+            "status": "match",
+            "relation": "equal"
           }
         }
       }
@@ -105,7 +111,8 @@
           "library": "server",
           "sig": "55 48 8D 05 ? ? ? ? 66 0F EF C0 48 89 E5 41 57 45 31 FF",
           "reference": {
-            "status": "no_reference"
+            "status": "match",
+            "relation": "equal"
           }
         },
         "windows": {
@@ -114,7 +121,8 @@
           "library": "server",
           "sig": "48 89 5C 24 ? 48 89 74 24 ? 57 48 83 EC ? 49 8B F8 8B DA 48 8B F1 83 FA ?",
           "reference": {
-            "status": "no_reference"
+            "status": "match",
+            "relation": "equal"
           }
         }
       }
@@ -130,7 +138,8 @@
           "library": "server",
           "sig": "55 48 89 E5 41 57 41 56 41 55 41 54 49 89 F4 53 48 89 FB 48 83 EC ? 48 8B 7F ? 48 85 FF 74 ?",
           "reference": {
-            "status": "no_reference"
+            "status": "match",
+            "relation": "equal"
           }
         },
         "windows": {
@@ -139,7 +148,8 @@
           "library": "server",
           "sig": "48 89 5C 24 ? 48 89 74 24 ? 57 48 83 EC ? 49 8B F8 8B DA 48 8B F1 83 FA ?",
           "reference": {
-            "status": "no_reference"
+            "status": "match",
+            "relation": "equal"
           }
         }
       }
@@ -155,7 +165,8 @@
           "library": "server",
           "sig": "31 C0 83 7F ? ? 75 ? 48 8B 47 ? 48 89 C7",
           "reference": {
-            "status": "no_reference"
+            "status": "match",
+            "relation": "equal"
           }
         },
         "windows": {
@@ -164,7 +175,8 @@
           "library": "server",
           "sig": "48 89 5C 24 ? 48 89 74 24 ? 57 48 83 EC ? 49 8B F8 8B DA 48 8B F1 83 FA ?",
           "reference": {
-            "status": "no_reference"
+            "status": "match",
+            "relation": "equal"
           }
         }
       }
@@ -180,7 +192,8 @@
           "library": "server",
           "sig": "55 48 89 E5 41 57 41 56 41 55 41 54 49 89 FC 53 48 83 EC ? 48 8B 5F ? 48 85 DB",
           "reference": {
-            "status": "no_reference"
+            "status": "match",
+            "relation": "equal"
           }
         },
         "windows": {
@@ -189,7 +202,8 @@
           "library": "server",
           "sig": "48 89 5C 24 ? 48 89 74 24 ? 57 48 83 EC ? 49 8B F8 8B DA 48 8B F1 83 FA ?",
           "reference": {
-            "status": "no_reference"
+            "status": "match",
+            "relation": "equal"
           }
         }
       }
@@ -205,7 +219,8 @@
           "library": "server",
           "sig": "55 48 89 E5 41 56 41 55 4C 8D AF ? ? ? ? 41 54 53 48 89 FB",
           "reference": {
-            "status": "no_reference"
+            "status": "match",
+            "relation": "equal"
           }
         },
         "windows": {
@@ -214,7 +229,8 @@
           "library": "server",
           "sig": "48 89 5C 24 ? 48 89 74 24 ? 57 48 83 EC ? 49 8B F8 8B DA 48 8B F1 83 FA ?",
           "reference": {
-            "status": "no_reference"
+            "status": "match",
+            "relation": "equal"
           }
         }
       }
@@ -230,7 +246,8 @@
           "library": "server",
           "sig": "55 48 89 E5 41 57 41 56 41 55 41 54 53 48 89 FB 48 83 EC ? 8B 8F ? ? ? ? 83 F9 ? 0F 84 ? ? ? ? 48 8B 35 ? ? ? ? 48 85 F6 0F 84 ? ? ? ? 83 F9 ? 0F 84 ? ? ? ? 0F B7 87 ? ? ? ? 48 89 C2 48 C1 EA ? 83 E2 ? 48 8B 14 D6 48 85 D2 0F 84 ? ? ? ? 25 ? ? ? ? 48 6B C0 ? 48 01 D0 3B 48 ? 0F 85 ? ? ? ? 4C 8B 28 48 C7 45 ? ? ? ? ?",
           "reference": {
-            "status": "no_reference"
+            "status": "match",
+            "relation": "equal"
           }
         },
         "windows": {
@@ -239,7 +256,8 @@
           "library": "server",
           "sig": "48 89 5C 24 ? 48 89 74 24 ? 57 48 83 EC ? 49 8B F8 8B DA 48 8B F1 83 FA ?",
           "reference": {
-            "status": "no_reference"
+            "status": "match",
+            "relation": "equal"
           }
         }
       }
@@ -255,19 +273,31 @@
         "linux": {
           "status": "ok",
           "linux": 112,
-          "method": "structoffset",
+          "method": "anchor",
           "reference": {
             "status": "no_reference",
-            "reason": "no_reference"
+            "reason": "kind_function"
+          },
+          "anchor": {
+            "status": "confirmed",
+            "value": 112,
+            "kind": "member",
+            "via": "func_sig"
           }
         },
         "windows": {
-          "status": "no_recipe",
+          "status": "ok",
           "windows": 112,
-          "method": "reference",
+          "method": "anchor",
           "reference": {
             "status": "no_reference",
-            "reason": "no_reference"
+            "reason": "kind_function"
+          },
+          "anchor": {
+            "status": "confirmed",
+            "value": 112,
+            "kind": "member",
+            "via": "func_sig"
           }
         }
       }
@@ -283,19 +313,31 @@
         "linux": {
           "status": "ok",
           "linux": 104,
-          "method": "structoffset",
+          "method": "anchor",
           "reference": {
             "status": "no_reference",
-            "reason": "no_reference"
+            "reason": "kind_function"
+          },
+          "anchor": {
+            "status": "confirmed",
+            "value": 104,
+            "kind": "member",
+            "via": "func_sig"
           }
         },
         "windows": {
-          "status": "no_recipe",
+          "status": "ok",
           "windows": 104,
-          "method": "reference",
+          "method": "anchor",
           "reference": {
             "status": "no_reference",
-            "reason": "no_reference"
+            "reason": "kind_function"
+          },
+          "anchor": {
+            "status": "confirmed",
+            "value": 104,
+            "kind": "member",
+            "via": "func_sig"
           }
         }
       }
@@ -311,19 +353,31 @@
         "linux": {
           "status": "ok",
           "linux": 40,
-          "method": "structoffset",
+          "method": "anchor",
           "reference": {
             "status": "no_reference",
-            "reason": "no_reference"
+            "reason": "kind_function"
+          },
+          "anchor": {
+            "status": "confirmed",
+            "value": 40,
+            "kind": "member",
+            "via": "func_sig"
           }
         },
         "windows": {
-          "status": "no_recipe",
+          "status": "ok",
           "windows": 40,
-          "method": "reference",
+          "method": "anchor",
           "reference": {
             "status": "no_reference",
-            "reason": "no_reference"
+            "reason": "kind_function"
+          },
+          "anchor": {
+            "status": "confirmed",
+            "value": 40,
+            "kind": "member",
+            "via": "func_sig"
           }
         }
       }
@@ -349,7 +403,8 @@
           "anchor": {
             "status": "confirmed",
             "value": 29,
-            "kind": "vfunc"
+            "kind": "vfunc",
+            "via": "vfunc_sig"
           },
           "bounds": {
             "vtable_len": 46,
@@ -368,7 +423,8 @@
           "anchor": {
             "status": "confirmed",
             "value": 28,
-            "kind": "vfunc"
+            "kind": "vfunc",
+            "via": "vfunc_sig"
           },
           "bounds": {
             "vtable_len": 43,

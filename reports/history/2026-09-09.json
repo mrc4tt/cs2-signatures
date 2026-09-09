@@ -1,15 +1,15 @@
 {
-  "date": "September 9, 2026 at 20:55:01 GMT",
+  "date": "September 9, 2026 at 21:55:01 GMT",
   "tally": {
     "ok": 94,
     "broken": 0,
     "ambiguous": 0,
     "no_binary": 0,
     "missing_sig": 0,
-    "offset_ok": 37,
+    "offset_ok": 42,
     "offset_stale": 0,
     "offset_review": 1,
-    "offset_no_recipe": 8,
+    "offset_no_recipe": 3,
     "sig_outdated": 2
   },
   "manifest": {
@@ -23,10 +23,10 @@
       "ambiguous": 0,
       "no_binary": 0,
       "missing_sig": 0,
-      "offset_ok": 30,
+      "offset_ok": 32,
       "offset_stale": 0,
       "offset_review": 1,
-      "offset_no_recipe": 5,
+      "offset_no_recipe": 3,
       "sig_outdated": 2
     },
     "RetakesAllocator": {
@@ -59,10 +59,10 @@
       "ambiguous": 0,
       "no_binary": 0,
       "missing_sig": 0,
-      "offset_ok": 5,
+      "offset_ok": 8,
       "offset_stale": 0,
       "offset_review": 0,
-      "offset_no_recipe": 3,
+      "offset_no_recipe": 0,
       "sig_outdated": 0
     }
   }

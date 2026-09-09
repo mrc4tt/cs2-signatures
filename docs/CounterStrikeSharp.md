@@ -1,6 +1,6 @@
 # CounterStrikeSharp
 
-Last updated: September 9, 2026 at 20:55:01 GMT
+Last updated: September 9, 2026 at 21:55:01 GMT
 
 * Manifests: [7475134589078180787](https://steamdb.info/depot/2347771/history/?changeid=M:7475134589078180787), [7308152089951763351](https://steamdb.info/depot/2347773/history/?changeid=M:7308152089951763351)
 * Repository: https://github.com/mrc4tt/CounterStrikeSharp
@@ -738,7 +738,7 @@ A vtable slot index or a struct-member byte offset. There are no bytes to scan, 
 <tr><td>CBaseEntity_IsPlayerPawn</td><td>✅ 169</td><td>✅ 168</td><td>anchor</td></tr>
 <tr><td>CBasePlayerPawn_CommitSuicide</td><td>✅ 384</td><td>✅ 384</td><td>anchor</td></tr>
 <tr><td>CBaseEntity_Teleport</td><td>✅ 163</td><td>✅ 162</td><td>anchor</td></tr>
-<tr><td>GameEntitySystem</td><td>❔ 88</td><td>❔ 80</td><td>reference</td></tr>
+<tr><td>GameEntitySystem</td><td>✅ 88</td><td>✅ 80</td><td>anchor</td></tr>
 <tr><td>GameEventManager</td><td>❔ 93</td><td>❔ 93</td><td>reference</td></tr>
 <tr><td>CEntityResourceManifest_AddResource</td><td>❔ 2</td><td>⚠️ 0</td><td>reference</td></tr>
 <tr><td>CheckTransmitPlayerSlot</td><td>✅ 576</td><td>✅ 576</td><td>anchor</td></tr>
