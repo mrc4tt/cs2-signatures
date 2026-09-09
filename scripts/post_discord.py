@@ -10,6 +10,10 @@ give the healthy/validated count per platform:
 The embed colour and an optional @mention escalate on any breakage.
 
 Auth: webhook URL via env DISCORD_WEBHOOK (or --webhook). Never hard-code it.
+Several URLs may be given - comma- or whitespace-separated in the env var, or
+by repeating --webhook - to mirror the same report into more than one server.
+A numeric DISCORD_MENTION is a global user id, so one value pings correctly in
+every server; a role id would not (role ids are per-guild).
 
 Preview: --preview prints the JSON payload without sending. Add --example for
 synthetic data - also usable as a live test post (send without --preview) to
@@ -474,6 +478,19 @@ def post(webhook, payload, files=None):
         raise
 
 
+def split_webhooks(values):
+    """Flatten webhook URLs out of `values` (list of strings, each possibly
+    holding several URLs separated by commas or whitespace). Order preserved,
+    duplicates dropped so a repeated URL is not posted to twice."""
+    out = []
+    for value in values:
+        for url in re.split(r"[,\s]+", value or ""):
+            url = url.strip()
+            if url and url not in out:
+                out.append(url)
+    return out
+
+
 def delete_message(webhook, message_id):
     """DELETE a previously posted webhook message by its id."""
     url = "%s/messages/%s" % (webhook.split("?")[0].rstrip("/"), message_id)
@@ -514,7 +531,10 @@ def main():
     ap.add_argument("--projects", default=P.REGISTRY)
     ap.add_argument("--status", default=None,
                     help="single status.json override (default: all projects)")
-    ap.add_argument("--webhook", default=os.environ.get("DISCORD_WEBHOOK"))
+    ap.add_argument("--webhook", action="append", default=None,
+                    help="webhook URL; repeat, or pass several separated by "
+                         "commas/whitespace, to post to multiple servers "
+                         "(default: DISCORD_WEBHOOK env, same syntax)")
     ap.add_argument("--username", default="cs2-sig-tracker")
     ap.add_argument("--steam-inf", default="bin_linux/game/csgo/steam.inf",
                     help="steam.inf to read the CS2 version (PatchVersion) from")
@@ -533,12 +553,27 @@ def main():
     ap.add_argument("--separate", action="store_true",
                     help="one per-signature card per project")
     args = ap.parse_args()
+    webhooks = split_webhooks(args.webhook
+                              if args.webhook is not None
+                              else [os.environ.get("DISCORD_WEBHOOK", "")])
 
     if args.delete_message:
-        if not args.webhook:
+        if not webhooks:
             print("missing --webhook (or DISCORD_WEBHOOK env)", file=sys.stderr)
             return 1
-        delete_message(args.webhook, args.delete_message)
+        # A message id belongs to the webhook that created it, so with several
+        # configured only one owns it - the rest 404. Try each, succeed if any.
+        deleted = 0
+        for hook in webhooks:
+            try:
+                delete_message(hook, args.delete_message)
+                deleted += 1
+            except urllib.error.HTTPError:
+                continue
+        if not deleted:
+            print("no webhook owns message %s" % args.delete_message,
+                  file=sys.stderr)
+            return 1
         print("deleted message %s" % args.delete_message)
         return 0
 
@@ -605,23 +640,34 @@ def main():
                   file=sys.stderr)
         return 0
 
-    if not args.webhook:
+    if not webhooks:
         print("missing --webhook (or DISCORD_WEBHOOK env)", file=sys.stderr)
         return 1
 
     # Discord caps embeds per message; batch into chunks. Ping + attachments
-    # ride the first message.
-    for start in range(0, len(embeds), EMBEDS_PER_MSG):
-        chunk = embeds[start:start + EMBEDS_PER_MSG]
-        payload = {"username": args.username, "embeds": chunk}
-        if start == 0 and content:
-            payload["content"] = content
-            if allowed:
-                payload["allowed_mentions"] = allowed
-        post(args.webhook, payload, files=files if start == 0 else None)
-    print("posted %d embed(s), %d attachment(s) to discord"
-          % (len(embeds), len(files)))
-    return 0
+    # ride the first message. Each webhook is independent (own rate limit), and
+    # one dead URL must not cost the other servers their report.
+    failed = 0
+    for n, hook in enumerate(webhooks, 1):
+        try:
+            for start in range(0, len(embeds), EMBEDS_PER_MSG):
+                chunk = embeds[start:start + EMBEDS_PER_MSG]
+                payload = {"username": args.username, "embeds": chunk}
+                if start == 0 and content:
+                    payload["content"] = content
+                    if allowed:
+                        payload["allowed_mentions"] = allowed
+                post(hook, payload, files=files if start == 0 else None)
+        except (urllib.error.HTTPError, urllib.error.URLError) as e:
+            # The URL itself is a secret - identify the webhook by position.
+            print("webhook %d/%d failed: %s" % (n, len(webhooks), e),
+                  file=sys.stderr)
+            failed += 1
+            continue
+    posted = len(webhooks) - failed
+    print("posted %d embed(s), %d attachment(s) to %d/%d discord webhook(s)"
+          % (len(embeds), len(files), posted, len(webhooks)))
+    return 1 if failed else 0
 
 
 if __name__ == "__main__":

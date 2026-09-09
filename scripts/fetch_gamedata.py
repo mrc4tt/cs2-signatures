@@ -6,12 +6,14 @@ project it fetches repo/branch/path and writes data/<id>/gamedata.json,
 reporting per-project whether the bytes changed. Each project's `host` field
 selects the forge (default github.com; e.g. git.miksen.me for Forgejo/Gitea).
 
-Private repos (e.g. the mrc4tt CounterStrikeSharp fork) need a token:
+Projects marked `private` in data/projects.json need a token:
   - github.com  -> GITHUB_TOKEN / GH_TOKEN (fine-grained Contents:read, or
                    classic `repo` scope)
   - Forgejo/Gitea host -> FORGEJO_TOKEN (scope: read:repository)
-Public repos fetch anonymously - the token is sent anyway when present, which
-is harmless.
+Public repos fetch anonymously. A token is still sent when one is set, but an
+expired or revoked token makes the forge reject the request outright (GitHub
+answers 401 even for a public file), so a rejected token on a public project is
+retried once without it.
 
 Use --project ID to fetch a single project. stdlib only. Exit non-zero if any
 project fails to fetch (existing snapshots are left untouched for those).
@@ -73,17 +75,30 @@ def fetch_project(proj, gh_token, fj_token):
 
     token = token_for(proj, gh_token, fj_token)
     tok = token if proj.get("private") else (token or None)
+    env = "GITHUB_TOKEN/GH_TOKEN" if P.is_github(proj) else "FORGEJO_TOKEN"
     try:
         new = fetch(proj, tok)
     except urllib.error.HTTPError as e:
         if e.code in (401, 403, 404) and proj.get("private") and not token:
-            env = "GITHUB_TOKEN/GH_TOKEN" if P.is_github(proj) else "FORGEJO_TOKEN"
             print("[%s] HTTP %d - repo is private; set %s to a token that can "
                   "read it." % (proj["id"], e.code, env), file=sys.stderr)
+            return False
+        if e.code in (401, 403) and tok and not proj.get("private"):
+            # Expired/revoked token: the forge rejects the whole request even
+            # though the file is public. Drop the header and try again.
+            print("[%s] HTTP %d with %s - token rejected; retrying anonymously."
+                  % (proj["id"], e.code, env), file=sys.stderr)
+            try:
+                new = fetch(proj, None)
+            except urllib.error.HTTPError as e2:
+                print("[%s] HTTP %d fetching %s: %s"
+                      % (proj["id"], e2.code, proj["path"], e2.reason),
+                      file=sys.stderr)
+                return False
         else:
             print("[%s] HTTP %d fetching %s: %s"
                   % (proj["id"], e.code, proj["path"], e.reason), file=sys.stderr)
-        return False
+            return False
 
     os.makedirs(os.path.dirname(out) or ".", exist_ok=True)
     with open(out, "wb") as fh:

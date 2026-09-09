@@ -130,6 +130,21 @@ if [ "$CHANGED" -eq 0 ]; then
   exit "$VAL"
 fi
 
+# 5.5 Is the change worth ANNOUNCING? The gate above is deliberately wide (any
+#     status.json byte) so commits stay faithful, but an upstream gamedata
+#     rename, a key reorder, or a new CS2 build where everything still resolves
+#     is not news for a Discord channel. post_gate.py diffs only the sig bytes,
+#     offsets and statuses - names excluded - against HEAD, so it must run
+#     BEFORE step 6 commits. Exit 10 = announce. Set POST_ON_GAME_UPDATE=1 to
+#     also announce a manifest-only change.
+GATE_ARGS=()
+[ "${POST_ON_GAME_UPDATE:-0}" = "1" ] && GATE_ARGS+=(--include-manifest)
+set +e
+python3 scripts/post_gate.py "${GATE_ARGS[@]+"${GATE_ARGS[@]}"}"
+ANNOUNCE=$?
+set -e
+[ "$ANNOUNCE" -eq 1 ] && { echo "post_gate failed"; exit 1; }
+
 # 6. Regenerate reports (only now stamp a fresh timestamp) + commit + push.
 python3 scripts/gen_report.py \
   --readme README.md --docs-dir docs \
@@ -162,11 +177,15 @@ if ls reports/*/proposals.json >/dev/null 2>&1; then
   python3 scripts/open_pr.py || true
 fi
 
-# 8. Optional Discord webhook post, across all projects (needs DISCORD_WEBHOOK).
-#    Only runs on a real change (past the CHANGED gate). Preview locally with:
+# 8. Optional Discord webhook post, across all projects (needs DISCORD_WEBHOOK,
+#    which may hold several comma/space-separated URLs for multiple servers).
+#    Gated on step 5.5: a signature/offset RESULT must have changed, not just
+#    the file. Preview locally with:
 #    python3 scripts/post_discord.py --preview [--example]
-if [ -n "${DISCORD_WEBHOOK:-}" ]; then
+if [ -n "${DISCORD_WEBHOOK:-}" ] && [ "$ANNOUNCE" -eq 10 ]; then
   python3 scripts/post_discord.py || true
+elif [ -n "${DISCORD_WEBHOOK:-}" ]; then
+  echo "no post-worthy result change - skipping discord post"
 fi
 
 # 9. Optional: publish the CS2 binaries as Forgejo release assets so users can

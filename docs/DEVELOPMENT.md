@@ -45,7 +45,10 @@ Classification per entry/platform:
 - `matches == 0` → **❌ broken** (open Ghidra, regen with `CS2Recipes.py`, PR the fork)
 - `matches  > 1` → **⚠️ ambiguous** (sig too short / not unique)
 
-Offset-only entries (vtable slots) are not tracked here - signatures only.
+`offsets` entries hold an integer (a vtable slot or a struct-member byte
+offset), so there are no bytes to scan. They are validated separately: see
+`lib_offset.py` for the recipe-driven Linux check and **Reference validation**
+below for the snapshot-driven one that also covers Windows.
 
 ### Better than the upstream tracker
 
@@ -55,10 +58,67 @@ Offset-only entries (vtable slots) are not tracked here - signatures only.
 - **Auto-issue** on Forgejo when a sig breaks; auto-closes when green again.
 - **Status badge** driven by `reports/badge.json`.
 
+### Reference validation (CS2_VibeSignatures)
+
+Byte-scanning answers "does this pattern still resolve in the binary we
+downloaded". It cannot answer "is this still the pattern upstream uses", and for
+an `offsets` entry it cannot answer anything at all without a hand-written
+recipe.
+
+A CS2_VibeSignatures snapshot answers both. It is one JSON file per game version
+listing every symbol the upstream analysis resolved, for Linux **and** Windows:
+function signatures, vtable indices, struct-member offsets, full vtable dumps,
+globals and patches.
+
+```bash
+python3 scripts/fetch_symbols.py --list                          # versions on the site
+python3 scripts/fetch_symbols.py --gamever 14178b                # -> data/symbols/14178b.json
+python3 scripts/fetch_symbols.py --backend git --upstream --gamever 14180
+python3 scripts/check_reference.py --gamever 14178b              # read-only report
+```
+
+Two backends, one output shape:
+
+- **site** (default) pulls the content-addressed JSON from `sig.miksen.me` and
+  verifies it against the `sha256` and `size` in `gamesymbols/index.json` before
+  writing it. One request per version, no auth, no rate limit.
+- **git** does a blob-filtered sparse checkout of the analysis repo and parses
+  `bin_artifacts/<gamever>/<module>/*.yaml` plus `binary_locks/<gamever>.json`.
+  Slower, but it reaches a game version the moment it is committed, which is how
+  a build gets covered before it reaches the site. Verified to reproduce the
+  site payload byte for byte.
+
+The GitHub contents API is deliberately not used anywhere: it caps anonymous
+callers at 60 requests an hour and one game version is over 3500 files.
+
+`check_reference.py` first states how the local binaries relate to the snapshot,
+by comparing their SHA-256 against the `binaries` block. `exact` means the
+reference describes the very bytes being scanned; `different_build` means an
+`outdated` verdict may be a version gap rather than a stale signature.
+
+Verdicts per entry per platform:
+
+- signatures: `match`, `outdated` (two concrete bytes disagree), `no_sig` (the
+  symbol was analysed but the record carries no byte pattern), `no_reference`
+- offsets: `match`, `mismatch`, `no_reference`
+
+A signature that differs only by a wildcard, or that is a shorter cut of the
+same function head, counts as `match`: both patterns describe the same function.
+Only a genuine byte conflict is `outdated`.
+
+Name spellings are folded (`A::b`, `A.b` and `A_b` are one key). A genuine
+rename is not a spelling problem, so feed those in through the optional
+`data/symbol_aliases.json` (`{"gamedata name": "reference name"}`).
+
+Nothing here is wired into `run_all.sh` yet: `check_reference.py` is read-only,
+writes nothing under `reports/`, and changes no exit code the pipeline depends
+on.
+
 ## VPS setup (x86-64)
 
 Depots `2347771` (Windows) / `2347773` (Linux) download **anonymously** - no
-Steam login. The gamedata fetch needs a GitHub token because the fork is private.
+Steam login. Every tracked GitHub repo is public, so the gamedata fetch needs no
+token; set `GITHUB_TOKEN` only if a project is marked `"private": true`.
 
 1. Clone + configure env:
    ```bash
@@ -92,9 +152,14 @@ Steam login. The gamedata fetch needs a GitHub token because the fork is private
 data/projects.json        tracked-project registry (id/repo/branch/path/private)
 data/<id>/gamedata.json   snapshot of each project's sigs (auto-refreshed)
 data/manifest.json        last-seen per-depot manifest IDs (game-global)
+data/symbols/<ver>.json   cached CS2_VibeSignatures snapshot (git-ignored clone in .repo/)
+data/symbol_aliases.json  optional {gamedata name: reference name} renames
 scripts/projects.py       project registry loader + path/URL layout
 scripts/depots.py         depot IDs + file paths (single source of truth)
 scripts/lib_sig.py        sig->regex + ELF/PE exec-section reader
+scripts/lib_symbols.py    reference-snapshot lookup (sigs, offsets, vtables)
+scripts/fetch_symbols.py  pull a snapshot -> data/symbols/<gamever>.json
+scripts/check_reference.py  gamedata vs reference snapshot (read-only report)
 scripts/check_update.py   per-depot manifest diff (game-global)
 scripts/fetch_gamedata.py pull each project's gamedata.json (authenticated)
 scripts/download_bins.sh  DepotDownloader depot download (shared bins)
