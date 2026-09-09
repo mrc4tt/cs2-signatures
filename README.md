@@ -29,11 +29,11 @@ self-hosted on Forgejo.
 <!-- STATUS:START -->
 ## Signatures
 
-* **Last updated:** September 9, 2026 at 21:55:01 GMT
+* **Last updated:** September 9, 2026 at 22:25:01 GMT
 * **Manifests:** [7475134589078180787](https://steamdb.info/depot/2347771/history/?changeid=M:7475134589078180787), [7308152089951763351](https://steamdb.info/depot/2347773/history/?changeid=M:7308152089951763351)
 * **Tracked projects:** 4
-* **Validated:** 94 ok, 0 ambiguous, 0 broken (0 not-yet-validated)
-* **Offsets:** 42 ok, 0 stale, 4 without a reference
+* **Validated:** 106 ok, 0 ambiguous, 0 broken (0 not-yet-validated)
+* **Offsets:** 42 ok, 0 stale, 6 without a reference
 * **Outdated:** 2 signature(s) still resolve but have been replaced upstream
 
 <table>

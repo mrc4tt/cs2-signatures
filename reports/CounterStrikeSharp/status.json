@@ -7,7 +7,7 @@
   "reference": "14180",
   "gamedata_source": "mrc4tt/CounterStrikeSharp configs/addons/counterstrikesharp/gamedata/gamedata.json",
   "tally": {
-    "ok": 58,
+    "ok": 70,
     "broken": 0,
     "ambiguous": 0,
     "no_binary": 0,
@@ -15,7 +15,7 @@
     "offset_ok": 32,
     "offset_stale": 0,
     "offset_review": 1,
-    "offset_no_recipe": 3,
+    "offset_no_recipe": 5,
     "sig_outdated": 2
   },
   "results": [
@@ -788,6 +788,168 @@
           "sig": "48 83 3D ? ? ? ? ? 0F 95 C0 C3 CC CC CC CC C2",
           "reference": {
             "status": "no_reference"
+          }
+        }
+      }
+    },
+    {
+      "name": "CCSCustomHudLayout_SetDialogVariableString",
+      "kind": "signature",
+      "library": "server",
+      "platforms": {
+        "linux": {
+          "status": "ok",
+          "matches": 1,
+          "library": "server",
+          "sig": "55 48 89 E5 41 55 49 89 CD 41 54 49 89 D4 31 D2 53 48 89 FB 48 83 EC 18",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
+        },
+        "windows": {
+          "status": "ok",
+          "matches": 1,
+          "library": "server",
+          "sig": "48 89 5C 24 ? 48 89 6C 24 ? 48 89 74 24 ? 57 48 83 EC ? 49 8B F0 33 ED 4C 8D 44 24 ? 66 89 6C 24 ? 49 8B F9",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
+        }
+      }
+    },
+    {
+      "name": "CCSCustomHudLayout_SetDialogVariableStringForPlayer",
+      "kind": "signature",
+      "library": "server",
+      "platforms": {
+        "linux": {
+          "status": "ok",
+          "matches": 1,
+          "library": "server",
+          "sig": "55 48 89 E5 41 56 41 55 41 54 41 89 F4 53 48 83 EC 10 3B B7 90 07 00 00 7C 16 48 83 C4 10 5B 41 5C 41 5D 41 5E 5D C3 66 0F 1F 84 00 00 00 00 00 48 89 D6 31 D2 48 89 FB 66 89 55 DC 48 8D 55 DC 49 89 CD 4D 89 C6 E8 C5",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
+        },
+        "windows": {
+          "status": "ok",
+          "matches": 1,
+          "library": "server",
+          "sig": "40 53 56 57 48 83 EC 20 48 63 DA 49 8B F1 49 8B C0 48 8B F9 3B 99 B0 04 00 00 7D 5E 48 89 6C 24 50 4C 8D 44 24 40 33 ED 48 8B D0 66 89 6C 24 40 E8 DB 3E FF FF 84 C0 74",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
+        }
+      }
+    },
+    {
+      "name": "CCSCustomHudLayout_SetHasClass",
+      "kind": "signature",
+      "library": "server",
+      "platforms": {
+        "linux": {
+          "status": "ok",
+          "matches": 1,
+          "library": "server",
+          "sig": "55 48 89 E5 41 57 49 89 D7 41 56 48 8D 55 ? 41 55 41 54 49 89 FC 53 48 83 EC 48",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
+        },
+        "windows": {
+          "status": "ok",
+          "matches": 1,
+          "library": "server",
+          "sig": "48 89 5C 24 ? 48 89 6C 24 ? 48 89 74 24 ? 57 48 83 EC ? 49 8B F0 33 ED 4C 8D 44 24 ? 66 89 6C 24 ? 41 8B F9",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
+        }
+      }
+    },
+    {
+      "name": "CCSCustomHudLayout_SetHasClassForPlayer",
+      "kind": "signature",
+      "library": "server",
+      "platforms": {
+        "linux": {
+          "status": "ok",
+          "matches": 1,
+          "library": "server",
+          "sig": "49 89 CD 45 89 C6 E8 ? ? ? ? 84 C0",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
+        },
+        "windows": {
+          "status": "ok",
+          "matches": 1,
+          "library": "server",
+          "sig": "40 53 56 57 48 83 EC 20 48 63 DA 49 8B F1 49 8B C0 48 8B F9 3B 99 B0 04 00 00 7D 5E 48 89 6C 24 50 4C 8D 44 24 40 33 ED 48 8B D0 66 89 6C 24 40 E8 AB 3B FF FF 84 C0 74",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
+        }
+      }
+    },
+    {
+      "name": "CCSPointScript_OnCustomHudClicked",
+      "kind": "signature",
+      "library": "server",
+      "platforms": {
+        "linux": {
+          "status": "ok",
+          "matches": 1,
+          "library": "server",
+          "sig": "55 48 89 E5 41 57 41 56 49 89 CE 41 55 49 89 F5 41 54 49 89 D4 53 48 89 FB 48 83 EC 68 0F B6 05 ? ? ? ? 84 C0 0F 84 ? ? ? ? 80 7B 30 00",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
+        },
+        "windows": {
+          "status": "ok",
+          "matches": 1,
+          "library": "server",
+          "sig": "4C 89 4C 24 ? 55 53 41 54",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
+        }
+      }
+    },
+    {
+      "name": "CCSCustomHudLayout_SetInputCaptureEnabled",
+      "kind": "signature",
+      "library": "server",
+      "platforms": {
+        "linux": {
+          "status": "ok",
+          "matches": 1,
+          "library": "server",
+          "sig": "3B B7 ? ? ? ? 0F 8D ? ? ? ? 55",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
+        },
+        "windows": {
+          "status": "ok",
+          "matches": 1,
+          "library": "server",
+          "sig": "40 57 48 83 EC ? 41 0F B6 F8",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
           }
         }
       }
@@ -1594,6 +1756,42 @@
           "bounds": {
             "vtable_len": 18,
             "in_range": true
+          }
+        }
+      }
+    },
+    {
+      "name": "CCSCustomHudLayout_SetHasClassForPlayer",
+      "kind": "offset",
+      "offsets": {
+        "windows": 0,
+        "linux": -64
+      },
+      "platforms": {
+        "linux": {
+          "status": "no_recipe",
+          "linux": -64,
+          "kind": null,
+          "resolve": "gdt",
+          "note": null,
+          "reference": {
+            "status": "no_reference",
+            "reason": "kind_function"
+          },
+          "anchor": {
+            "status": "anchor_unlocatable"
+          }
+        },
+        "windows": {
+          "status": "no_recipe",
+          "windows": 0,
+          "method": "reference",
+          "reference": {
+            "status": "no_reference",
+            "reason": "kind_function"
+          },
+          "anchor": {
+            "status": "anchor_unlocatable"
           }
         }
       }
