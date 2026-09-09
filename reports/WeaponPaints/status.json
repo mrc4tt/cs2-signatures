@@ -4,6 +4,7 @@
     "2347771": "7475134589078180787",
     "2347773": "7308152089951763351"
   },
+  "reference": null,
   "gamedata_source": "mikkel/weaponpaints gamedata/weaponpaints.json",
   "tally": {
     "ok": 18,
@@ -14,7 +15,8 @@
     "offset_ok": 4,
     "offset_stale": 0,
     "offset_review": 0,
-    "offset_no_recipe": 0
+    "offset_no_recipe": 0,
+    "sig_outdated": 0
   },
   "results": [
     {

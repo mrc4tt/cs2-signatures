@@ -4,6 +4,7 @@
     "2347771": "7475134589078180787",
     "2347773": "7308152089951763351"
   },
+  "reference": null,
   "gamedata_source": "mikkel/matchzy gamedata/matchzy.json",
   "tally": {
     "ok": 12,
@@ -14,7 +15,8 @@
     "offset_ok": 0,
     "offset_stale": 0,
     "offset_review": 0,
-    "offset_no_recipe": 1
+    "offset_no_recipe": 1,
+    "sig_outdated": 0
   },
   "results": [
     {
