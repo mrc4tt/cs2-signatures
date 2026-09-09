@@ -127,6 +127,11 @@ class Snapshot(object):
     def platforms(self, name):
         return set(self._by_key.get(self._key(name), {}))
 
+    def module(self, name, platform):
+        """Which binary this symbol lives in (server / engine / client)."""
+        rec = self.record(name, platform)
+        return rec["module"] if rec else None
+
     def kind(self, name, platform):
         rec = self.record(name, platform)
         return rec["kind"] if rec else None
@@ -184,6 +189,52 @@ class Snapshot(object):
             return None
         hits = [s for s, addr in slots.items() if addr == int(va, 16)]
         return hits[0] if len(hits) == 1 else None
+
+    def anchor(self, name, platform):
+        """The byte anchor that pins this entry's offset, or None.
+
+        Returns {"sig", "expected", "disp_index", "kind"} for lib_anchor to
+        re-derive the value from the binary we actually downloaded, instead of
+        trusting an integer recorded against some other build.
+        """
+        rec = self.record(name, platform)
+        if not rec:
+            return None
+        p = rec["payload"]
+        if rec["kind"] == "virtualFunction" and p.get("vfunc_sig"):
+            return {"sig": p["vfunc_sig"], "kind": "vfunc",
+                    "expected": int(str(p["vfunc_offset"]), 16),
+                    "disp_index": None}
+        if rec["kind"] == "structMember" and p.get("offset_sig"):
+            return {"sig": p["offset_sig"], "kind": "member",
+                    "expected": int(str(p["offset"]), 16),
+                    "disp_index": p.get("offset_sig_disp")}
+        return None
+
+    def vtable_len(self, name, platform, vtable_class=None):
+        """Slot count of the class this entry's index addresses, or None.
+
+        Enough on its own to prove an index wrong: a slot past the end of the
+        vtable cannot be right, whether or not the symbol itself is covered.
+        """
+        cls = vtable_class
+        if cls is None:
+            rec = self.record(name, platform)
+            cls = (rec or {}).get("payload", {}).get("vtable_name")
+        if not cls:
+            return None
+        payload = self._vtable_payload(norm(cls), platform)
+        if payload is None:
+            return None
+        num = payload.get("vtable_numvfunc")
+        return int(num) if num is not None else None
+
+    def _vtable_payload(self, key, platform):
+        for rec in self.raw.get("records", []):
+            if (rec["kind"] == "vtable" and rec["platform"] == platform
+                    and norm(rec["payload"]["vtable_class"]) == key):
+                return rec["payload"]
+        return None
 
     # -- binaries --------------------------------------------------------
     def binary_sha(self, module, platform):

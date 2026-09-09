@@ -143,6 +143,50 @@ COVERAGE changes: a symbol appearing in a newer snapshot flips an offset from
 `no_recipe` to a real verdict without anything about the game or the gamedata
 having changed, so `no_recipe` blocks are left out of the fingerprint.
 
+#### Anchors: reading the offset out of our own binary
+
+Comparing our integer against the reference's integer compares two opinions, and
+the reference's opinion is only as current as the snapshot. An anchor removes
+that dependency. Both anchor kinds pin the instruction that carries the offset,
+with the value sitting in the operand:
+
+```
+virtualFunction  vfunc_sig   FF 90 E8 00 00 00     call [rax+0xE8]  -> slot 29
+structMember     offset_sig  48 8B 7F 68           mov rdi,[rdi+0x68]
+```
+
+So `lib_anchor.py` reads the value back out of the binaries we downloaded. The
+answer describes THIS build whichever version the snapshot came from, which is
+what makes it usable while the analysis lags the game. It needs nothing but byte
+scanning, so unlike the RTTI walk in `lib_offset` it works on Windows.
+
+Order matters. When the anchor spells the displacement out, the strongest test is
+whether that exact pattern still occurs: if it does, the instruction still carries
+that displacement, with no widening and therefore no ambiguity. Only when the
+exact pattern is gone is the hole punched and the replacement read back, and there
+every match must agree, since wildcarding four bytes can let a pattern catch
+unrelated call sites. Anchors that ship with the displacement already wildcarded
+(`offset_sig_disp: N`, meaning the Nth wildcard run) go straight to read back.
+
+Anchor outranks both the recipe and the reference, because those describe how a
+value was derived somewhere else and this one is measured here. A disagreement is
+a real `stale`, not a version gap.
+
+A separate cheap check needs no anchor at all: an index at or past
+`vtable_numvfunc` is wrong on its own terms, and the vtable dumps cover every
+class on both platforms.
+
+#### Cross-version diff
+
+```bash
+python3 scripts/diff_symbols.py 14178b 14180 --tracked
+```
+
+The other checks answer "is this offset right today". This answers "what did the
+game move", which is the question worth asking after an update and before
+anything has broken: a vtable that gained a slot shifts every index below the
+insertion point. `--tracked` narrows it to symbols the registry actually uses.
+
 ## VPS setup (x86-64)
 
 Depots `2347771` (Windows) / `2347773` (Linux) download **anonymously** - no
@@ -187,6 +231,8 @@ scripts/projects.py       project registry loader + path/URL layout
 scripts/depots.py         depot IDs + file paths (single source of truth)
 scripts/lib_sig.py        sig->regex + ELF/PE exec-section reader
 scripts/lib_symbols.py    reference-snapshot lookup (sigs, offsets, vtables)
+scripts/lib_anchor.py     re-derive an offset from our own binary via a reference anchor
+scripts/diff_symbols.py   what moved between two snapshots
 scripts/fetch_symbols.py  pull a snapshot -> data/symbols/<gamever>.json
 scripts/check_reference.py  gamedata vs reference snapshot (read-only report)
 scripts/check_update.py   per-depot manifest diff (game-global)

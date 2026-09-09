@@ -27,6 +27,13 @@ tier the scanner cannot reach on its own:
               linux AND windows, so an offsets entry gets a real verdict on both
               platforms with no recipe. Windows offsets have no other source: the
               RTTI walk in lib_offset is linux-only.
+  anchors     stronger still: `vfunc_sig` and `offset_sig` pin the instruction
+              that carries the offset, so lib_anchor reads the value back out of
+              the binary we actually downloaded. That verdict describes THIS
+              build whichever version the snapshot came from, which is what makes
+              it trustworthy while the analysis lags the game.
+  bounds      an index at or past `vtable_numvfunc` is wrong no matter what else
+              is known, and the vtable dumps cover every class on both platforms.
 
 Exit non-zero if any signature broke, or an offset is provably stale, in any
 project.
@@ -44,6 +51,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from lib_sig import sig_to_regex, count_matches, exec_sections  # noqa: E402
 from lib_rtti import open_image  # noqa: E402
 from lib_offset import validate_offsets  # noqa: E402
+import lib_anchor as ANCHOR  # noqa: E402
 import lib_symbols as SYM  # noqa: E402
 import projects as P  # noqa: E402
 
@@ -116,7 +124,12 @@ def validate(gamedata, bins, offset_recipe=None, image_linux=None):
     return results
 
 
-def apply_reference(results, gamedata, snap):
+# Snapshot module names against the gamedata `library` vocabulary the binaries
+# are keyed by. client/ is not downloaded, so symbols living there get no_binary.
+MODULE_LIBRARY = {"server": "server", "engine": "engine2"}
+
+
+def apply_reference(results, gamedata, snap, bins=None):
     """Annotate scan results with what the reference analysis says.
 
     Signature blocks gain a `reference` sub-block and are otherwise untouched -
@@ -144,6 +157,11 @@ def apply_reference(results, gamedata, snap):
                     # that verdict is "nothing to compare against". Dropping the
                     # block instead is what made windows offsets invisible.
                     r["platforms"][plat] = block
+                if plat in r["platforms"]:
+                    _apply_anchor(r["platforms"][plat], snap, r["name"], plat,
+                                  ours, bins)
+                    _apply_bounds(r["platforms"][plat], snap, r["name"], plat,
+                                  ours)
 
 
 def _sig_reference(snap, name, plat, ours):
@@ -183,6 +201,57 @@ def _offset_reference(snap, name, plat, ours):
     if status == "stale":
         block["found_%s" % plat] = value
     return block
+
+
+def _sections_for(snap, name, plat, bins):
+    library = MODULE_LIBRARY.get(snap.module(name, plat))
+    return bins.get((plat, library)) if bins and library else None
+
+
+def _apply_anchor(info, snap, name, plat, ours, bins):
+    """Read the offset back out of our own binary, if the reference pins it.
+
+    This outranks both the recipe and the reference: those describe how the value
+    was derived somewhere else, this one is measured here. A disagreement is
+    therefore a real `stale`, not a version gap.
+    """
+    anchor = snap.anchor(name, plat)
+    if not anchor:
+        return
+    sections = _sections_for(snap, name, plat, bins)
+    if sections is None:
+        info["anchor"] = {"status": "no_binary"}
+        return
+    derive = (ANCHOR.derive_index if anchor["kind"] == "vfunc"
+              else ANCHOR.derive_member)
+    value, status = derive(sections, anchor["sig"], anchor["expected"],
+                           anchor["disp_index"])
+    if value is None:
+        info["anchor"] = {"status": status}
+        return
+    info["anchor"] = {"status": status, "value": value, "kind": anchor["kind"]}
+    if ours is None:
+        return
+    if int(ours) == value:
+        info["status"] = "ok"
+        info["method"] = "anchor"
+    else:
+        info["status"] = "stale"
+        info["method"] = "anchor"
+        info["found_%s" % plat] = value
+
+
+def _apply_bounds(info, snap, name, plat, ours):
+    """An index at or past the end of the vtable is wrong on its own terms."""
+    if ours is None:
+        return
+    length = snap.vtable_len(name, plat)
+    if length is None:
+        return
+    info["bounds"] = {"vtable_len": length, "in_range": int(ours) < length}
+    if not info["bounds"]["in_range"]:
+        info["status"] = "stale"
+        info.setdefault("method", "bounds")
 
 
 def _merge_offset(existing, block, plat):
@@ -245,7 +314,7 @@ def validate_project(proj, bins, manifest, images=None, snap=None):
     image_linux = (images or {}).get("linux")
     results = validate(gamedata, bins, offset_recipe=offset_recipe,
                        image_linux=image_linux)
-    apply_reference(results, gamedata, snap)
+    apply_reference(results, gamedata, snap, bins)
     tally, broken = tally_and_broken(results)
 
     out = {
