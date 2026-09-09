@@ -1,5 +1,5 @@
 {
-  "date": "September 9, 2026 at 22:25:01 GMT",
+  "date": "September 9, 2026 at 22:35:01 GMT",
   "tally": {
     "ok": 106,
     "broken": 0,
@@ -9,7 +9,7 @@
     "offset_ok": 42,
     "offset_stale": 0,
     "offset_review": 1,
-    "offset_no_recipe": 5,
+    "offset_no_recipe": 3,
     "sig_outdated": 2
   },
   "manifest": {
@@ -26,7 +26,7 @@
       "offset_ok": 32,
       "offset_stale": 0,
       "offset_review": 1,
-      "offset_no_recipe": 5,
+      "offset_no_recipe": 3,
       "sig_outdated": 2
     },
     "RetakesAllocator": {

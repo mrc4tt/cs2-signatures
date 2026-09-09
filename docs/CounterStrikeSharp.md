@@ -1,6 +1,6 @@
 # CounterStrikeSharp
 
-Last updated: September 9, 2026 at 22:25:01 GMT
+Last updated: September 9, 2026 at 22:35:01 GMT
 
 * Manifests: [7475134589078180787](https://steamdb.info/depot/2347771/history/?changeid=M:7475134589078180787), [7308152089951763351](https://steamdb.info/depot/2347773/history/?changeid=M:7308152089951763351)
 * Repository: https://github.com/mrc4tt/CounterStrikeSharp
@@ -888,5 +888,4 @@ A vtable slot index or a struct-member byte offset. There are no bytes to scan, 
 <tr><td>CheckTransmitPlayerSlot</td><td>✅ 576</td><td>✅ 576</td><td>anchor</td></tr>
 <tr><td>SetStateChanged</td><td>✅ 28</td><td>✅ 29</td><td>reference / anchored</td></tr>
 <tr><td>ISource2GameEntities::CheckTransmit</td><td>✅ 12</td><td>✅ 13</td><td>reference / anchored</td></tr>
-<tr><td>CCSCustomHudLayout_SetHasClassForPlayer</td><td>❔ 0</td><td>❔ -64</td><td>reference</td></tr>
 </table>
