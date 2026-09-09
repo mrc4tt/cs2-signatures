@@ -29,11 +29,12 @@ self-hosted on Forgejo.
 <!-- STATUS:START -->
 ## Signatures
 
-* **Last updated:** September 9, 2026 at 12:25:01 GMT
+* **Last updated:** September 9, 2026 at 18:45:01 GMT
 * **Manifests:** [7475134589078180787](https://steamdb.info/depot/2347771/history/?changeid=M:7475134589078180787), [7308152089951763351](https://steamdb.info/depot/2347773/history/?changeid=M:7308152089951763351)
 * **Tracked projects:** 4
 * **Validated:** 94 ok, 0 ambiguous, 0 broken (0 not-yet-validated)
-* **Offsets:** 18 ok, 0 stale, 5 without a reference
+* **Offsets:** 37 ok, 0 stale, 9 without a reference
+* **Outdated:** 2 signature(s) still resolve but have been replaced upstream
 
 <table>
 <tr><th>Status</th><th>Linux</th><th>Windows</th><th>Project</th><th></th></tr>
@@ -42,6 +43,16 @@ self-hosted on Forgejo.
 <tr><td><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fgit.miksen.me%2Fmikkel%2Fcs2-signatures%2Fraw%2Fbranch%2Fmain%2Freports%2FMatchZy%2Fbadge.json" alt="MatchZy"></td><td>✅</td><td>✅</td><td><a href="https://git.miksen.me/mikkel/matchzy">MatchZy</a></td><td><a href="https://git.miksen.me/mikkel/cs2-signatures/src/branch/main/docs/MatchZy.md">View signatures &rarr;</a></td></tr>
 <tr><td><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fgit.miksen.me%2Fmikkel%2Fcs2-signatures%2Fraw%2Fbranch%2Fmain%2Freports%2FWeaponPaints%2Fbadge.json" alt="WeaponPaints"></td><td>✅</td><td>✅</td><td><a href="https://git.miksen.me/mikkel/weaponpaints">WeaponPaints</a></td><td><a href="https://git.miksen.me/mikkel/cs2-signatures/src/branch/main/docs/WeaponPaints.md">View signatures &rarr;</a></td></tr>
 </table>
+
+<details><summary>&#9660; CounterStrikeSharp outdated vs reference (1)</summary>
+
+These still resolve in the current binaries. The upstream analysis has moved to a different pattern.
+
+<table>
+<tr><th>Subroutine</th><th>Platform</th></tr>
+<tr><td>ClientPrint</td><td>linux, windows</td></tr>
+</table>
+</details>
 
 <!-- STATUS:END -->
 

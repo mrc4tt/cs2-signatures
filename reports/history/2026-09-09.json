@@ -1,16 +1,16 @@
 {
-  "date": "September 9, 2026 at 12:25:01 GMT",
+  "date": "September 9, 2026 at 18:45:01 GMT",
   "tally": {
     "ok": 94,
     "broken": 0,
     "ambiguous": 0,
     "no_binary": 0,
     "missing_sig": 0,
-    "offset_ok": 18,
+    "offset_ok": 37,
     "offset_stale": 0,
     "offset_review": 1,
-    "offset_no_recipe": 4,
-    "sig_outdated": 0
+    "offset_no_recipe": 8,
+    "sig_outdated": 2
   },
   "manifest": {
     "2347771": "7475134589078180787",
@@ -23,11 +23,11 @@
       "ambiguous": 0,
       "no_binary": 0,
       "missing_sig": 0,
-      "offset_ok": 14,
+      "offset_ok": 30,
       "offset_stale": 0,
       "offset_review": 1,
-      "offset_no_recipe": 3,
-      "sig_outdated": 0
+      "offset_no_recipe": 5,
+      "sig_outdated": 2
     },
     "RetakesAllocator": {
       "ok": 6,
@@ -47,10 +47,10 @@
       "ambiguous": 0,
       "no_binary": 0,
       "missing_sig": 0,
-      "offset_ok": 0,
+      "offset_ok": 2,
       "offset_stale": 0,
       "offset_review": 0,
-      "offset_no_recipe": 1,
+      "offset_no_recipe": 0,
       "sig_outdated": 0
     },
     "WeaponPaints": {
@@ -59,10 +59,10 @@
       "ambiguous": 0,
       "no_binary": 0,
       "missing_sig": 0,
-      "offset_ok": 4,
+      "offset_ok": 5,
       "offset_stale": 0,
       "offset_review": 0,
-      "offset_no_recipe": 0,
+      "offset_no_recipe": 3,
       "sig_outdated": 0
     }
   }

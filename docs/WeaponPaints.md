@@ -1,12 +1,14 @@
 # WeaponPaints
 
-Last updated: September 9, 2026 at 12:25:01 GMT
+Last updated: September 9, 2026 at 18:45:01 GMT
 
 * Manifests: [7475134589078180787](https://steamdb.info/depot/2347771/history/?changeid=M:7475134589078180787), [7308152089951763351](https://steamdb.info/depot/2347773/history/?changeid=M:7308152089951763351)
 * Repository: https://git.miksen.me/mikkel/weaponpaints
 * Gamedata: https://git.miksen.me/mikkel/weaponpaints/src/branch/main/gamedata/weaponpaints.json
 
 Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ broken (0) &middot; ❔ binary not downloaded.
+
+Reference column: ✅ matches the 14180 analysis &middot; 🕓 the analysis uses a different pattern &middot; ❔ no reference for this symbol.
 
 ## Signatures
 
@@ -232,8 +234,8 @@ A vtable slot index or a struct-member byte offset. There are no bytes to scan, 
 
 <table>
 <tr><th>Entry</th><th>Windows</th><th>Linux</th><th>Checked by</th></tr>
-<tr><td>CCSPlayerController_InventoryServices::m_pInventory</td><td>❔ -</td><td>✅ 112</td><td>structoffset</td></tr>
-<tr><td>CCSPlayerInventory::m_pSOCache</td><td>❔ -</td><td>✅ 104</td><td>structoffset</td></tr>
-<tr><td>CGCClientSharedObjectCache::m_Owner</td><td>❔ -</td><td>✅ 40</td><td>structoffset</td></tr>
-<tr><td>CCSPlayer_WeaponServices::DropWeapon</td><td>❔ -</td><td>✅ 29</td><td>anchored</td></tr>
+<tr><td>CCSPlayerController_InventoryServices::m_pInventory</td><td>❔ 112</td><td>✅ 112</td><td>reference / structoffset</td></tr>
+<tr><td>CCSPlayerInventory::m_pSOCache</td><td>❔ 104</td><td>✅ 104</td><td>reference / structoffset</td></tr>
+<tr><td>CGCClientSharedObjectCache::m_Owner</td><td>❔ 40</td><td>✅ 40</td><td>reference / structoffset</td></tr>
+<tr><td>CCSPlayer_WeaponServices::DropWeapon</td><td>✅ 28</td><td>✅ 29</td><td>anchor</td></tr>
 </table>
