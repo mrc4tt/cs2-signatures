@@ -18,6 +18,7 @@ reports/cron.log
 # Both are derived from committed data - regenerated every run, never tracked.
 reports/delta.json
 reports/fragility.json
+reports/reference_gaps.json
 # Private development rules — not for public repo.
 CLAUDE.md
 hm

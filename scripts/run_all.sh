@@ -221,6 +221,15 @@ if ls reports/*/proposals.json >/dev/null 2>&1; then
   python3 scripts/open_pr.py || true
 fi
 
+# 7.6 Optional: hand the reference gaps back to the analysis repo as one
+#     stable GitHub issue (needs a token with issue write). The tracker knows
+#     which tracked symbols CS2_VibeSignatures cannot answer for; that list is
+#     only actionable where the analysis happens. Self-gating: an unchanged gap
+#     set updates nothing, so this is quiet until coverage actually moves.
+if [ -n "${GITHUB_TOKEN:-}${GH_TOKEN:-}" ] && [ "${NO_GAP_ISSUE:-0}" != "1" ]; then
+  python3 scripts/open_gap_issue.py || true
+fi
+
 # 8. Optional Discord webhook post, across all projects (needs DISCORD_WEBHOOK,
 #    which may hold several comma/space-separated URLs for multiple servers).
 #    Gated on step 5.5: a signature/offset RESULT must have changed, not just

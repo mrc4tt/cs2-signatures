@@ -272,6 +272,39 @@ the report into more than one server. `DISCORD_MENTION` (a numeric **user** id,
 which is global, unlike a per-guild role id) pings only when something is broken
 or ambiguous.
 
+### Reference gaps back to the analysis
+
+The two repos run on different machines and share nothing but published
+artifacts: the tracker reads snapshots from CS2_VibeSignatures, and this is the
+one path back. `reference_gaps.py` collects the tracked symbols the analysis
+cannot answer for, worst first:
+
+| Category | Meaning |
+|---|---|
+| `no_verdict` | an offset with neither a working recipe/anchor nor a reference. Nothing checks that value; the gamedata number is taken on trust. |
+| `missing_symbol` | a signature whose symbol is absent from the snapshot, so nothing can say whether the pattern is still the one upstream uses. |
+| `missing_pattern` | the symbol was analysed, but the record carries no byte pattern to compare against. |
+
+Only symbols in `data/projects.json` are reported; a snapshot covers thousands
+nobody here tracks, and a request list has to be short to be acted on.
+
+`open_gap_issue.py` keeps **one** issue in the analysis repo in sync with that
+list. The body carries a fingerprint of the gap SET, deliberately excluding the
+snapshot version: a new game build with the same holes is not news, and an
+unchanged fingerprint makes the run do nothing at all. When the last gap closes,
+the issue is updated once more and closed; if a gap comes back it reopens.
+
+```bash
+python3 scripts/reference_gaps.py                  # summary
+python3 scripts/reference_gaps.py --markdown       # the issue body
+python3 scripts/open_gap_issue.py --dry-run        # print, call no API
+python3 scripts/open_gap_issue.py                  # create or update
+```
+
+Target repo defaults to the one `fetch_symbols.py` reads (`SYMBOLS_ISSUE_REPO`
+overrides). Needs `GITHUB_TOKEN`/`GH_TOKEN` with issue write; without it,
+`run_all.sh` step 7.6 skips silently. `NO_GAP_ISSUE=1` turns it off.
+
 ### Issues and pull requests
 
 `open_issue.py` opens a Forgejo issue on breakage and closes it when the
@@ -336,6 +369,8 @@ scripts/open_issue.py     Forgejo auto-issue on broken sigs (across all projects
 scripts/post_gate.py      is the change worth announcing? (exit 10 = yes)
 scripts/post_discord.py   Discord webhook report (across all projects)
 scripts/gen_stats.py      signature fragility mined from git history -> docs/stats.md
+scripts/reference_gaps.py what the reference cannot answer for (tracked symbols only)
+scripts/open_gap_issue.py one stable issue in the analysis repo, kept in sync
 scripts/test.sh           syntax check + unit tests
 scripts/run_all.sh        full pipeline (validate + commit + push)
 scripts/cron.sh           cron entrypoint (loads .env, logs)
@@ -345,5 +380,6 @@ reports/badge.json        shields.io endpoint (aggregate)
 reports/history/*.json    per-run tally + CS2 build + per-project breakdown
 reports/delta.json        per-run named delta, post_gate -> post_discord (ignored)
 reports/fragility.json    per-run breakage counts, gen_stats -> post_discord (ignored)
+reports/reference_gaps.json  symbols the reference cannot answer for (ignored)
 docs/stats.md             signature fragility over the tracked history
 ```
