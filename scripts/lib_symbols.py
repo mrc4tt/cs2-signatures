@@ -146,7 +146,13 @@ class Snapshot(object):
         rec = self.record(name, platform)
         if not rec:
             return None
-        return rec["payload"].get("func_sig")
+        payload = rec["payload"]
+        # A global-variable record carries its pattern as gv_sig: the instruction
+        # that references the global, which is exactly the shape a gamedata
+        # signature for a global has. Without this fallback every gv entry reads
+        # as no_sig even when the reference matches byte for byte, as
+        # IGameSystem_InitAllSystems_pFirst did on 14181.
+        return payload.get("func_sig") or payload.get("gv_sig")
 
     def offset(self, name, platform):
         """(value, method) for an offsets entry, or (None, reason)."""

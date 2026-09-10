@@ -3,6 +3,7 @@
   "CTakeDamageInfo_HitGroup": "CTakeDamageInfo_HitGroupInfo",
   "CheckTransmit": "CSource2GameEntities_CheckTransmit",
   "CheckTransmitPlayerSlot": "CCheckTransmitInfo_m_nPlayerSlot",
+  "ClientPrint": "ClientPrintToController",
   "GameEntitySystem": "CGameResourceService_m_pEntitySystem",
   "ISource2GameEntities::CheckTransmit": "CSource2GameEntities_CheckTransmit",
   "SetStateChanged": "CEntityInstance_NetworkStateChanged"
