@@ -6,6 +6,9 @@ history is a timeline of each signature's health. Walk it (oldest first),
 count transitions into broken/ambiguous per signature, and write a
 fragility report: which signatures break most, per project.
 
+--json additionally writes the same counts machine-readably, which
+post_discord.py reads to flag habitually fragile signatures in the report.
+
 Run by run_all.sh step 6 alongside gen_report.py (only on a real change),
 with the same --date stamp. stdlib only.
 """
@@ -105,6 +108,9 @@ def main():
     ap.add_argument("--projects", default=P.REGISTRY)
     ap.add_argument("--out", default=os.path.join("docs", "stats.md"))
     ap.add_argument("--date", default=None, help="display timestamp")
+    ap.add_argument("--json", default=None, metavar="PATH",
+                    help="also write the per-signature counts as JSON "
+                         "(read by post_discord.py for the fragility marker)")
     args = ap.parse_args()
 
     all_stats = {}
@@ -116,6 +122,12 @@ def main():
     os.makedirs(os.path.dirname(args.out) or ".", exist_ok=True)
     with open(args.out, "w") as fh:
         fh.write(render(all_stats, args.date))
+    if args.json:
+        os.makedirs(os.path.dirname(args.json) or ".", exist_ok=True)
+        with open(args.json, "w") as fh:
+            json.dump({pid: {"%s|%s" % key: s for key, s in stats.items()}
+                       for pid, stats in all_stats.items()}, fh, indent=2)
+
     print("wrote %s (%d project(s))" % (args.out, len(all_stats)))
     return 0
 

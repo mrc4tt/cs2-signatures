@@ -28,6 +28,10 @@ pure rename is invisible. Deliberately excluded too: `matches` counts, `library`
 manifest is excluded unless --include-manifest is passed, so a CS2 update that
 breaks nothing stays silent.
 
+--write-delta additionally dumps the NAMED per-entry delta (which signature
+went which way) for post_discord.py to render. That view needs names, so it is
+built separately from the fingerprint above - see named_changes().
+
 Exit codes (mirroring check_update.py): 10 = post-worthy change, 0 = nothing to
 announce, 1 = error. Run must happen BEFORE step 6 commits, since the comparison
 baseline is HEAD.
@@ -81,6 +85,114 @@ def fingerprint(status):
     return {"entries": items}
 
 
+# ---------------------------------------------------------------------------
+# Named delta (for the Discord report)
+#
+# fingerprint() above deliberately drops names so a pure rename cannot trigger
+# a post. The report needs the opposite: which entry changed, by name. Same
+# source data, different projection - kept here so both views stay in sync.
+# ---------------------------------------------------------------------------
+
+# Ordered worst-first; the report renders them in this order.
+CHANGE_ORDER = ("broke", "removed", "changed", "outdated", "fixed", "added",
+                "resigned", "moved")
+
+
+def entry_map(status):
+    """{(kind, name, platform): facts} for one status.json."""
+    out = {}
+    for r in status.get("results", []):
+        kind = r.get("kind")
+        offsets = r.get("offsets") or {}
+        for plat, info in (r.get("platforms") or {}).items():
+            out[(kind, r.get("name"), plat)] = {
+                "status": info.get("status"),
+                "sig": info.get("sig"),
+                "offset": offsets.get(plat, info.get(plat)),
+                "outdated": (info.get("reference") or {}).get("status")
+                == "outdated",
+            }
+    return out
+
+
+def classify(old, new):
+    """Change kind for one entry, or None when nothing worth reporting moved."""
+    if old is None:
+        return "added"
+    if new is None:
+        return "removed"
+    if old["status"] != new["status"]:
+        if new["status"] == "ok":
+            return "fixed"
+        if new["status"] in ("broken", "ambiguous", "stale"):
+            return "broke"
+        return "changed"
+    if new["outdated"] and not old["outdated"]:
+        return "outdated"
+    if new.get("sig") != old.get("sig"):
+        return "resigned"
+    if new.get("offset") != old.get("offset"):
+        return "moved"
+    return None
+
+
+def named_changes(projects_path=P.REGISTRY):
+    """[{project, kind, name, platform, change, old, new}, ...] vs HEAD.
+
+    A project with no committed status yet is skipped rather than reported as
+    dozens of "added" rows - its first report is the baseline, not news.
+    """
+    changes = []
+    try:
+        projects = P.load(projects_path)
+    except (OSError, ValueError):
+        return changes
+    for proj in projects:
+        path = P.status_path(proj)
+        full = os.path.join(P.ROOT, path)
+        if not os.path.isfile(full):
+            continue
+        try:
+            with open(full) as fh:
+                current = json.load(fh)
+        except (OSError, ValueError):
+            continue
+        old = committed(path)
+        if old is None:
+            continue
+        cur_map, old_map = entry_map(current), entry_map(old)
+        for key in sorted(set(cur_map) | set(old_map)):
+            kind, name, plat = key
+            change = classify(old_map.get(key), cur_map.get(key))
+            if not change:
+                continue
+            changes.append({
+                "project": proj["id"], "kind": kind, "name": name,
+                "platform": plat, "change": change,
+                "old": (old_map.get(key) or {}).get("status"),
+                "new": (cur_map.get(key) or {}).get("status"),
+            })
+    changes.sort(key=lambda c: (CHANGE_ORDER.index(c["change"])
+                                if c["change"] in CHANGE_ORDER else 99,
+                                c["project"], c["name"], c["platform"]))
+    return changes
+
+
+def write_delta(path, changes):
+    """Dump the named delta for post_discord.py to render.
+
+    Written before the commit in step 6, read after it - by then HEAD has moved
+    and the diff is no longer computable, so it has to be handed over on disk.
+    Git-ignored: it is per-run scratch, not a tracked result.
+    """
+    os.makedirs(os.path.dirname(path) or ".", exist_ok=True)
+    counts = {}
+    for c in changes:
+        counts[c["change"]] = counts.get(c["change"], 0) + 1
+    with open(path, "w") as fh:
+        json.dump({"changes": changes, "counts": counts}, fh, indent=2)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--projects", default=P.REGISTRY)
@@ -89,6 +201,10 @@ def main():
                          "every signature still resolves the same way")
     ap.add_argument("--quiet", action="store_true",
                     help="exit code only, no explanation on stdout")
+    ap.add_argument("--write-delta", default=None, metavar="PATH",
+                    help="also dump the named per-entry delta vs HEAD to PATH "
+                         "(read by post_discord.py, which runs after the "
+                         "commit has moved HEAD)")
     args = ap.parse_args()
 
     try:
@@ -119,6 +235,13 @@ def main():
         elif args.include_manifest and \
                 current.get("manifest") != old.get("manifest"):
             changed.append("%s (new game manifest)" % proj["id"])
+
+    if args.write_delta:
+        try:
+            write_delta(args.write_delta, named_changes(args.projects))
+        except OSError as e:
+            # Decoration for the report, never a reason to fail the gate.
+            print("cannot write delta: %s" % e, file=sys.stderr)
 
     if not args.quiet:
         if changed:

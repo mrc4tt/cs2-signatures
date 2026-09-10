@@ -178,10 +178,12 @@ fi
 #     offsets and statuses - names excluded - against HEAD, so it must run
 #     BEFORE step 6 commits. Exit 10 = announce. Set POST_ON_GAME_UPDATE=1 to
 #     also announce a manifest-only change.
-GATE_ARGS=()
+#     --write-delta hands the NAMED delta to the Discord step: by then the
+#     commit below has moved HEAD, so it could no longer work out what changed.
+GATE_ARGS=(--write-delta reports/delta.json)
 [ "${POST_ON_GAME_UPDATE:-0}" = "1" ] && GATE_ARGS+=(--include-manifest)
 set +e
-python3 scripts/post_gate.py "${GATE_ARGS[@]+"${GATE_ARGS[@]}"}"
+python3 scripts/post_gate.py "${GATE_ARGS[@]}"
 ANNOUNCE=$?
 set -e
 [ "$ANNOUNCE" -eq 1 ] && { echo "post_gate failed"; exit 1; }
@@ -190,7 +192,8 @@ set -e
 python3 scripts/gen_report.py \
   --readme README.md --docs-dir docs \
   --history-dir reports/history --date "$DISP" --iso "$ISO"
-python3 scripts/gen_stats.py --out docs/stats.md --date "$DISP" || true
+python3 scripts/gen_stats.py --out docs/stats.md --date "$DISP" \
+  --json reports/fragility.json || true
 
 if [ "${NO_PUSH:-0}" != "1" ]; then
   git add data/manifest.json data/projects.json data/*/gamedata.json \

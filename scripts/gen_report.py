@@ -6,7 +6,7 @@ Reads data/projects.json and each project's reports/<id>/status.json, then:
     View signatures ->), a collapsible broken/ambiguous list per project, and
     the shared SteamDB manifest links.
   * docs/<id>.md: per-entry detail table (Status / Platform / Library /
-    CODE-Style / IDA-Style) for that project.
+    CODE-Style / IDA-Style) for that project, plus docs/README.md indexing them.
   * reports/badge.json: aggregate verdict across all projects.
   * reports/history/<iso>.json: aggregate tally + per-project breakdown.
 
@@ -16,6 +16,7 @@ so the static header/badge/instructions are preserved.
 import argparse
 import json
 import os
+import re
 import sys
 import urllib.parse
 
@@ -161,6 +162,20 @@ def issue_rows(results):
     return rows
 
 
+def read_version(steam_inf):
+    """CS2 PatchVersion from steam.inf, or None when the binaries are absent.
+
+    Recorded in each history snapshot so the Discord report can say which build
+    a change landed on (and show `old -> new` on a game update).
+    """
+    if steam_inf and os.path.isfile(steam_inf):
+        with open(steam_inf, errors="ignore") as fh:
+            m = re.search(r"PatchVersion=(\S+)", fh.read())
+            if m:
+                return m.group(1)
+    return None
+
+
 def sum_tallies(statuses):
     total = {}
     for s in statuses:
@@ -169,39 +184,68 @@ def sum_tallies(statuses):
     return total
 
 
-def render_readme_block(projects, statuses, updated):
+def sig_counts(results, plat):
+    """(healthy, validated) signature count for one platform."""
+    ok = tot = 0
+    for r in results:
+        if r.get("kind") != "signature":
+            continue
+        st = (r.get("platforms") or {}).get(plat, {}).get("status")
+        if st in ("ok", "broken", "ambiguous"):
+            tot += 1
+            ok += st == "ok"
+    return ok, tot
+
+
+def verdict_line(t, version):
+    """The one-sentence answer the dashboard exists to give."""
+    ok, amb, brk = t.get("ok", 0), t.get("ambiguous", 0), t.get("broken", 0)
+    total = ok + amb + brk + t.get("no_binary", 0)
+    build = " on CS2 `%s`" % version if version else ""
+    if brk:
+        return ("%s **%d of %d signature checks are broken**%s - the affected "
+                "plugins need regenerated signatures."
+                % (BAD, brk, total, build))
+    if amb:
+        return ("%s **%d of %d signature checks are ambiguous**%s - they match "
+                "more than once and are not safe to rely on."
+                % (WARN, amb, total, build))
+    if not total:
+        return "%s **Nothing validated yet.**" % GREY
+    return ("%s **All %d signature checks pass**%s."
+            % (OK, total, build))
+
+
+def render_readme_block(projects, statuses, updated, version=None):
     """projects/statuses are parallel lists (same order)."""
     manifest = next((s.get("manifest") for s in statuses if s.get("manifest")),
                     None)
     t = sum_tallies(statuses)
     L = []
-    L.append("## Signatures")
+    L.append("## Current status")
     L.append("")
-    L.append("* **Last updated:** %s" % updated)
-    L.append("* **Manifests:** %s" % manifest_links(manifest))
-    L.append("* **Tracked projects:** %d" % len(projects))
-    L.append("* **Validated:** %d ok, %d ambiguous, %d broken (%d not-yet-"
-             "validated)" % (t.get("ok", 0), t.get("ambiguous", 0),
-             t.get("broken", 0), t.get("no_binary", 0)))
-    L.append("* **Offsets:** %d ok, %d stale, %d without a reference"
-             % (t.get("offset_ok", 0), t.get("offset_stale", 0),
-                t.get("offset_no_recipe", 0) + t.get("offset_review", 0)))
-    if t.get("sig_outdated"):
-        L.append("* **Outdated:** %d signature(s) still resolve but have been "
-                 "replaced upstream" % t["sig_outdated"])
+    L.append("> %s" % verdict_line(t, version))
+    L.append(">")
+    L.append("> Last checked %s &middot; %d project(s) tracked"
+             % (updated, len(projects)))
     L.append("")
     L.append("<table>")
-    L.append("<tr><th>Status</th><th>Linux</th><th>Windows</th><th>Project</th>"
-             "<th></th></tr>")
+    L.append("<tr><th>Project</th><th>Health</th><th>Signatures</th>"
+             "<th>Linux</th><th>Windows</th><th></th></tr>")
     for proj, status in zip(projects, statuses):
         results = status["results"]
-        lin = platform_agg(results, "linux")
-        win = platform_agg(results, "windows")
-        L.append('<tr><td>%s</td><td>%s</td><td>%s</td>'
-                 '<td><a href="%s">%s</a></td>'
-                 '<td><a href="%s">View signatures &rarr;</a></td></tr>'
-                 % (badge_md(proj["id"], P.name(proj)), lin, win,
-                    P.repo_url(proj), P.name(proj), docs_url(proj)))
+        lok, ltot = sig_counts(results, "linux")
+        wok, wtot = sig_counts(results, "windows")
+        L.append('<tr><td><a href="%s">%s</a></td><td>%s</td>'
+                 '<td align="center">%d/%d</td><td align="center">%s</td>'
+                 '<td align="center">%s</td>'
+                 '<td><a href="%s">details &rarr;</a></td></tr>'
+                 % (P.repo_url(proj), P.name(proj),
+                    badge_md(proj["id"], P.name(proj)),
+                    lok + wok, ltot + wtot,
+                    platform_agg(results, "linux"),
+                    platform_agg(results, "windows"),
+                    docs_url(proj)))
     L.append("</table>")
     L.append("")
 
@@ -238,6 +282,59 @@ def render_readme_block(projects, statuses, updated):
         L.append("</table>")
         L.append("</details>")
         L.append("")
+
+    # The numbers behind the verdict: interesting on a bad day, noise on a good
+    # one, so they are folded away rather than dropped.
+    L.append("<details><summary>&#9660; Run details</summary>")
+    L.append("")
+    if version:
+        L.append("* **CS2 build:** `%s`" % version)
+    L.append("* **Signatures:** %d ok, %d ambiguous, %d broken (%d not-yet-"
+             "validated)" % (t.get("ok", 0), t.get("ambiguous", 0),
+             t.get("broken", 0), t.get("no_binary", 0)))
+    L.append("* **Offsets:** %d ok, %d stale, %d without a reference"
+             % (t.get("offset_ok", 0), t.get("offset_stale", 0),
+                t.get("offset_no_recipe", 0) + t.get("offset_review", 0)))
+    if t.get("sig_outdated"):
+        L.append("* **Outdated:** %d signature(s) still resolve but have been "
+                 "replaced upstream" % t["sig_outdated"])
+    L.append("* **Depot manifests:** %s" % manifest_links(manifest))
+    L.append("* **Fragility over time:** [docs/stats.md](docs/stats.md)")
+    L.append("")
+    L.append("</details>")
+    return "\n".join(L)
+
+
+def render_docs_index(projects, updated):
+    """docs/README.md: an index of the generated pages.
+
+    Generated rather than hand-written so adding a project to
+    data/projects.json still needs no edit anywhere else.
+    """
+    L = ["# Documentation", ""]
+    if updated:
+        L += ["Last updated: %s" % updated, ""]
+    L += ["* [USAGE.md](USAGE.md) - what the marks mean, what to do about a "
+          "broken signature, and how to get a plugin tracked.",
+          "* [DEVELOPMENT.md](DEVELOPMENT.md) - how the pipeline works, "
+          "notifications, reference validation, VPS setup, and the repository "
+          "layout.",
+          "* [stats.md](stats.md) - signature fragility: which signatures break "
+          "most often across the tracked history.",
+          "",
+          "## Per-project signature pages",
+          "",
+          "One page per tracked project, regenerated on every run. Each lists "
+          "every signature and offset with its match state per platform, plus "
+          "the byte pattern in CODE-style and IDA-style.",
+          ""]
+    for proj in projects:
+        L.append("* [%s](%s.md) - `%s`" % (P.name(proj), proj["id"],
+                                           P.repo_url(proj)))
+    L += ["",
+          "The project list lives in [`data/projects.json`]"
+          "(../data/projects.json); adding one there adds a page here on the "
+          "next run.", ""]
     return "\n".join(L)
 
 
@@ -358,6 +455,8 @@ def main():
     ap.add_argument("--history-dir", default="reports/history")
     ap.add_argument("--date", required=True, help="display date e.g. 'July 2, 2026'")
     ap.add_argument("--iso", required=True, help="YYYY-MM-DD for history filename")
+    ap.add_argument("--steam-inf", default="bin_linux/game/csgo/steam.inf",
+                    help="steam.inf to read the CS2 version (PatchVersion) from")
     args = ap.parse_args()
 
     projects = P.load(args.projects)
@@ -366,12 +465,16 @@ def main():
         with open(P.status_path(proj)) as fh:
             statuses.append(json.load(fh))
 
-    inject_readme(args.readme, render_readme_block(projects, statuses, args.date))
+    version = read_version(args.steam_inf)
+    inject_readme(args.readme,
+                  render_readme_block(projects, statuses, args.date, version))
 
     os.makedirs(args.docs_dir, exist_ok=True)
     for proj, status in zip(projects, statuses):
         with open(os.path.join(args.docs_dir, "%s.md" % proj["id"]), "w") as fh:
             fh.write(render_docs(proj, status, args.date))
+    with open(os.path.join(args.docs_dir, "README.md"), "w") as fh:
+        fh.write(render_docs_index(projects, args.date))
 
     total = sum_tallies(statuses)
     os.makedirs(os.path.dirname(args.badge) or ".", exist_ok=True)
@@ -392,7 +495,8 @@ def main():
     os.makedirs(args.history_dir, exist_ok=True)
     snap = os.path.join(args.history_dir, "%s.json" % args.iso)
     with open(snap, "w") as fh:
-        json.dump({"date": args.date, "tally": total, "manifest": manifest,
+        json.dump({"date": args.date, "version": version,
+                   "tally": total, "manifest": manifest,
                    "projects": {p["id"]: s["tally"]
                                 for p, s in zip(projects, statuses)}}, fh, indent=2)
 

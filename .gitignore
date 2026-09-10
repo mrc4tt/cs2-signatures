@@ -13,6 +13,11 @@ __pycache__/
 # Secrets + cron log.
 .env
 reports/cron.log
+# Per-run scratch for the Discord report: the named delta handed from
+# post_gate.py to post_discord.py, and the fragility counts from gen_stats.py.
+# Both are derived from committed data - regenerated every run, never tracked.
+reports/delta.json
+reports/fragility.json
 # Private development rules — not for public repo.
 CLAUDE.md
 hm
