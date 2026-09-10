@@ -1,12 +1,14 @@
 # cs2-retakes-allocator
 
-Last updated: September 9, 2026 at 22:50:01 GMT
+Last updated: September 10, 2026 at 06:25:01 GMT
 
 * Manifests: [5806169188224907599](https://steamdb.info/depot/2347771/history/?changeid=M:5806169188224907599), [8639120305802825922](https://steamdb.info/depot/2347773/history/?changeid=M:8639120305802825922)
 * Repository: https://github.com/mrc4tt/cs2-retakes-allocator
 * Gamedata: https://github.com/mrc4tt/cs2-retakes-allocator/blob/main/Resources/RetakesAllocator_gamedata.json
 
 Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ broken (0) &middot; ❔ binary not downloaded.
+
+Reference column: ✅ matches the 14181 analysis &middot; 🕓 the analysis uses a different pattern &middot; ❔ no reference for this symbol.
 
 ## Signatures
 
@@ -38,7 +40,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 
 <table>
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>✅</td><td>❔</td><td>Windows</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x48\x89\x5C\x24\x08\x57\x48\x83\xEC\x20\x33\xFF\x4C\x8B\xCA\x8B\xD9\x8B\xC7\x48\x85\xD2\x74\x22\x38\x02\x74\x1E\x48\xC7\xC2\xFF\xFF\xFF\xFF\x48\xFF\xC2\x41\x38\x04\x11\x75\xF7\x41\xB8\x26\x59\x41\x31\x49\x8B\xC9\xE8\x2A\x2A\x2A\x2A\x89\x44\x24\x38\x85\xC0
 </pre>
@@ -47,7 +49,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 48 89 5C 24 08 57 48 83 EC 20 33 FF 4C 8B CA 8B D9 8B C7 48 85 D2 74 22 38 02 74 1E 48 C7 C2 FF FF FF FF 48 FF C2 41 38 04 11 75 F7 41 B8 26 59 41 31 49 8B C9 E8 ? ? ? ? 89 44 24 38 85 C0
 </pre>
 </td></tr>
-<tr><td>✅</td><td>❔</td><td>Linux</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
 \x48\x85\xF6\x0F\x84\x2A\x2A\x2A\x2A\x55\x48\x89\xE5\x41\x57\x41\x56\x41\x55\x49\x89\xF5\x41\x54\x53\x48\x81\xEC\x2A\x2A\x2A\x2A\x80\x3E\x2A\x75\x2A\x31\xC0\x48\x81\xC4\x2A\x2A\x2A\x2A\x5B\x41\x5C\x41\x5D\x41\x5E\x41\x5F\x5D\xC3\x0F\x1F\x80\x2A\x2A\x2A\x2A\x4C\x8D\xA5\x2A\x2A\x2A\x2A\x89\xFB
 </pre>
@@ -71,7 +73,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 44 89 44 24 18 48 89 54 24 10 48 89 4C 24 08 55 53 56 57 41 55 41 56 41 57 48 8B EC 48 81 EC ? ? ? ? 48 83 79 38 00 49 8B D9 45 8B E8 4C 8B FA 48 8B F9 75 05 E8 ? ? ? ?
 </pre>
 </td></tr>
-<tr><td>✅</td><td>❔</td><td>Linux</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
 \x55\x48\x89\xE5\x41\x57\x41\x56\x41\x55\x49\x89\xCD\x41\x54\x49\x89\xFC\x53\x48\x89\xF3\x48\x83\xEC\x78\x4C\x8B\x77\x38\x89\x55\xBC\x4D\x85\xF6\x0F\x84\x2A\x2A\x2A\x2A\x48\x8D\x45\xCC\x4D\x85\xED\x4C\x0F\x44\xE8\x41\xC7\x45\x00\x00\x00\x00\x00\x48\x85\xDB
 </pre>

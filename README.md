@@ -29,11 +29,12 @@ self-hosted on Forgejo.
 <!-- STATUS:START -->
 ## Signatures
 
-* **Last updated:** September 9, 2026 at 22:50:01 GMT
+* **Last updated:** September 10, 2026 at 06:25:01 GMT
 * **Manifests:** [5806169188224907599](https://steamdb.info/depot/2347771/history/?changeid=M:5806169188224907599), [8639120305802825922](https://steamdb.info/depot/2347773/history/?changeid=M:8639120305802825922)
 * **Tracked projects:** 4
 * **Validated:** 100 ok, 0 ambiguous, 6 broken (0 not-yet-validated)
-* **Offsets:** 18 ok, 0 stale, 5 without a reference
+* **Offsets:** 39 ok, 0 stale, 7 without a reference
+* **Outdated:** 4 signature(s) still resolve but have been replaced upstream
 
 <table>
 <tr><th>Status</th><th>Linux</th><th>Windows</th><th>Project</th><th></th></tr>
@@ -59,6 +60,17 @@ self-hosted on Forgejo.
 <table>
 <tr><th>Linux</th><th>Windows</th><th>Subroutine</th></tr>
 <tr><td>❌</td><td>✅</td><td>CDecoyProjectile_Create</td></tr>
+</table>
+</details>
+
+<details><summary>&#9660; CounterStrikeSharp outdated vs reference (2)</summary>
+
+These still resolve in the current binaries. The upstream analysis has moved to a different pattern.
+
+<table>
+<tr><th>Subroutine</th><th>Platform</th></tr>
+<tr><td>ClientPrint</td><td>linux, windows</td></tr>
+<tr><td>CBaseModelEntity_SetModel</td><td>linux, windows</td></tr>
 </table>
 </details>
 
