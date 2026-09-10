@@ -1,6 +1,6 @@
 # CounterStrikeSharp
 
-Last updated: September 10, 2026 at 16:10:01 GMT
+Last updated: September 10, 2026 at 18:15:01 GMT
 
 * Manifests: [5806169188224907599](https://steamdb.info/depot/2347771/history/?changeid=M:5806169188224907599), [8639120305802825922](https://steamdb.info/depot/2347773/history/?changeid=M:8639120305802825922)
 * Repository: https://github.com/mrc4tt/CounterStrikeSharp
@@ -724,7 +724,7 @@ Reference column: ✅ matches the 14181 analysis &middot; 🕓 the analysis uses
 
 <table>
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>✅</td><td>❔</td><td>Windows</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x48\x89\x5C\x24\x2A\x48\x89\x6C\x24\x2A\x48\x89\x74\x24\x2A\x57\x48\x83\xEC\x2A\x49\x8B\xF0\x33\xED\x4C\x8D\x44\x24\x2A\x66\x89\x6C\x24\x2A\x49\x8B\xF9
 </pre>
@@ -733,7 +733,7 @@ Reference column: ✅ matches the 14181 analysis &middot; 🕓 the analysis uses
 48 89 5C 24 ? 48 89 6C 24 ? 48 89 74 24 ? 57 48 83 EC ? 49 8B F0 33 ED 4C 8D 44 24 ? 66 89 6C 24 ? 49 8B F9
 </pre>
 </td></tr>
-<tr><td>✅</td><td>❔</td><td>Linux</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
 \x55\x48\x89\xE5\x41\x55\x49\x89\xCD\x41\x54\x49\x89\xD4\x31\xD2
 </pre>
@@ -748,7 +748,7 @@ Reference column: ✅ matches the 14181 analysis &middot; 🕓 the analysis uses
 
 <table>
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>✅</td><td>❔</td><td>Windows</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x40\x53\x56\x57\x48\x83\xEC\x20\x48\x63\xDA\x49\x8B\xF1\x49\x8B\xC0\x48\x8B\xF9\x3B\x99\xB8\x04\x00\x00\x7D\x5E\x48\x89\x6C\x24\x50\x4C\x8D\x44\x24\x40\x33\xED\x48\x8B\xD0\x66\x89\x6C\x24\x40\xE8\x6B\x1B\xFF\xFF\x84\xC0\x74
 </pre>
@@ -757,7 +757,7 @@ Reference column: ✅ matches the 14181 analysis &middot; 🕓 the analysis uses
 40 53 56 57 48 83 EC 20 48 63 DA 49 8B F1 49 8B C0 48 8B F9 3B 99 B8 04 00 00 7D 5E 48 89 6C 24 50 4C 8D 44 24 40 33 ED 48 8B D0 66 89 6C 24 40 E8 6B 1B FF FF 84 C0 74
 </pre>
 </td></tr>
-<tr><td>✅</td><td>❔</td><td>Linux</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
 \x55\x48\x89\xE5\x41\x56\x41\x55\x41\x54\x41\x89\xF4\x53\x48\x83\xEC\x10\x3B\xB7\x98\x07\x00\x00\x7C\x16\x48\x83\xC4\x10\x5B\x41\x5C\x41\x5D\x41\x5E\x5D\xC3\x66\x0F\x1F\x84\x00\x00\x00\x00\x00\x48\x89\xD6\x31\xD2\x48\x89\xFB\x66\x89\x55\xDC\x48\x8D\x55\xDC\x49\x89\xCD\x4D\x89\xC6
 </pre>
@@ -772,7 +772,7 @@ Reference column: ✅ matches the 14181 analysis &middot; 🕓 the analysis uses
 
 <table>
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>✅</td><td>❔</td><td>Windows</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x48\x89\x5C\x24\x2A\x48\x89\x6C\x24\x2A\x48\x89\x74\x24\x2A\x57\x48\x83\xEC\x2A\x49\x8B\xF0\x33\xED\x4C\x8D\x44\x24\x2A\x66\x89\x6C\x24\x2A\x41\x8B\xF9
 </pre>
@@ -781,7 +781,7 @@ Reference column: ✅ matches the 14181 analysis &middot; 🕓 the analysis uses
 48 89 5C 24 ? 48 89 6C 24 ? 48 89 74 24 ? 57 48 83 EC ? 49 8B F0 33 ED 4C 8D 44 24 ? 66 89 6C 24 ? 41 8B F9
 </pre>
 </td></tr>
-<tr><td>✅</td><td>❔</td><td>Linux</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
 \x55\x48\x89\xE5\x41\x57\x41\x56\x41\x55\x41\x89\xCD\x41\x54\x49\x89\xD4\x31\xD2
 </pre>
@@ -796,7 +796,7 @@ Reference column: ✅ matches the 14181 analysis &middot; 🕓 the analysis uses
 
 <table>
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>✅</td><td>❔</td><td>Windows</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x40\x53\x56\x57\x48\x83\xEC\x20\x48\x63\xDA\x49\x8B\xF1\x49\x8B\xC0\x48\x8B\xF9\x3B\x99\xB8\x04\x00\x00\x7D\x5E\x48\x89\x6C\x24\x50\x4C\x8D\x44\x24\x40\x33\xED\x48\x8B\xD0\x66\x89\x6C\x24\x40\xE8\x4B\x11\xFF\xFF\x84\xC0\x74
 </pre>
@@ -805,7 +805,7 @@ Reference column: ✅ matches the 14181 analysis &middot; 🕓 the analysis uses
 40 53 56 57 48 83 EC 20 48 63 DA 49 8B F1 49 8B C0 48 8B F9 3B 99 B8 04 00 00 7D 5E 48 89 6C 24 50 4C 8D 44 24 40 33 ED 48 8B D0 66 89 6C 24 40 E8 4B 11 FF FF 84 C0 74
 </pre>
 </td></tr>
-<tr><td>✅</td><td>❔</td><td>Linux</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
 \x55\x48\x89\xE5\x41\x56\x41\x55\x41\x54\x41\x89\xF4\x53\x48\x83\xEC\x2A\x3B\xB7\x2A\x2A\x2A\x2A\x7C\x2A\x48\x83\xC4\x2A\x5B\x41\x5C\x41\x5D\x41\x5E\x5D\xC3\x66\x0F\x1F\x84\x00\x2A\x2A\x00\x00\x48\x89\xD6\x31\xD2\x48\x89\xFB\x66\x89\x55\x2A\x48\x8D\x55\x2A\x49\x89\xCD\x45\x89\xC6
 </pre>
@@ -820,7 +820,7 @@ Reference column: ✅ matches the 14181 analysis &middot; 🕓 the analysis uses
 
 <table>
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>✅</td><td>❔</td><td>Windows</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x4C\x89\x4C\x24\x2A\x55\x53\x41\x54
 </pre>
@@ -829,7 +829,7 @@ Reference column: ✅ matches the 14181 analysis &middot; 🕓 the analysis uses
 4C 89 4C 24 ? 55 53 41 54
 </pre>
 </td></tr>
-<tr><td>✅</td><td>❔</td><td>Linux</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
 \x55\xBE\x2A\x2A\x2A\x2A\x48\x89\xE5\x41\x57\x41\x56\x41\x55\x41\x54\x49\x89\xFC\x53\x48\x83\xEC\x2A\x4C\x8D\x35\x98\x22\xBE\x2A
 </pre>
@@ -844,7 +844,7 @@ Reference column: ✅ matches the 14181 analysis &middot; 🕓 the analysis uses
 
 <table>
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>✅</td><td>❔</td><td>Windows</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x40\x57\x48\x83\xEC\x2A\x41\x0F\xB6\xF8
 </pre>
@@ -853,7 +853,7 @@ Reference column: ✅ matches the 14181 analysis &middot; 🕓 the analysis uses
 40 57 48 83 EC ? 41 0F B6 F8
 </pre>
 </td></tr>
-<tr><td>✅</td><td>❔</td><td>Linux</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
 \x3B\xB7\x2A\x2A\x2A\x2A\x0F\x8D\x2A\x2A\x2A\x2A\x55
 </pre>

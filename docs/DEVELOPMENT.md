@@ -8,7 +8,9 @@ check_update.py     DepotDownloader -manifest-only per depot -> changed?
 fetch_gamedata.py   pull each project's gamedata.json -> data/<id>/gamedata.json
 download_bins.sh    DepotDownloader depots 2347771/2347773 -> server + engine2 (MB not GB)
 validate_sigs.py    each sig -> bytes regex -> scan ELF/PE exec sections -> count (per project)
-gen_report.py       -> README table (one row/project) + docs/<id>.md + aggregate badge + history
+gen_report.py       -> README dashboard + docs/<id>.md + aggregate badge + history
+post_gate.py        is this change worth announcing? + named delta for the report
+post_discord.py     delta-first Discord embed (see Notifications)
 ```
 
 ### Multiple projects
@@ -201,6 +203,82 @@ game move", which is the question worth asking after an update and before
 anything has broken: a vtable that gained a slot shifts every index below the
 insertion point. `--tracked` narrows it to symbols the registry actually uses.
 
+## Notifications
+
+Every announcement is gated twice. `run_all.sh` step 5 decides whether anything
+changed at all (commit + push); step 5.5 runs `post_gate.py`, which decides
+whether the change is worth telling anyone about. A gamedata rename, a key
+reorder, or a new CS2 build where every signature still resolves passes the
+first gate and is stopped by the second.
+
+### Discord (`post_discord.py`)
+
+Default layout is delta-first: one embed answering "what changed", not "what
+exists". Healthy signatures are counted; broken and ambiguous ones are listed in
+full. Sections appear only when they have content:
+
+```
+CS2 Signatures - 1.41.8.1                              [colour = worst verdict]
+
+🔴 1 broken of 106 signature checks - regenerate
+`105 ok` · `0 ambiguous` · `1 broken` · `0 not validated`
+Offsets: `39 ok` · `0 stale` · `7 no reference`
+Since last report: 1 new break · 1 re-signed
+Game build: `1.41.8.0` → `1.41.8.1`
+Updated 2 minutes ago · Full report · Fragility · This run
+
+Changes (2)
+  🔴 `CDecoyProjectile_Create` · linux · ok → broken
+  🔁 `CMolotovProjectile_Create` · windows · re-signed
+Broken / ambiguous (1)
+  🔴 `CDecoyProjectile_Create` 🔥 · linux · broken · 🔧 fix proposed
+Projects (4)
+  🟢 CounterStrikeSharp     `██████████` 70/70 · W 35/35 · L 35/35
+  🔴 MatchZy                `█████████░` 11/12 · W 6/6 · L 5/6
+  ...
+Manifests  5806169…  8639120…
+```
+
+Three inputs beyond the statuses, all optional - a missing one costs that
+section and nothing else:
+
+| Input | Written by | Used for |
+|---|---|---|
+| `reports/delta.json` | `post_gate.py --write-delta` (step 5.5) | the Changes section |
+| `reports/fragility.json` | `gen_stats.py --json` (step 6) | the 🔥 habitual-breaker marker |
+| `reports/history/*.json` | `gen_report.py` (step 6) | the previous CS2 build, for `old -> new` |
+
+Both scratch files are git-ignored: they are derived from committed data and
+rewritten every run.
+
+The delta has to be handed over on disk because the Discord step runs *after*
+the commit - by then `HEAD` is the new state and the diff is no longer
+computable. When the file is missing or older than the statuses it describes,
+`post_discord.py` recomputes the delta against `HEAD` itself, which is what a
+manual pre-commit `--preview` wants.
+
+Modes and switches:
+
+```bash
+python3 scripts/post_discord.py --preview             # default report, not sent
+python3 scripts/post_discord.py --preview --example   # synthetic breakage
+python3 scripts/post_discord.py --full                # every signature listed
+python3 scripts/post_discord.py --separate            # one card per project
+python3 scripts/post_discord.py --delete-message ID   # remove a post again
+```
+
+`DISCORD_WEBHOOK` may hold several comma- or whitespace-separated URLs to mirror
+the report into more than one server. `DISCORD_MENTION` (a numeric **user** id,
+which is global, unlike a per-guild role id) pings only when something is broken
+or ambiguous.
+
+### Issues and pull requests
+
+`open_issue.py` opens a Forgejo issue on breakage and closes it when the
+signatures pass again. `open_pr.py` opens a draft PR with the patched gamedata
+against each project that sets `"propose_pr": true`. Both need `FORGEJO_TOKEN`
+and are skipped silently when it is unset.
+
 ## VPS setup (x86-64)
 
 Depots `2347771` (Windows) / `2347773` (Linux) download **anonymously** - no
@@ -256,11 +334,16 @@ scripts/validate_sigs.py  scan + classify per project -> reports/<id>/status.jso
 scripts/gen_report.py     -> README block + docs/<id>.md + aggregate badge + history
 scripts/open_issue.py     Forgejo auto-issue on broken sigs (across all projects)
 scripts/post_gate.py      is the change worth announcing? (exit 10 = yes)
-scripts/post_discord.py   Discord webhook summary (across all projects)
+scripts/post_discord.py   Discord webhook report (across all projects)
+scripts/gen_stats.py      signature fragility mined from git history -> docs/stats.md
+scripts/test.sh           syntax check + unit tests
 scripts/run_all.sh        full pipeline (validate + commit + push)
 scripts/cron.sh           cron entrypoint (loads .env, logs)
 docs/<id>.md              per-signature detail per project (CODE + IDA style)
 reports/<id>/status.json  machine-readable result per project
 reports/badge.json        shields.io endpoint (aggregate)
-reports/history/*.json    per-run tally + per-project breakdown (drift over time)
+reports/history/*.json    per-run tally + CS2 build + per-project breakdown
+reports/delta.json        per-run named delta, post_gate -> post_discord (ignored)
+reports/fragility.json    per-run breakage counts, gen_stats -> post_discord (ignored)
+docs/stats.md             signature fragility over the tracked history
 ```

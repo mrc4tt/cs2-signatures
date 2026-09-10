@@ -1,15 +1,16 @@
 {
-  "date": "September 10, 2026 at 16:10:01 GMT",
+  "date": "September 10, 2026 at 18:15:01 GMT",
+  "version": "1.41.8.1",
   "tally": {
     "ok": 106,
     "broken": 0,
     "ambiguous": 0,
     "no_binary": 0,
     "missing_sig": 0,
-    "offset_ok": 39,
+    "offset_ok": 42,
     "offset_stale": 0,
     "offset_review": 1,
-    "offset_no_recipe": 6,
+    "offset_no_recipe": 3,
     "sig_outdated": 2
   },
   "manifest": {
@@ -59,10 +60,10 @@
       "ambiguous": 0,
       "no_binary": 0,
       "missing_sig": 0,
-      "offset_ok": 5,
+      "offset_ok": 8,
       "offset_stale": 0,
       "offset_review": 0,
-      "offset_no_recipe": 3,
+      "offset_no_recipe": 0,
       "sig_outdated": 0
     }
   }
