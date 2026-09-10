@@ -5,6 +5,7 @@
   "CheckTransmitPlayerSlot": "CCheckTransmitInfo_m_nPlayerSlot",
   "ClientPrint": "ClientPrintToController",
   "GameEntitySystem": "CGameResourceService_m_pEntitySystem",
+  "GiveNamedItem2": "CCSPlayer_ItemServices_GiveNamedItem",
   "ISource2GameEntities::CheckTransmit": "CSource2GameEntities_CheckTransmit",
   "SetStateChanged": "CEntityInstance_NetworkStateChanged"
 }
