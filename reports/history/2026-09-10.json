@@ -1,8 +1,8 @@
 {
-  "date": "September 10, 2026 at 06:25:01 GMT",
+  "date": "September 10, 2026 at 16:10:01 GMT",
   "tally": {
-    "ok": 100,
-    "broken": 6,
+    "ok": 106,
+    "broken": 0,
     "ambiguous": 0,
     "no_binary": 0,
     "missing_sig": 0,
@@ -10,7 +10,7 @@
     "offset_stale": 0,
     "offset_review": 1,
     "offset_no_recipe": 6,
-    "sig_outdated": 4
+    "sig_outdated": 2
   },
   "manifest": {
     "2347771": "5806169188224907599",
@@ -18,8 +18,8 @@
   },
   "projects": {
     "CounterStrikeSharp": {
-      "ok": 65,
-      "broken": 5,
+      "ok": 70,
+      "broken": 0,
       "ambiguous": 0,
       "no_binary": 0,
       "missing_sig": 0,
@@ -27,7 +27,7 @@
       "offset_stale": 0,
       "offset_review": 1,
       "offset_no_recipe": 3,
-      "sig_outdated": 4
+      "sig_outdated": 2
     },
     "RetakesAllocator": {
       "ok": 6,
@@ -42,8 +42,8 @@
       "sig_outdated": 0
     },
     "MatchZy": {
-      "ok": 11,
-      "broken": 1,
+      "ok": 12,
+      "broken": 0,
       "ambiguous": 0,
       "no_binary": 0,
       "missing_sig": 0,

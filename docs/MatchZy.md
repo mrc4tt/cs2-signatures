@@ -1,6 +1,6 @@
 # MatchZy
 
-Last updated: September 10, 2026 at 06:25:01 GMT
+Last updated: September 10, 2026 at 16:10:01 GMT
 
 * Manifests: [5806169188224907599](https://steamdb.info/depot/2347771/history/?changeid=M:5806169188224907599), [8639120305802825922](https://steamdb.info/depot/2347773/history/?changeid=M:8639120305802825922)
 * Repository: https://git.miksen.me/mikkel/matchzy
@@ -145,13 +145,13 @@ Reference column: ✅ matches the 14181 analysis &middot; 🕓 the analysis uses
 48 8B C4 55 56 48 81 EC 58 01 00 00 48 89 58 08
 </pre>
 </td></tr>
-<tr><td>❌</td><td>❔</td><td>Linux</td><td>server</td><td>0</td><td>
+<tr><td>✅</td><td>❔</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
-\x55\x48\x89\xE5\x41\x57\x49\x89\xFF\x41\x56\x41\x55\x41\x54\x53\x48\x83\xEC\x68\x48\x3B\x15\x15
+\x55\x4C\x89\xC1\x48\x89\xE5\x41\x57\x45\x89\xCF\x41\x56\x49\x89\xFE\x41\x55\x49\x89\xD5\x48\x89\xF2\x48\x89\xFE\x41\x54\x48\x8D\x3D\x2A\x2A\x2A\x2A\x4D\x89\xC4\x53\x48\x83\xEC\x2A\xE8\x2A\x2A\x2A\x2A\x45\x31\xC0
 </pre>
 </td><td>
 <pre>
-55 48 89 E5 41 57 49 89 FF 41 56 41 55 41 54 53 48 83 EC 68 48 3B 15 15
+55 4C 89 C1 48 89 E5 41 57 45 89 CF 41 56 49 89 FE 41 55 49 89 D5 48 89 F2 48 89 FE 41 54 48 8D 3D ? ? ? ? 4D 89 C4 53 48 83 EC ? E8 ? ? ? ? 45 31 C0
 </pre>
 </td></tr>
 </table>
