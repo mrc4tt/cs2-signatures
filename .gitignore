@@ -19,6 +19,11 @@ reports/cron.log
 reports/delta.json
 reports/fragility.json
 reports/reference_gaps.json
+# The gameVersion + configSha256 that poll_latest.py saw on sig.miksen.me last
+# tick. Machine-local like the Discord state: it records what THIS host has
+# already reacted to, and a shared copy would make one host swallow the other's
+# trigger.
+reports/.last_seen.json
 # Which Discord message the last run posted, per webhook (hashed, never the URL
 # itself). Local to whichever machine runs the pipeline - a shared copy would
 # make two hosts fight over the same message.

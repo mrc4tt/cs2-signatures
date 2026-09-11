@@ -54,7 +54,11 @@ if [ "${NO_SYMBOLS:-0}" != "1" ]; then
   GAMEVER="$(python3 scripts/fetch_symbols.py --resolve "${SYM_ARGS[@]+"${SYM_ARGS[@]}"}" 2>/dev/null)"
   set -e
   if [ -n "$GAMEVER" ]; then
-    if [ ! -f "data/symbols/$GAMEVER.json" ]; then
+    # REFERENCE_CHANGED=1 (cron.sh, from poll_latest.py) means the box published
+    # since the last tick. The version string can be the same one we already
+    # have on disk - a re-publish of the same build - so the cached snapshot is
+    # stale and has to be pulled again rather than reused.
+    if [ ! -f "data/symbols/$GAMEVER.json" ] || [ "${REFERENCE_CHANGED:-0}" = "1" ]; then
       python3 scripts/fetch_symbols.py --backend git --gamever "$GAMEVER" \
         "${SYM_ARGS[@]+"${SYM_ARGS[@]}"}" || true
     fi
@@ -68,11 +72,13 @@ if [ "${NO_SYMBOLS:-0}" != "1" ]; then
   fi
 fi
 
-# 2.1 Nothing to do? Game unchanged + every gamedata unchanged + every project
-#     already has a status.json + no half-finished state in the tree -> the
-#     validate result cannot differ from last run. Skip the binary download and
-#     the ~80 MB scans; exit with the same ok/broken code a full run would.
+# 2.1 Nothing to do? Game unchanged + published reference unchanged + every
+#     gamedata unchanged + every project already has a status.json + no
+#     half-finished state in the tree -> the validate result cannot differ from
+#     last run. Skip the binary download and the ~80 MB scans; exit with the
+#     same ok/broken code a full run would.
 if [ "$UPD" -eq 0 ] \
+   && [ "${REFERENCE_CHANGED:-0}" != "1" ] \
    && ! echo "$FETCH_OUT" | grep -q " gamedata changed" \
    && [ -z "$(git status --porcelain data/ reports/)" ]; then
   BROKEN=$(REF="${GAMEVER:-}" python3 - <<'PY'
