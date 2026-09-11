@@ -16,7 +16,7 @@
     "offset_stale": 0,
     "offset_review": 0,
     "offset_no_recipe": 0,
-    "sig_outdated": 2
+    "sig_outdated": 0
   },
   "results": [
     {
@@ -271,20 +271,20 @@
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "55 48 8D 15 ? ? ? ? 48 89 E5 41 55 41 54 49 89 FC 53 48 89 F3 48 83 EC ? 48 8B 07 48 8B 80",
+          "sig": "55 48 8D 15 ? ? ? ? 48 89 E5 41 55 41 54 49 89 FC 53 48 89 F3 48 83 EC 08 48 8B 07",
           "reference": {
             "status": "match",
-            "relation": "prefix"
+            "relation": "equal"
           }
         },
         "windows": {
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "48 89 5C 24 ? 48 89 6C 24 ? 56 57 41 54 41 56 41 57 48 83 EC ? 48 8B 01 48 8B FA",
+          "sig": "48 89 5C 24 10 48 89 6C 24 18 56 57 41 54 41 56 41 57 48 83 EC 40 48 8B 01 48 8B FA",
           "reference": {
             "status": "match",
-            "relation": "compatible"
+            "relation": "equal"
           }
         }
       }
@@ -308,10 +308,10 @@
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "44 89 44 24 ? 48 89 54 24 ? 48 89 4C 24 ? 55 53 56 57 41 55 41 56 41 57 48 8B EC",
+          "sig": "44 89 44 24 18 48 89 54 24 10 48 89 4C 24 08 55 53 56 57 41 55 41 56 41 57 48 8B EC",
           "reference": {
             "status": "match",
-            "relation": "compatible"
+            "relation": "equal"
           }
         }
       }
@@ -605,10 +605,10 @@
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "40 57 41 56 48 83 EC ? 48 8B 01",
+          "sig": "40 57 41 56 48 83 EC 28 48 8B 01 4C 8B F2 48 8B F9",
           "reference": {
             "status": "match",
-            "relation": "prefix"
+            "relation": "equal"
           }
         }
       }
@@ -622,22 +622,20 @@
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "55 BA ? ? ? ? 48 89 E5 41 57 41 56 41 55 49 89 F5 41 54 49 89 FC",
+          "sig": "48 85 F6 74 ? E9 ? ? ? ? 66 0F 1F 44 00 00 C3 CC CC CC CC CC CC CC CC CC CC CC CC CC CC CC 48 8B 07",
           "reference": {
-            "status": "outdated",
-            "sig": "48 85 F6 74 ?? E9 ?? ?? ?? ?? 66 0F 1F 44 00 00 C3 CC CC CC CC CC CC CC CC CC CC CC CC CC CC CC 48 8B 07",
-            "relation": "conflict"
+            "status": "match",
+            "relation": "equal"
           }
         },
         "windows": {
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "40 53 41 55 48 83 EC ? 83 BA",
+          "sig": "48 85 D2 0F 84 ? ? ? ? 53 41 57 48 83 EC 28 4C 8B 42 10",
           "reference": {
-            "status": "outdated",
-            "sig": "48 85 D2 0F 84 ?? ?? ?? ?? 53 41 57 48 83 EC 28 4C 8B 42 10",
-            "relation": "conflict"
+            "status": "match",
+            "relation": "equal"
           }
         }
       }
