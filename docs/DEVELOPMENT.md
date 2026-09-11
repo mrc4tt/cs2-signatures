@@ -270,8 +270,59 @@ python3 scripts/post_discord.py --preview             # default report, not sent
 python3 scripts/post_discord.py --preview --example   # synthetic breakage
 python3 scripts/post_discord.py --full                # every signature listed
 python3 scripts/post_discord.py --separate            # one card per project
+python3 scripts/post_discord.py --new                 # never edit, always post
 python3 scripts/post_discord.py --delete-message ID   # remove a post again
 ```
+
+#### Change markers
+
+The `Changes` list marks each entry by kind. `added` and `removed` are **custom
+server emoji**, written as `<:name:id>` in `CHANGE_ICON`; the rest are unicode.
+
+| kind | marker | | kind | marker |
+|---|---|---|---|---|
+| broke | red circle | | added | teal plus (custom) |
+| fixed | green circle | | removed | rose minus (custom) |
+| changed | yellow circle | | resigned | repeat arrows |
+| moved | ruler | | | |
+
+Red, green and yellow are reserved for health verdicts, so `added`/`removed` use
+their own hues - a green "added" would read as "this one is fine again" instead
+of "this one is new".
+
+Two things to know about the custom ones:
+
+- A webhook may render custom emoji from **any** guild, so only the id matters.
+  The name in `<:name:id>` is just a label.
+- They render in embed descriptions and field values only. Footers and author
+  names are plain text and would show the literal `<:added:123>`.
+
+If someone deletes the emoji from the server the id dies and the rows show raw
+text. Re-upload, grab the new id (right-click the emoji -> Copy Link; the number
+in the CDN path is the id) and update `CHANGE_ICON`. `python3
+scripts/post_discord.py --preview --example` exercises both markers.
+
+#### One message per game build
+
+A report is normally an **edit**, not a new post. The id of the standing message
+is remembered per webhook in `reports/discord_state.json` (git-ignored, keyed by
+a sha256 of the URL - the webhook is a credential and is never written to disk),
+and a follow-up run PATCHes that message so Discord shows it as edited rather
+than stacking a near-identical card below it.
+
+A new message is posted instead whenever the reader would otherwise have to
+scroll up to find the news:
+
+| Trigger | Why |
+|---|---|
+| the CS2 build changed | one card per build keeps the channel readable |
+| something newly broke | an edit fires no notification, so the `@mention` would go unseen |
+| proposed gamedata attached | attachments cannot be added to an edit |
+| `--new` | manual override |
+| the remembered message is gone | the PATCH 404s, so the run re-posts and re-remembers |
+
+The state file is deliberately local to the machine running the pipeline. Two
+hosts sharing one would fight over the same message.
 
 `DISCORD_WEBHOOK` may hold several comma- or whitespace-separated URLs to mirror
 the report into more than one server. `DISCORD_MENTION` (a numeric **user** id,
@@ -387,5 +438,6 @@ reports/history/*.json    per-run tally + CS2 build + per-project breakdown
 reports/delta.json        per-run named delta, post_gate -> post_discord (ignored)
 reports/fragility.json    per-run breakage counts, gen_stats -> post_discord (ignored)
 reports/reference_gaps.json  symbols the reference cannot answer for (ignored)
+reports/discord_state.json   standing Discord message per webhook (ignored)
 docs/stats.md             signature fragility over the tracked history
 ```

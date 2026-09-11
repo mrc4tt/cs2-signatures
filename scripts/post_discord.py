@@ -31,6 +31,21 @@ by repeating --webhook - to mirror the same report into more than one server.
 A numeric DISCORD_MENTION is a global user id, so one value pings correctly in
 every server; a role id would not (role ids are per-guild).
 
+One message per game build. A run that only changes signature results edits the
+standing message in place (Discord shows it as "edited") instead of posting a
+near-identical card underneath the last one. The id of that message is remembered
+per webhook in reports/discord_state.json, keyed by a hash of the URL so the
+secret itself is never written to disk. A fresh message is posted - not an edit -
+when any of these hold, because each is something a reader must not scroll up to
+discover:
+
+    the CS2 build changed          one card per build keeps the history readable
+    something newly broke          edits do not notify, so an @mention in an
+                                   edited message would never reach anyone
+    gamedata files are attached    attachments cannot be added to an edit
+    --new was passed               manual override
+    the remembered message is gone deleted upstream; the edit 404s, so re-post
+
 Preview: --preview prints the JSON payload without sending. Add --example for
 synthetic data - also usable as a live test post (send without --preview) to
 see the layout in Discord before a real breakage happens.
@@ -39,6 +54,7 @@ stdlib only (urllib).
 """
 import argparse
 import datetime
+import hashlib
 import json
 import os
 import re
@@ -66,9 +82,19 @@ STATS_URL = REPO_URL + "/src/branch/main/docs/stats.md"
 FRAGILE_BREAKS = 2
 
 # Per change kind: the marker shown in the "Changes" field.
+# added/removed are custom server emoji in `<:name:id>` form. A webhook may
+# render custom emoji from any guild, so the id is all that matters - the name
+# is only a label. They render in embed DESCRIPTIONS and FIELD VALUES, which is
+# where change_row() puts them; embed footers and author names are plain text
+# and would show the raw `<:added:123>`, so never move one there.
+#
+# The two colours are deliberate. Red/green/yellow already mean health here
+# (broke/fixed/changed), so a green "added" would read as "this one is fine
+# again" rather than "this one is new". Structural changes get their own hues.
 CHANGE_ICON = {"broke": "\U0001F534", "fixed": "\U0001F7E2",
                "changed": "\U0001F7E1",
-               "added": "\u2795", "removed": "\u2796",
+               "added": "<:added:1547895941720317983>",
+               "removed": "<:removed:1547895894337126461>",
                "resigned": "\U0001F501", "moved": "\U0001F4CF"}
 # Kinds whose row reads better as a label than as an `old -> new` transition.
 CHANGE_LABEL = {"added": "added", "removed": "removed",
@@ -670,6 +696,12 @@ def example_delta():
            "ok"),
         ch("CounterStrikeSharp", "ClientPrint", "windows", "resigned", "ok",
            "ok"),
+        # added/removed use custom server emoji, so keep them in the example -
+        # a --preview is the only way to eyeball those before a real run.
+        ch("CounterStrikeSharp", "CBaseTrigger_StartTouch", "linux", "added",
+           None, "ok"),
+        ch("CounterStrikeSharp", "GameEventManager", "windows", "removed",
+           "ok", None),
     ]
 
 
@@ -697,8 +729,9 @@ def post(webhook, payload, files=None):
     payload is sent as multipart/form-data with attachments; otherwise plain
     JSON. Discord allows up to 10 files per message.
 
-    Posts with ?wait=true so Discord returns the created message; prints its
-    id, which `--delete-message <id>` accepts to remove a post again."""
+    Posts with ?wait=true so Discord returns the created message; prints and
+    returns its id, which `--delete-message <id>` accepts to remove a post
+    again and which the state file remembers so the next run can edit it."""
     webhook = "%s%swait=true" % (webhook, "&" if "?" in webhook else "?")
     if files:
         boundary = "----cs2sigtracker%s" % uuid.uuid4().hex
@@ -733,7 +766,7 @@ def post(webhook, payload, files=None):
             msg = json.loads(raw) if raw else {}
             if msg.get("id"):
                 print("message id: %s" % msg["id"])
-            return r.status
+            return msg.get("id")
     except urllib.error.HTTPError as e:
         print("webhook POST -> %s: %s" % (e.code, e.read()[:300]),
               file=sys.stderr)
@@ -751,6 +784,85 @@ def split_webhooks(values):
             if url and url not in out:
                 out.append(url)
     return out
+
+
+def repost_reason(delta, files, embeds, force_new):
+    """Why this run must start a NEW message instead of editing the standing
+    one, as a short phrase for the log - or None when an edit is fine.
+
+    The game build is deliberately not checked here: that is per-webhook state,
+    handled by fits_standing().
+    """
+    if force_new:
+        return "--new"
+    if any(c.get("change") == "broke" for c in delta):
+        # An edit fires no notification, so a mention on one is never seen.
+        return "new breakage (an edit would not notify)"
+    if files:
+        return "gamedata attachments (cannot be added to an edit)"
+    if len(embeds) > EMBEDS_PER_MSG:
+        return "report spans several messages"
+    return None
+
+
+def fits_standing(standing, version):
+    """True when the remembered message is one we may edit: it exists and was
+    posted for this same game build. A new build gets its own card so the
+    channel keeps one readable entry per build."""
+    return bool(standing.get("message_id")
+                and standing.get("version") == (version or ""))
+
+
+def state_key(webhook):
+    """Stable id for a webhook that is not the webhook.
+
+    The URL is a credential, and the state file is a plain file in the repo
+    tree, so only a digest of it is stored.
+    """
+    return hashlib.sha256(webhook.split("?")[0].strip().rstrip("/")
+                          .encode()).hexdigest()[:16]
+
+
+def load_state(path):
+    """{key: {"message_id": str, "version": str}} - empty on anything odd.
+
+    A missing or corrupt state file must never cost a report: the worst case is
+    one extra message, which is the old behaviour.
+    """
+    try:
+        with open(path) as fh:
+            state = json.load(fh)
+        return state if isinstance(state, dict) else {}
+    except (OSError, ValueError):
+        return {}
+
+
+def save_state(path, state):
+    try:
+        os.makedirs(os.path.dirname(path) or ".", exist_ok=True)
+        with open(path, "w") as fh:
+            json.dump(state, fh, indent=2, sort_keys=True)
+            fh.write("\n")
+    except OSError as e:
+        print("could not write %s: %s" % (path, e), file=sys.stderr)
+
+
+def edit_message(webhook, message_id, payload):
+    """PATCH a previously posted webhook message in place.
+
+    Discord replaces the fields present in the payload, so `content` is sent
+    even when empty - otherwise a mention from an earlier post would stick
+    around under a now-healthy card. `username` is ignored on edit and is left
+    out. Raises HTTPError 404 when the message no longer exists; the caller
+    falls back to posting a new one.
+    """
+    url = "%s/messages/%s" % (webhook.split("?")[0].rstrip("/"), message_id)
+    req = urllib.request.Request(url, data=json.dumps(payload).encode(),
+                                 method="PATCH")
+    req.add_header("Content-Type", "application/json")
+    req.add_header("User-Agent", UA)
+    with urllib.request.urlopen(req, timeout=60) as r:
+        return r.status
 
 
 def delete_message(webhook, message_id):
@@ -808,6 +920,13 @@ def main():
                     help="render payload to stdout, do not send")
     ap.add_argument("--delete-message", default=None, metavar="ID",
                     help="delete a previously posted message by id, then exit")
+    ap.add_argument("--state", default=os.path.join("reports",
+                                                    "discord_state.json"),
+                    help="remembers the standing message id per webhook so a "
+                         "follow-up run edits it instead of posting again")
+    ap.add_argument("--new", action="store_true",
+                    help="always post a new message, never edit the standing "
+                         "one")
     ap.add_argument("--example", action="store_true",
                     help="use synthetic data (for --preview, or a live test post)")
     ap.add_argument("--full", action="store_true",
@@ -925,29 +1044,64 @@ def main():
         print("missing --webhook (or DISCORD_WEBHOOK env)", file=sys.stderr)
         return 1
 
+    # Reasons this run must start a new message rather than edit the standing
+    # one - see the module docstring. A break has to be its own post because an
+    # edit fires no notification, so the @mention would land silently.
+    reason = repost_reason(delta, files, embeds, args.new)
+    if reason and not args.example:
+        print("posting a new message: %s" % reason, file=sys.stderr)
+    can_edit = reason is None and not args.example
+    state = load_state(args.state) if not args.example else {}
+
     # Discord caps embeds per message; batch into chunks. Ping + attachments
     # ride the first message. Each webhook is independent (own rate limit), and
     # one dead URL must not cost the other servers their report.
-    failed = 0
+    failed = edited = 0
     for n, hook in enumerate(webhooks, 1):
+        key = state_key(hook)
+        standing = state.get(key) or {}
+        reuse = can_edit and fits_standing(standing, version)
         try:
             for start in range(0, len(embeds), EMBEDS_PER_MSG):
                 chunk = embeds[start:start + EMBEDS_PER_MSG]
-                payload = {"username": args.username, "embeds": chunk}
-                if start == 0 and content:
-                    payload["content"] = content
-                    if allowed:
+                payload = {"embeds": chunk}
+                if start == 0:
+                    # Sent even when empty, so a mention from the previous post
+                    # does not survive an edit into a healthy report.
+                    payload["content"] = content or ""
+                    if content and allowed:
                         payload["allowed_mentions"] = allowed
-                post(hook, payload, files=files if start == 0 else None)
+                if reuse and start == 0:
+                    try:
+                        edit_message(hook, standing["message_id"], payload)
+                        edited += 1
+                        continue
+                    except urllib.error.HTTPError as e:
+                        if e.code != 404:
+                            raise
+                        # Someone deleted it - fall through and post a new one.
+                        print("webhook %d/%d: message %s is gone, posting a "
+                              "new one" % (n, len(webhooks),
+                                           standing["message_id"]),
+                              file=sys.stderr)
+                payload["username"] = args.username
+                msg_id = post(hook, payload,
+                              files=files if start == 0 else None)
+                if start == 0 and msg_id:
+                    state[key] = {"message_id": msg_id,
+                                  "version": version or ""}
         except (urllib.error.HTTPError, urllib.error.URLError) as e:
             # The URL itself is a secret - identify the webhook by position.
             print("webhook %d/%d failed: %s" % (n, len(webhooks), e),
                   file=sys.stderr)
             failed += 1
             continue
+    if not args.example:
+        save_state(args.state, state)
     posted = len(webhooks) - failed
-    print("posted %d embed(s), %d attachment(s) to %d/%d discord webhook(s)"
-          % (len(embeds), len(files), posted, len(webhooks)))
+    print("%s %d embed(s), %d attachment(s) to %d/%d discord webhook(s)"
+          % ("edited" if edited == posted and posted else "posted",
+             len(embeds), len(files), posted, len(webhooks)))
     return 1 if failed else 0
 
 

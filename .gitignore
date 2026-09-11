@@ -19,6 +19,10 @@ reports/cron.log
 reports/delta.json
 reports/fragility.json
 reports/reference_gaps.json
+# Which Discord message the last run posted, per webhook (hashed, never the URL
+# itself). Local to whichever machine runs the pipeline - a shared copy would
+# make two hosts fight over the same message.
+reports/discord_state.json
 # Private development rules — not for public repo.
 CLAUDE.md
 hm
