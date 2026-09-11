@@ -16,11 +16,15 @@ call news:
     signature entries -> (platform, status, sig bytes)
     offset entries    -> (platform, status, offset value)
 
-A signature the reference analysis has moved past adds one extra item, so the
-first `outdated` on an entry is announced. What is deliberately NOT news is
-reference COVERAGE: a symbol appearing in a newer snapshot flips an offset from
-`no_recipe` to a real verdict without anything about the game or the gamedata
-having changed, so `no_recipe` blocks are left out of the fingerprint entirely.
+What is deliberately NOT news is anything the reference snapshot says on its
+own. A symbol appearing in a newer snapshot flips an offset from `no_recipe` to
+a real verdict without anything about the game or the gamedata having changed,
+so `no_recipe` blocks are left out of the fingerprint entirely. The signature
+`outdated` verdict is excluded for the same reason plus a stronger one: it
+compares our bytes against a third-party analysis of a possibly different build,
+so a sig that resolves uniquely here can still be called `outdated`. That is a
+disagreement between two sources, not a change in this repo, and it must not
+drive a post.
 
 Names are NOT part of it - entries are compared as an unordered multiset, so a
 pure rename is invisible. Deliberately excluded too: `matches` counts, `library`,
@@ -72,8 +76,6 @@ def fingerprint(status):
             st = info.get("status")
             if kind == "signature":
                 items.append((kind, plat, st, info.get("sig")))
-                if (info.get("reference") or {}).get("status") == "outdated":
-                    items.append((kind, plat, "outdated", info.get("sig")))
             elif st == "no_recipe":
                 continue  # "no verdict available" is not a result
             else:
@@ -94,7 +96,7 @@ def fingerprint(status):
 # ---------------------------------------------------------------------------
 
 # Ordered worst-first; the report renders them in this order.
-CHANGE_ORDER = ("broke", "removed", "changed", "outdated", "fixed", "added",
+CHANGE_ORDER = ("broke", "removed", "changed", "fixed", "added",
                 "resigned", "moved")
 
 
@@ -109,8 +111,6 @@ def entry_map(status):
                 "status": info.get("status"),
                 "sig": info.get("sig"),
                 "offset": offsets.get(plat, info.get(plat)),
-                "outdated": (info.get("reference") or {}).get("status")
-                == "outdated",
             }
     return out
 
@@ -127,8 +127,6 @@ def classify(old, new):
         if new["status"] in ("broken", "ambiguous", "stale"):
             return "broke"
         return "changed"
-    if new["outdated"] and not old["outdated"]:
-        return "outdated"
     if new.get("sig") != old.get("sig"):
         return "resigned"
     if new.get("offset") != old.get("offset"):

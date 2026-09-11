@@ -140,10 +140,16 @@ What the reference adds to `reports/<id>/status.json`:
   snapshot commit sha is deliberately **not** stored: it moves on every upstream
   push and would churn a commit out of every run.
 
-`post_gate.py` announces the first `outdated` on an entry, and ignores reference
-COVERAGE changes: a symbol appearing in a newer snapshot flips an offset from
-`no_recipe` to a real verdict without anything about the game or the gamedata
-having changed, so `no_recipe` blocks are left out of the fingerprint.
+`post_gate.py` ignores the reference entirely. Reference COVERAGE is the obvious
+case: a symbol appearing in a newer snapshot flips an offset from `no_recipe` to
+a real verdict without anything about the game or the gamedata having changed,
+so `no_recipe` blocks are left out of the fingerprint. The signature `outdated`
+verdict is left out for a stronger reason: it compares our bytes against a
+third-party analysis of a possibly different build, so a signature that resolves
+uniquely here can still be reported as `outdated`. That is a disagreement
+between two sources, not a change in this repo, and it would post a card whose
+only content is a signature that works. The verdict still lands in `status.json`
+and `docs/<id>.md` - it just never drives a Discord post.
 
 #### Anchors: reading the offset out of our own binary
 

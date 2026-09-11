@@ -34,18 +34,21 @@ class EntryMap(unittest.TestCase):
         self.assertEqual(entry_map(status)[("offset", "O", "linux")]["offset"],
                          102)
 
-    def test_outdated_reference_is_flagged(self):
-        status = {"results": [sig("A", linux={"status": "ok",
+    def test_reference_verdict_is_not_part_of_an_entry(self):
+        """The reference compares our bytes against a third-party analysis of a
+        possibly different build, so its verdict is a disagreement between two
+        sources rather than a change here. It must not reach the report."""
+        status = {"results": [sig("A", linux={"status": "ok", "sig": "48 89",
                                               "reference": {"status":
                                                             "outdated"}})]}
-        self.assertTrue(entry_map(status)[("signature", "A", "linux")]
-                        ["outdated"])
+        entry = entry_map(status)[("signature", "A", "linux")]
+        self.assertNotIn("outdated", entry)
+        self.assertEqual(entry["status"], "ok")
 
 
 class Classify(unittest.TestCase):
     def entry(self, status="ok", **kw):
-        base = {"status": status, "sig": None, "offset": None,
-                "outdated": False}
+        base = {"status": status, "sig": None, "offset": None}
         base.update(kw)
         return base
 
@@ -76,14 +79,8 @@ class Classify(unittest.TestCase):
         self.assertEqual(classify(self.entry(offset=102),
                                   self.entry(offset=103)), "moved")
 
-    def test_outdated_only_on_the_transition(self):
-        self.assertEqual(classify(self.entry(), self.entry(outdated=True)),
-                         "outdated")
-        self.assertIsNone(classify(self.entry(outdated=True),
-                                   self.entry(outdated=True)))
-
     def test_every_kind_has_a_sort_position(self):
-        kinds = {"broke", "fixed", "changed", "added", "removed", "outdated",
+        kinds = {"broke", "fixed", "changed", "added", "removed",
                  "resigned", "moved"}
         self.assertEqual(kinds - set(CHANGE_ORDER), set())
 

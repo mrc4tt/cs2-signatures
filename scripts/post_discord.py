@@ -67,12 +67,11 @@ FRAGILE_BREAKS = 2
 
 # Per change kind: the marker shown in the "Changes" field.
 CHANGE_ICON = {"broke": "\U0001F534", "fixed": "\U0001F7E2",
-               "changed": "\U0001F7E1", "outdated": "\U0001F553",
+               "changed": "\U0001F7E1",
                "added": "\u2795", "removed": "\u2796",
                "resigned": "\U0001F501", "moved": "\U0001F4CF"}
 # Kinds whose row reads better as a label than as an `old -> new` transition.
 CHANGE_LABEL = {"added": "added", "removed": "removed",
-                "outdated": "outdated vs reference",
                 "resigned": "re-signed", "moved": "offset moved"}
 # Kinds counted in the headline "N fixed / N broke" line.
 HEADLINE = ("broke", "fixed")
@@ -112,23 +111,6 @@ def sig_entries(status):
 def is_problem(r):
     return any(r["platforms"].get(p, {}).get("status") in ("broken", "ambiguous")
                for p in ("windows", "linux"))
-
-
-def outdated_list(statuses):
-    """(project, name, platform) per signature the reference has replaced.
-
-    Kept out of issue_list on purpose: an outdated sig still resolves, so it is
-    worth showing but never worth an @mention.
-    """
-    out = []
-    for pid, status in statuses:
-        for r in status.get("results", []):
-            if r.get("kind") != "signature":
-                continue
-            for plat, info in sorted(r.get("platforms", {}).items()):
-                if (info.get("reference") or {}).get("status") == "outdated":
-                    out.append((pid, r["name"], plat))
-    return out
 
 
 def issue_list(statuses):
@@ -291,18 +273,25 @@ def load_delta(path, projects_path):
     run_all.sh has already committed, so HEAD is the CURRENT state and the diff
     is no longer computable here. Falls back to computing it live, which is
     what a manual pre-commit `--preview` wants.
+
+    Change kinds this script has no icon for are dropped rather than rendered
+    as a bullet with an `ok -> ok` transition: a retired kind left over in a
+    stale delta.json would otherwise show up as a change that says nothing.
     """
+    changes = None
     if path and os.path.isfile(path) and delta_is_fresh(path, projects_path):
         try:
             with open(path) as fh:
-                return json.load(fh).get("changes", [])
+                changes = json.load(fh).get("changes", [])
         except (OSError, ValueError):
-            pass
-    try:
-        import post_gate  # same directory; stdlib + git only
-        return post_gate.named_changes(projects_path)
-    except Exception:  # noqa: BLE001 - the delta is decoration, never fatal
-        return []
+            changes = None
+    if changes is None:
+        try:
+            import post_gate  # same directory; stdlib + git only
+            changes = post_gate.named_changes(projects_path)
+        except Exception:  # noqa: BLE001 - the delta is decoration, never fatal
+            return []
+    return [c for c in changes if c.get("change") in CHANGE_ICON]
 
 
 def prev_version(history_dir, current):
@@ -376,8 +365,7 @@ def delta_headline(changes):
         counts[c["change"]] = counts.get(c["change"], 0) + 1
     words = {"broke": "new break", "fixed": "fixed", "changed": "changed",
              "added": "added", "removed": "removed",
-             "outdated": "newly outdated", "resigned": "re-signed",
-             "moved": "offset moved"}
+             "resigned": "re-signed", "moved": "offset moved"}
     parts = []
     for kind in CHANGE_ICON:
         n = counts.get(kind, 0)
@@ -460,9 +448,6 @@ def build_report_embed(statuses, version, projects_path, delta, frag,
     if off_ok or off_bad or off_none:
         lines.append("Offsets: `%d ok`  ·  `%d stale`  ·  `%d no reference`"
                      % (off_ok, off_bad, off_none))
-    if total.get("sig_outdated"):
-        lines.append("%s `%d` still resolve but the reference analysis has "
-                     "moved on" % (CIRCLE["ambiguous"], total["sig_outdated"]))
 
     head = delta_headline(delta)
     lines.append("Since last report: %s" % head if head
@@ -499,18 +484,6 @@ def build_report_embed(statuses, version, projects_path, delta, frag,
     fields.append({"name": "Projects (%d)" % len(statuses),
                    "value": clamp_rows(project_lines(statuses, projects_path))
                    or "none", "inline": False})
-
-    stale_refs = outdated_list(statuses)
-    if stale_refs:
-        by_name = {}
-        for pid, name, plat in stale_refs:
-            by_name.setdefault((pid, name), []).append(plat)
-        fields.append({
-            "name": "Outdated vs reference (%d)" % len(by_name),
-            "value": clamp_rows(["`%s` · %s" % (name, ", ".join(plats))
-                                 for (_, name), plats
-                                 in sorted(by_name.items())]),
-            "inline": False})
 
     links = manifest_links(next((s.get("manifest") for _, s in statuses
                                  if s.get("manifest")), None))
