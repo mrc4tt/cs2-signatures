@@ -1098,10 +1098,17 @@ def main():
             continue
     if not args.example:
         save_state(args.state, state)
-    posted = len(webhooks) - failed
-    print("%s %d embed(s), %d attachment(s) to %d/%d discord webhook(s)"
-          % ("edited" if edited == posted and posted else "posted",
-             len(embeds), len(files), posted, len(webhooks)))
+    # A run can edit one server's card and post a fresh one to another, so
+    # report both counts rather than picking a single verb for the whole run.
+    delivered = len(webhooks) - failed
+    how = []
+    if edited:
+        how.append("edited %d" % edited)
+    if delivered - edited:
+        how.append("posted %d" % (delivered - edited))
+    print("%s discord webhook(s) of %d: %d embed(s), %d attachment(s)"
+          % (", ".join(how) or "delivered to 0", len(webhooks), len(embeds),
+             len(files)))
     return 1 if failed else 0
 
 
