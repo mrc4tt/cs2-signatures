@@ -14,7 +14,7 @@ points at exactly one function in the binaries Valve ships right now.
 
 > ✅ **All 106 signature checks pass** on CS2 `1.41.8.1`.
 >
-> Last checked September 10, 2026 at 18:15:01 GMT &middot; 4 project(s) tracked
+> Last checked September 11, 2026 at 08:10:01 GMT &middot; 4 project(s) tracked
 
 <table>
 <tr><th>Project</th><th>Health</th><th>Signatures</th><th>Linux</th><th>Windows</th><th></th></tr>
@@ -30,7 +30,7 @@ These still resolve in the current binaries. The upstream analysis has moved to 
 
 <table>
 <tr><th>Subroutine</th><th>Platform</th></tr>
-<tr><td>ClientPrint</td><td>linux, windows</td></tr>
+<tr><td>CBaseTrigger_EndTouch</td><td>linux, windows</td></tr>
 </table>
 </details>
 
@@ -38,7 +38,7 @@ These still resolve in the current binaries. The upstream analysis has moved to 
 
 * **CS2 build:** `1.41.8.1`
 * **Signatures:** 106 ok, 0 ambiguous, 0 broken (0 not-yet-validated)
-* **Offsets:** 42 ok, 0 stale, 4 without a reference
+* **Offsets:** 44 ok, 0 stale, 0 without a reference
 * **Outdated:** 2 signature(s) still resolve but have been replaced upstream
 * **Depot manifests:** [5806169188224907599](https://steamdb.info/depot/2347771/history/?changeid=M:5806169188224907599), [8639120305802825922](https://steamdb.info/depot/2347773/history/?changeid=M:8639120305802825922)
 * **Fragility over time:** [docs/stats.md](docs/stats.md)

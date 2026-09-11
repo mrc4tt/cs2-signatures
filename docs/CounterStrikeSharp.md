@@ -1,6 +1,6 @@
 # CounterStrikeSharp
 
-Last updated: September 10, 2026 at 18:15:01 GMT
+Last updated: September 11, 2026 at 08:10:01 GMT
 
 * Manifests: [5806169188224907599](https://steamdb.info/depot/2347771/history/?changeid=M:5806169188224907599), [8639120305802825922](https://steamdb.info/depot/2347773/history/?changeid=M:8639120305802825922)
 * Repository: https://github.com/mrc4tt/CounterStrikeSharp
@@ -40,7 +40,7 @@ Reference column: ✅ matches the 14181 analysis &middot; 🕓 the analysis uses
 
 <table>
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>✅</td><td>🕓</td><td>Windows</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x48\x85\xC9\x0F\x84\x2A\x2A\x2A\x2A\x48\x89\x5C\x24\x2A\x48\x89\x74\x24\x2A
 </pre>
@@ -49,7 +49,7 @@ Reference column: ✅ matches the 14181 analysis &middot; 🕓 the analysis uses
 48 85 C9 0F 84 ? ? ? ? 48 89 5C 24 ? 48 89 74 24 ?
 </pre>
 </td></tr>
-<tr><td>✅</td><td>🕓</td><td>Linux</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
 \x55\x48\x89\xE5\x41\x57\x41\x56\x41\x55\x41\x54\x53\x48\x83\xEC\x2A\x4C\x89\x45\x2A\x4C\x89\x4D\x2A
 </pre>
@@ -59,18 +59,6 @@ Reference column: ✅ matches the 14181 analysis &middot; 🕓 the analysis uses
 </pre>
 </td></tr>
 </table>
-
-🕓 Reference linux pattern (14181):
-
-```
-55 48 89 E5 41 57 41 56 41 55 41 54 53 48 83 EC ?? 4C 89 4D ?? 48 85 FF
-```
-
-🕓 Reference windows pattern (14181):
-
-```
-48 89 5C 24 ?? 57 49 8B D8
-```
 
 ### CCSPlayerController_SwitchTeam
 
@@ -244,7 +232,7 @@ Reference column: ✅ matches the 14181 analysis &middot; 🕓 the analysis uses
 
 <table>
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>✅</td><td>❔</td><td>Windows</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x48\x89\x5C\x24\x2A\x48\x89\x6C\x24\x2A\x56\x57\x41\x54\x41\x56\x41\x57\x48\x83\xEC\x2A\x48\x8B\x01\x48\x8B\xFA
 </pre>
@@ -253,7 +241,7 @@ Reference column: ✅ matches the 14181 analysis &middot; 🕓 the analysis uses
 48 89 5C 24 ? 48 89 6C 24 ? 56 57 41 54 41 56 41 57 48 83 EC ? 48 8B 01 48 8B FA
 </pre>
 </td></tr>
-<tr><td>✅</td><td>❔</td><td>Linux</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
 \x55\x48\x8D\x15\x2A\x2A\x2A\x2A\x48\x89\xE5\x41\x55\x41\x54\x49\x89\xFC\x53\x48\x89\xF3\x48\x83\xEC\x2A\x48\x8B\x07\x48\x8B\x80
 </pre>
@@ -268,7 +256,7 @@ Reference column: ✅ matches the 14181 analysis &middot; 🕓 the analysis uses
 
 <table>
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>✅</td><td>❔</td><td>Windows</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x44\x89\x44\x24\x2A\x48\x89\x54\x24\x2A\x48\x89\x4C\x24\x2A\x55\x53\x56\x57\x41\x55\x41\x56\x41\x57\x48\x8B\xEC
 </pre>
@@ -532,7 +520,7 @@ Reference column: ✅ matches the 14181 analysis &middot; 🕓 the analysis uses
 
 <table>
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>✅</td><td>❔</td><td>Windows</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x40\x57\x41\x56\x48\x83\xEC\x2A\x48\x8B\x01
 </pre>
@@ -541,7 +529,7 @@ Reference column: ✅ matches the 14181 analysis &middot; 🕓 the analysis uses
 40 57 41 56 48 83 EC ? 48 8B 01
 </pre>
 </td></tr>
-<tr><td>✅</td><td>❔</td><td>Linux</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
 \x55\x48\x89\xE5\x41\x56\x41\x55\x49\x89\xF5\x41\x54\x53\x48\x89\xFB\x48\x83\xEC\x2A\x48\x8B\x07\xFF\x90\x2A\x2A\x2A\x2A\x84\xC0
 </pre>
@@ -556,7 +544,7 @@ Reference column: ✅ matches the 14181 analysis &middot; 🕓 the analysis uses
 
 <table>
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>✅</td><td>❔</td><td>Windows</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>🕓</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x40\x53\x41\x55\x48\x83\xEC\x2A\x83\xBA
 </pre>
@@ -565,7 +553,7 @@ Reference column: ✅ matches the 14181 analysis &middot; 🕓 the analysis uses
 40 53 41 55 48 83 EC ? 83 BA
 </pre>
 </td></tr>
-<tr><td>✅</td><td>❔</td><td>Linux</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>🕓</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
 \x55\xBA\x2A\x2A\x2A\x2A\x48\x89\xE5\x41\x57\x41\x56\x41\x55\x49\x89\xF5\x41\x54\x49\x89\xFC
 </pre>
@@ -575,6 +563,18 @@ Reference column: ✅ matches the 14181 analysis &middot; 🕓 the analysis uses
 </pre>
 </td></tr>
 </table>
+
+🕓 Reference linux pattern (14181):
+
+```
+48 85 F6 74 ?? E9 ?? ?? ?? ?? 66 0F 1F 44 00 00 C3 CC CC CC CC CC CC CC CC CC CC CC CC CC CC CC 48 8B 07
+```
+
+🕓 Reference windows pattern (14181):
+
+```
+48 85 D2 0F 84 ?? ?? ?? ?? 53 41 57 48 83 EC 28 4C 8B 42 10
+```
 
 ### CEntityIOOutput_FireOutputInternal
 
@@ -604,7 +604,7 @@ Reference column: ✅ matches the 14181 analysis &middot; 🕓 the analysis uses
 
 <table>
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>✅</td><td>❔</td><td>Windows</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x48\x8B\x1D\x2A\x2A\x2A\x2A\x48\x85\xDB\x0F\x84\x2A\x2A\x2A\x2A\xBD
 </pre>
@@ -613,7 +613,7 @@ Reference column: ✅ matches the 14181 analysis &middot; 🕓 the analysis uses
 48 8B 1D ? ? ? ? 48 85 DB 0F 84 ? ? ? ? BD
 </pre>
 </td></tr>
-<tr><td>✅</td><td>❔</td><td>Linux</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
 \x4C\x8B\x35\x2A\x2A\x2A\x2A\x4D\x85\xF6\x75
 </pre>
@@ -700,7 +700,7 @@ Reference column: ✅ matches the 14181 analysis &middot; 🕓 the analysis uses
 
 <table>
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>✅</td><td>❔</td><td>Windows</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x48\x83\x3D\x2A\x2A\x2A\x2A\x2A\x0F\x95\xC0\xC3\xCC\xCC\xCC\xCC\xC2
 </pre>
@@ -709,7 +709,7 @@ Reference column: ✅ matches the 14181 analysis &middot; 🕓 the analysis uses
 48 83 3D ? ? ? ? ? 0F 95 C0 C3 CC CC CC CC C2
 </pre>
 </td></tr>
-<tr><td>✅</td><td>❔</td><td>Linux</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
 \x48\x8D\x05\x2A\x2A\x2A\x2A\x48\x83\x38\x2A\x0F\x95\xC0\xC3
 </pre>
@@ -883,8 +883,7 @@ A vtable slot index or a struct-member byte offset. There are no bytes to scan, 
 <tr><td>CBasePlayerPawn_CommitSuicide</td><td>✅ 384</td><td>✅ 384</td><td>anchor</td></tr>
 <tr><td>CBaseEntity_Teleport</td><td>✅ 163</td><td>✅ 162</td><td>anchor</td></tr>
 <tr><td>GameEntitySystem</td><td>✅ 88</td><td>✅ 80</td><td>anchor</td></tr>
-<tr><td>GameEventManager</td><td>❔ 93</td><td>❔ 93</td><td>reference</td></tr>
-<tr><td>CEntityResourceManifest_AddResource</td><td>❔ 2</td><td>⚠️ 0</td><td>reference</td></tr>
+<tr><td>CEntityResourceManifest_AddResource</td><td>✅ 2</td><td>✅ 0</td><td>reference</td></tr>
 <tr><td>CheckTransmitPlayerSlot</td><td>✅ 576</td><td>✅ 576</td><td>anchor</td></tr>
 <tr><td>SetStateChanged</td><td>✅ 28</td><td>✅ 29</td><td>reference / anchored</td></tr>
 <tr><td>ISource2GameEntities::CheckTransmit</td><td>✅ 12</td><td>✅ 13</td><td>reference / anchored</td></tr>
