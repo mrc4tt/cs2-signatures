@@ -4,6 +4,7 @@
 
 ```
 projects.py         registry: data/projects.json -> tracked projects + path/URL layout
+poll_latest.py      sig.miksen.me/latest.json -> did the published reference move?
 check_update.py     DepotDownloader -manifest-only per depot -> changed?
 fetch_gamedata.py   pull each project's gamedata.json -> data/<id>/gamedata.json
 download_bins.sh    DepotDownloader depots 2347771/2347773 -> server + engine2 (MB not GB)
@@ -92,6 +93,40 @@ Two backends, one output shape:
 
 The GitHub contents API is deliberately not used anywhere: it caps anonymous
 callers at 60 requests an hour and one game version is over 3500 files.
+
+#### Noticing that the analysis published (`poll_latest.py`)
+
+The analysis runs on a separate machine, which polls Steam itself and publishes
+on its own timer. This side only has to notice the result, so `cron.sh` reads one
+small document before each run:
+
+```bash
+python3 scripts/poll_latest.py            # exit 10 = moved, 0 = same, 1 = error
+python3 scripts/poll_latest.py --no-write # report without persisting
+```
+
+`https://sig.miksen.me/latest.json` is a few hundred bytes against the ~2 MB
+snapshot, and it carries the two values that decide whether the reference moved:
+`gameVersion` and `configSha256`. The pair is kept in `reports/.last_seen.json`
+(git-ignored, machine-local - a shared copy would let one host swallow the
+other's trigger). `lastPublishTime` is deliberately not compared: a rebuild that
+changes nothing must not force a run.
+
+On exit 10 `cron.sh` exports `REFERENCE_CHANGED=1`, which does two things in
+`run_all.sh`: it re-pulls `data/symbols/<gamever>.json` even when that file is
+already on disk, and it suppresses the step 2.1 skip. Both exist for the same
+case - the box re-publishing the SAME game version with a different config. The
+version string alone cannot see that, so the cached snapshot would otherwise be
+reused and the run skipped.
+
+The poller is an extra trigger, never the only one. A failed poll, or a poll that
+says nothing moved, leaves the tick running exactly as before: `check_update.py`
+still detects a new CS2 build (which the analysis has not covered yet, by
+definition) and `fetch_gamedata.py` still detects an upstream plugin edit.
+
+Nothing here ever reaches back to the analysis box. It holds Steam credentials
+and an IDA licence, it listens on no port, and it detects builds by itself, so
+there is nothing a webhook could add.
 
 `check_reference.py` first states how the local binaries relate to the snapshot,
 by comparing their SHA-256 against the `binaries` block. `exact` means the
@@ -417,6 +452,7 @@ scripts/lib_anchor.py     re-derive an offset from our own binary via a referenc
 scripts/diff_symbols.py   what moved between two snapshots
 scripts/fetch_symbols.py  pull a snapshot -> data/symbols/<gamever>.json
 scripts/check_reference.py  gamedata vs reference snapshot (read-only report)
+scripts/poll_latest.py    did the published reference move? (exit 10 = yes)
 scripts/check_update.py   per-depot manifest diff (game-global)
 scripts/fetch_gamedata.py pull each project's gamedata.json (authenticated)
 scripts/download_bins.sh  DepotDownloader depot download (shared bins)
@@ -438,6 +474,7 @@ reports/history/*.json    per-run tally + CS2 build + per-project breakdown
 reports/delta.json        per-run named delta, post_gate -> post_discord (ignored)
 reports/fragility.json    per-run breakage counts, gen_stats -> post_discord (ignored)
 reports/reference_gaps.json  symbols the reference cannot answer for (ignored)
+reports/.last_seen.json   last gameVersion + configSha256 polled (ignored, local)
 reports/discord_state.json   standing Discord message per webhook (ignored)
 docs/stats.md             signature fragility over the tracked history
 ```

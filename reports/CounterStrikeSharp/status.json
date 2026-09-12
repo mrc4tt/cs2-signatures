@@ -1603,7 +1603,10 @@
             "source": "vfunc_index",
             "status": "match"
           },
-          "method": "reference"
+          "method": "reference",
+          "anchor": {
+            "status": "anchor_unlocatable"
+          }
         },
         "windows": {
           "status": "ok",
@@ -1613,6 +1616,9 @@
             "value": 2,
             "source": "vfunc_index",
             "status": "match"
+          },
+          "anchor": {
+            "status": "anchor_unlocatable"
           }
         }
       }
