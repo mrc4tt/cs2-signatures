@@ -1,6 +1,6 @@
 # CounterStrikeSharp
 
-Last updated: September 12, 2026 at 11:35:01 GMT
+Last updated: September 16, 2026 at 14:35:01 GMT
 
 * Manifests: [5806169188224907599](https://steamdb.info/depot/2347771/history/?changeid=M:5806169188224907599), [8639120305802825922](https://steamdb.info/depot/2347773/history/?changeid=M:8639120305802825922)
 * Repository: https://github.com/mrc4tt/CounterStrikeSharp
@@ -378,20 +378,20 @@ Reference column: ✅ matches the 14181 analysis &middot; 🕓 the analysis uses
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
 <tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
-\x48\x89\x74\x24\x2A\x57\x41\x56\x41\x57\x48\x83\xEC\x2A\xBE\x2A\x2A\x2A\x2A
+\x40\x53\x48\x83\xEC\x2A\x4C\x89\x4C\x24\x2A\x48\x8B\xD9\x45\x8B\xC8
 </pre>
 </td><td>
 <pre>
-48 89 74 24 ? 57 41 56 41 57 48 83 EC ? BE ? ? ? ?
+40 53 48 83 EC ? 4C 89 4C 24 ? 48 8B D9 45 8B C8
 </pre>
 </td></tr>
 <tr><td>✅</td><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
-\x55\x48\x89\xE5\x41\x57\x41\x56\x49\x89\xF6\xBE\x2A\x2A\x2A\x2A\x41\x55\x49\x89\xD5\x41\x54\x53\x48\x89\xFB\x48\x8D\x3D\x2A\x2A\x2A\x2A
+\x48\xB8\x00\x00\x00\x00\xFF\xFF\xFF\xFF\x55\x48\x89\xE5\x41\x57\x41\x56\x41\x55\x41\x54\x53\x48\x89\xFB\x48\x81\xEC\x2A\x2A\x2A\x2A\x48\x89\x07\x48\x8D\x05\x2A\x2A\x2A\x2A\x48\xC7\x47\x08\x00\x00\x00\x00
 </pre>
 </td><td>
 <pre>
-55 48 89 E5 41 57 41 56 49 89 F6 BE ? ? ? ? 41 55 49 89 D5 41 54 53 48 89 FB 48 8D 3D ? ? ? ?
+48 B8 00 00 00 00 FF FF FF FF 55 48 89 E5 41 57 41 56 41 55 41 54 53 48 89 FB 48 81 EC ? ? ? ? 48 89 07 48 8D 05 ? ? ? ? 48 C7 47 08 00 00 00 00
 </pre>
 </td></tr>
 </table>
@@ -642,20 +642,20 @@ Reference column: ✅ matches the 14181 analysis &middot; 🕓 the analysis uses
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
 <tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
-\x48\x89\x5C\x24\x2A\x48\x89\x6C\x24\x2A\x48\x89\x74\x24\x2A\x57\x48\x83\xEC\x2A\x48\x8B\x42\x2A\x48\x8D\x35\x2A\x2A\x2A\x2A
+\x4C\x8B\xC2\x48\x8B\xD1\x48\x8B\x09
 </pre>
 </td><td>
 <pre>
-48 89 5C 24 ? 48 89 6C 24 ? 48 89 74 24 ? 57 48 83 EC ? 48 8B 42 ? 48 8D 35 ? ? ? ?
+4C 8B C2 48 8B D1 48 8B 09
 </pre>
 </td></tr>
 <tr><td>✅</td><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
-\x55\x48\x89\xE5\x41\x56\x49\x89\xF6\x41\x55\x4C\x8D\x2D\x2A\x2A\x2A\x2A\x41\x54\x53
+\x48\x8B\x07\x48\x85\xC0\x74\x2A\x48\x8B\x50
 </pre>
 </td><td>
 <pre>
-55 48 89 E5 41 56 49 89 F6 41 55 4C 8D 2D ? ? ? ? 41 54 53
+48 8B 07 48 85 C0 74 ? 48 8B 50
 </pre>
 </td></tr>
 </table>
