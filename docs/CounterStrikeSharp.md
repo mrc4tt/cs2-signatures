@@ -1,6 +1,6 @@
 # CounterStrikeSharp
 
-Last updated: September 16, 2026 at 14:35:01 GMT
+Last updated: September 20, 2026 at 17:30:02 GMT
 
 * Manifests: [5806169188224907599](https://steamdb.info/depot/2347771/history/?changeid=M:5806169188224907599), [8639120305802825922](https://steamdb.info/depot/2347773/history/?changeid=M:8639120305802825922)
 * Repository: https://github.com/mrc4tt/CounterStrikeSharp
@@ -738,11 +738,11 @@ Reference column: ✅ matches the 14181 analysis &middot; 🕓 the analysis uses
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
 <tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
-\x40\x53\x56\x57\x48\x83\xEC\x20\x48\x63\xDA\x49\x8B\xF1\x49\x8B\xC0\x48\x8B\xF9\x3B\x99\xB8\x04\x00\x00\x7D\x5E\x48\x89\x6C\x24\x50\x4C\x8D\x44\x24\x40\x33\xED\x48\x8B\xD0\x66\x89\x6C\x24\x40\xE8\x6B\x1B\xFF\xFF\x84\xC0\x74
+\x40\x53\x56\x57\x48\x83\xEC\x2A\x48\x63\xDA\x49\x8B\xF1\x49\x8B\xC0\x48\x8B\xF9\x3B\x99\x2A\x2A\x2A\x2A\x7D\x2A\x48\x89\x6C\x24\x2A\x4C\x8D\x44\x24\x2A\x33\xED\x48\x8B\xD0\x66\x89\x6C\x24\x2A\xE8\x2A\x2A\x2A\x2A\x84\xC0\x74\x2A\x4C\x8D\x44\x24\x2A\x66\x89\x6C\x24\x2A\x48\x8B\xD6\x48\x8B\xCF\xE8\x2A\x2A\x2A\x2A\x84\xC0\x74\x2A\x4C\x8B\x4C\x24\x2A
 </pre>
 </td><td>
 <pre>
-40 53 56 57 48 83 EC 20 48 63 DA 49 8B F1 49 8B C0 48 8B F9 3B 99 B8 04 00 00 7D 5E 48 89 6C 24 50 4C 8D 44 24 40 33 ED 48 8B D0 66 89 6C 24 40 E8 6B 1B FF FF 84 C0 74
+40 53 56 57 48 83 EC ? 48 63 DA 49 8B F1 49 8B C0 48 8B F9 3B 99 ? ? ? ? 7D ? 48 89 6C 24 ? 4C 8D 44 24 ? 33 ED 48 8B D0 66 89 6C 24 ? E8 ? ? ? ? 84 C0 74 ? 4C 8D 44 24 ? 66 89 6C 24 ? 48 8B D6 48 8B CF E8 ? ? ? ? 84 C0 74 ? 4C 8B 4C 24 ?
 </pre>
 </td></tr>
 <tr><td>✅</td><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
@@ -786,11 +786,11 @@ Reference column: ✅ matches the 14181 analysis &middot; 🕓 the analysis uses
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
 <tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
-\x40\x53\x56\x57\x48\x83\xEC\x20\x48\x63\xDA\x49\x8B\xF1\x49\x8B\xC0\x48\x8B\xF9\x3B\x99\xB8\x04\x00\x00\x7D\x5E\x48\x89\x6C\x24\x50\x4C\x8D\x44\x24\x40\x33\xED\x48\x8B\xD0\x66\x89\x6C\x24\x40\xE8\x4B\x11\xFF\xFF\x84\xC0\x74
+\x40\x53\x56\x57\x48\x83\xEC\x2A\x48\x63\xDA\x49\x8B\xF1\x49\x8B\xC0\x48\x8B\xF9\x3B\x99\x2A\x2A\x2A\x2A\x7D\x2A\x48\x89\x6C\x24\x2A\x4C\x8D\x44\x24\x2A\x33\xED\x48\x8B\xD0\x66\x89\x6C\x24\x2A\xE8\x2A\x2A\x2A\x2A\x84\xC0\x74\x2A\x4C\x8D\x44\x24\x2A\x66\x89\x6C\x24\x2A\x48\x8B\xD6\x48\x8B\xCF\xE8\x2A\x2A\x2A\x2A\x84\xC0\x74\x2A\x44\x8B\x4C\x24\x2A
 </pre>
 </td><td>
 <pre>
-40 53 56 57 48 83 EC 20 48 63 DA 49 8B F1 49 8B C0 48 8B F9 3B 99 B8 04 00 00 7D 5E 48 89 6C 24 50 4C 8D 44 24 40 33 ED 48 8B D0 66 89 6C 24 40 E8 4B 11 FF FF 84 C0 74
+40 53 56 57 48 83 EC ? 48 63 DA 49 8B F1 49 8B C0 48 8B F9 3B 99 ? ? ? ? 7D ? 48 89 6C 24 ? 4C 8D 44 24 ? 33 ED 48 8B D0 66 89 6C 24 ? E8 ? ? ? ? 84 C0 74 ? 4C 8D 44 24 ? 66 89 6C 24 ? 48 8B D6 48 8B CF E8 ? ? ? ? 84 C0 74 ? 44 8B 4C 24 ?
 </pre>
 </td></tr>
 <tr><td>✅</td><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
