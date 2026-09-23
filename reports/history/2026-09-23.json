@@ -1,9 +1,9 @@
 {
-  "date": "September 23, 2026 at 11:35:01 GMT",
+  "date": "September 23, 2026 at 17:55:02 GMT",
   "version": "1.41.8.2",
   "tally": {
-    "ok": 75,
-    "broken": 29,
+    "ok": 76,
+    "broken": 28,
     "ambiguous": 2,
     "no_binary": 0,
     "missing_sig": 0,
@@ -19,8 +19,8 @@
   },
   "projects": {
     "CounterStrikeSharp": {
-      "ok": 44,
-      "broken": 24,
+      "ok": 45,
+      "broken": 23,
       "ambiguous": 2,
       "no_binary": 0,
       "missing_sig": 0,

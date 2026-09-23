@@ -7,8 +7,8 @@
   "reference": null,
   "gamedata_source": "mrc4tt/CounterStrikeSharp configs/addons/counterstrikesharp/gamedata/gamedata.json",
   "tally": {
-    "ok": 44,
-    "broken": 24,
+    "ok": 45,
+    "broken": 23,
     "ambiguous": 2,
     "no_binary": 0,
     "missing_sig": 0,
@@ -329,10 +329,10 @@
       "library": "server",
       "platforms": {
         "linux": {
-          "status": "broken",
-          "matches": 0,
+          "status": "ok",
+          "matches": 1,
           "library": "server",
-          "sig": "55 48 89 E5 41 56 49 89 FE 41 55 48 8D 7D ?"
+          "sig": "55 48 89 E5 41 57 49 89 FF 41 56 48 8D BD ? ? ? ? 41 55 4C 8D AD"
         },
         "windows": {
           "status": "broken",
@@ -688,8 +688,8 @@
       "name": "CCSPlayerController_ChangeTeam",
       "kind": "offset",
       "offsets": {
-        "windows": 103,
-        "linux": 102
+        "windows": 105,
+        "linux": 104
       },
       "platforms": {
         "linux": {
@@ -704,8 +704,8 @@
       "name": "CCSPlayerController_Respawn",
       "kind": "offset",
       "offsets": {
-        "windows": 270,
-        "linux": 272
+        "windows": 274,
+        "linux": 276
       },
       "platforms": {
         "linux": {
@@ -801,8 +801,8 @@
       "name": "CCSGameRules_FindPickerEntity",
       "kind": "offset",
       "offsets": {
-        "windows": 26,
-        "linux": 27
+        "windows": 25,
+        "linux": 26
       },
       "platforms": {
         "linux": {
@@ -836,7 +836,7 @@
       "kind": "offset",
       "offsets": {
         "windows": 169,
-        "linux": 168
+        "linux": 170
       },
       "platforms": {
         "linux": {
@@ -851,8 +851,8 @@
       "name": "CBasePlayerPawn_CommitSuicide",
       "kind": "offset",
       "offsets": {
-        "windows": 384,
-        "linux": 384
+        "windows": 387,
+        "linux": 387
       },
       "platforms": {
         "linux": {
@@ -868,8 +868,8 @@
       "name": "CBaseEntity_Teleport",
       "kind": "offset",
       "offsets": {
-        "windows": 163,
-        "linux": 162
+        "windows": 165,
+        "linux": 164
       },
       "platforms": {
         "linux": {

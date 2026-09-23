@@ -63,14 +63,6 @@
     },
     {
       "name": "CEntityInstance_AcceptInput",
-      "platform": "linux",
-      "library": "server",
-      "reason": "broken",
-      "old_sig": "55 48 89 E5 41 56 49 89 FE 41 55 48 8D 7D ?",
-      "error": "sig not unique in old binary (0 hits)"
-    },
-    {
-      "name": "CEntityInstance_AcceptInput",
       "platform": "windows",
       "library": "server",
       "reason": "broken",
