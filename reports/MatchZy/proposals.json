@@ -1,8 +1,8 @@
 {
   "project": "MatchZy",
   "manifest": {
-    "2347771": "6714556331453849572",
-    "2347773": "2422872143697310485"
+    "2347771": "3417992560980425656",
+    "2347773": "2116299376055199661"
   },
   "proposals": [
     {
@@ -11,16 +11,7 @@
       "library": "server",
       "reason": "broken",
       "old_sig": "48 89 5C 24 ? 48 89 6C 24 ? 48 89 74 24 ? 57 48 83 EC ? 48 8B 6C 24 ? 49 8B F8 4C 8B C2 0F 29 74 24 ?",
-      "old_pos": [
-        0,
-        3777120
-      ],
-      "new_pos": [
-        0,
-        3787592
-      ],
-      "score": 0.66,
-      "error": "could not build unique candidate at mapped position"
+      "error": "sig not unique in old binary (0 hits)"
     },
     {
       "name": "CMolotovProjectile_Create",
@@ -28,16 +19,7 @@
       "library": "server",
       "reason": "broken",
       "old_sig": "48 8B C4 48 89 58 ? 4C 89 40 ? 48 89 48 ? 55 56 57 41 54 41 55 41 56 41 57 48 8D 6C 24 ?",
-      "old_pos": [
-        0,
-        9980016
-      ],
-      "new_pos": [
-        0,
-        10161602
-      ],
-      "score": 0.75,
-      "error": "could not build unique candidate at mapped position"
+      "error": "sig not unique in old binary (0 hits)"
     }
   ]
 }
