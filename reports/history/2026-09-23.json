@@ -1,9 +1,9 @@
 {
-  "date": "September 23, 2026 at 03:10:01 GMT",
+  "date": "September 23, 2026 at 11:35:01 GMT",
   "version": "1.41.8.2",
   "tally": {
-    "ok": 73,
-    "broken": 31,
+    "ok": 75,
+    "broken": 29,
     "ambiguous": 2,
     "no_binary": 0,
     "missing_sig": 0,
@@ -55,8 +55,8 @@
       "sig_outdated": 0
     },
     "WeaponPaints": {
-      "ok": 15,
-      "broken": 3,
+      "ok": 17,
+      "broken": 1,
       "ambiguous": 0,
       "no_binary": 0,
       "missing_sig": 0,

@@ -1,6 +1,6 @@
 # WeaponPaints
 
-Last updated: September 23, 2026 at 03:10:01 GMT
+Last updated: September 23, 2026 at 11:35:01 GMT
 
 * Manifests: [3417992560980425656](https://steamdb.info/depot/2347771/history/?changeid=M:3417992560980425656), [2116299376055199661](https://steamdb.info/depot/2347773/history/?changeid=M:2116299376055199661)
 * Repository: https://git.miksen.me/mikkel/weaponpaints
@@ -23,13 +23,13 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 40 53 55 41 56 48 81 EC ? ? ? ? 0F 29 74 24 ?
 </pre>
 </td></tr>
-<tr><td>❌</td><td>❔</td><td>Linux</td><td>server</td><td>0</td><td>
+<tr><td>✅</td><td>❔</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
-\x55\x48\x89\xE5\x41\x57\x41\x56\x49\x89\xFE\x41\x55\x41\x54\x53\x48\x89\xF3\x48\x83\xEC\x2A\xF3\x0F\x11\x85\x2A\x2A\x2A\x2A
+\x55\x48\x89\xE5\x41\x57\x41\x56\x41\x55\x49\x89\xFD\x41\x54\x53\x48\x89\xF3\x48\x83\xEC\x2A\xF3\x0F\x11\x85\x2A\x2A\x2A\x2A
 </pre>
 </td><td>
 <pre>
-55 48 89 E5 41 57 41 56 49 89 FE 41 55 41 54 53 48 89 F3 48 83 EC ? F3 0F 11 85 ? ? ? ?
+55 48 89 E5 41 57 41 56 41 55 49 89 FD 41 54 53 48 89 F3 48 83 EC ? F3 0F 11 85 ? ? ? ?
 </pre>
 </td></tr>
 </table>
@@ -167,13 +167,13 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 40 55 41 56 48 83 EC ? 48 83 79 ? ?
 </pre>
 </td></tr>
-<tr><td>❌</td><td>❔</td><td>Linux</td><td>server</td><td>0</td><td>
+<tr><td>✅</td><td>❔</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
-\x55\x48\x89\xE5\x41\x57\x41\x56\x41\x55\x41\x54\x49\x89\xFC\x53\x48\x83\xEC\x2A\x48\x8B\x5F\x2A\x48\x85\xDB
+\x55\x48\x89\xE5\x41\x57\x41\x56\x41\x55\x41\x54\x53\x48\x89\xFB\x48\x83\xEC\x2A\x4C\x8B\x67\x2A\x4D\x85\xE4\x0F\x84\x2A\x2A\x2A\x2A\x48\x89\xDF
 </pre>
 </td><td>
 <pre>
-55 48 89 E5 41 57 41 56 41 55 41 54 49 89 FC 53 48 83 EC ? 48 8B 5F ? 48 85 DB
+55 48 89 E5 41 57 41 56 41 55 41 54 53 48 89 FB 48 83 EC ? 4C 8B 67 ? 4D 85 E4 0F 84 ? ? ? ? 48 89 DF
 </pre>
 </td></tr>
 </table>
