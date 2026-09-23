@@ -1,10 +1,10 @@
 {
-  "date": "September 23, 2026 at 17:55:02 GMT",
+  "date": "September 23, 2026 at 20:45:02 GMT",
   "version": "1.41.8.2",
   "tally": {
-    "ok": 76,
-    "broken": 28,
-    "ambiguous": 2,
+    "ok": 104,
+    "broken": 2,
+    "ambiguous": 0,
     "no_binary": 0,
     "missing_sig": 0,
     "offset_ok": 12,
@@ -19,9 +19,9 @@
   },
   "projects": {
     "CounterStrikeSharp": {
-      "ok": 45,
-      "broken": 23,
-      "ambiguous": 2,
+      "ok": 70,
+      "broken": 0,
+      "ambiguous": 0,
       "no_binary": 0,
       "missing_sig": 0,
       "offset_ok": 8,
@@ -43,8 +43,8 @@
       "sig_outdated": 0
     },
     "MatchZy": {
-      "ok": 10,
-      "broken": 2,
+      "ok": 12,
+      "broken": 0,
       "ambiguous": 0,
       "no_binary": 0,
       "missing_sig": 0,
@@ -55,8 +55,8 @@
       "sig_outdated": 0
     },
     "WeaponPaints": {
-      "ok": 17,
-      "broken": 1,
+      "ok": 18,
+      "broken": 0,
       "ambiguous": 0,
       "no_binary": 0,
       "missing_sig": 0,

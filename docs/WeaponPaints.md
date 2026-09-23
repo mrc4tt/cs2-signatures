@@ -1,6 +1,6 @@
 # WeaponPaints
 
-Last updated: September 23, 2026 at 17:55:02 GMT
+Last updated: September 23, 2026 at 20:45:02 GMT
 
 * Manifests: [3417992560980425656](https://steamdb.info/depot/2347771/history/?changeid=M:3417992560980425656), [2116299376055199661](https://steamdb.info/depot/2347773/history/?changeid=M:2116299376055199661)
 * Repository: https://git.miksen.me/mikkel/weaponpaints
@@ -14,13 +14,13 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 
 <table>
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>❌</td><td>❔</td><td>Windows</td><td>server</td><td>0</td><td>
+<tr><td>✅</td><td>❔</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
-\x40\x53\x55\x41\x56\x48\x81\xEC\x2A\x2A\x2A\x2A\x0F\x29\x74\x24\x2A
+\x48\x89\x4C\x24\x2A\x53\x41\x55\x41\x56
 </pre>
 </td><td>
 <pre>
-40 53 55 41 56 48 81 EC ? ? ? ? 0F 29 74 24 ?
+48 89 4C 24 ? 53 41 55 41 56
 </pre>
 </td></tr>
 <tr><td>✅</td><td>❔</td><td>Linux</td><td>server</td><td>1</td><td>
@@ -49,11 +49,11 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 </td></tr>
 <tr><td>✅</td><td>❔</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
-\x55\x49\x89\xF0\x48\x89\xE5\x41\x57\x41\x56\x49\x89\xFE\x41\x55\x41\x54\x53\x48\x81\xEC\x2A\x2A\x2A\x2A
+\x55\x49\x89\xF0\x48\x89\xE5\x41\x57\x41\x56\x49\x89\xFE
 </pre>
 </td><td>
 <pre>
-55 49 89 F0 48 89 E5 41 57 41 56 49 89 FE 41 55 41 54 53 48 81 EC ? ? ? ?
+55 49 89 F0 48 89 E5 41 57 41 56 49 89 FE
 </pre>
 </td></tr>
 </table>
@@ -88,11 +88,11 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
 <tr><td>✅</td><td>❔</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
-\x48\x89\x5C\x24\x2A\x48\x89\x6C\x24\x2A\x48\x89\x74\x24\x2A\x57\x41\x54\x41\x55\x41\x56\x41\x57\x48\x83\xEC\x2A\x48\x8B\xF9\x48\x8D\x05
+\x48\x89\x5C\x24\x2A\x48\x89\x6C\x24\x2A\x48\x89\x74\x24\x2A\x57\x41\x54\x41\x55\x41\x56\x41\x57\x48\x83\xEC\x2A\x48\x8B\xF9\x48\x8D\x05\x2A\x2A\x2A\x2A
 </pre>
 </td><td>
 <pre>
-48 89 5C 24 ? 48 89 6C 24 ? 48 89 74 24 ? 57 41 54 41 55 41 56 41 57 48 83 EC ? 48 8B F9 48 8D 05
+48 89 5C 24 ? 48 89 6C 24 ? 48 89 74 24 ? 57 41 54 41 55 41 56 41 57 48 83 EC ? 48 8B F9 48 8D 05 ? ? ? ?
 </pre>
 </td></tr>
 <tr><td>✅</td><td>❔</td><td>Linux</td><td>server</td><td>1</td><td>
