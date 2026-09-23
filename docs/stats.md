@@ -1,6 +1,6 @@
 # Signature fragility
 
-Last updated: September 23, 2026 at 20:45:02 GMT
+Last updated: September 23, 2026 at 21:20:01 GMT
 
 How often each signature has gone broken or ambiguous across the tracked history (each counted transition is one episode, not one run). Signatures with no episodes are summarised, not listed.
 
@@ -8,30 +8,30 @@ How often each signature has gone broken or ambiguous across the tracked history
 
 | Project | Signature | Platform | Breaks | Ambiguous | Now |
 |---|---|---|---|---|---|
-| CounterStrikeSharp | `CBaseModelEntity_SetModel` | windows | 3 | 0 | broken |
-| CounterStrikeSharp | `CCSCustomHudLayout_SetDialogVariableStringForPlayer` | linux | 2 | 0 | broken |
-| CounterStrikeSharp | `CCSCustomHudLayout_SetDialogVariableStringForPlayer` | windows | 2 | 0 | broken |
-| CounterStrikeSharp | `CCSCustomHudLayout_SetHasClass` | linux | 2 | 0 | broken |
-| CounterStrikeSharp | `CCSCustomHudLayout_SetHasClassForPlayer` | windows | 2 | 0 | broken |
-| CounterStrikeSharp | `CCSGameRules_TerminateRound` | linux | 2 | 0 | broken |
+| CounterStrikeSharp | `CBaseModelEntity_SetModel` | windows | 3 | 0 | ok |
+| CounterStrikeSharp | `CCSCustomHudLayout_SetDialogVariableStringForPlayer` | linux | 2 | 0 | ok |
+| CounterStrikeSharp | `CCSCustomHudLayout_SetDialogVariableStringForPlayer` | windows | 2 | 0 | ok |
+| CounterStrikeSharp | `CCSCustomHudLayout_SetHasClass` | linux | 2 | 0 | ok |
+| CounterStrikeSharp | `CCSCustomHudLayout_SetHasClassForPlayer` | windows | 2 | 0 | ok |
+| CounterStrikeSharp | `CCSGameRules_TerminateRound` | linux | 2 | 0 | ok |
 | CounterStrikeSharp | `CBaseModelEntity_SetModel` | linux | 1 | 0 | ok |
-| CounterStrikeSharp | `CBasePlayerPawn_RemovePlayerItem` | linux | 1 | 0 | broken |
-| CounterStrikeSharp | `CBaseTrigger_EndTouch` | linux | 1 | 0 | broken |
-| CounterStrikeSharp | `CBaseTrigger_EndTouch` | windows | 1 | 0 | broken |
-| CounterStrikeSharp | `CBaseTrigger_StartTouch` | linux | 1 | 0 | broken |
-| CounterStrikeSharp | `CCSCustomHudLayout_SetHasClassForPlayer` | linux | 1 | 0 | broken |
-| CounterStrikeSharp | `CCSCustomHudLayout_SetInputCaptureEnabled` | linux | 1 | 0 | broken |
-| CounterStrikeSharp | `CCSCustomHudLayout_SetInputCaptureEnabled` | windows | 1 | 0 | broken |
-| CounterStrikeSharp | `CCSPlayerPawnBase_PostThink` | linux | 1 | 0 | broken |
-| CounterStrikeSharp | `CCSPlayerPawnBase_PostThink` | windows | 0 | 1 | ambiguous |
-| CounterStrikeSharp | `CCSPlayer_ItemServices_CanAcquire` | linux | 1 | 0 | broken |
-| CounterStrikeSharp | `CCSPlayer_ItemServices_CanAcquire` | windows | 1 | 0 | broken |
-| CounterStrikeSharp | `CCSPlayer_WeaponServices_CanUse` | linux | 1 | 0 | broken |
-| CounterStrikeSharp | `CCSPointScript_OnCustomHudClicked` | linux | 1 | 0 | broken |
+| CounterStrikeSharp | `CBasePlayerPawn_RemovePlayerItem` | linux | 1 | 0 | ok |
+| CounterStrikeSharp | `CBaseTrigger_EndTouch` | linux | 1 | 0 | ok |
+| CounterStrikeSharp | `CBaseTrigger_EndTouch` | windows | 1 | 0 | ok |
+| CounterStrikeSharp | `CBaseTrigger_StartTouch` | linux | 1 | 0 | ok |
+| CounterStrikeSharp | `CCSCustomHudLayout_SetHasClassForPlayer` | linux | 1 | 0 | ok |
+| CounterStrikeSharp | `CCSCustomHudLayout_SetInputCaptureEnabled` | linux | 1 | 0 | ok |
+| CounterStrikeSharp | `CCSCustomHudLayout_SetInputCaptureEnabled` | windows | 1 | 0 | ok |
+| CounterStrikeSharp | `CCSPlayerPawnBase_PostThink` | linux | 1 | 0 | ok |
+| CounterStrikeSharp | `CCSPlayerPawnBase_PostThink` | windows | 0 | 1 | ok |
+| CounterStrikeSharp | `CCSPlayer_ItemServices_CanAcquire` | linux | 1 | 0 | ok |
+| CounterStrikeSharp | `CCSPlayer_ItemServices_CanAcquire` | windows | 1 | 0 | ok |
+| CounterStrikeSharp | `CCSPlayer_WeaponServices_CanUse` | linux | 1 | 0 | ok |
+| CounterStrikeSharp | `CCSPointScript_OnCustomHudClicked` | linux | 1 | 0 | ok |
 
 ## Per project
 
-- **CounterStrikeSharp** - 116 tracked sig/platform pairs, 34 breakage episode(s), 89 never broken, 45 snapshot(s) of history.
+- **CounterStrikeSharp** - 116 tracked sig/platform pairs, 34 breakage episode(s), 89 never broken, 46 snapshot(s) of history.
 - **RetakesAllocator** - 6 tracked sig/platform pairs, 2 breakage episode(s), 4 never broken, 27 snapshot(s) of history.
-- **MatchZy** - 16 tracked sig/platform pairs, 3 breakage episode(s), 13 never broken, 27 snapshot(s) of history.
-- **WeaponPaints** - 28 tracked sig/platform pairs, 3 breakage episode(s), 25 never broken, 24 snapshot(s) of history.
+- **MatchZy** - 16 tracked sig/platform pairs, 3 breakage episode(s), 13 never broken, 28 snapshot(s) of history.
+- **WeaponPaints** - 28 tracked sig/platform pairs, 3 breakage episode(s), 25 never broken, 25 snapshot(s) of history.
