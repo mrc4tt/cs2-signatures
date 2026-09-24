@@ -1,14 +1,14 @@
 {
   "project": "CounterStrikeSharp",
   "manifest": {
-    "2347771": "1712132612863643470",
-    "2347773": "644862288385836392"
+    "2347771": "6072833387853900784",
+    "2347773": "2964462901968687674"
   },
   "reference": null,
   "gamedata_source": "mrc4tt/CounterStrikeSharp configs/addons/counterstrikesharp/gamedata/gamedata.json",
   "tally": {
-    "ok": 70,
-    "broken": 0,
+    "ok": 69,
+    "broken": 1,
     "ambiguous": 0,
     "no_binary": 0,
     "missing_sig": 0,
@@ -652,8 +652,8 @@
       "library": "server",
       "platforms": {
         "linux": {
-          "status": "ok",
-          "matches": 1,
+          "status": "broken",
+          "matches": 0,
           "library": "server",
           "sig": "55 BE 01 00 00 ? 48 89 E5 41 57 41 56 41 55 41 54 49 89 FC 53 48 83 EC ? 4C 8D 35 38 CB D0 ?"
         },
@@ -713,7 +713,7 @@
           "linux": 272,
           "method": "anchored",
           "found_linux": 276,
-          "func_va": "0x1541f90"
+          "func_va": "0x1543110"
         }
       }
     },
@@ -729,7 +729,7 @@
           "status": "ok",
           "linux": 31,
           "method": "anchored",
-          "func_va": "0x15e64e0"
+          "func_va": "0x15e7660"
         }
       }
     },
@@ -761,7 +761,7 @@
           "status": "ok",
           "linux": 27,
           "method": "anchored",
-          "func_va": "0x15d6fa0"
+          "func_va": "0x15d8120"
         }
       }
     },
@@ -777,7 +777,7 @@
           "status": "ok",
           "linux": 28,
           "method": "anchored",
-          "func_va": "0x15d70e0"
+          "func_va": "0x15d8260"
         }
       }
     },
@@ -810,7 +810,7 @@
           "linux": 27,
           "method": "anchored",
           "found_linux": 26,
-          "func_va": "0x19a7a20"
+          "func_va": "0x19a8ba0"
         }
       }
     },
@@ -860,7 +860,7 @@
           "linux": 384,
           "method": "anchored",
           "found_linux": 387,
-          "func_va": "0x1867a90"
+          "func_va": "0x1868c10"
         }
       }
     },
@@ -877,7 +877,7 @@
           "linux": 162,
           "method": "anchored",
           "found_linux": 164,
-          "func_va": "0xd6c080"
+          "func_va": "0xd6c280"
         }
       }
     },
@@ -941,7 +941,7 @@
           "status": "ok",
           "linux": 29,
           "method": "anchored",
-          "func_va": "0xa3fa30"
+          "func_va": "0xa3fc30"
         }
       }
     },

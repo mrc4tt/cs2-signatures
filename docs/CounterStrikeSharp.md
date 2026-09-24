@@ -1,8 +1,8 @@
 # CounterStrikeSharp
 
-Last updated: September 23, 2026 at 23:10:01 GMT
+Last updated: September 24, 2026 at 21:55:01 GMT
 
-* Manifests: [1712132612863643470](https://steamdb.info/depot/2347771/history/?changeid=M:1712132612863643470), [644862288385836392](https://steamdb.info/depot/2347773/history/?changeid=M:644862288385836392)
+* Manifests: [6072833387853900784](https://steamdb.info/depot/2347771/history/?changeid=M:6072833387853900784), [2964462901968687674](https://steamdb.info/depot/2347773/history/?changeid=M:2964462901968687674)
 * Repository: https://github.com/mrc4tt/CounterStrikeSharp
 * Gamedata: https://github.com/mrc4tt/CounterStrikeSharp/blob/main/configs/addons/counterstrikesharp/gamedata/gamedata.json
 
@@ -815,7 +815,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 4C 89 4C 24 ? 55 53 41 54
 </pre>
 </td></tr>
-<tr><td>✅</td><td>❔</td><td>Linux</td><td>server</td><td>1</td><td>
+<tr><td>❌</td><td>❔</td><td>Linux</td><td>server</td><td>0</td><td>
 <pre>
 \x55\xBE\x01\x00\x00\x2A\x48\x89\xE5\x41\x57\x41\x56\x41\x55\x41\x54\x49\x89\xFC\x53\x48\x83\xEC\x2A\x4C\x8D\x35\x38\xCB\xD0\x2A
 </pre>

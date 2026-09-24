@@ -1,0 +1,26 @@
+{
+  "project": "CounterStrikeSharp",
+  "manifest": {
+    "2347771": "6072833387853900784",
+    "2347773": "2964462901968687674"
+  },
+  "proposals": [
+    {
+      "name": "CCSPointScript_OnCustomHudClicked",
+      "platform": "linux",
+      "library": "server",
+      "reason": "broken",
+      "old_sig": "55 BE 01 00 00 ? 48 89 E5 41 57 41 56 41 55 41 54 49 89 FC 53 48 83 EC ? 4C 8D 35 38 CB D0 ?",
+      "old_pos": [
+        4,
+        1206016
+      ],
+      "new_pos": [
+        4,
+        1206016
+      ],
+      "score": 0.945,
+      "error": "could not build unique candidate at mapped position"
+    }
+  ]
+}
