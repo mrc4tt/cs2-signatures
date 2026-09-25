@@ -12,9 +12,9 @@ points at exactly one function in the binaries Valve ships right now.
 <!-- STATUS:START -->
 ## Current status
 
-> ❌ **1 of 106 signature checks are broken** on CS2 `1.41.8.3` - the affected plugins need regenerated signatures.
+> ❌ **1 of 106 signature checks are broken** on CS2 `1.41.8.5` - the affected plugins need regenerated signatures.
 >
-> Last checked September 24, 2026 at 21:55:01 GMT &middot; 4 project(s) tracked
+> Last checked September 25, 2026 at 21:55:01 GMT &middot; 4 project(s) tracked
 
 <table>
 <tr><th>Project</th><th>Health</th><th>Signatures</th><th>Linux</th><th>Windows</th><th></th></tr>
@@ -34,10 +34,10 @@ points at exactly one function in the binaries Valve ships right now.
 
 <details><summary>&#9660; Run details</summary>
 
-* **CS2 build:** `1.41.8.3`
+* **CS2 build:** `1.41.8.5`
 * **Signatures:** 105 ok, 0 ambiguous, 1 broken (0 not-yet-validated)
 * **Offsets:** 12 ok, 4 stale, 6 without a reference
-* **Depot manifests:** [6072833387853900784](https://steamdb.info/depot/2347771/history/?changeid=M:6072833387853900784), [2964462901968687674](https://steamdb.info/depot/2347773/history/?changeid=M:2964462901968687674)
+* **Depot manifests:** [3558451520161040527](https://steamdb.info/depot/2347771/history/?changeid=M:3558451520161040527), [7484770979211644490](https://steamdb.info/depot/2347773/history/?changeid=M:7484770979211644490)
 * **Fragility over time:** [docs/stats.md](docs/stats.md)
 
 </details>

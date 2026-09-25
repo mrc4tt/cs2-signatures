@@ -1,8 +1,8 @@
 {
   "project": "CounterStrikeSharp",
   "manifest": {
-    "2347771": "6072833387853900784",
-    "2347773": "2964462901968687674"
+    "2347771": "3558451520161040527",
+    "2347773": "7484770979211644490"
   },
   "reference": null,
   "gamedata_source": "mrc4tt/CounterStrikeSharp configs/addons/counterstrikesharp/gamedata/gamedata.json",
@@ -713,7 +713,7 @@
           "linux": 272,
           "method": "anchored",
           "found_linux": 276,
-          "func_va": "0x1543110"
+          "func_va": "0x1543a10"
         }
       }
     },
@@ -729,7 +729,7 @@
           "status": "ok",
           "linux": 31,
           "method": "anchored",
-          "func_va": "0x15e7660"
+          "func_va": "0x15e7f60"
         }
       }
     },
@@ -761,7 +761,7 @@
           "status": "ok",
           "linux": 27,
           "method": "anchored",
-          "func_va": "0x15d8120"
+          "func_va": "0x15d8a20"
         }
       }
     },
@@ -777,7 +777,7 @@
           "status": "ok",
           "linux": 28,
           "method": "anchored",
-          "func_va": "0x15d8260"
+          "func_va": "0x15d8b60"
         }
       }
     },
@@ -810,7 +810,7 @@
           "linux": 27,
           "method": "anchored",
           "found_linux": 26,
-          "func_va": "0x19a8ba0"
+          "func_va": "0x19a9560"
         }
       }
     },
@@ -860,7 +860,7 @@
           "linux": 384,
           "method": "anchored",
           "found_linux": 387,
-          "func_va": "0x1868c10"
+          "func_va": "0x18695d0"
         }
       }
     },
@@ -877,7 +877,7 @@
           "linux": 162,
           "method": "anchored",
           "found_linux": 164,
-          "func_va": "0xd6c280"
+          "func_va": "0xd6c3c0"
         }
       }
     },
@@ -941,7 +941,7 @@
           "status": "ok",
           "linux": 29,
           "method": "anchored",
-          "func_va": "0xa3fc30"
+          "func_va": "0xa3fd70"
         }
       }
     },

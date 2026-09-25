@@ -1,6 +1,6 @@
 # Signature fragility
 
-Last updated: September 24, 2026 at 21:55:01 GMT
+Last updated: September 25, 2026 at 21:55:01 GMT
 
 How often each signature has gone broken or ambiguous across the tracked history (each counted transition is one episode, not one run). Signatures with no episodes are summarised, not listed.
 
@@ -14,6 +14,7 @@ How often each signature has gone broken or ambiguous across the tracked history
 | CounterStrikeSharp | `CCSCustomHudLayout_SetHasClass` | linux | 2 | 0 | ok |
 | CounterStrikeSharp | `CCSCustomHudLayout_SetHasClassForPlayer` | windows | 2 | 0 | ok |
 | CounterStrikeSharp | `CCSGameRules_TerminateRound` | linux | 2 | 0 | ok |
+| CounterStrikeSharp | `CCSPointScript_OnCustomHudClicked` | linux | 2 | 0 | broken |
 | CounterStrikeSharp | `CBaseModelEntity_SetModel` | linux | 1 | 0 | ok |
 | CounterStrikeSharp | `CBasePlayerPawn_RemovePlayerItem` | linux | 1 | 0 | ok |
 | CounterStrikeSharp | `CBaseTrigger_EndTouch` | linux | 1 | 0 | ok |
@@ -27,11 +28,10 @@ How often each signature has gone broken or ambiguous across the tracked history
 | CounterStrikeSharp | `CCSPlayer_ItemServices_CanAcquire` | linux | 1 | 0 | ok |
 | CounterStrikeSharp | `CCSPlayer_ItemServices_CanAcquire` | windows | 1 | 0 | ok |
 | CounterStrikeSharp | `CCSPlayer_WeaponServices_CanUse` | linux | 1 | 0 | ok |
-| CounterStrikeSharp | `CCSPointScript_OnCustomHudClicked` | linux | 1 | 0 | ok |
 
 ## Per project
 
-- **CounterStrikeSharp** - 116 tracked sig/platform pairs, 34 breakage episode(s), 89 never broken, 47 snapshot(s) of history.
-- **RetakesAllocator** - 6 tracked sig/platform pairs, 2 breakage episode(s), 4 never broken, 29 snapshot(s) of history.
-- **MatchZy** - 16 tracked sig/platform pairs, 3 breakage episode(s), 13 never broken, 29 snapshot(s) of history.
-- **WeaponPaints** - 28 tracked sig/platform pairs, 3 breakage episode(s), 25 never broken, 26 snapshot(s) of history.
+- **CounterStrikeSharp** - 116 tracked sig/platform pairs, 35 breakage episode(s), 89 never broken, 48 snapshot(s) of history.
+- **RetakesAllocator** - 6 tracked sig/platform pairs, 2 breakage episode(s), 4 never broken, 30 snapshot(s) of history.
+- **MatchZy** - 16 tracked sig/platform pairs, 3 breakage episode(s), 13 never broken, 30 snapshot(s) of history.
+- **WeaponPaints** - 28 tracked sig/platform pairs, 3 breakage episode(s), 25 never broken, 27 snapshot(s) of history.
