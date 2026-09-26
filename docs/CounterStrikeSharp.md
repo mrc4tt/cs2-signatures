@@ -1,6 +1,6 @@
 # CounterStrikeSharp
 
-Last updated: September 25, 2026 at 21:55:01 GMT
+Last updated: September 26, 2026 at 17:35:01 GMT
 
 * Manifests: [3558451520161040527](https://steamdb.info/depot/2347771/history/?changeid=M:3558451520161040527), [7484770979211644490](https://steamdb.info/depot/2347773/history/?changeid=M:7484770979211644490)
 * Repository: https://github.com/mrc4tt/CounterStrikeSharp
@@ -112,11 +112,11 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
 <tr><td>✅</td><td>❔</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
-\x40\x55\x56\x41\x54\x48\x8B\xEC\x48\x83\xEC\x2A\x4C\x89\xAC\x24\x2A\x2A\x2A\x2A
+\x40\x55\x56\x41\x54\x48\x8B\xEC\x48\x83\xEC\x2A\x4C\x89\xAC\x24\x2A\x2A\x2A\x2A\x48\x8B\xF1\xE8\x2A\x2A\x2A\x2A\x80\xBE\x2A\x2A\x2A\x2A\x2A
 </pre>
 </td><td>
 <pre>
-40 55 56 41 54 48 8B EC 48 83 EC ? 4C 89 AC 24 ? ? ? ?
+40 55 56 41 54 48 8B EC 48 83 EC ? 4C 89 AC 24 ? ? ? ? 48 8B F1 E8 ? ? ? ? 80 BE ? ? ? ? ?
 </pre>
 </td></tr>
 <tr><td>✅</td><td>❔</td><td>Linux</td><td>server</td><td>1</td><td>
