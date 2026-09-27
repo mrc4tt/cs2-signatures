@@ -7,8 +7,8 @@
   "reference": null,
   "gamedata_source": "mrc4tt/CounterStrikeSharp configs/addons/counterstrikesharp/gamedata/gamedata.json",
   "tally": {
-    "ok": 69,
-    "broken": 1,
+    "ok": 70,
+    "broken": 0,
     "ambiguous": 0,
     "no_binary": 0,
     "missing_sig": 0,
@@ -110,7 +110,7 @@
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "40 55 56 41 54 48 8B EC 48 83 EC ? 4C 89 AC 24 ? ? ? ? 48 8B F1 E8 ? ? ? ? 80 BE ? ? ? ? ?"
+          "sig": "40 55 56 41 54 48 8B EC 48 83 EC ? 4C 89 AC 24 ? ? ? ?"
         }
       }
     },
@@ -199,7 +199,7 @@
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "55 48 8D 15 ? ? ? ? 48 89 E5 41 55 41 54 49 89 F4 53 48 89 FB 48 83 EC ? 48 8B 07 48 8B 80 ? ? ? ? 48 39 D0 0F 85 ? ? ? ? 80 BF ? ? ? ? ?"
+          "sig": "55 48 8D 15 ? ? ? ? 48 89 E5 41 55 41 54 49 89 F4 53 48 89 FB 48 83 EC ? 48 8B 07 48 8B 80 ? ? ? ? 48 39 D0 0F 85 ? ? ? ? 80 BF ? 00 00 00 ?"
         },
         "windows": {
           "status": "ok",
@@ -332,7 +332,7 @@
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "55 48 89 E5 41 57 49 89 FF 41 56 48 8D BD ? ? ? ? 41 55 4C 8D AD"
+          "sig": "55 48 89 E5 41 57 49 89 FF 41 56 48 8D BD ? ? ? ? 41 55 4C 8D AD ? ? ? ?"
         },
         "windows": {
           "status": "ok",
@@ -389,7 +389,7 @@
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "48 85 F6 74 0B E9 56 86 FF FF"
+          "sig": "48 85 F6 74 ? E9 ? ? ? ? 66 0F 1F 44 00 00 C3 CC CC CC CC CC CC CC CC CC CC CC CC CC CC CC 55 48 89 E5 41 54 41 89 F4"
         },
         "windows": {
           "status": "ok",
@@ -652,10 +652,10 @@
       "library": "server",
       "platforms": {
         "linux": {
-          "status": "broken",
-          "matches": 0,
+          "status": "ok",
+          "matches": 1,
           "library": "server",
-          "sig": "55 BE 01 00 00 ? 48 89 E5 41 57 41 56 41 55 41 54 49 89 FC 53 48 83 EC ? 4C 8D 35 38 CB D0 ?"
+          "sig": "55 48 89 E5 41 57 41 56 49 89 CE 41 55 49 89 F5 41 54 49 89 D4 53 48 89 FB 48 83 EC ? 0F B6 05 ? ? ? ? 84 C0 0F 84 ? ? ? ? 80 7B 30 00"
         },
         "windows": {
           "status": "ok",

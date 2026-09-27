@@ -1,6 +1,6 @@
 # CounterStrikeSharp
 
-Last updated: September 26, 2026 at 17:37:01 GMT
+Last updated: September 27, 2026 at 08:25:02 GMT
 
 * Manifests: [3558451520161040527](https://steamdb.info/depot/2347771/history/?changeid=M:3558451520161040527), [7484770979211644490](https://steamdb.info/depot/2347773/history/?changeid=M:7484770979211644490)
 * Repository: https://github.com/mrc4tt/CounterStrikeSharp
@@ -112,11 +112,11 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
 <tr><td>✅</td><td>❔</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
-\x40\x55\x56\x41\x54\x48\x8B\xEC\x48\x83\xEC\x2A\x4C\x89\xAC\x24\x2A\x2A\x2A\x2A\x48\x8B\xF1\xE8\x2A\x2A\x2A\x2A\x80\xBE\x2A\x2A\x2A\x2A\x2A
+\x40\x55\x56\x41\x54\x48\x8B\xEC\x48\x83\xEC\x2A\x4C\x89\xAC\x24\x2A\x2A\x2A\x2A
 </pre>
 </td><td>
 <pre>
-40 55 56 41 54 48 8B EC 48 83 EC ? 4C 89 AC 24 ? ? ? ? 48 8B F1 E8 ? ? ? ? 80 BE ? ? ? ? ?
+40 55 56 41 54 48 8B EC 48 83 EC ? 4C 89 AC 24 ? ? ? ?
 </pre>
 </td></tr>
 <tr><td>✅</td><td>❔</td><td>Linux</td><td>server</td><td>1</td><td>
@@ -241,11 +241,11 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 </td></tr>
 <tr><td>✅</td><td>❔</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
-\x55\x48\x8D\x15\x2A\x2A\x2A\x2A\x48\x89\xE5\x41\x55\x41\x54\x49\x89\xF4\x53\x48\x89\xFB\x48\x83\xEC\x2A\x48\x8B\x07\x48\x8B\x80\x2A\x2A\x2A\x2A\x48\x39\xD0\x0F\x85\x2A\x2A\x2A\x2A\x80\xBF\x2A\x2A\x2A\x2A\x2A
+\x55\x48\x8D\x15\x2A\x2A\x2A\x2A\x48\x89\xE5\x41\x55\x41\x54\x49\x89\xF4\x53\x48\x89\xFB\x48\x83\xEC\x2A\x48\x8B\x07\x48\x8B\x80\x2A\x2A\x2A\x2A\x48\x39\xD0\x0F\x85\x2A\x2A\x2A\x2A\x80\xBF\x2A\x00\x00\x00\x2A
 </pre>
 </td><td>
 <pre>
-55 48 8D 15 ? ? ? ? 48 89 E5 41 55 41 54 49 89 F4 53 48 89 FB 48 83 EC ? 48 8B 07 48 8B 80 ? ? ? ? 48 39 D0 0F 85 ? ? ? ? 80 BF ? ? ? ? ?
+55 48 8D 15 ? ? ? ? 48 89 E5 41 55 41 54 49 89 F4 53 48 89 FB 48 83 EC ? 48 8B 07 48 8B 80 ? ? ? ? 48 39 D0 0F 85 ? ? ? ? 80 BF ? 00 00 00 ?
 </pre>
 </td></tr>
 </table>
@@ -409,11 +409,11 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 </td></tr>
 <tr><td>✅</td><td>❔</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
-\x55\x48\x89\xE5\x41\x57\x49\x89\xFF\x41\x56\x48\x8D\xBD\x2A\x2A\x2A\x2A\x41\x55\x4C\x8D\xAD
+\x55\x48\x89\xE5\x41\x57\x49\x89\xFF\x41\x56\x48\x8D\xBD\x2A\x2A\x2A\x2A\x41\x55\x4C\x8D\xAD\x2A\x2A\x2A\x2A
 </pre>
 </td><td>
 <pre>
-55 48 89 E5 41 57 49 89 FF 41 56 48 8D BD ? ? ? ? 41 55 4C 8D AD
+55 48 89 E5 41 57 49 89 FF 41 56 48 8D BD ? ? ? ? 41 55 4C 8D AD ? ? ? ?
 </pre>
 </td></tr>
 </table>
@@ -481,11 +481,11 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 </td></tr>
 <tr><td>✅</td><td>❔</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
-\x48\x85\xF6\x74\x0B\xE9\x56\x86\xFF\xFF
+\x48\x85\xF6\x74\x2A\xE9\x2A\x2A\x2A\x2A\x66\x0F\x1F\x44\x00\x00\xC3\xCC\xCC\xCC\xCC\xCC\xCC\xCC\xCC\xCC\xCC\xCC\xCC\xCC\xCC\xCC\x55\x48\x89\xE5\x41\x54\x41\x89\xF4
 </pre>
 </td><td>
 <pre>
-48 85 F6 74 0B E9 56 86 FF FF
+48 85 F6 74 ? E9 ? ? ? ? 66 0F 1F 44 00 00 C3 CC CC CC CC CC CC CC CC CC CC CC CC CC CC CC 55 48 89 E5 41 54 41 89 F4
 </pre>
 </td></tr>
 </table>
@@ -815,13 +815,13 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 4C 89 4C 24 ? 55 53 41 54
 </pre>
 </td></tr>
-<tr><td>❌</td><td>❔</td><td>Linux</td><td>server</td><td>0</td><td>
+<tr><td>✅</td><td>❔</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
-\x55\xBE\x01\x00\x00\x2A\x48\x89\xE5\x41\x57\x41\x56\x41\x55\x41\x54\x49\x89\xFC\x53\x48\x83\xEC\x2A\x4C\x8D\x35\x38\xCB\xD0\x2A
+\x55\x48\x89\xE5\x41\x57\x41\x56\x49\x89\xCE\x41\x55\x49\x89\xF5\x41\x54\x49\x89\xD4\x53\x48\x89\xFB\x48\x83\xEC\x2A\x0F\xB6\x05\x2A\x2A\x2A\x2A\x84\xC0\x0F\x84\x2A\x2A\x2A\x2A\x80\x7B\x30\x00
 </pre>
 </td><td>
 <pre>
-55 BE 01 00 00 ? 48 89 E5 41 57 41 56 41 55 41 54 49 89 FC 53 48 83 EC ? 4C 8D 35 38 CB D0 ?
+55 48 89 E5 41 57 41 56 49 89 CE 41 55 49 89 F5 41 54 49 89 D4 53 48 89 FB 48 83 EC ? 0F B6 05 ? ? ? ? 84 C0 0F 84 ? ? ? ? 80 7B 30 00
 </pre>
 </td></tr>
 </table>
