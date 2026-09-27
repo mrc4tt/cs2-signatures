@@ -154,7 +154,7 @@ def resolve_gamever(repo, manifest_path="data/manifest.json", binaries=None):
     Returns the version string, or None when no lock describes this build - which
     is the normal state right after a game update, before the analysis catches up.
     """
-    sparse_clone(repo, ["binary_locks"])
+    sparse_clone(repo, ["binary_locks", "download.yaml"])
     lock_dir = os.path.join(CLONE_DIR, "binary_locks")
     manifest = None
     if os.path.isfile(manifest_path):
@@ -176,7 +176,41 @@ def resolve_gamever(repo, manifest_path="data/manifest.json", binaries=None):
             if all(locked.get(m, {}).get(p, {}).get("sha256") == digest
                    for (m, p), digest in binaries.items()):
                 return lock.get("game_version", fname[:-5])
+
+    # Fallback: download.yaml. The analysis repo stopped writing a lock per build
+    # after 14181, while every build still gets a download.yaml entry (its
+    # add_gamever.sh pins the manifests there), so without this the reference was
+    # silently skipped from 14182 on. Manifest ids only - no hashes to compare.
+    if manifest:
+        path = os.path.join(CLONE_DIR, "download.yaml")
+        if os.path.isfile(path):
+            with open(path) as fh:
+                for tag, have in reversed(download_manifests(fh.read())):
+                    if have == manifest:
+                        return tag
     return None
+
+
+def download_manifests(text):
+    """[(tag, {depot: manifest})] from download.yaml, in file order. Stdlib only.
+
+    Reads just the shape that file has: `- tag: "<ver>"` opens an entry and the
+    quoted `"<depot>": "<manifest>"` lines under `manifests:` belong to it.
+    """
+    out, tag, mans = [], None, None
+    for line in text.splitlines():
+        m = re.match(r'\s*-\s*tag:\s*"?([^"\s#]+)"?', line)
+        if m:
+            if tag is not None:
+                out.append((tag, mans))
+            tag, mans = m.group(1), {}
+            continue
+        m = re.match(r'\s+"(\d+)":\s*"(\d+)"', line)
+        if m and tag is not None:
+            mans[m.group(1)] = m.group(2)
+    if tag is not None:
+        out.append((tag, mans))
+    return out
 
 
 def git_versions(repo):

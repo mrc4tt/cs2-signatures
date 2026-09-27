@@ -199,7 +199,7 @@ class Snapshot(object):
     def anchor(self, name, platform, expected=None):
         """The byte anchor that pins this entry's offset, or None.
 
-        Returns {"sig", "expected", "disp_index", "kind", "via"} for lib_anchor
+        Returns {"sig", "expected", "inst_offset", "kind", "via"} for lib_anchor
         to re-derive the value from the binary we actually downloaded, instead of
         trusting an integer recorded against some other build.
 
@@ -224,14 +224,14 @@ class Snapshot(object):
         if rec["kind"] == "virtualFunction" and p.get("vfunc_sig"):
             return {"sig": p["vfunc_sig"], "kind": "vfunc", "via": "vfunc_sig",
                     "expected": int(str(p["vfunc_offset"]), 16),
-                    "disp_index": None}
+                    "inst_offset": None}
         if rec["kind"] == "structMember" and p.get("offset_sig"):
             return {"sig": p["offset_sig"], "kind": "member", "via": "offset_sig",
                     "expected": int(str(p["offset"]), 16),
-                    "disp_index": p.get("offset_sig_disp")}
+                    "inst_offset": p.get("offset_sig_disp")}
         if expected is not None and p.get("func_sig"):
             return {"sig": p["func_sig"], "kind": "member", "via": "func_sig",
-                    "expected": int(expected), "disp_index": None}
+                    "expected": int(expected), "inst_offset": None}
         return None
 
     def vtable_len(self, name, platform, vtable_class=None):

@@ -162,8 +162,17 @@ def validate_offsets(gamedata, recipe_symbols, image_linux):
         if "offsets" not in entry:
             continue
         rec = dict(recipe_symbols.get(name) or {})
-        if "linux" not in rec:
-            rec["linux"] = entry["offsets"].get("linux")
+        # The value under test is the one the gamedata ships, never the recipe's.
+        # A recipe records HOW to check an entry (kind, class, anchor sig); the
+        # integer it was written with is a snapshot of one build. Letting it win
+        # froze every check at that build: on 14185 Respawn/Teleport/CommitSuicide/
+        # FindPickerEntity were reported broken against their 14171 slots while
+        # the gamedata already shipped the correct ones.
+        shipped = entry["offsets"].get("linux")
+        if isinstance(shipped, int) and not isinstance(shipped, bool):
+            rec["linux"] = shipped
+        elif "linux" not in rec:
+            rec["linux"] = shipped
         if not rec.get("kind"):
             rec["kind"] = None
         lin = validate_offset_entry(image_linux, rec)

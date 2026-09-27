@@ -198,6 +198,31 @@ class TestValidateOffsets(unittest.TestCase):
         self.assertEqual(set(out[0]["platforms"]), {"linux"})
         self.assertEqual(out[0]["platforms"]["linux"]["status"], "ok")
 
+    def test_shipped_value_outranks_stale_recipe_value(self):
+        # Recipe written on an old build (slot 272); the gamedata already ships the
+        # new slot 276 and the anchor sits there. Must be ok, not "272 -> 276".
+        gd = {"R": {"offsets": {"linux": 276, "windows": 274}}}
+        img = FakeImage(vtables={"C": [0x1000]},
+                        slots={(0x1000, 272): 0xDEAD, (0x1000, 276): 0xABC},
+                        sig_hits={"S": [0xABC]}, exec_vas={0xABC, 0xDEAD})
+        recipe = {"R": {"kind": "vtable", "vtable_class": "C", "linux": 272,
+                        "target_sig": "S"}}
+        lin = validate_offsets(gd, recipe, img)[0]["platforms"]["linux"]
+        self.assertEqual(lin["status"], "ok")
+        self.assertEqual(lin["linux"], 276)
+
+    def test_shipped_value_that_moved_is_still_reported_stale(self):
+        # The fix must not hide a real break: gamedata ships 276, anchor is at 280.
+        gd = {"R": {"offsets": {"linux": 276}}}
+        img = FakeImage(vtables={"C": [0x1000]},
+                        slots={(0x1000, 276): 0xDEAD, (0x1000, 280): 0xABC},
+                        sig_hits={"S": [0xABC]}, exec_vas={0xABC, 0xDEAD})
+        recipe = {"R": {"kind": "vtable", "vtable_class": "C", "linux": 272,
+                        "target_sig": "S"}}
+        lin = validate_offsets(gd, recipe, img)[0]["platforms"]["linux"]
+        self.assertEqual(lin["status"], "stale")
+        self.assertEqual(lin["linux"], 276)
+
     def test_offset_entry_without_recipe_is_no_recipe(self):
         gd = {"B": {"offsets": {"linux": 5}}}
         out = validate_offsets(gd, {}, FakeImage())

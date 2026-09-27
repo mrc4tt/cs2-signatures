@@ -19,10 +19,15 @@ Windows, where the RTTI walk in lib_offset cannot go.
 
 Two conventions appear in the corpus, and both are handled:
 
-  offset_sig_disp: N   the displacement is already wildcarded; it is the Nth
-                       wildcard run in the pattern (135 of 215 structMembers)
-  field absent         the displacement is spelled out; locate it by value
-                       (316 of 344 vfunc_sigs, 74 more structMembers)
+  offset_sig_disp: N   the byte offset of the access INSTRUCTION inside the
+                       pattern (CS2_VibeSignatures decodes match + N). It is
+                       always 0 in practice, and it says nothing about whether
+                       the displacement is wildcarded: `48 89 53 68 41 83 C7 ??`
+                       (CTakeDamageInfo::HitGroupInfo, 0x68) spells it out and
+                       wildcards an unrelated byte after it. Reading that as
+                       "the Nth wildcard run" decoded the trailing ?? as 1.
+  field absent         locate the displacement by value anywhere in the pattern
+                       (316 of 344 vfunc_sigs)
 
 Locating by value can hit several widths at one position, because `C0 00 00 00`
 decodes to 0xC0 at width 1, 2 and 4. That is one displacement, not three, so the
@@ -78,31 +83,32 @@ def value_runs(tokens, expected):
     return hits
 
 
-def locate(sig, expected, disp_index=None):
+def locate(sig, expected, inst_offset=None):
     """Where the displacement sits in `sig`. Returns (tokens, pos, width) or None.
 
     `tokens` comes back so the caller works on the same tokenisation the position
-    refers to.
+    refers to. With `inst_offset` (offset_sig_disp) the search starts at the
+    instruction: a spelled-out value there wins, otherwise the first wildcard run
+    from there on is the displacement.
     """
     tokens = sig_tokens(sig)
     if not tokens:
         return None
 
-    if disp_index is not None:
-        runs = wildcard_runs(tokens)
-        if disp_index >= len(runs):
-            return None
-        pos, width = runs[disp_index]
-        return tokens, pos, width
-
-    hits = value_runs(tokens, expected)
-    if not hits:
+    first = inst_offset or 0
+    if inst_offset is not None and inst_offset >= len(tokens):
         return None
+    hits = [(p, w) for p, w in value_runs(tokens, expected) if p >= first]
     starts = set(p for p, _ in hits)
-    if len(starts) != 1:
-        return None  # two unrelated places encode the same value; do not guess
-    pos = starts.pop()
-    width = max(w for p, w in hits if p == pos)
+    if len(starts) == 1:
+        pos = starts.pop()
+        return tokens, pos, max(w for p, w in hits if p == pos)
+    if inst_offset is None:
+        return None  # not spelled out, or two unrelated places encode it
+    runs = [(p, w) for p, w in wildcard_runs(tokens) if p >= first]
+    if not runs:
+        return None
+    pos, width = runs[0]
     return tokens, pos, width
 
 
@@ -158,7 +164,7 @@ def _matches(sections, tokens):
     return False
 
 
-def derive(sections, sig, expected, disp_index=None):
+def derive(sections, sig, expected, inst_offset=None):
     """What this binary says the offset is. Returns (value, status).
 
     Order matters. When the anchor spells the displacement out, the cheapest and
@@ -170,16 +176,15 @@ def derive(sections, sig, expected, disp_index=None):
     replaced it. That path is weaker, because wildcarding four bytes can let the
     pattern catch unrelated call sites, so every match has to agree.
 
-    An anchor that already ships with the displacement wildcarded
-    (offset_sig_disp) has nothing to match exactly, and goes straight to read
-    back.
+    An anchor that already ships with the displacement wildcarded has nothing to
+    match exactly, and goes straight to read back.
     """
-    located = locate(sig, expected, disp_index)
+    located = locate(sig, expected, inst_offset)
     if not located:
         return None, "anchor_unlocatable"
     tokens, pos, width = located
 
-    if disp_index is None:
+    if not is_wild(tokens[pos]):
         if _matches(sections, tokens):
             return expected, "confirmed"
         value, status = read_displacement(sections, tokens, pos, width)
@@ -189,9 +194,9 @@ def derive(sections, sig, expected, disp_index=None):
     return (value, "read") if status == "ok" else (None, status)
 
 
-def derive_index(sections, sig, expected_offset, disp_index=None):
+def derive_index(sections, sig, expected_offset, inst_offset=None):
     """Vtable slot index for a vfunc anchor, as it stands in THIS binary."""
-    value, status = derive(sections, sig, expected_offset, disp_index)
+    value, status = derive(sections, sig, expected_offset, inst_offset)
     if value is None:
         return None, status
     # A vtable displacement is always a whole number of pointers, so anything
@@ -201,9 +206,9 @@ def derive_index(sections, sig, expected_offset, disp_index=None):
     return value // 8, status
 
 
-def derive_member(sections, sig, expected_offset, disp_index=None):
+def derive_member(sections, sig, expected_offset, inst_offset=None):
     """Struct member byte offset, as it stands in THIS binary."""
-    value, status = derive(sections, sig, expected_offset, disp_index)
+    value, status = derive(sections, sig, expected_offset, inst_offset)
     if value is None:
         return None, status
     if value > MAX_MEMBER:

@@ -225,7 +225,7 @@ def _apply_anchor(info, snap, name, plat, ours, bins):
     derive = (ANCHOR.derive_index if anchor["kind"] == "vfunc"
               else ANCHOR.derive_member)
     value, status = derive(sections, anchor["sig"], anchor["expected"],
-                           anchor["disp_index"])
+                           anchor["inst_offset"])
     if value is None:
         info["anchor"] = {"status": status}
         return

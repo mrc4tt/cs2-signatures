@@ -200,6 +200,10 @@ python3 scripts/gen_report.py \
   --history-dir reports/history --date "$DISP" --iso "$ISO"
 python3 scripts/gen_stats.py --out docs/stats.md --date "$DISP" \
   --json reports/fragility.json || true
+# Reference coverage gaps as a page, current after every run (replaces the
+# GitHub issue in the analysis repo, which flipped open/closed with every change).
+python3 scripts/reference_gaps.py --out reports/reference_gaps.json \
+  --page docs/ReferenceGaps.md --date "$DISP" || true
 
 if [ "${NO_PUSH:-0}" != "1" ]; then
   git add data/manifest.json data/projects.json data/*/gamedata.json \
@@ -227,12 +231,10 @@ if ls reports/*/proposals.json >/dev/null 2>&1; then
   python3 scripts/open_pr.py || true
 fi
 
-# 7.6 Optional: hand the reference gaps back to the analysis repo as one
-#     stable GitHub issue (needs a token with issue write). The tracker knows
-#     which tracked symbols CS2_VibeSignatures cannot answer for; that list is
-#     only actionable where the analysis happens. Self-gating: an unchanged gap
-#     set updates nothing, so this is quiet until coverage actually moves.
-if [ -n "${GITHUB_TOKEN:-}${GH_TOKEN:-}" ] && [ "${NO_GAP_ISSUE:-0}" != "1" ]; then
+# 7.6 Opt-in (GAP_ISSUE=1): also mirror the gap page into one GitHub issue in the
+#     analysis repo. Off by default - docs/ReferenceGaps.md (written above) is the
+#     place to look, and the issue flipped open/closed whenever the set moved.
+if [ "${GAP_ISSUE:-0}" = "1" ] && [ -n "${GITHUB_TOKEN:-}${GH_TOKEN:-}" ]; then
   python3 scripts/open_gap_issue.py || true
 fi
 

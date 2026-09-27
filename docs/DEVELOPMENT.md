@@ -380,22 +380,24 @@ cannot answer for, worst first:
 Only symbols in `data/projects.json` are reported; a snapshot covers thousands
 nobody here tracks, and a request list has to be short to be acted on.
 
-`open_gap_issue.py` keeps **one** issue in the analysis repo in sync with that
-list. The body carries a fingerprint of the gap SET, deliberately excluding the
-snapshot version: a new game build with the same holes is not news, and an
-unchanged fingerprint makes the run do nothing at all. When the last gap closes,
-the issue is updated once more and closed; if a gap comes back it reopens.
+The list is published as [`docs/ReferenceGaps.md`](ReferenceGaps.md), rewritten
+by `run_all.sh` on every run and committed with the other pages - so it is always
+current, with no issue to open, close or reopen.
+
+`open_gap_issue.py` can still mirror it into **one** issue in the analysis repo,
+but only when asked (`GAP_ISSUE=1`). It used to run by default and flipped the
+issue open and closed whenever the gap set moved - including every run where the
+reference snapshot could not be resolved, which made every offset look like a gap.
 
 ```bash
 python3 scripts/reference_gaps.py                  # summary
-python3 scripts/reference_gaps.py --markdown       # the issue body
+python3 scripts/reference_gaps.py --page docs/ReferenceGaps.md   # the page
 python3 scripts/open_gap_issue.py --dry-run        # print, call no API
-python3 scripts/open_gap_issue.py                  # create or update
+GAP_ISSUE=1 bash scripts/run_all.sh                # also sync the issue
 ```
 
 Target repo defaults to the one `fetch_symbols.py` reads (`SYMBOLS_ISSUE_REPO`
-overrides). Needs `GITHUB_TOKEN`/`GH_TOKEN` with issue write; without it,
-`run_all.sh` step 7.6 skips silently. `NO_GAP_ISSUE=1` turns it off.
+overrides). Needs `GITHUB_TOKEN`/`GH_TOKEN` with issue write.
 
 ### Issues and pull requests
 
@@ -462,8 +464,8 @@ scripts/open_issue.py     Forgejo auto-issue on broken sigs (across all projects
 scripts/post_gate.py      is the change worth announcing? (exit 10 = yes)
 scripts/post_discord.py   Discord webhook report (across all projects)
 scripts/gen_stats.py      signature fragility mined from git history -> docs/stats.md
-scripts/reference_gaps.py what the reference cannot answer for (tracked symbols only)
-scripts/open_gap_issue.py one stable issue in the analysis repo, kept in sync
+scripts/reference_gaps.py what the reference cannot answer for -> docs/ReferenceGaps.md
+scripts/open_gap_issue.py opt-in (GAP_ISSUE=1): mirror the gap page into one issue
 scripts/test.sh           syntax check + unit tests
 scripts/run_all.sh        full pipeline (validate + commit + push)
 scripts/cron.sh           cron entrypoint (loads .env, logs)

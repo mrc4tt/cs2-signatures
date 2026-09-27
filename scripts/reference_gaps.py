@@ -195,6 +195,23 @@ def render_markdown(report, repo_url=None):
     return "\n".join(L) + "\n"
 
 
+def write_page(report, path, date=None):
+    """docs page with the same content as the issue body, rewritten every run.
+
+    Replaces the GitHub issue as the place to look: a page in this repo is
+    current after every run, while the issue flipped open and closed whenever
+    the gap set moved - including every time the reference snapshot could not be
+    resolved, which made every offset look like a gap.
+    """
+    L = ["# Reference coverage gaps", ""]
+    if date:
+        L += ["Last updated: %s" % date, ""]
+    body = render_markdown(report, "https://git.miksen.me/mikkel/cs2-signatures")
+    os.makedirs(os.path.dirname(path) or ".", exist_ok=True)
+    with open(path, "w") as fh:
+        fh.write("\n".join(L) + "\n" + body)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--projects", default=P.REGISTRY)
@@ -203,6 +220,10 @@ def main():
                     help="write the machine-readable report to PATH")
     ap.add_argument("--markdown", action="store_true",
                     help="print the issue body instead of a summary")
+    ap.add_argument("--page", default=None,
+                    help="write the report as a docs page to PATH (run_all.sh "
+                         "does this every run, so the page is always current)")
+    ap.add_argument("--date", default=None, help="'Last updated' for --page")
     args = ap.parse_args()
 
     report = collect(args.projects, args.aliases)
@@ -212,6 +233,9 @@ def main():
         os.makedirs(os.path.dirname(args.out) or ".", exist_ok=True)
         with open(args.out, "w") as fh:
             json.dump(report, fh, indent=2)
+
+    if args.page:
+        write_page(report, args.page, args.date)
 
     if args.markdown:
         print(render_markdown(report), end="")

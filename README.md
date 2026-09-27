@@ -39,6 +39,8 @@ points at exactly one function in the binaries Valve ships right now.
 
 * **[What the results mean, and what to do about them](docs/USAGE.md)** - for
   server owners, plus how to track your own plugin.
+* [Reference coverage gaps](docs/ReferenceGaps.md) - tracked symbols the
+  analysis cannot vouch for yet, updated every run.
 * [Setup, pipeline internals, notifications](docs/DEVELOPMENT.md)
 * [Signature fragility over time](docs/stats.md)
 

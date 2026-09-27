@@ -40,16 +40,27 @@ class TestLocate(unittest.TestCase):
         _, pos, width = locate(MEMBER_BYTE, 0x68)
         self.assertEqual((pos, width), (3, 1))
 
-    def test_disp_index_selects_the_nth_wildcard_run(self):
-        _, pos, width = locate(MEMBER_WILD, 0x240, disp_index=0)
+    def test_inst_offset_takes_the_first_wildcard_run_after_it(self):
+        _, pos, width = locate(MEMBER_WILD, 0x240, inst_offset=0)
         self.assertEqual((pos, width), (3, 4))
+
+    def test_inst_offset_prefers_a_spelled_out_value(self):
+        # CTakeDamageInfo::HitGroupInfo on 14185: mov [rbx+0x68], rdx, then an
+        # unrelated wildcard. The displacement is the 68, not the trailing ??.
+        _, pos, width = locate("48 89 53 68 41 83 C7 ??", 0x68, inst_offset=0)
+        self.assertEqual((pos, width), (3, 1))
+
+    def test_inst_offset_skips_bytes_before_the_instruction(self):
+        # 0x68 also occurs before the instruction; only the one inside counts.
+        _, pos, _ = locate("68 90 48 8B 7F 68", 0x68, inst_offset=2)
+        self.assertEqual(pos, 5)
 
     def test_ambiguous_start_positions_are_refused(self):
         # 0x11 appears twice in unrelated places, so there is nothing to pick.
         self.assertIsNone(locate("11 90 11 00", 0x11))
 
-    def test_missing_disp_index(self):
-        self.assertIsNone(locate(MEMBER_WILD, 0x240, disp_index=5))
+    def test_inst_offset_past_the_pattern(self):
+        self.assertIsNone(locate(MEMBER_WILD, 0x240, inst_offset=20))
 
 
 class TestReadBack(unittest.TestCase):
@@ -83,7 +94,7 @@ class TestDerive(unittest.TestCase):
 
     def test_wildcarded_anchor_goes_straight_to_read_back(self):
         value, status = derive(sect("41 8B BE 40 02 00 00 E8 00 00 00 00"),
-                               MEMBER_WILD, 0x240, disp_index=0)
+                               MEMBER_WILD, 0x240, inst_offset=0)
         self.assertEqual((value, status), (0x240, "read"))
 
     def test_index_is_the_displacement_over_eight(self):
