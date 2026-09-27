@@ -19,6 +19,17 @@ if [ -f "$ROOT/.env" ]; then
   set +a
 fi
 
+# Self-update, then restart on the new copy of this script. Nothing else ever
+# pulls this checkout, so without it a pushed fix never reached the box, and the
+# next results push was rejected as non-fast-forward (silently: it is inside an
+# `if`). Rebase, not ff-only: this box's own track: commits may be unpushed.
+if [ "${SIG_TRACKER_UPDATED:-0}" != "1" ]; then
+  git -c user.name="${GIT_NAME:-sig-tracker}" -c user.email="${GIT_EMAIL:-sig-tracker@localhost}" \
+    pull -q --rebase --autostash origin main \
+    || echo "WARN: self-update failed - running the checked-out version"
+  SIG_TRACKER_UPDATED=1 exec bash "$0" "$@"
+fi
+
 echo "===== $(date -u '+%F %H:%M:%S GMT') ====="
 
 # Did the analysis box publish a new snapshot since the last tick? That is the

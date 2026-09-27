@@ -214,7 +214,11 @@ if [ "${NO_PUSH:-0}" != "1" ]; then
     git -c user.name="${GIT_NAME:-sig-tracker}" \
         -c user.email="${GIT_EMAIL:-sig-tracker@localhost}" \
         commit -q -m "track: $(tr -d '\n ' < data/manifest.json) ($ISO)"
-    git push -q origin HEAD && echo "pushed results"
+    # The remote may have moved since cron.sh pulled (a code push mid-run).
+    git -c user.name="${GIT_NAME:-sig-tracker}" \
+        -c user.email="${GIT_EMAIL:-sig-tracker@localhost}" \
+        pull -q --rebase origin main || echo "WARN: rebase onto origin failed"
+    git push -q origin HEAD && echo "pushed results" || echo "WARN: push failed"
   fi
 fi
 
