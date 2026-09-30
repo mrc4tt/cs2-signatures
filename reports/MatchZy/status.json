@@ -1,10 +1,10 @@
 {
   "project": "MatchZy",
   "manifest": {
-    "2347771": "8582617999835812788",
-    "2347773": "5185162378762752449"
+    "2347771": "4472721471834965775",
+    "2347773": "1263602768589796619"
   },
-  "reference": "14186",
+  "reference": null,
   "gamedata_source": "mikkel/matchzy gamedata/matchzy.json",
   "tally": {
     "ok": 12,
@@ -12,10 +12,10 @@
     "ambiguous": 0,
     "no_binary": 0,
     "missing_sig": 0,
-    "offset_ok": 2,
+    "offset_ok": 0,
     "offset_stale": 0,
     "offset_review": 0,
-    "offset_no_recipe": 0,
+    "offset_no_recipe": 1,
     "sig_outdated": 0
   },
   "results": [
@@ -28,21 +28,13 @@
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "55 48 89 E5 41 57 41 56 41 89 D6 41 55 41 54 41 89 F4 53 48 89 FB 48 81 EC ? ? ? ?",
-          "reference": {
-            "status": "match",
-            "relation": "equal"
-          }
+          "sig": "55 48 89 E5 41 57 41 56 41 89 D6 41 55 41 54 41 89 F4 53 48 89 FB 48 81 EC ? ? ? ?"
         },
         "windows": {
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "48 89 5C 24 ? 44 88 44 24 ? 55 56 57 41 54 41 55 41 56 41 57 48 8D 6C 24 ? 48 81 EC ? ? ? ? 48 8B 3D ? ? ? ?",
-          "reference": {
-            "status": "match",
-            "relation": "equal"
-          }
+          "sig": "48 89 5C 24 ? 44 88 44 24 ? 55 56 57 41 54 41 55 41 56 41 57 48 8D 6C 24 ? 48 81 EC ? ? ? ? 48 8B 3D ? ? ? ?"
         }
       }
     },
@@ -55,21 +47,13 @@
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "55 48 89 E5 41 57 49 89 FF 41 56 41 55 41 54 53 48 81 EC ? ? ? ? E8 ? ? ? ? 66 83 F8 ?",
-          "reference": {
-            "status": "match",
-            "relation": "equal"
-          }
+          "sig": "55 48 89 E5 41 57 49 89 FF 41 56 41 55 41 54 53 48 81 EC ? ? ? ? E8 ? ? ? ? 66 83 F8 ?"
         },
         "windows": {
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "48 8B C4 55 41 57 48 8D A8 ? ? ? ? 48 81 EC ? ? ? ? 80 B9 ? ? ? ? ?",
-          "reference": {
-            "status": "match",
-            "relation": "equal"
-          }
+          "sig": "48 8B C4 55 41 57 48 8D A8 ? ? ? ? 48 81 EC ? ? ? ? 80 B9 ? ? ? ? ?"
         }
       }
     },
@@ -82,21 +66,13 @@
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "55 4C 89 C1 48 89 E5 41 57 49 89 FF 41 56 45 89 CE",
-          "reference": {
-            "status": "match",
-            "relation": "equal"
-          }
+          "sig": "55 4C 89 C1 48 89 E5 41 57 49 89 FF 41 56 45 89 CE"
         },
         "windows": {
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "48 8B C4 48 89 58 ? 48 89 68 ? 48 89 70 ? 57 41 56 41 57 48 81 EC ? ? ? ? 48 8B B4 24 ? ? ? ?",
-          "reference": {
-            "status": "match",
-            "relation": "equal"
-          }
+          "sig": "48 8B C4 48 89 58 ? 48 89 68 ? 48 89 70 ? 57 41 56 41 57 48 81 EC ? ? ? ? 48 8B B4 24 ? ? ? ?"
         }
       }
     },
@@ -109,21 +85,13 @@
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "55 4C 89 C1 48 89 E5 41 57 49 89 FF 41 56 49 89 D6",
-          "reference": {
-            "status": "match",
-            "relation": "equal"
-          }
+          "sig": "55 4C 89 C1 48 89 E5 41 57 49 89 FF 41 56 49 89 D6"
         },
         "windows": {
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "48 89 5C 24 ? 48 89 6C 24 ? 48 89 74 24 ? 57 48 83 EC ? 48 8B AC 24 ? ? ? ? 49 8B F8",
-          "reference": {
-            "status": "match",
-            "relation": "equal"
-          }
+          "sig": "48 89 5C 24 ? 48 89 6C 24 ? 48 89 74 24 ? 57 48 83 EC ? 48 8B AC 24 ? ? ? ? 49 8B F8"
         }
       }
     },
@@ -136,21 +104,13 @@
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "55 48 8D 05 ? ? ? ? 48 89 E5 41 57 41 56 41 55 41 54 49 89 FC 53 48 81 EC ? ? ? ? 4C 8D 35 ? ? ? ?",
-          "reference": {
-            "status": "match",
-            "relation": "equal"
-          }
+          "sig": "55 48 8D 05 ? ? ? ? 48 89 E5 41 57 41 56 41 55 41 54 49 89 FC 53 48 81 EC ? ? ? ? 4C 8D 35 ? ? ? ?"
         },
         "windows": {
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "48 8B C4 48 89 58 ? 48 89 70 ? 48 89 78 ? 4C 89 40 ? 55 41 54 41 55 41 56 41 57 48 8D 6C 24 ?",
-          "reference": {
-            "status": "match",
-            "relation": "equal"
-          }
+          "sig": "48 8B C4 48 89 58 ? 48 89 70 ? 48 89 78 ? 4C 89 40 ? 55 41 54 41 55 41 56 41 57 48 8D 6C 24 ?"
         }
       }
     },
@@ -163,21 +123,13 @@
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "55 4C 89 C1 48 89 E5 41 57 45 89 CF 41 56 49 89 FE 41 55 49 89 D5 48 89 F2 48 89 FE 41 54 48 8D 3D ? ? ? ? 4D 89 C4 53 48 83 EC ? E8 ? ? ? ? 45 31 C0",
-          "reference": {
-            "status": "match",
-            "relation": "equal"
-          }
+          "sig": "55 4C 89 C1 48 89 E5 41 57 45 89 CF 41 56 49 89 FE 41 55 49 89 D5 48 89 F2 48 89 FE 41 54 48 8D 3D ? ? ? ? 4D 89 C4 53 48 83 EC ? E8 ? ? ? ? 45 31 C0"
         },
         "windows": {
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "48 8B C4 55 56 48 81 EC ? ? ? ? 48 89 58 ? 48 8B D9",
-          "reference": {
-            "status": "match",
-            "relation": "equal"
-          }
+          "sig": "48 8B C4 55 56 48 81 EC ? ? ? ? 48 89 58 ? 48 8B D9"
         }
       }
     },
@@ -190,41 +142,11 @@
       },
       "platforms": {
         "linux": {
-          "status": "ok",
+          "status": "no_recipe",
           "linux": 31,
           "kind": null,
           "resolve": "gdt",
-          "note": null,
-          "reference": {
-            "value": 31,
-            "source": "vfunc_index",
-            "status": "match"
-          },
-          "method": "reference",
-          "anchor": {
-            "status": "anchor_unlocatable"
-          },
-          "bounds": {
-            "vtable_len": 48,
-            "in_range": true
-          }
-        },
-        "windows": {
-          "status": "ok",
-          "windows": 30,
-          "method": "reference",
-          "reference": {
-            "value": 30,
-            "source": "vfunc_index",
-            "status": "match"
-          },
-          "anchor": {
-            "status": "anchor_unlocatable"
-          },
-          "bounds": {
-            "vtable_len": 45,
-            "in_range": true
-          }
+          "note": null
         }
       }
     }
