@@ -4,7 +4,7 @@
     "2347771": "4472721471834965775",
     "2347773": "1263602768589796619"
   },
-  "reference": null,
+  "reference": "14187",
   "gamedata_source": "mrc4tt/CounterStrikeSharp configs/addons/counterstrikesharp/gamedata/gamedata.json",
   "tally": {
     "ok": 70,
@@ -12,10 +12,10 @@
     "ambiguous": 0,
     "no_binary": 0,
     "missing_sig": 0,
-    "offset_ok": 12,
+    "offset_ok": 34,
     "offset_stale": 0,
-    "offset_review": 3,
-    "offset_no_recipe": 2,
+    "offset_review": 0,
+    "offset_no_recipe": 0,
     "sig_outdated": 0
   },
   "results": [
@@ -28,13 +28,21 @@
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "55 48 89 E5 41 57 4D 89 CF 41 56 4D 89 C6 41 55 49 89 CD 41 54 49 89 D4 53 48 8D 5D ?"
+          "sig": "55 48 89 E5 41 57 4D 89 CF 41 56 4D 89 C6 41 55 49 89 CD 41 54 49 89 D4 53 48 8D 5D ?",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
         },
         "windows": {
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "48 89 5C 24 ? 48 89 6C 24 ? 48 89 74 24 ? 57 48 83 EC ? 8B E9 49 8B D9"
+          "sig": "48 89 5C 24 ? 48 89 6C 24 ? 48 89 74 24 ? 57 48 83 EC ? 8B E9 49 8B D9",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
         }
       }
     },
@@ -47,13 +55,21 @@
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "55 48 89 E5 41 57 41 56 41 55 41 54 53 48 83 EC ? 4C 89 45 ? 4C 89 4D ?"
+          "sig": "55 48 89 E5 41 57 41 56 41 55 41 54 53 48 83 EC ? 4C 89 45 ? 4C 89 4D ?",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
         },
         "windows": {
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "48 85 C9 0F 84 ? ? ? ? 48 89 5C 24 ? 48 89 74 24 ?"
+          "sig": "48 85 C9 0F 84 ? ? ? ? 48 89 5C 24 ? 48 89 74 24 ?",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
         }
       }
     },
@@ -66,13 +82,21 @@
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "55 48 89 E5 41 54 49 89 FC 89 F7"
+          "sig": "55 48 89 E5 41 54 49 89 FC 89 F7",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
         },
         "windows": {
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "40 53 57 48 81 EC ? ? ? ? 48 8B D9 8B FA"
+          "sig": "40 53 57 48 81 EC ? ? ? ? 48 8B D9 8B FA",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
         }
       }
     },
@@ -85,13 +109,21 @@
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "55 48 8D 87 ? ? ? ? 48 89 E5 41 57 41 56 41 89 CE"
+          "sig": "55 48 8D 87 ? ? ? ? 48 89 E5 41 57 41 56 41 89 CE",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
         },
         "windows": {
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "44 88 4C 24 ? 53"
+          "sig": "44 88 4C 24 ? 53",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
         }
       }
     },
@@ -104,13 +136,21 @@
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "55 48 89 E5 41 56 41 55 41 54 53 48 89 FB 48 83 EC ? E8 ? ? ? ? 80 BB ? 17 00 00 ?"
+          "sig": "55 48 89 E5 41 56 41 55 41 54 53 48 89 FB 48 83 EC ? E8 ? ? ? ? 80 BB ? 17 00 00 ?",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
         },
         "windows": {
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "40 55 56 41 54 48 8B EC 48 83 EC ? 4C 89 AC 24 ? ? ? ?"
+          "sig": "40 55 56 41 54 48 8B EC 48 83 EC ? 4C 89 AC 24 ? ? ? ?",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
         }
       }
     },
@@ -123,13 +163,21 @@
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "55 48 89 E5 53 48 89 FB 48 83 EC ? 48 8B 07 FF 50 ? 48 8B 03"
+          "sig": "55 48 89 E5 53 48 89 FB 48 83 EC ? 48 8B 07 FF 50 ? 48 8B 03",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
         },
         "windows": {
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "40 53 48 83 EC ? 48 8B 01 48 8B D9 FF 50 ? 48 8B 03"
+          "sig": "40 53 48 83 EC ? 48 8B 01 48 8B D9 FF 50 ? 48 8B 03",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
         }
       }
     },
@@ -142,13 +190,21 @@
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "55 48 89 E5 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 48 89 BD ? ? ? ? 89 95 ? ? ? ? 48 89 8D ? ? ? ? 44 89 85 ? ? ? ?"
+          "sig": "55 48 89 E5 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 48 89 BD ? ? ? ? 89 95 ? ? ? ? 48 89 8D ? ? ? ? 44 89 85 ? ? ? ?",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
         },
         "windows": {
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "48 89 5C 24 ? 48 89 74 24 ? 48 89 7C 24 ? 44 89 44 24 ?"
+          "sig": "48 89 5C 24 ? 48 89 74 24 ? 48 89 7C 24 ? 44 89 44 24 ?",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
         }
       }
     },
@@ -161,13 +217,21 @@
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "48 89 FE 48 85 FF"
+          "sig": "48 89 FE 48 85 FF",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
         },
         "windows": {
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "48 85 C9 74 ? 48 8B D1 48 8B 0D ? ? ? ?"
+          "sig": "48 85 C9 74 ? 48 8B D1 48 8B 0D ? ? ? ?",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
         }
       }
     },
@@ -180,13 +244,21 @@
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "55 48 89 E5 53 48 89 FB 48 83 EC ? 48 8D 05 ? ? ? ? 48 8B 38 48 8B 07 FF 50 ? 48 89 DF 48 8B 5D ? C9 48 89 C6 E9 ? ? ? ? ? ? ? ? 55"
+          "sig": "55 48 89 E5 53 48 89 FB 48 83 EC ? 48 8D 05 ? ? ? ? 48 8B 38 48 8B 07 FF 50 ? 48 89 DF 48 8B 5D ? C9 48 89 C6 E9 ? ? ? ? ? ? ? ? 55",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
         },
         "windows": {
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "40 53 48 83 EC ? 48 8B D9 4C 8B C2 48 8B 0D ? ? ? ? 48 8D 54 24 ? 48 8B 01 FF 50 ? 48 8B 54 24 ? 48 8B CB E8 ? ? ? ? 48 83 C4 ? 5B C3 CC CC CC CC CC CC CC CC CC CC CC CC CC CC CC 48 89 5C 24 ?"
+          "sig": "40 53 48 83 EC ? 48 8B D9 4C 8B C2 48 8B 0D ? ? ? ? 48 8D 54 24 ? 48 8B 01 FF 50 ? 48 8B 54 24 ? 48 8B CB E8 ? ? ? ? 48 83 C4 ? 5B C3 CC CC CC CC CC CC CC CC CC CC CC CC CC CC CC 48 89 5C 24 ?",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
         }
       }
     },
@@ -199,13 +271,21 @@
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "55 48 8D 15 ? ? ? ? 48 89 E5 41 55 41 54 49 89 F4 53 48 89 FB 48 83 EC ? 48 8B 07 48 8B 80 ? ? ? ? 48 39 D0 0F 85 ? ? ? ? 80 BF ? ? ? ? ?"
+          "sig": "55 48 8D 15 ? ? ? ? 48 89 E5 41 55 41 54 49 89 F4 53 48 89 FB 48 83 EC ? 48 8B 07 48 8B 80 ? ? ? ? 48 39 D0 0F 85 ? ? ? ? 80 BF ? ? ? ? ?",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
         },
         "windows": {
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "48 89 5C 24 ? 48 89 6C 24 ? 56 57 41 54 41 56 41 57 48 83 EC ? 48 8B 01 48 8B FA"
+          "sig": "48 89 5C 24 ? 48 89 6C 24 ? 56 57 41 54 41 56 41 57 48 83 EC ? 48 8B 01 48 8B FA",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
         }
       }
     },
@@ -218,13 +298,21 @@
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "55 48 89 E5 41 57 41 56 49 89 F6 41 55 41 54 49 89 CC 53 48 89 FB 48 83 EC ? 4C 8B 6F ?"
+          "sig": "55 48 89 E5 41 57 41 56 49 89 F6 41 55 41 54 49 89 CC 53 48 89 FB 48 83 EC ? 4C 8B 6F ?",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
         },
         "windows": {
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "44 89 44 24 ? 48 89 54 24 ? 48 89 4C 24 ? 55 53 56 57 41 54 41 55 41 56 41 57 48 8B EC"
+          "sig": "44 89 44 24 ? 48 89 54 24 ? 48 89 4C 24 ? 55 53 56 57 41 54 41 55 41 56 41 57 48 8B EC",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
         }
       }
     },
@@ -237,13 +325,21 @@
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "48 85 F6 0F 84 ? ? ? ? 55 48 89 E5 41 57 41 56 41 55 49 89 F5 41 54 53 48 81 EC ? ? ? ? 80 3E ? 75 ? 31 C0 48 81 C4 ? ? ? ? 5B 41 5C 41 5D 41 5E 41 5F 5D C3 0F 1F 80 ? ? ? ? 4C 8D A5 ? ? ? ? 89 FB"
+          "sig": "48 85 F6 0F 84 ? ? ? ? 55 48 89 E5 41 57 41 56 41 55 49 89 F5 41 54 53 48 81 EC ? ? ? ? 80 3E ? 75 ? 31 C0 48 81 C4 ? ? ? ? 5B 41 5C 41 5D 41 5E 41 5F 5D C3 0F 1F 80 ? ? ? ? 4C 8D A5 ? ? ? ? 89 FB",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
         },
         "windows": {
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "48 89 5C 24 ? 57 48 83 EC ? 33 FF 4C 8B CA 8B D9"
+          "sig": "48 89 5C 24 ? 57 48 83 EC ? 33 FF 4C 8B CA 8B D9",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
         }
       }
     },
@@ -256,13 +352,21 @@
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "55 48 89 E5 41 57 41 56 49 89 FE 41 55 41 54 53 48 81 EC ? ? ? ? 48 8D 05 ? ? ? ? F3 0F 11 85 ? ? ? ? 89 B5 ? ? ? ?"
+          "sig": "55 48 89 E5 41 57 41 56 49 89 FE 41 55 41 54 53 48 81 EC ? ? ? ? 48 8D 05 ? ? ? ? F3 0F 11 85 ? ? ? ? 89 B5 ? ? ? ?",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
         },
         "windows": {
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "48 8B C4 4C 89 48 ? 48 89 48 ? 55 41 54"
+          "sig": "48 8B C4 4C 89 48 ? 48 89 48 ? 55 41 54",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
         }
       }
     },
@@ -275,13 +379,21 @@
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "48 8D 05 ? ? ? ? 55 48 89 FA"
+          "sig": "48 8D 05 ? ? ? ? 55 48 89 FA",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
         },
         "windows": {
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "48 83 EC ? C6 44 24 ? ? 4C 8B C1"
+          "sig": "48 83 EC ? C6 44 24 ? ? 4C 8B C1",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
         }
       }
     },
@@ -294,13 +406,21 @@
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "48 85 FF 74 ? 55 48 89 E5 41 55 41 54 49 89 FC"
+          "sig": "48 85 FF 74 ? 55 48 89 E5 41 55 41 54 49 89 FC",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
         },
         "windows": {
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "48 89 5C 24 ? 57 48 83 EC ? 48 8B DA 48 8B F9 48 85 C9 0F 84 ? ? ? ? 48 85 D2"
+          "sig": "48 89 5C 24 ? 57 48 83 EC ? 48 8B DA 48 8B F9 48 85 C9 0F 84 ? ? ? ? 48 85 D2",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
         }
       }
     },
@@ -313,13 +433,21 @@
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "48 B8 00 00 00 00 FF FF FF FF 55 48 89 E5 41 57 41 56 41 55 41 54 53 48 89 FB 48 81 EC ? ? ? ? 48 89 07 48 8D 05 ? ? ? ? 48 C7 47 08 00 00 00 00"
+          "sig": "48 B8 00 00 00 00 FF FF FF FF 55 48 89 E5 41 57 41 56 41 55 41 54 53 48 89 FB 48 81 EC ? ? ? ? 48 89 07 48 8D 05 ? ? ? ? 48 C7 47 08 00 00 00 00",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
         },
         "windows": {
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "40 53 48 83 EC ? 4C 89 4C 24 ? 48 8B D9 45 8B C8"
+          "sig": "40 53 48 83 EC ? 4C 89 4C 24 ? 48 8B D9 45 8B C8",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
         }
       }
     },
@@ -332,13 +460,21 @@
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "55 48 89 E5 41 57 49 89 FF 41 56 48 8D BD ? ? ? ? 41 55 4C 8D AD ? ? ? ?"
+          "sig": "55 48 89 E5 41 57 49 89 FF 41 56 48 8D BD ? ? ? ? 41 55 4C 8D AD ? ? ? ?",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
         },
         "windows": {
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "48 89 5C 24 ? 48 89 6C 24 ? 56 57 41 56 48 81 EC ? ? ? ? 4D 8B F0 48 8B F1"
+          "sig": "48 89 5C 24 ? 48 89 6C 24 ? 56 57 41 56 48 81 EC ? ? ? ? 4D 8B F0 48 8B F1",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
         }
       }
     },
@@ -351,13 +487,21 @@
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "55 48 89 E5 41 55 49 89 CD 41 54 49 89 FC 53 BB ? ? ? ?"
+          "sig": "55 48 89 E5 41 55 49 89 CD 41 54 49 89 FC 53 BB ? ? ? ?",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
         },
         "windows": {
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "48 89 5C 24 ? 48 89 74 24 ? 57 48 83 EC ? 49 8B F1 48 8B F9"
+          "sig": "48 89 5C 24 ? 48 89 74 24 ? 57 48 83 EC ? 49 8B F1 48 8B F9",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
         }
       }
     },
@@ -370,13 +514,21 @@
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "48 8B 05 ? ? ? ? 48 85 C0 74 ? 83 FF ? 77 ? 48 63 FF 48 C1 E7 ? 48 8D 44 38 ?"
+          "sig": "48 8B 05 ? ? ? ? 48 85 C0 74 ? 83 FF ? 77 ? 48 63 FF 48 C1 E7 ? 48 8D 44 38 ?",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
         },
         "windows": {
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "48 8B 15 ? ? ? ? 48 85 D2 74 ? 85 C9"
+          "sig": "48 8B 15 ? ? ? ? 48 85 D2 74 ? 85 C9",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
         }
       }
     },
@@ -389,13 +541,21 @@
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "48 85 F6 74 ? E9 ? ? ? ? 66 0F 1F 44 00 00 C3 CC CC CC CC CC CC CC CC CC CC CC CC CC CC CC 55 48 89 E5 41 54 41 89 F4"
+          "sig": "48 85 F6 74 ? E9 ? ? ? ? 66 0F 1F 44 00 00 C3 CC CC CC CC CC CC CC CC CC CC CC CC CC CC CC 55 48 89 E5 41 54 41 89 F4",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
         },
         "windows": {
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "48 85 D2 0F 84 ? ? ? ? 48 89 5C 24 ? 57 48 83 EC ? 48 8B DA 48 8B F9 E8 ? ? ? ?"
+          "sig": "48 85 D2 0F 84 ? ? ? ? 48 89 5C 24 ? 57 48 83 EC ? 48 8B DA 48 8B F9 E8 ? ? ? ?",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
         }
       }
     },
@@ -408,13 +568,21 @@
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "55 66 0F EF C0 48 89 E5 41 57 41 56 41 55 49 89 FD 31 FF"
+          "sig": "55 66 0F EF C0 48 89 E5 41 57 41 56 41 55 49 89 FD 31 FF",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
         },
         "windows": {
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "40 55 53 56 57 41 54 48 8D 6C 24 ? 48 81 EC ? ? ? ? 4D 8B E0"
+          "sig": "40 55 53 56 57 41 54 48 8D 6C 24 ? 48 81 EC ? ? ? ? 4D 8B E0",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
         }
       }
     },
@@ -427,13 +595,21 @@
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "55 48 89 E5 41 54 49 89 F4 53 48 8B 07 48 89 FB FF 90 ? ? ? ? 84 C0 75 ? 5B 41 5C 5D C3 90 4C 89 E6 48 89 DF 5B 41 5C 5D E9 ? ? ? ? ? 49 8B 40 ?"
+          "sig": "55 48 89 E5 41 54 49 89 F4 53 48 8B 07 48 89 FB FF 90 ? ? ? ? 84 C0 75 ? 5B 41 5C 5D C3 90 4C 89 E6 48 89 DF 5B 41 5C 5D E9 ? ? ? ? ? 49 8B 40 ?",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
         },
         "windows": {
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "40 57 41 56 48 83 EC ? 48 8B 01"
+          "sig": "40 57 41 56 48 83 EC ? 48 8B 01",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
         }
       }
     },
@@ -446,13 +622,21 @@
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "48 85 F6 74 ? E9 ? ? ? ? 66 0F 1F 44 00 ? C3 ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? 55 48 89 E5 41 55"
+          "sig": "48 85 F6 74 ? E9 ? ? ? ? 66 0F 1F 44 00 ? C3 ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? 55 48 89 E5 41 55",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
         },
         "windows": {
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "48 85 D2 0F 84 ? ? ? ? 53 55 48 83 EC ? 4C 8B 42 10"
+          "sig": "48 85 D2 0F 84 ? ? ? ? 53 55 48 83 EC ? 4C 8B 42 10",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
         }
       }
     },
@@ -465,13 +649,21 @@
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "55 48 89 E5 41 57 49 89 FF 41 56 41 55 41 54 49 89 D4 53 48 89 F3 48 81 EC ? ? ? ? 48 8D 05 ? ? ? ?"
+          "sig": "55 48 89 E5 41 57 49 89 FF 41 56 41 55 41 54 49 89 D4 53 48 89 F3 48 81 EC ? ? ? ? 48 8D 05 ? ? ? ?",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
         },
         "windows": {
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "48 8B C4 48 89 58 ? 48 89 70 ? 48 89 48 ? 55"
+          "sig": "48 8B C4 48 89 58 ? 48 89 70 ? 48 89 48 ? 55",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
         }
       }
     },
@@ -484,13 +676,21 @@
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "4C 8B 35 ? ? ? ? 4D 85 F6 75 ? E9 ? ? ? ?"
+          "sig": "4C 8B 35 ? ? ? ? 4D 85 F6 75 ? E9 ? ? ? ?",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
         },
         "windows": {
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "48 8B 1D ? ? ? ? 48 85 DB 0F 84 ? ? ? ? BD ? ? ? ?"
+          "sig": "48 8B 1D ? ? ? ? 48 85 DB 0F 84 ? ? ? ? BD ? ? ? ?",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
         }
       }
     },
@@ -503,13 +703,21 @@
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "55 49 89 CA 48 89 E5 41 57 41 89 D7"
+          "sig": "55 49 89 CA 48 89 E5 41 57 41 89 D7",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
         },
         "windows": {
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "48 8B C4 4C 89 48 ? 48 89 50 ? 48 89 48 ? 55 48 8D A8 ? ? ? ?"
+          "sig": "48 8B C4 4C 89 48 ? 48 89 50 ? 48 89 48 ? 55 48 8D A8 ? ? ? ?",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
         }
       }
     },
@@ -522,13 +730,21 @@
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "48 8B 07 48 85 C0 74 ? 48 8B 50"
+          "sig": "48 8B 07 48 85 C0 74 ? 48 8B 50",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
         },
         "windows": {
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "4C 8B C2 48 8B D1 48 8B 09"
+          "sig": "4C 8B C2 48 8B D1 48 8B 09",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
         }
       }
     },
@@ -541,13 +757,21 @@
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "55 48 89 E5 41 57 49 89 F7 41 56 41 55 41 89 D5"
+          "sig": "55 48 89 E5 41 57 49 89 F7 41 56 41 55 41 89 D5",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
         },
         "windows": {
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "44 89 4C 24 ? 44 88 44 24 ?"
+          "sig": "44 89 4C 24 ? 44 88 44 24 ?",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
         }
       }
     },
@@ -560,13 +784,21 @@
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "48 8D 05 ? ? ? ? 48 83 38 ? 0F 95 C0 C3"
+          "sig": "48 8D 05 ? ? ? ? 48 83 38 ? 0F 95 C0 C3",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
         },
         "windows": {
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "48 83 3D ? ? ? ? ? 0F 95 C0 C3 ? ? ? ? C2 ? ?"
+          "sig": "48 83 3D ? ? ? ? ? 0F 95 C0 C3 ? ? ? ? C2 ? ?",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
         }
       }
     },
@@ -579,13 +811,21 @@
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "55 48 89 E5 41 55 49 89 CD 41 54 49 89 D4 31 D2"
+          "sig": "55 48 89 E5 41 55 49 89 CD 41 54 49 89 D4 31 D2",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
         },
         "windows": {
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "48 89 5C 24 ? 48 89 6C 24 ? 48 89 74 24 ? 57 48 83 EC ? 49 8B F0 33 ED 4C 8D 44 24 ? 66 89 6C 24 ? 49 8B F9"
+          "sig": "48 89 5C 24 ? 48 89 6C 24 ? 48 89 74 24 ? 57 48 83 EC ? 49 8B F0 33 ED 4C 8D 44 24 ? 66 89 6C 24 ? 49 8B F9",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
         }
       }
     },
@@ -598,13 +838,21 @@
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "55 48 89 E5 41 56 41 55 41 54 53 89 F3 48 83 EC ? 85 F6 78 ? 49 89 FD 39 B7 ? ? ? ? 7F ? 48 83 C4 ? 5B 41 5C 41 5D 41 5E 5D C3 0F 1F 00 48 89 D6 31 D2 49 89 CE 66 89 55 ? 48 8D 55 ? 4D 89 C4"
+          "sig": "55 48 89 E5 41 56 41 55 41 54 53 89 F3 48 83 EC ? 85 F6 78 ? 49 89 FD 39 B7 ? ? ? ? 7F ? 48 83 C4 ? 5B 41 5C 41 5D 41 5E 5D C3 0F 1F 00 48 89 D6 31 D2 49 89 CE 66 89 55 ? 48 8D 55 ? 4D 89 C4",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
         },
         "windows": {
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "85 D2 0F 88 ? ? ? ? 53 55 56 48 83 EC ? 48 63 DA 49 8B E9 49 8B C0 48 8B F1 48 89 7C 24 ? 3B 99 ? ? ? ? 0F 8D ? ? ? ? 4C 89 74 24 ? 4C 8D 44 24 ? 45 33 F6 48 8B D0 66 44 89 74 24 ? E8 ? ? ? ? 84 C0 74 ? 4C 8D 44 24 ? 66 44 89 74 24 ? 48 8B D5 48 8B CE E8 ? ? ? ? 84 C0 74 ? 0F B6 86 ? ? ? ? A8 02 74 ? A8 01 75 ? 4C 8D 44 24 ? 48 C7 44 24 ? FF FF FF FF B2 03 48 8D 8E ? ? ? ? E8 ? ? ? ? 4C 8B 4C 24 ?"
+          "sig": "85 D2 0F 88 ? ? ? ? 53 55 56 48 83 EC ? 48 63 DA 49 8B E9 49 8B C0 48 8B F1 48 89 7C 24 ? 3B 99 ? ? ? ? 0F 8D ? ? ? ? 4C 89 74 24 ? 4C 8D 44 24 ? 45 33 F6 48 8B D0 66 44 89 74 24 ? E8 ? ? ? ? 84 C0 74 ? 4C 8D 44 24 ? 66 44 89 74 24 ? 48 8B D5 48 8B CE E8 ? ? ? ? 84 C0 74 ? 0F B6 86 ? ? ? ? A8 02 74 ? A8 01 75 ? 4C 8D 44 24 ? 48 C7 44 24 ? FF FF FF FF B2 03 48 8D 8E ? ? ? ? E8 ? ? ? ? 4C 8B 4C 24 ?",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
         }
       }
     },
@@ -617,13 +865,21 @@
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "55 48 89 E5 41 57 49 89 D7 41 56 48 8D 55 ?"
+          "sig": "55 48 89 E5 41 57 49 89 D7 41 56 48 8D 55 ?",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
         },
         "windows": {
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "48 89 5C 24 ? 48 89 6C 24 ? 48 89 74 24 ? 57 48 83 EC ? 49 8B F0 33 ED 4C 8D 44 24 ? 66 89 6C 24 ? 41 8B F9"
+          "sig": "48 89 5C 24 ? 48 89 6C 24 ? 48 89 74 24 ? 57 48 83 EC ? 49 8B F0 33 ED 4C 8D 44 24 ? 66 89 6C 24 ? 41 8B F9",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
         }
       }
     },
@@ -636,13 +892,21 @@
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "55 48 89 E5 41 56 41 55 41 54 53 89 F3 48 83 EC ? 85 F6 78 ? 49 89 FD 39 B7 ? ? ? ? 7F ? 48 83 C4 ? 5B 41 5C 41 5D 41 5E 5D C3 0F 1F 00 48 89 D6 31 D2 49 89 CE 66 89 55 ? 48 8D 55 ? 45 89 C4"
+          "sig": "55 48 89 E5 41 56 41 55 41 54 53 89 F3 48 83 EC ? 85 F6 78 ? 49 89 FD 39 B7 ? ? ? ? 7F ? 48 83 C4 ? 5B 41 5C 41 5D 41 5E 5D C3 0F 1F 00 48 89 D6 31 D2 49 89 CE 66 89 55 ? 48 8D 55 ? 45 89 C4",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
         },
         "windows": {
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "85 D2 0F 88 ? ? ? ? 53 55 56 48 83 EC ? 48 63 DA 49 8B E9 49 8B C0 48 8B F1 48 89 7C 24 ? 3B 99 ? ? ? ? 0F 8D ? ? ? ? 4C 89 74 24 ? 4C 8D 44 24 ? 45 33 F6 48 8B D0 66 44 89 74 24 ? E8 ? ? ? ? 84 C0 74 ? 4C 8D 44 24 ? 66 44 89 74 24 ? 48 8B D5 48 8B CE E8 ? ? ? ? 84 C0 74 ? 0F B6 86 ? ? ? ? A8 02 74 ? A8 01 75 ? 4C 8D 44 24 ? 48 C7 44 24 ? FF FF FF FF B2 03 48 8D 8E ? ? ? ? E8 ? ? ? ? 44 8B 4C 24 ?"
+          "sig": "85 D2 0F 88 ? ? ? ? 53 55 56 48 83 EC ? 48 63 DA 49 8B E9 49 8B C0 48 8B F1 48 89 7C 24 ? 3B 99 ? ? ? ? 0F 8D ? ? ? ? 4C 89 74 24 ? 4C 8D 44 24 ? 45 33 F6 48 8B D0 66 44 89 74 24 ? E8 ? ? ? ? 84 C0 74 ? 4C 8D 44 24 ? 66 44 89 74 24 ? 48 8B D5 48 8B CE E8 ? ? ? ? 84 C0 74 ? 0F B6 86 ? ? ? ? A8 02 74 ? A8 01 75 ? 4C 8D 44 24 ? 48 C7 44 24 ? FF FF FF FF B2 03 48 8D 8E ? ? ? ? E8 ? ? ? ? 44 8B 4C 24 ?",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
         }
       }
     },
@@ -655,13 +919,21 @@
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "55 48 89 E5 41 57 41 56 49 89 CE 41 55 49 89 F5 41 54 49 89 D4 53 48 89 FB 48 83 EC ? 0F B6 05 ? ? ? ? 84 C0 0F 84 ? ? ? ? 80 7B 30 00"
+          "sig": "55 48 89 E5 41 57 41 56 49 89 CE 41 55 49 89 F5 41 54 49 89 D4 53 48 89 FB 48 83 EC ? 0F B6 05 ? ? ? ? 84 C0 0F 84 ? ? ? ? 80 7B 30 00",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
         },
         "windows": {
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "4C 89 4C 24 ? 55 53 41 54"
+          "sig": "4C 89 4C 24 ? 55 53 41 54",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
         }
       }
     },
@@ -674,13 +946,21 @@
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "55 48 89 E5 41 55 41 54 53 48 63 DE 48 83 EC ?"
+          "sig": "55 48 89 E5 41 55 41 54 53 48 63 DE 48 83 EC ?",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
         },
         "windows": {
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "85 D2 78 ? 48 89 5C 24 ? 56"
+          "sig": "85 D2 78 ? 48 89 5C 24 ? 56",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
         }
       }
     },
@@ -693,10 +973,39 @@
       },
       "platforms": {
         "linux": {
-          "status": "review",
+          "status": "ok",
           "linux": 104,
-          "method": "anchored",
-          "reason": "target-sig-none"
+          "method": "reference",
+          "reason": "target-sig-none",
+          "reference": {
+            "value": 104,
+            "source": "vfunc_index",
+            "status": "match"
+          },
+          "anchor": {
+            "status": "anchor_unlocatable"
+          },
+          "bounds": {
+            "vtable_len": 279,
+            "in_range": true
+          }
+        },
+        "windows": {
+          "status": "ok",
+          "windows": 105,
+          "method": "reference",
+          "reference": {
+            "value": 105,
+            "source": "vfunc_index",
+            "status": "match"
+          },
+          "anchor": {
+            "status": "anchor_unlocatable"
+          },
+          "bounds": {
+            "vtable_len": 277,
+            "in_range": true
+          }
         }
       }
     },
@@ -712,7 +1021,36 @@
           "status": "ok",
           "linux": 276,
           "method": "anchored",
-          "func_va": "0x153f4d0"
+          "func_va": "0x153f4d0",
+          "reference": {
+            "value": 276,
+            "source": "vfunc_index",
+            "status": "match"
+          },
+          "anchor": {
+            "status": "anchor_unlocatable"
+          },
+          "bounds": {
+            "vtable_len": 279,
+            "in_range": true
+          }
+        },
+        "windows": {
+          "status": "ok",
+          "windows": 274,
+          "method": "reference",
+          "reference": {
+            "value": 274,
+            "source": "vfunc_index",
+            "status": "match"
+          },
+          "anchor": {
+            "status": "anchor_unlocatable"
+          },
+          "bounds": {
+            "vtable_len": 277,
+            "in_range": true
+          }
         }
       }
     },
@@ -728,7 +1066,36 @@
           "status": "ok",
           "linux": 31,
           "method": "anchored",
-          "func_va": "0x15e3a20"
+          "func_va": "0x15e3a20",
+          "reference": {
+            "value": 31,
+            "source": "vfunc_index",
+            "status": "match"
+          },
+          "anchor": {
+            "status": "anchor_unlocatable"
+          },
+          "bounds": {
+            "vtable_len": 48,
+            "in_range": true
+          }
+        },
+        "windows": {
+          "status": "ok",
+          "windows": 30,
+          "method": "reference",
+          "reference": {
+            "value": 30,
+            "source": "vfunc_index",
+            "status": "match"
+          },
+          "anchor": {
+            "status": "anchor_unlocatable"
+          },
+          "bounds": {
+            "vtable_len": 45,
+            "in_range": true
+          }
         }
       }
     },
@@ -744,7 +1111,36 @@
           "status": "ok",
           "linux": 24,
           "method": "structural",
-          "vtable_len": 29
+          "vtable_len": 29,
+          "reference": {
+            "value": 24,
+            "source": "vfunc_index",
+            "status": "match"
+          },
+          "anchor": {
+            "status": "anchor_unlocatable"
+          },
+          "bounds": {
+            "vtable_len": 29,
+            "in_range": true
+          }
+        },
+        "windows": {
+          "status": "ok",
+          "windows": 23,
+          "method": "reference",
+          "reference": {
+            "value": 23,
+            "source": "vfunc_index",
+            "status": "match"
+          },
+          "anchor": {
+            "status": "anchor_unlocatable"
+          },
+          "bounds": {
+            "vtable_len": 28,
+            "in_range": true
+          }
         }
       }
     },
@@ -759,8 +1155,43 @@
         "linux": {
           "status": "ok",
           "linux": 27,
-          "method": "anchored",
-          "func_va": "0x15d44e0"
+          "method": "anchor",
+          "func_va": "0x15d44e0",
+          "reference": {
+            "value": 27,
+            "source": "vfunc_index",
+            "status": "match"
+          },
+          "anchor": {
+            "status": "confirmed",
+            "value": 27,
+            "kind": "vfunc",
+            "via": "vfunc_sig"
+          },
+          "bounds": {
+            "vtable_len": 29,
+            "in_range": true
+          }
+        },
+        "windows": {
+          "status": "ok",
+          "windows": 26,
+          "method": "anchor",
+          "reference": {
+            "value": 26,
+            "source": "vfunc_index",
+            "status": "match"
+          },
+          "anchor": {
+            "status": "confirmed",
+            "value": 26,
+            "kind": "vfunc",
+            "via": "vfunc_sig"
+          },
+          "bounds": {
+            "vtable_len": 28,
+            "in_range": true
+          }
         }
       }
     },
@@ -776,7 +1207,36 @@
           "status": "ok",
           "linux": 28,
           "method": "anchored",
-          "func_va": "0x15d4620"
+          "func_va": "0x15d4620",
+          "reference": {
+            "value": 28,
+            "source": "vfunc_index",
+            "status": "match"
+          },
+          "anchor": {
+            "status": "anchor_unlocatable"
+          },
+          "bounds": {
+            "vtable_len": 29,
+            "in_range": true
+          }
+        },
+        "windows": {
+          "status": "ok",
+          "windows": 27,
+          "method": "reference",
+          "reference": {
+            "value": 27,
+            "source": "vfunc_index",
+            "status": "match"
+          },
+          "anchor": {
+            "status": "anchor_unlocatable"
+          },
+          "bounds": {
+            "vtable_len": 28,
+            "in_range": true
+          }
         }
       }
     },
@@ -791,8 +1251,43 @@
         "linux": {
           "status": "ok",
           "linux": 14,
-          "method": "structural",
-          "vtable_len": 32
+          "method": "anchor",
+          "vtable_len": 32,
+          "reference": {
+            "value": 14,
+            "source": "vfunc_index",
+            "status": "match"
+          },
+          "anchor": {
+            "status": "confirmed",
+            "value": 14,
+            "kind": "vfunc",
+            "via": "vfunc_sig"
+          },
+          "bounds": {
+            "vtable_len": 32,
+            "in_range": true
+          }
+        },
+        "windows": {
+          "status": "ok",
+          "windows": 12,
+          "method": "anchor",
+          "reference": {
+            "value": 12,
+            "source": "vfunc_index",
+            "status": "match"
+          },
+          "anchor": {
+            "status": "confirmed",
+            "value": 12,
+            "kind": "vfunc",
+            "via": "vfunc_sig"
+          },
+          "bounds": {
+            "vtable_len": 31,
+            "in_range": true
+          }
         }
       }
     },
@@ -808,7 +1303,36 @@
           "status": "ok",
           "linux": 26,
           "method": "anchored",
-          "func_va": "0x19a5020"
+          "func_va": "0x19a5020",
+          "reference": {
+            "value": 26,
+            "source": "vfunc_index",
+            "status": "match"
+          },
+          "anchor": {
+            "status": "anchor_unlocatable"
+          },
+          "bounds": {
+            "vtable_len": 131,
+            "in_range": true
+          }
+        },
+        "windows": {
+          "status": "ok",
+          "windows": 25,
+          "method": "reference",
+          "reference": {
+            "value": 25,
+            "source": "vfunc_index",
+            "status": "match"
+          },
+          "anchor": {
+            "status": "anchor_unlocatable"
+          },
+          "bounds": {
+            "vtable_len": 130,
+            "in_range": true
+          }
         }
       }
     },
@@ -821,11 +1345,39 @@
       },
       "platforms": {
         "linux": {
-          "status": "no_recipe",
+          "status": "ok",
           "linux": 104,
           "kind": "structoffset",
           "resolve": "gdt",
-          "reason": "offset_sig-missing"
+          "reason": "offset_sig-missing",
+          "reference": {
+            "value": 104,
+            "source": "struct_member",
+            "status": "match"
+          },
+          "method": "anchor",
+          "anchor": {
+            "status": "confirmed",
+            "value": 104,
+            "kind": "member",
+            "via": "offset_sig"
+          }
+        },
+        "windows": {
+          "status": "ok",
+          "windows": 104,
+          "method": "anchor",
+          "reference": {
+            "value": 104,
+            "source": "struct_member",
+            "status": "match"
+          },
+          "anchor": {
+            "status": "confirmed",
+            "value": 104,
+            "kind": "member",
+            "via": "offset_sig"
+          }
         }
       }
     },
@@ -840,8 +1392,43 @@
         "linux": {
           "status": "ok",
           "linux": 170,
-          "method": "structural",
-          "vtable_len": 239
+          "method": "anchor",
+          "vtable_len": 239,
+          "reference": {
+            "value": 170,
+            "source": "vfunc_index",
+            "status": "match"
+          },
+          "anchor": {
+            "status": "confirmed",
+            "value": 170,
+            "kind": "vfunc",
+            "via": "vfunc_sig"
+          },
+          "bounds": {
+            "vtable_len": 239,
+            "in_range": true
+          }
+        },
+        "windows": {
+          "status": "ok",
+          "windows": 171,
+          "method": "anchor",
+          "reference": {
+            "value": 171,
+            "source": "vfunc_index",
+            "status": "match"
+          },
+          "anchor": {
+            "status": "confirmed",
+            "value": 171,
+            "kind": "vfunc",
+            "via": "vfunc_sig"
+          },
+          "bounds": {
+            "vtable_len": 238,
+            "in_range": true
+          }
         }
       }
     },
@@ -856,8 +1443,43 @@
         "linux": {
           "status": "ok",
           "linux": 387,
-          "method": "anchored",
-          "func_va": "0x1865090"
+          "method": "anchor",
+          "func_va": "0x1865090",
+          "reference": {
+            "value": 387,
+            "source": "vfunc_index",
+            "status": "match"
+          },
+          "anchor": {
+            "status": "confirmed",
+            "value": 387,
+            "kind": "vfunc",
+            "via": "vfunc_sig"
+          },
+          "bounds": {
+            "vtable_len": 401,
+            "in_range": true
+          }
+        },
+        "windows": {
+          "status": "ok",
+          "windows": 387,
+          "method": "anchor",
+          "reference": {
+            "value": 387,
+            "source": "vfunc_index",
+            "status": "match"
+          },
+          "anchor": {
+            "status": "confirmed",
+            "value": 387,
+            "kind": "vfunc",
+            "via": "vfunc_sig"
+          },
+          "bounds": {
+            "vtable_len": 400,
+            "in_range": true
+          }
         }
       }
     },
@@ -872,8 +1494,43 @@
         "linux": {
           "status": "ok",
           "linux": 164,
-          "method": "anchored",
-          "func_va": "0xd6ae00"
+          "method": "anchor",
+          "func_va": "0xd6ae00",
+          "reference": {
+            "value": 164,
+            "source": "vfunc_index",
+            "status": "match"
+          },
+          "anchor": {
+            "status": "confirmed",
+            "value": 164,
+            "kind": "vfunc",
+            "via": "vfunc_sig"
+          },
+          "bounds": {
+            "vtable_len": 239,
+            "in_range": true
+          }
+        },
+        "windows": {
+          "status": "ok",
+          "windows": 165,
+          "method": "anchor",
+          "reference": {
+            "value": 165,
+            "source": "vfunc_index",
+            "status": "match"
+          },
+          "anchor": {
+            "status": "confirmed",
+            "value": 165,
+            "kind": "vfunc",
+            "via": "vfunc_sig"
+          },
+          "bounds": {
+            "vtable_len": 238,
+            "in_range": true
+          }
         }
       }
     },
@@ -886,11 +1543,39 @@
       },
       "platforms": {
         "linux": {
-          "status": "no_recipe",
+          "status": "ok",
           "linux": 80,
           "kind": "structoffset",
           "resolve": "gdt",
-          "reason": "offset_sig-missing"
+          "reason": "offset_sig-missing",
+          "reference": {
+            "value": 80,
+            "source": "struct_member",
+            "status": "match"
+          },
+          "method": "anchor",
+          "anchor": {
+            "status": "read",
+            "value": 80,
+            "kind": "member",
+            "via": "offset_sig"
+          }
+        },
+        "windows": {
+          "status": "ok",
+          "windows": 88,
+          "method": "anchor",
+          "reference": {
+            "value": 88,
+            "source": "struct_member",
+            "status": "match"
+          },
+          "anchor": {
+            "status": "read",
+            "value": 88,
+            "kind": "member",
+            "via": "offset_sig"
+          }
         }
       }
     },
@@ -903,10 +1588,32 @@
       },
       "platforms": {
         "linux": {
-          "status": "review",
+          "status": "ok",
           "reason": "no-vtable",
           "linux": 0,
-          "vtable_class": "IEntityResourceManifest"
+          "vtable_class": "IEntityResourceManifest",
+          "reference": {
+            "value": 0,
+            "source": "vfunc_index",
+            "status": "match"
+          },
+          "method": "reference",
+          "anchor": {
+            "status": "anchor_unlocatable"
+          }
+        },
+        "windows": {
+          "status": "ok",
+          "windows": 2,
+          "method": "reference",
+          "reference": {
+            "value": 2,
+            "source": "vfunc_index",
+            "status": "match"
+          },
+          "anchor": {
+            "status": "anchor_unlocatable"
+          }
         }
       }
     },
@@ -921,7 +1628,34 @@
         "linux": {
           "status": "ok",
           "linux": 576,
-          "method": "structoffset"
+          "method": "anchor",
+          "reference": {
+            "value": 576,
+            "source": "struct_member",
+            "status": "match"
+          },
+          "anchor": {
+            "status": "read",
+            "value": 576,
+            "kind": "member",
+            "via": "offset_sig"
+          }
+        },
+        "windows": {
+          "status": "ok",
+          "windows": 576,
+          "method": "anchor",
+          "reference": {
+            "value": 576,
+            "source": "struct_member",
+            "status": "match"
+          },
+          "anchor": {
+            "status": "confirmed",
+            "value": 576,
+            "kind": "member",
+            "via": "offset_sig"
+          }
         }
       }
     },
@@ -937,7 +1671,30 @@
           "status": "ok",
           "linux": 29,
           "method": "anchored",
-          "func_va": "0xa3e7b0"
+          "func_va": "0xa3e7b0",
+          "reference": {
+            "value": 29,
+            "source": "vfunc_index",
+            "status": "match"
+          },
+          "bounds": {
+            "vtable_len": 49,
+            "in_range": true
+          }
+        },
+        "windows": {
+          "status": "ok",
+          "windows": 28,
+          "method": "reference",
+          "reference": {
+            "value": 28,
+            "source": "vfunc_index",
+            "status": "match"
+          },
+          "bounds": {
+            "vtable_len": 48,
+            "in_range": true
+          }
         }
       }
     },
@@ -950,10 +1707,39 @@
       },
       "platforms": {
         "linux": {
-          "status": "review",
+          "status": "ok",
           "linux": 13,
-          "method": "anchored",
-          "reason": "target-sig-none"
+          "method": "reference",
+          "reason": "target-sig-none",
+          "reference": {
+            "value": 13,
+            "source": "vfunc_index",
+            "status": "match"
+          },
+          "anchor": {
+            "status": "anchor_unlocatable"
+          },
+          "bounds": {
+            "vtable_len": 21,
+            "in_range": true
+          }
+        },
+        "windows": {
+          "status": "ok",
+          "windows": 12,
+          "method": "reference",
+          "reference": {
+            "value": 12,
+            "source": "vfunc_index",
+            "status": "match"
+          },
+          "anchor": {
+            "status": "anchor_unlocatable"
+          },
+          "bounds": {
+            "vtable_len": 18,
+            "in_range": true
+          }
         }
       }
     }
