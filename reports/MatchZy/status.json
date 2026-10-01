@@ -16,7 +16,7 @@
     "offset_stale": 0,
     "offset_review": 0,
     "offset_no_recipe": 0,
-    "sig_outdated": 0
+    "sig_outdated": 1
   },
   "results": [
     {
@@ -28,10 +28,11 @@
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "55 48 89 E5 41 57 41 56 41 89 D6 41 55 41 54 41 89 F4 53 48 89 FB 48 81 EC ? ? ? ?",
+          "sig": "55 48 89 E5 41 57 41 56 41 55 41 54 41 89 F4 53 48 89 FB 48 81 EC ? ? ? ? 48 8D 05 ? ? ? ? 89 95 ? ? ? ? 4C 8B 28 4C 89 EF E8 ? ? ? ? 84 C0 0F 85 ? ? ? ? 48 89 DF 45 31 FF E8",
           "reference": {
-            "status": "match",
-            "relation": "equal"
+            "status": "outdated",
+            "sig": "55 48 89 E5 41 57 41 56 41 89 D6 41 55 41 54 41 89 F4 53 48 89 FB 48 81 EC ?? ?? ?? ??",
+            "relation": "conflict"
           }
         },
         "windows": {
