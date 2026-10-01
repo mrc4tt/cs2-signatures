@@ -1,6 +1,6 @@
 # cs2-retakes-allocator
 
-Last updated: October 1, 2026 at 01:30:02 GMT
+Last updated: October 1, 2026 at 08:55:01 GMT
 
 * Manifests: [4472721471834965775](https://steamdb.info/depot/2347771/history/?changeid=M:4472721471834965775), [1263602768589796619](https://steamdb.info/depot/2347773/history/?changeid=M:1263602768589796619)
 * Repository: https://github.com/mrc4tt/cs2-retakes-allocator
@@ -18,11 +18,11 @@ Reference column: ✅ matches the 14188 analysis &middot; 🕓 the analysis uses
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
 <tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
-\x48\x83\xEC\x2A\x48\xC7\x44\x24\x2A\x2A\x2A\x2A\x2A\x45\x33\xC9\x45\x33\xC0\xC6\x44\x24\x2A\x2A\xE8\x2A\x2A\x2A\x2A\x48\x83\xC4\x2A\xC3\xCC\xCC\xCC\xCC\xCC\xCC\xCC\xCC\xCC\xCC\xCC\xCC\xCC\xCC\x48\x83\xEC
+\x48\x83\xEC\x2A\x48\xC7\x44\x24\x2A\x2A\x2A\x2A\x2A\x45\x33\xC9\x45\x33\xC0\xC6\x44\x24\x2A\x2A\xE8\x2A\x2A\x2A\x2A\x48\x83\xC4\x2A\xC3\xCC\xCC\xCC\xCC\xCC\xCC\xCC\xCC\xCC\xCC\xCC\xCC\xCC\xCC\x48\x83\xEC\x2A
 </pre>
 </td><td>
 <pre>
-48 83 EC ? 48 C7 44 24 ? ? ? ? ? 45 33 C9 45 33 C0 C6 44 24 ? ? E8 ? ? ? ? 48 83 C4 ? C3 CC CC CC CC CC CC CC CC CC CC CC CC CC CC 48 83 EC
+48 83 EC ? 48 C7 44 24 ? ? ? ? ? 45 33 C9 45 33 C0 C6 44 24 ? ? E8 ? ? ? ? 48 83 C4 ? C3 CC CC CC CC CC CC CC CC CC CC CC CC CC CC 48 83 EC ?
 </pre>
 </td></tr>
 <tr><td>✅</td><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
@@ -42,11 +42,11 @@ Reference column: ✅ matches the 14188 analysis &middot; 🕓 the analysis uses
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
 <tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
-\x48\x89\x5C\x24\x08\x57\x48\x83\xEC\x20\x33\xFF\x4C\x8B\xCA\x8B\xD9\x8B\xC7\x48\x85\xD2\x74\x22\x38\x02\x74\x1E\x48\xC7\xC2\xFF\xFF\xFF\xFF\x48\xFF\xC2\x41\x38\x04\x11\x75\xF7\x41\xB8\x26\x59\x41\x31\x49\x8B\xC9\xE8\x2A\x2A\x2A\x2A\x89\x44\x24\x38\x85\xC0
+\x48\x89\x5C\x24\x2A\x57\x48\x83\xEC\x2A\x33\xFF\x4C\x8B\xCA\x8B\xD9
 </pre>
 </td><td>
 <pre>
-48 89 5C 24 08 57 48 83 EC 20 33 FF 4C 8B CA 8B D9 8B C7 48 85 D2 74 22 38 02 74 1E 48 C7 C2 FF FF FF FF 48 FF C2 41 38 04 11 75 F7 41 B8 26 59 41 31 49 8B C9 E8 ? ? ? ? 89 44 24 38 85 C0
+48 89 5C 24 ? 57 48 83 EC ? 33 FF 4C 8B CA 8B D9
 </pre>
 </td></tr>
 <tr><td>✅</td><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
