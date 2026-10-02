@@ -12,7 +12,7 @@
     "ambiguous": 0,
     "no_binary": 0,
     "missing_sig": 0,
-    "offset_ok": 34,
+    "offset_ok": 32,
     "offset_stale": 0,
     "offset_review": 0,
     "offset_no_recipe": 0,
@@ -1049,51 +1049,6 @@
           },
           "bounds": {
             "vtable_len": 277,
-            "in_range": true
-          }
-        }
-      }
-    },
-    {
-      "name": "CCSPlayer_WeaponServices_SelectItem",
-      "kind": "offset",
-      "offsets": {
-        "windows": 30,
-        "linux": 31
-      },
-      "platforms": {
-        "linux": {
-          "status": "ok",
-          "linux": 31,
-          "method": "anchored",
-          "func_va": "0x15e3a20",
-          "reference": {
-            "value": 31,
-            "source": "vfunc_index",
-            "status": "match"
-          },
-          "anchor": {
-            "status": "anchor_unlocatable"
-          },
-          "bounds": {
-            "vtable_len": 48,
-            "in_range": true
-          }
-        },
-        "windows": {
-          "status": "ok",
-          "windows": 30,
-          "method": "reference",
-          "reference": {
-            "value": 30,
-            "source": "vfunc_index",
-            "status": "match"
-          },
-          "anchor": {
-            "status": "anchor_unlocatable"
-          },
-          "bounds": {
-            "vtable_len": 45,
             "in_range": true
           }
         }

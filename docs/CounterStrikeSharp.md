@@ -1,6 +1,6 @@
 # CounterStrikeSharp
 
-Last updated: October 1, 2026 at 20:55:01 GMT
+Last updated: October 2, 2026 at 07:35:02 GMT
 
 * Manifests: [4472721471834965775](https://steamdb.info/depot/2347771/history/?changeid=M:4472721471834965775), [1263602768589796619](https://steamdb.info/depot/2347773/history/?changeid=M:1263602768589796619)
 * Repository: https://github.com/mrc4tt/CounterStrikeSharp
@@ -860,7 +860,6 @@ A vtable slot index or a struct-member byte offset. There are no bytes to scan, 
 <tr><th>Entry</th><th>Windows</th><th>Linux</th><th>Checked by</th></tr>
 <tr><td>CCSPlayerController_ChangeTeam</td><td>✅ 105</td><td>✅ 104</td><td>reference</td></tr>
 <tr><td>CCSPlayerController_Respawn</td><td>✅ 274</td><td>✅ 276</td><td>reference / anchored</td></tr>
-<tr><td>CCSPlayer_WeaponServices_SelectItem</td><td>✅ 30</td><td>✅ 31</td><td>reference / anchored</td></tr>
 <tr><td>CCSPlayer_ItemServices_GiveNamedItem</td><td>✅ 23</td><td>✅ 24</td><td>reference / structural</td></tr>
 <tr><td>CCSPlayer_ItemServices_DropActivePlayerWeapon</td><td>✅ 26</td><td>✅ 27</td><td>anchor</td></tr>
 <tr><td>CCSPlayer_ItemServices_RemoveWeapons</td><td>✅ 27</td><td>✅ 28</td><td>reference / anchored</td></tr>
