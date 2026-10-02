@@ -1,5 +1,5 @@
 {
-  "date": "October 2, 2026 at 07:35:02 GMT",
+  "date": "October 2, 2026 at 22:25:01 GMT",
   "version": "1.41.8.8",
   "tally": {
     "ok": 106,
@@ -7,15 +7,15 @@
     "ambiguous": 0,
     "no_binary": 0,
     "missing_sig": 0,
-    "offset_ok": 42,
+    "offset_ok": 15,
     "offset_stale": 0,
-    "offset_review": 0,
-    "offset_no_recipe": 0,
-    "sig_outdated": 1
+    "offset_review": 3,
+    "offset_no_recipe": 3,
+    "sig_outdated": 0
   },
   "manifest": {
-    "2347771": "4472721471834965775",
-    "2347773": "1263602768589796619"
+    "2347771": "846540275648835184",
+    "2347773": "4659679433267198996"
   },
   "projects": {
     "CounterStrikeSharp": {
@@ -24,10 +24,10 @@
       "ambiguous": 0,
       "no_binary": 0,
       "missing_sig": 0,
-      "offset_ok": 32,
+      "offset_ok": 11,
       "offset_stale": 0,
-      "offset_review": 0,
-      "offset_no_recipe": 0,
+      "offset_review": 3,
+      "offset_no_recipe": 2,
       "sig_outdated": 0
     },
     "RetakesAllocator": {
@@ -48,11 +48,11 @@
       "ambiguous": 0,
       "no_binary": 0,
       "missing_sig": 0,
-      "offset_ok": 2,
+      "offset_ok": 0,
       "offset_stale": 0,
       "offset_review": 0,
-      "offset_no_recipe": 0,
-      "sig_outdated": 1
+      "offset_no_recipe": 1,
+      "sig_outdated": 0
     },
     "WeaponPaints": {
       "ok": 18,
@@ -60,7 +60,7 @@
       "ambiguous": 0,
       "no_binary": 0,
       "missing_sig": 0,
-      "offset_ok": 8,
+      "offset_ok": 4,
       "offset_stale": 0,
       "offset_review": 0,
       "offset_no_recipe": 0,

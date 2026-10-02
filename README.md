@@ -14,7 +14,7 @@ points at exactly one function in the binaries Valve ships right now.
 
 > ✅ **All 106 signature checks pass** on CS2 `1.41.8.8`.
 >
-> Last checked October 2, 2026 at 07:35:02 GMT &middot; 4 project(s) tracked
+> Last checked October 2, 2026 at 22:25:01 GMT &middot; 4 project(s) tracked
 
 <table>
 <tr><th>Project</th><th>Health</th><th>Signatures</th><th>Linux</th><th>Windows</th><th></th></tr>
@@ -24,23 +24,12 @@ points at exactly one function in the binaries Valve ships right now.
 <tr><td><a href="https://git.miksen.me/mikkel/weaponpaints">WeaponPaints</a></td><td><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fgit.miksen.me%2Fmikkel%2Fcs2-signatures%2Fraw%2Fbranch%2Fmain%2Freports%2FWeaponPaints%2Fbadge.json" alt="WeaponPaints"></td><td align="center">18/18</td><td align="center">✅</td><td align="center">✅</td><td><a href="https://git.miksen.me/mikkel/cs2-signatures/src/branch/main/docs/WeaponPaints.md">details &rarr;</a></td></tr>
 </table>
 
-<details><summary>&#9660; MatchZy outdated vs reference (1)</summary>
-
-These still resolve in the current binaries. The upstream analysis has moved to a different pattern.
-
-<table>
-<tr><th>Subroutine</th><th>Platform</th></tr>
-<tr><td>CBasePlayerController_HandleCommand_JoinTeam</td><td>linux</td></tr>
-</table>
-</details>
-
 <details><summary>&#9660; Run details</summary>
 
 * **CS2 build:** `1.41.8.8`
 * **Signatures:** 106 ok, 0 ambiguous, 0 broken (0 not-yet-validated)
-* **Offsets:** 42 ok, 0 stale, 0 without a reference
-* **Outdated:** 1 signature(s) still resolve but have been replaced upstream
-* **Depot manifests:** [4472721471834965775](https://steamdb.info/depot/2347771/history/?changeid=M:4472721471834965775), [1263602768589796619](https://steamdb.info/depot/2347773/history/?changeid=M:1263602768589796619)
+* **Offsets:** 15 ok, 0 stale, 6 without a reference
+* **Depot manifests:** [846540275648835184](https://steamdb.info/depot/2347771/history/?changeid=M:846540275648835184), [4659679433267198996](https://steamdb.info/depot/2347773/history/?changeid=M:4659679433267198996)
 * **Fragility over time:** [docs/stats.md](docs/stats.md)
 
 </details>
