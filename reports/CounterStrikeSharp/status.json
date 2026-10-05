@@ -1,8 +1,8 @@
 {
   "project": "CounterStrikeSharp",
   "manifest": {
-    "2347771": "846540275648835184",
-    "2347773": "4659679433267198996"
+    "2347771": "459013114122940128",
+    "2347773": "8082014506965878039"
   },
   "reference": null,
   "gamedata_source": "mrc4tt/CounterStrikeSharp configs/addons/counterstrikesharp/gamedata/gamedata.json",
