@@ -1,6 +1,6 @@
 # Documentation
 
-Last updated: October 5, 2026 at 23:40:02 GMT
+Last updated: October 6, 2026 at 01:20:01 GMT
 
 * [USAGE.md](USAGE.md) - what the marks mean, what to do about a broken signature, and how to get a plugin tracked.
 * [DEVELOPMENT.md](DEVELOPMENT.md) - how the pipeline works, notifications, reference validation, VPS setup, and the repository layout.

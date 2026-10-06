@@ -1,0 +1,70 @@
+{
+  "date": "October 6, 2026 at 01:20:01 GMT",
+  "version": "1.41.8.9",
+  "tally": {
+    "ok": 106,
+    "broken": 0,
+    "ambiguous": 0,
+    "no_binary": 0,
+    "missing_sig": 0,
+    "offset_ok": 42,
+    "offset_stale": 0,
+    "offset_review": 0,
+    "offset_no_recipe": 0,
+    "sig_outdated": 0
+  },
+  "manifest": {
+    "2347771": "459013114122940128",
+    "2347773": "8082014506965878039"
+  },
+  "projects": {
+    "CounterStrikeSharp": {
+      "ok": 70,
+      "broken": 0,
+      "ambiguous": 0,
+      "no_binary": 0,
+      "missing_sig": 0,
+      "offset_ok": 32,
+      "offset_stale": 0,
+      "offset_review": 0,
+      "offset_no_recipe": 0,
+      "sig_outdated": 0
+    },
+    "RetakesAllocator": {
+      "ok": 6,
+      "broken": 0,
+      "ambiguous": 0,
+      "no_binary": 0,
+      "missing_sig": 0,
+      "offset_ok": 0,
+      "offset_stale": 0,
+      "offset_review": 0,
+      "offset_no_recipe": 0,
+      "sig_outdated": 0
+    },
+    "MatchZy": {
+      "ok": 12,
+      "broken": 0,
+      "ambiguous": 0,
+      "no_binary": 0,
+      "missing_sig": 0,
+      "offset_ok": 2,
+      "offset_stale": 0,
+      "offset_review": 0,
+      "offset_no_recipe": 0,
+      "sig_outdated": 0
+    },
+    "WeaponPaints": {
+      "ok": 18,
+      "broken": 0,
+      "ambiguous": 0,
+      "no_binary": 0,
+      "missing_sig": 0,
+      "offset_ok": 8,
+      "offset_stale": 0,
+      "offset_review": 0,
+      "offset_no_recipe": 0,
+      "sig_outdated": 0
+    }
+  }
+}
