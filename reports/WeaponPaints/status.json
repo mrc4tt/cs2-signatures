@@ -1,18 +1,18 @@
 {
   "project": "WeaponPaints",
   "manifest": {
-    "2347771": "459013114122940128",
-    "2347773": "8082014506965878039"
+    "2347771": "571072184844314041",
+    "2347773": "8144769780027006476"
   },
-  "reference": "14189",
+  "reference": null,
   "gamedata_source": "mikkel/weaponpaints gamedata/weaponpaints.json",
   "tally": {
-    "ok": 18,
-    "broken": 0,
-    "ambiguous": 0,
+    "ok": 14,
+    "broken": 3,
+    "ambiguous": 1,
     "no_binary": 0,
     "missing_sig": 0,
-    "offset_ok": 8,
+    "offset_ok": 4,
     "offset_stale": 0,
     "offset_review": 0,
     "offset_no_recipe": 0,
@@ -28,21 +28,13 @@
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "55 48 89 E5 41 57 41 56 41 55 49 89 FD 41 54 53 48 89 F3 48 83 EC ? F3 0F 11 85 ? ? ? ?",
-          "reference": {
-            "status": "match",
-            "relation": "equal"
-          }
+          "sig": "55 48 89 E5 41 57 41 56 41 55 49 89 FD 41 54 53 48 89 F3 48 83 EC ? F3 0F 11 85 ? ? ? ?"
         },
         "windows": {
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "48 89 4C 24 ? 53 41 55 41 56",
-          "reference": {
-            "status": "match",
-            "relation": "equal"
-          }
+          "sig": "48 89 4C 24 ? 53 41 55 41 56"
         }
       }
     },
@@ -55,21 +47,13 @@
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "55 49 89 F0 48 89 E5 41 57 41 56 49 89 FE",
-          "reference": {
-            "status": "match",
-            "relation": "equal"
-          }
+          "sig": "55 49 89 F0 48 89 E5 41 57 41 56 49 89 FE"
         },
         "windows": {
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "48 89 54 24 ? 48 89 4C 24 ? 53 57 48 81 EC ? ? ? ?",
-          "reference": {
-            "status": "match",
-            "relation": "equal"
-          }
+          "sig": "48 89 54 24 ? 48 89 4C 24 ? 53 57 48 81 EC ? ? ? ?"
         }
       }
     },
@@ -82,21 +66,13 @@
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "55 48 89 E5 41 57 41 56 41 55 41 54 53 48 83 EC ? 83 FA ?",
-          "reference": {
-            "status": "match",
-            "relation": "equal"
-          }
+          "sig": "55 48 89 E5 41 57 41 56 41 55 41 54 53 48 83 EC ? 83 FA ?"
         },
         "windows": {
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "48 8B C4 56 48 83 EC ? 49 63 F0",
-          "reference": {
-            "status": "match",
-            "relation": "equal"
-          }
+          "sig": "48 8B C4 56 48 83 EC ? 49 63 F0"
         }
       }
     },
@@ -106,24 +82,16 @@
       "library": "server",
       "platforms": {
         "linux": {
-          "status": "ok",
-          "matches": 1,
+          "status": "broken",
+          "matches": 0,
           "library": "server",
-          "sig": "55 48 8D 05 ? ? ? ? 66 0F EF C0 48 89 E5 41 57 45 31 FF",
-          "reference": {
-            "status": "match",
-            "relation": "equal"
-          }
+          "sig": "55 48 8D 05 ? ? ? ? 66 0F EF C0 48 89 E5 41 57 45 31 FF"
         },
         "windows": {
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "48 89 5C 24 ? 48 89 6C 24 ? 48 89 74 24 ? 57 41 54 41 55 41 56 41 57 48 83 EC ? 48 8B F9 48 8D 05 ? ? ? ?",
-          "reference": {
-            "status": "match",
-            "relation": "equal"
-          }
+          "sig": "48 89 5C 24 ? 48 89 6C 24 ? 48 89 74 24 ? 57 41 54 41 55 41 56 41 57 48 83 EC ? 48 8B F9 48 8D 05 ? ? ? ?"
         }
       }
     },
@@ -136,21 +104,13 @@
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "55 48 89 E5 41 57 41 56 41 55 41 54 49 89 F4 53 48 89 FB 48 83 EC ? 48 8B 7F ? 48 85 FF 74 ?",
-          "reference": {
-            "status": "match",
-            "relation": "equal"
-          }
+          "sig": "55 48 89 E5 41 57 41 56 41 55 41 54 49 89 F4 53 48 89 FB 48 83 EC ? 48 8B 7F ? 48 85 FF 74 ?"
         },
         "windows": {
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "48 89 5C 24 ? 48 89 6C 24 ? 48 89 74 24 ? 48 89 7C 24 ? 41 56 48 83 EC ? 48 8B F9 48 8B F2",
-          "reference": {
-            "status": "match",
-            "relation": "equal"
-          }
+          "sig": "48 89 5C 24 ? 48 89 6C 24 ? 48 89 74 24 ? 48 89 7C 24 ? 41 56 48 83 EC ? 48 8B F9 48 8B F2"
         }
       }
     },
@@ -163,21 +123,13 @@
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "31 C0 83 7F ? ? 75 ? 48 8B 47 ? 48 89 C7",
-          "reference": {
-            "status": "match",
-            "relation": "equal"
-          }
+          "sig": "31 C0 83 7F ? ? 75 ? 48 8B 47 ? 48 89 C7"
         },
         "windows": {
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "83 79 ? ? 0F 10 49 ?",
-          "reference": {
-            "status": "match",
-            "relation": "equal"
-          }
+          "sig": "83 79 ? ? 0F 10 49 ?"
         }
       }
     },
@@ -187,24 +139,16 @@
       "library": "server",
       "platforms": {
         "linux": {
-          "status": "ok",
-          "matches": 1,
+          "status": "broken",
+          "matches": 0,
           "library": "server",
-          "sig": "55 48 89 E5 41 57 41 56 41 55 41 54 53 48 89 FB 48 83 EC ? 4C 8B 67 ? 4D 85 E4 0F 84 ? ? ? ? 48 89 DF",
-          "reference": {
-            "status": "match",
-            "relation": "equal"
-          }
+          "sig": "55 48 89 E5 41 57 41 56 41 55 41 54 53 48 89 FB 48 83 EC ? 4C 8B 67 ? 4D 85 E4 0F 84 ? ? ? ? 48 89 DF"
         },
         "windows": {
-          "status": "ok",
-          "matches": 1,
+          "status": "broken",
+          "matches": 0,
           "library": "server",
-          "sig": "40 55 41 56 48 83 EC ? 48 83 79 ? ?",
-          "reference": {
-            "status": "match",
-            "relation": "equal"
-          }
+          "sig": "40 55 41 56 48 83 EC ? 48 83 79 ? ?"
         }
       }
     },
@@ -217,21 +161,13 @@
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "55 48 89 E5 41 56 41 55 4C 8D AF ? ? ? ? 41 54 53 48 89 FB",
-          "reference": {
-            "status": "match",
-            "relation": "equal"
-          }
+          "sig": "55 48 89 E5 41 56 41 55 4C 8D AF ? ? ? ? 41 54 53 48 89 FB"
         },
         "windows": {
-          "status": "ok",
-          "matches": 1,
+          "status": "ambiguous",
+          "matches": 2,
           "library": "server",
-          "sig": "48 89 5C 24 ? 56 57 41 56 48 83 EC ? 48 8B D9",
-          "reference": {
-            "status": "match",
-            "relation": "equal"
-          }
+          "sig": "48 89 5C 24 ? 56 57 41 56 48 83 EC ? 48 8B D9"
         }
       }
     },
@@ -244,21 +180,13 @@
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "55 48 89 E5 41 57 41 56 41 55 41 54 53 48 89 FB 48 83 EC ? 8B 8F ? ? ? ? 83 F9 ? 0F 84 ? ? ? ? 48 8B 35 ? ? ? ? 48 85 F6 0F 84 ? ? ? ? 83 F9 ? 0F 84 ? ? ? ? 0F B7 87 ? ? 00 00 48 89 C2 48 C1 EA ? 83 E2 ? 48 8B 14 D6 48 85 D2 0F 84 ? ? ? ? 25 ? ? ? ? 48 6B C0 ? 48 01 D0 3B 48 ? 0F 85 ? ? ? ? 4C 8B 28",
-          "reference": {
-            "status": "match",
-            "relation": "equal"
-          }
+          "sig": "55 48 89 E5 41 57 41 56 41 55 41 54 53 48 89 FB 48 83 EC ? 8B 8F ? ? ? ? 83 F9 ? 0F 84 ? ? ? ? 48 8B 35 ? ? ? ? 48 85 F6 0F 84 ? ? ? ? 83 F9 ? 0F 84 ? ? ? ? 0F B7 87 ? ? 00 00 48 89 C2 48 C1 EA ? 83 E2 ? 48 8B 14 D6 48 85 D2 0F 84 ? ? ? ? 25 ? ? ? ? 48 6B C0 ? 48 01 D0 3B 48 ? 0F 85 ? ? ? ? 4C 8B 28"
         },
         "windows": {
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "40 56 57 41 54 48 83 EC ? 48 8B F9 45 33 E4",
-          "reference": {
-            "status": "match",
-            "relation": "equal"
-          }
+          "sig": "40 56 57 41 54 48 83 EC ? 48 8B F9 45 33 E4"
         }
       }
     },
@@ -273,34 +201,7 @@
         "linux": {
           "status": "ok",
           "linux": 112,
-          "method": "anchor",
-          "reference": {
-            "value": 112,
-            "source": "struct_member",
-            "status": "match"
-          },
-          "anchor": {
-            "status": "confirmed",
-            "value": 112,
-            "kind": "member",
-            "via": "offset_sig"
-          }
-        },
-        "windows": {
-          "status": "ok",
-          "windows": 112,
-          "method": "anchor",
-          "reference": {
-            "value": 112,
-            "source": "struct_member",
-            "status": "match"
-          },
-          "anchor": {
-            "status": "confirmed",
-            "value": 112,
-            "kind": "member",
-            "via": "offset_sig"
-          }
+          "method": "structoffset"
         }
       }
     },
@@ -315,34 +216,7 @@
         "linux": {
           "status": "ok",
           "linux": 104,
-          "method": "anchor",
-          "reference": {
-            "value": 104,
-            "source": "struct_member",
-            "status": "match"
-          },
-          "anchor": {
-            "status": "confirmed",
-            "value": 104,
-            "kind": "member",
-            "via": "offset_sig"
-          }
-        },
-        "windows": {
-          "status": "ok",
-          "windows": 104,
-          "method": "anchor",
-          "reference": {
-            "value": 104,
-            "source": "struct_member",
-            "status": "match"
-          },
-          "anchor": {
-            "status": "confirmed",
-            "value": 104,
-            "kind": "member",
-            "via": "offset_sig"
-          }
+          "method": "structoffset"
         }
       }
     },
@@ -357,34 +231,7 @@
         "linux": {
           "status": "ok",
           "linux": 40,
-          "method": "anchor",
-          "reference": {
-            "value": 40,
-            "source": "struct_member",
-            "status": "match"
-          },
-          "anchor": {
-            "status": "confirmed",
-            "value": 40,
-            "kind": "member",
-            "via": "offset_sig"
-          }
-        },
-        "windows": {
-          "status": "ok",
-          "windows": 40,
-          "method": "anchor",
-          "reference": {
-            "value": 40,
-            "source": "struct_member",
-            "status": "match"
-          },
-          "anchor": {
-            "status": "confirmed",
-            "value": 40,
-            "kind": "member",
-            "via": "offset_sig"
-          }
+          "method": "structoffset"
         }
       }
     },
@@ -399,43 +246,8 @@
         "linux": {
           "status": "ok",
           "linux": 29,
-          "method": "anchor",
-          "func_va": "0x15efe90",
-          "reference": {
-            "value": 29,
-            "source": "vfunc_index",
-            "status": "match"
-          },
-          "anchor": {
-            "status": "confirmed",
-            "value": 29,
-            "kind": "vfunc",
-            "via": "vfunc_sig"
-          },
-          "bounds": {
-            "vtable_len": 48,
-            "in_range": true
-          }
-        },
-        "windows": {
-          "status": "ok",
-          "windows": 28,
-          "method": "anchor",
-          "reference": {
-            "value": 28,
-            "source": "vfunc_index",
-            "status": "match"
-          },
-          "anchor": {
-            "status": "confirmed",
-            "value": 28,
-            "kind": "vfunc",
-            "via": "vfunc_sig"
-          },
-          "bounds": {
-            "vtable_len": 45,
-            "in_range": true
-          }
+          "method": "anchored",
+          "func_va": "0x15ee190"
         }
       }
     }

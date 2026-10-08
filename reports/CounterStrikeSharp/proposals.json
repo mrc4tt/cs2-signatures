@@ -1,0 +1,26 @@
+{
+  "project": "CounterStrikeSharp",
+  "manifest": {
+    "2347771": "571072184844314041",
+    "2347773": "8144769780027006476"
+  },
+  "proposals": [
+    {
+      "name": "CCSPlayerPawnBase_PostThink",
+      "platform": "linux",
+      "library": "server",
+      "reason": "broken",
+      "old_sig": "55 48 89 E5 41 56 41 55 41 54 53 48 89 FB 48 83 EC ? E8 ? ? ? ? 80 BB ? 17 00 00 ?",
+      "old_pos": [
+        4,
+        982336
+      ],
+      "new_pos": [
+        4,
+        982464
+      ],
+      "score": 0.914,
+      "candidate": "55 48 89 E5 41 56 41 55 41 54 53 48 89 FB 48 83 EC 10 E8 ? ? ? ? 80"
+    }
+  ]
+}

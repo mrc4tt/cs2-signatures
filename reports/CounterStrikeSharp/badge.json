@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
   "label": "CounterStrikeSharp",
-  "message": "70 ok",
-  "color": "brightgreen"
+  "message": "1 broken / 69 ok",
+  "color": "red"
 }
