@@ -1,6 +1,6 @@
 # WeaponPaints
 
-Last updated: October 9, 2026 at 05:35:02 GMT
+Last updated: October 12, 2026 at 15:05:02 GMT
 
 * Manifests: [571072184844314041](https://steamdb.info/depot/2347771/history/?changeid=M:571072184844314041), [8144769780027006476](https://steamdb.info/depot/2347773/history/?changeid=M:8144769780027006476)
 * Repository: https://git.miksen.me/mikkel/weaponpaints
@@ -99,11 +99,11 @@ Reference column: ✅ matches the 14190 analysis &middot; 🕓 the analysis uses
 </td></tr>
 <tr><td>✅</td><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
-\x55\x48\x8D\x05\x2A\x2A\x2A\x2A\x66\x0F\xEF\xC0\x48\x89\xE5\x41\x57\x41\x56\x4C\x8D\x35\x2A\x2A\x2A\x2A\x41\x55\x41\x54\x45\x31\xE4\x53\x48\x89\xFB\x48\x83\xEC\x78\x48\x89\x07\x31\xC0\x48\x83\x3D\x2A\x2A\x2A\x2A\x00
+\x55\x48\x8D\x05\x2A\x2A\x2A\x2A\x66\x0F\xEF\xC0\x48\x89\xE5\x41\x57\x41\x56\x4C\x8D\x35\x2A\x2A\x2A\x2A\x41\x55\x41\x54\x45\x31\xE4
 </pre>
 </td><td>
 <pre>
-55 48 8D 05 ? ? ? ? 66 0F EF C0 48 89 E5 41 57 41 56 4C 8D 35 ? ? ? ? 41 55 41 54 45 31 E4 53 48 89 FB 48 83 EC 78 48 89 07 31 C0 48 83 3D ? ? ? ? 00
+55 48 8D 05 ? ? ? ? 66 0F EF C0 48 89 E5 41 57 41 56 4C 8D 35 ? ? ? ? 41 55 41 54 45 31 E4
 </pre>
 </td></tr>
 </table>

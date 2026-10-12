@@ -14,7 +14,7 @@ points at exactly one function in the binaries Valve ships right now.
 
 > ✅ **All 106 signature checks pass** on CS2 `1.41.9.0`.
 >
-> Last checked October 9, 2026 at 05:35:02 GMT &middot; 4 project(s) tracked
+> Last checked October 12, 2026 at 15:05:02 GMT &middot; 4 project(s) tracked
 
 <table>
 <tr><th>Project</th><th>Health</th><th>Signatures</th><th>Linux</th><th>Windows</th><th></th></tr>
