@@ -7,7 +7,7 @@
   "reference": "14190",
   "gamedata_source": "mrc4tt/CounterStrikeSharp configs/addons/counterstrikesharp/gamedata/gamedata.json",
   "tally": {
-    "ok": 70,
+    "ok": 72,
     "broken": 0,
     "ambiguous": 0,
     "no_binary": 0,
@@ -960,6 +960,31 @@
           "reference": {
             "status": "match",
             "relation": "equal"
+          }
+        }
+      }
+    },
+    {
+      "name": "CBaseEntity_TakeDamage",
+      "kind": "signature",
+      "library": "server",
+      "platforms": {
+        "linux": {
+          "status": "ok",
+          "matches": 1,
+          "library": "server",
+          "sig": "55 66 0F EF C0 48 89 E5 41 57 41 56 41 55 49 89 FD 31 FF",
+          "reference": {
+            "status": "no_reference"
+          }
+        },
+        "windows": {
+          "status": "ok",
+          "matches": 1,
+          "library": "server",
+          "sig": "40 55 53 56 57 41 54 48 8D 6C 24 ? 48 81 EC ? ? ? ? 4D 8B E0",
+          "reference": {
+            "status": "no_reference"
           }
         }
       }

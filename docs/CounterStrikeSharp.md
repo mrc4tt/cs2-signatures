@@ -1,6 +1,6 @@
 # CounterStrikeSharp
 
-Last updated: October 12, 2026 at 15:05:02 GMT
+Last updated: October 14, 2026 at 21:30:01 GMT
 
 * Manifests: [571072184844314041](https://steamdb.info/depot/2347771/history/?changeid=M:571072184844314041), [8144769780027006476](https://steamdb.info/depot/2347773/history/?changeid=M:8144769780027006476)
 * Repository: https://github.com/mrc4tt/CounterStrikeSharp
@@ -848,6 +848,30 @@ Reference column: ✅ matches the 14190 analysis &middot; 🕓 the analysis uses
 </td><td>
 <pre>
 55 48 89 E5 41 55 41 54 53 48 63 DE 48 83 EC ?
+</pre>
+</td></tr>
+</table>
+
+### CBaseEntity_TakeDamage
+
+<table>
+<tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
+<tr><td>✅</td><td>❔</td><td>Windows</td><td>server</td><td>1</td><td>
+<pre>
+\x40\x55\x53\x56\x57\x41\x54\x48\x8D\x6C\x24\x2A\x48\x81\xEC\x2A\x2A\x2A\x2A\x4D\x8B\xE0
+</pre>
+</td><td>
+<pre>
+40 55 53 56 57 41 54 48 8D 6C 24 ? 48 81 EC ? ? ? ? 4D 8B E0
+</pre>
+</td></tr>
+<tr><td>✅</td><td>❔</td><td>Linux</td><td>server</td><td>1</td><td>
+<pre>
+\x55\x66\x0F\xEF\xC0\x48\x89\xE5\x41\x57\x41\x56\x41\x55\x49\x89\xFD\x31\xFF
+</pre>
+</td><td>
+<pre>
+55 66 0F EF C0 48 89 E5 41 57 41 56 41 55 49 89 FD 31 FF
 </pre>
 </td></tr>
 </table>
