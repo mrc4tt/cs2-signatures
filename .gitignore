@@ -30,7 +30,6 @@ reports/.last_seen.json
 reports/discord_state.json
 # Private development rules — not for public repo.
 CLAUDE.md
-hm
 
 # Reference snapshots: re-fetchable and sha256-verified, a few MB each.
 # Drop these two lines if you want the reference history committed.
