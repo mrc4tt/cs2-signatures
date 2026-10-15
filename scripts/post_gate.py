@@ -134,6 +134,36 @@ def classify(old, new):
     return None
 
 
+def diff_status(project, old, current):
+    """Named changes between two status.json payloads of one project.
+
+    Windows offset blocks only exist when a reference snapshot was loaded:
+    nothing else produces them. On a new build the reference usually lags, so
+    the run has `reference: null` and every windows offset vanishes, then
+    reappears once the snapshot catches up; linux offsets the reference had
+    confirmed drop to review/no_recipe and climb back. None of that is a game
+    change, so across a reference flip an offset reports only when it broke or
+    its value moved.
+    """
+    ref_flip = (old.get("reference") is None) != (current.get("reference") is None)
+    cur_map, old_map = entry_map(current), entry_map(old)
+    changes = []
+    for key in sorted(set(cur_map) | set(old_map)):
+        kind, name, plat = key
+        change = classify(old_map.get(key), cur_map.get(key))
+        if not change:
+            continue
+        if ref_flip and kind == "offset" and change not in ("broke", "moved"):
+            continue
+        changes.append({
+            "project": project, "kind": kind, "name": name,
+            "platform": plat, "change": change,
+            "old": (old_map.get(key) or {}).get("status"),
+            "new": (cur_map.get(key) or {}).get("status"),
+        })
+    return changes
+
+
 def named_changes(projects_path=P.REGISTRY):
     """[{project, kind, name, platform, change, old, new}, ...] vs HEAD.
 
@@ -158,18 +188,7 @@ def named_changes(projects_path=P.REGISTRY):
         old = committed(path)
         if old is None:
             continue
-        cur_map, old_map = entry_map(current), entry_map(old)
-        for key in sorted(set(cur_map) | set(old_map)):
-            kind, name, plat = key
-            change = classify(old_map.get(key), cur_map.get(key))
-            if not change:
-                continue
-            changes.append({
-                "project": proj["id"], "kind": kind, "name": name,
-                "platform": plat, "change": change,
-                "old": (old_map.get(key) or {}).get("status"),
-                "new": (cur_map.get(key) or {}).get("status"),
-            })
+        changes.extend(diff_status(proj["id"], old, current))
     changes.sort(key=lambda c: (CHANGE_ORDER.index(c["change"])
                                 if c["change"] in CHANGE_ORDER else 99,
                                 c["project"], c["name"], c["platform"]))

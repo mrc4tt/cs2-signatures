@@ -10,7 +10,7 @@ import unittest
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                 "..", "scripts"))
-from post_gate import CHANGE_ORDER, classify, entry_map  # noqa: E402
+from post_gate import CHANGE_ORDER, classify, diff_status, entry_map  # noqa: E402
 
 
 def sig(name, **plats):
@@ -83,6 +83,61 @@ class Classify(unittest.TestCase):
         kinds = {"broke", "fixed", "changed", "added", "removed",
                  "resigned", "moved"}
         self.assertEqual(kinds - set(CHANGE_ORDER), set())
+
+
+class ReferenceFlip(unittest.TestCase):
+    """A lagging reference snapshot drops windows offset blocks; not news."""
+
+    @staticmethod
+    def status(reference, windows=True, linux_value=164):
+        plats = {"linux": {"status": "ok", "linux": linux_value}}
+        if windows:
+            plats["windows"] = {"status": "ok", "windows": 165}
+        return {"reference": reference, "results": [
+            {"name": "CBaseEntity_Teleport", "kind": "offset",
+             "offsets": {"linux": linux_value, "windows": 165},
+             "platforms": plats},
+            sig("Foo", windows={"status": "ok", "sig": "48 89"}),
+        ]}
+
+    def test_reference_lost_hides_vanished_windows_offsets(self):
+        old = self.status("14190")
+        new = self.status(None, windows=False)
+        self.assertEqual(diff_status("P", old, new), [])
+
+    def test_reference_back_hides_returning_windows_offsets(self):
+        old = self.status(None, windows=False)
+        new = self.status("14200")
+        self.assertEqual(diff_status("P", old, new), [])
+
+    def test_real_changes_still_report_across_a_flip(self):
+        old = self.status("14190", linux_value=164)
+        new = self.status(None, windows=False, linux_value=165)
+        got = [(c["name"], c["platform"], c["change"])
+               for c in diff_status("P", old, new)]
+        self.assertEqual(got, [("CBaseEntity_Teleport", "linux", "moved")])
+
+    def test_lost_verification_is_quiet_but_a_break_is_not(self):
+        old = self.status("14190")
+        new = self.status(None)
+        new["results"][0]["platforms"]["linux"]["status"] = "review"
+        self.assertEqual(diff_status("P", old, new), [])
+        new["results"][0]["platforms"]["linux"]["status"] = "stale"
+        got = [c["change"] for c in diff_status("P", old, new)]
+        self.assertEqual(got, ["broke"])
+
+    def test_removal_without_a_flip_still_reports(self):
+        old = self.status("14190")
+        new = self.status("14190", windows=False)
+        got = [c["change"] for c in diff_status("P", old, new)]
+        self.assertEqual(got, ["removed"])
+
+    def test_removed_signature_reports_across_a_flip(self):
+        old = self.status("14190")
+        new = self.status(None)
+        new["results"] = new["results"][:1]
+        got = [(c["kind"], c["change"]) for c in diff_status("P", old, new)]
+        self.assertEqual(got, [("signature", "removed")])
 
 
 if __name__ == "__main__":
