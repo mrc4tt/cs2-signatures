@@ -35,6 +35,8 @@ import sys
 import urllib.error
 import urllib.request
 
+import depots
+
 SITE = "https://sig.miksen.me"
 REPO = "https://github.com/mrc4tt/CS2_VibeSignatures.git"
 UPSTREAM = "https://github.com/HLND2T/CS2_VibeSignatures.git"
@@ -143,13 +145,37 @@ def run(cmd):
                    stderr=subprocess.STDOUT)
 
 
+def local_binaries(roots):
+    """{(module, platform): sha256} of the server modules on disk, or None.
+
+    The hash fallback in resolve_gamever() needs this. Valve re-pushes a depot
+    with new manifest ids while the server binaries stay byte-identical, and a
+    manifest-only match then misses the analysis that describes those exact
+    bytes. Both platforms or nothing: a lock must not match on half a build.
+    """
+    out = {}
+    for plat, root in roots.items():
+        path = os.path.join(root, depots.FILES[plat]["server"])
+        if not os.path.isfile(path):
+            return None
+        h = hashlib.sha256()
+        with open(path, "rb") as fh:
+            for chunk in iter(lambda: fh.read(1 << 20), b""):
+                h.update(chunk)
+        out[("server", plat)] = h.hexdigest()
+    return out
+
+
 def resolve_gamever(repo, manifest_path="data/manifest.json", binaries=None):
     """Which game version describes the build sitting on disk?
 
     binary_locks/<ver>.json binds each version to the exact depot manifests and
     to a SHA-256 per module and platform. Matching on the manifest ids is enough
-    and costs nothing extra, since check_update.py already tracks them; the hash
-    path is the fallback for a checkout whose manifest file is missing.
+    and costs nothing extra, since check_update.py already tracks them. The hash
+    path runs last, only when no manifest id matched: Valve re-pushes depots
+    under new manifest ids with byte-identical server binaries, and the analysis
+    of those bytes still applies. `binaries` may be a callable so the hashing is
+    paid only on that path.
 
     Returns the version string, or None when no lock describes this build - which
     is the normal state right after a game update, before the analysis catches up.
@@ -161,21 +187,19 @@ def resolve_gamever(repo, manifest_path="data/manifest.json", binaries=None):
         with open(manifest_path) as fh:
             manifest = {str(k): str(v) for k, v in json.load(fh).items()}
 
+    locks = []
     for fname in sorted(os.listdir(lock_dir), reverse=True):
         if not fname.endswith(".json"):
             continue
         with open(os.path.join(lock_dir, fname)) as fh:
             lock = json.load(fh)
+        locks.append((lock.get("game_version", fname[:-5]), lock))
+    for version, lock in locks:
         if manifest:
             have = {str(k): str(v) for k, v in
                     lock.get("download", {}).get("manifests", {}).items()}
             if have == manifest:
-                return lock.get("game_version", fname[:-5])
-        if binaries:
-            locked = lock.get("binaries", {})
-            if all(locked.get(m, {}).get(p, {}).get("sha256") == digest
-                   for (m, p), digest in binaries.items()):
-                return lock.get("game_version", fname[:-5])
+                return version
 
     # Fallback: download.yaml. The analysis repo stopped writing a lock per build
     # after 14181, while every build still gets a download.yaml entry (its
@@ -188,6 +212,15 @@ def resolve_gamever(repo, manifest_path="data/manifest.json", binaries=None):
                 for tag, have in reversed(download_manifests(fh.read())):
                     if have == manifest:
                         return tag
+
+    if callable(binaries):
+        binaries = binaries()
+    if binaries:
+        for version, lock in locks:
+            locked = lock.get("binaries", {})
+            if all(locked.get(m, {}).get(p, {}).get("sha256") == digest
+                   for (m, p), digest in binaries.items()):
+                return version
     return None
 
 
@@ -305,11 +338,16 @@ def main():
                          "and exit; empty output means no analysis covers this "
                          "build yet")
     ap.add_argument("--manifest", default="data/manifest.json")
+    ap.add_argument("--linux-root", default="bin_linux",
+                    help="download dir hashed when no lock matches the "
+                         "manifest ids (--resolve)")
+    ap.add_argument("--windows-root", default="bin_win")
     args = ap.parse_args()
     repo = UPSTREAM if args.upstream else args.repo
 
     if args.resolve:
-        found = resolve_gamever(repo, args.manifest)
+        found = resolve_gamever(repo, args.manifest, lambda: local_binaries(
+            {"linux": args.linux_root, "windows": args.windows_root}))
         if found:
             print(found)
             return 0
