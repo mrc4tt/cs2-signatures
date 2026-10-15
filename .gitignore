@@ -35,3 +35,9 @@ hm
 # Reference snapshots: re-fetchable and sha256-verified, a few MB each.
 # Drop these two lines if you want the reference history committed.
 data/symbols/
+
+# VPS-local upstream build poller (crontab) and its state
+/.last_seen
+/.poll.lock
+/poll.log
+/scripts/poll_upstream_build.sh
