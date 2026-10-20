@@ -1,8 +1,8 @@
 # WeaponPaints
 
-Last updated: October 15, 2026 at 04:40:02 GMT
+Last updated: October 20, 2026 at 22:35:02 GMT
 
-* Manifests: [8766757721818354077](https://steamdb.info/depot/2347771/history/?changeid=M:8766757721818354077), [5513399157532729905](https://steamdb.info/depot/2347773/history/?changeid=M:5513399157532729905)
+* Manifests: [1274005252265906612](https://steamdb.info/depot/2347771/history/?changeid=M:1274005252265906612), [4676054823281784086](https://steamdb.info/depot/2347773/history/?changeid=M:4676054823281784086)
 * Repository: https://git.miksen.me/mikkel/weaponpaints
 * Gamedata: https://git.miksen.me/mikkel/weaponpaints/src/branch/main/gamedata/weaponpaints.json
 
