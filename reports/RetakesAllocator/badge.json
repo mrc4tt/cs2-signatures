@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
   "label": "cs2-retakes-allocator",
-  "message": "6 ok",
-  "color": "brightgreen"
+  "message": "1 broken / 5 ok",
+  "color": "red"
 }

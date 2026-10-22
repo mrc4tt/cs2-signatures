@@ -1,14 +1,14 @@
 {
   "project": "MatchZy",
   "manifest": {
-    "2347771": "1274005252265906612",
-    "2347773": "4676054823281784086"
+    "2347771": "5751660862748360256",
+    "2347773": "5491505037461703699"
   },
   "reference": null,
   "gamedata_source": "mikkel/matchzy gamedata/matchzy.json",
   "tally": {
-    "ok": 12,
-    "broken": 0,
+    "ok": 9,
+    "broken": 3,
     "ambiguous": 0,
     "no_binary": 0,
     "missing_sig": 0,
@@ -63,14 +63,14 @@
       "library": "server",
       "platforms": {
         "linux": {
-          "status": "ok",
-          "matches": 1,
+          "status": "broken",
+          "matches": 0,
           "library": "server",
           "sig": "55 4C 89 C1 48 89 E5 41 57 49 89 FF 41 56 45 89 CE"
         },
         "windows": {
-          "status": "ok",
-          "matches": 1,
+          "status": "broken",
+          "matches": 0,
           "library": "server",
           "sig": "48 8B C4 48 89 58 ? 48 89 68 ? 48 89 70 ? 57 41 56 41 57 48 81 EC ? ? ? ? 48 8B B4 24 ? ? ? ?"
         }
@@ -126,8 +126,8 @@
           "sig": "55 4C 89 C1 48 89 E5 41 57 45 89 CF 41 56 49 89 FE 41 55 49 89 D5 48 89 F2 48 89 FE 41 54 48 8D 3D ? ? ? ? 4D 89 C4 53 48 83 EC ? E8 ? ? ? ? 45 31 C0"
         },
         "windows": {
-          "status": "ok",
-          "matches": 1,
+          "status": "broken",
+          "matches": 0,
           "library": "server",
           "sig": "48 8B C4 55 56 48 81 EC ? ? ? ? 48 89 58 ? 48 8B D9"
         }

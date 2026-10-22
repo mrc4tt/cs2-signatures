@@ -1,8 +1,8 @@
 # cs2-retakes-allocator
 
-Last updated: October 20, 2026 at 22:40:01 GMT
+Last updated: October 22, 2026 at 22:55:01 GMT
 
-* Manifests: [1274005252265906612](https://steamdb.info/depot/2347771/history/?changeid=M:1274005252265906612), [4676054823281784086](https://steamdb.info/depot/2347773/history/?changeid=M:4676054823281784086)
+* Manifests: [5751660862748360256](https://steamdb.info/depot/2347771/history/?changeid=M:5751660862748360256), [5491505037461703699](https://steamdb.info/depot/2347773/history/?changeid=M:5491505037461703699)
 * Repository: https://github.com/mrc4tt/cs2-retakes-allocator
 * Gamedata: https://github.com/mrc4tt/cs2-retakes-allocator/blob/main/Resources/RetakesAllocator_gamedata.json
 
@@ -47,7 +47,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 48 89 5C 24 ? 57 48 83 EC ? 33 FF 4C 8B CA 8B D9
 </pre>
 </td></tr>
-<tr><td>✅</td><td>❔</td><td>Linux</td><td>server</td><td>1</td><td>
+<tr><td>❌</td><td>❔</td><td>Linux</td><td>server</td><td>0</td><td>
 <pre>
 \x48\x85\xF6\x0F\x84\x2A\x2A\x2A\x2A\x55\x48\x89\xE5\x41\x57\x41\x56\x41\x55\x49\x89\xF5\x41\x54\x53\x48\x81\xEC\x2A\x2A\x2A\x2A\x80\x3E\x2A\x75\x2A\x31\xC0\x48\x81\xC4\x2A\x2A\x2A\x2A\x5B\x41\x5C\x41\x5D\x41\x5E\x41\x5F\x5D\xC3\x0F\x1F\x80\x2A\x2A\x2A\x2A\x4C\x8D\xA5\x2A\x2A\x2A\x2A\x89\xFB
 </pre>

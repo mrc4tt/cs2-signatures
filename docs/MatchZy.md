@@ -1,8 +1,8 @@
 # MatchZy
 
-Last updated: October 20, 2026 at 22:40:01 GMT
+Last updated: October 22, 2026 at 22:55:01 GMT
 
-* Manifests: [1274005252265906612](https://steamdb.info/depot/2347771/history/?changeid=M:1274005252265906612), [4676054823281784086](https://steamdb.info/depot/2347773/history/?changeid=M:4676054823281784086)
+* Manifests: [5751660862748360256](https://steamdb.info/depot/2347771/history/?changeid=M:5751660862748360256), [5491505037461703699](https://steamdb.info/depot/2347773/history/?changeid=M:5491505037461703699)
 * Repository: https://git.miksen.me/mikkel/matchzy
 * Gamedata: https://git.miksen.me/mikkel/matchzy/src/branch/main/gamedata/matchzy.json
 
@@ -62,7 +62,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 
 <table>
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>✅</td><td>❔</td><td>Windows</td><td>server</td><td>1</td><td>
+<tr><td>❌</td><td>❔</td><td>Windows</td><td>server</td><td>0</td><td>
 <pre>
 \x48\x8B\xC4\x48\x89\x58\x2A\x48\x89\x68\x2A\x48\x89\x70\x2A\x57\x41\x56\x41\x57\x48\x81\xEC\x2A\x2A\x2A\x2A\x48\x8B\xB4\x24\x2A\x2A\x2A\x2A
 </pre>
@@ -71,7 +71,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 48 8B C4 48 89 58 ? 48 89 68 ? 48 89 70 ? 57 41 56 41 57 48 81 EC ? ? ? ? 48 8B B4 24 ? ? ? ?
 </pre>
 </td></tr>
-<tr><td>✅</td><td>❔</td><td>Linux</td><td>server</td><td>1</td><td>
+<tr><td>❌</td><td>❔</td><td>Linux</td><td>server</td><td>0</td><td>
 <pre>
 \x55\x4C\x89\xC1\x48\x89\xE5\x41\x57\x49\x89\xFF\x41\x56\x45\x89\xCE
 </pre>
@@ -134,7 +134,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 
 <table>
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>✅</td><td>❔</td><td>Windows</td><td>server</td><td>1</td><td>
+<tr><td>❌</td><td>❔</td><td>Windows</td><td>server</td><td>0</td><td>
 <pre>
 \x48\x8B\xC4\x55\x56\x48\x81\xEC\x2A\x2A\x2A\x2A\x48\x89\x58\x2A\x48\x8B\xD9
 </pre>

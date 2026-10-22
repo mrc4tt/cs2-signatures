@@ -1,14 +1,14 @@
 {
   "project": "CounterStrikeSharp",
   "manifest": {
-    "2347771": "1274005252265906612",
-    "2347773": "4676054823281784086"
+    "2347771": "5751660862748360256",
+    "2347773": "5491505037461703699"
   },
   "reference": null,
   "gamedata_source": "mrc4tt/CounterStrikeSharp configs/addons/counterstrikesharp/gamedata/gamedata.json",
   "tally": {
-    "ok": 72,
-    "broken": 0,
+    "ok": 67,
+    "broken": 5,
     "ambiguous": 0,
     "no_binary": 0,
     "missing_sig": 0,
@@ -101,14 +101,14 @@
       "library": "server",
       "platforms": {
         "linux": {
-          "status": "ok",
-          "matches": 1,
+          "status": "broken",
+          "matches": 0,
           "library": "server",
           "sig": "55 48 89 E5 41 56 41 55 41 54 53 48 89 FB 48 83 EC ? E8 ? ? ? ? 80 BB ? ? ? ? ?"
         },
         "windows": {
-          "status": "ok",
-          "matches": 1,
+          "status": "broken",
+          "matches": 0,
           "library": "server",
           "sig": "40 55 56 41 54 48 8B EC 48 83 EC ? 4C 89 AC 24 ? ? ? ?"
         }
@@ -234,8 +234,8 @@
       "library": "server",
       "platforms": {
         "linux": {
-          "status": "ok",
-          "matches": 1,
+          "status": "broken",
+          "matches": 0,
           "library": "server",
           "sig": "48 85 F6 0F 84 ? ? ? ? 55 48 89 E5 41 57 41 56 41 55 49 89 F5 41 54 53 48 81 EC ? ? ? ? 80 3E ? 75 ? 31 C0 48 81 C4 ? ? ? ? 5B 41 5C 41 5D 41 5E 41 5F 5D C3 0F 1F 80 ? ? ? ? 4C 8D A5 ? ? ? ? 89 FB"
         },
@@ -652,14 +652,14 @@
       "library": "server",
       "platforms": {
         "linux": {
-          "status": "ok",
-          "matches": 1,
+          "status": "broken",
+          "matches": 0,
           "library": "server",
           "sig": "55 48 89 E5 41 57 41 56 49 89 CE 41 55 49 89 F5 41 54 49 89 D4 53 48 89 FB 48 83 EC ? 0F B6 05 ? ? ? ? 84 C0 0F 84 ? ? ? ? 80 7B 30 00"
         },
         "windows": {
-          "status": "ok",
-          "matches": 1,
+          "status": "broken",
+          "matches": 0,
           "library": "server",
           "sig": "4C 89 4C 24 ? 55 53 41 54"
         }
@@ -731,7 +731,7 @@
           "status": "ok",
           "linux": 276,
           "method": "anchored",
-          "func_va": "0x153d9c0"
+          "func_va": "0x15506c0"
         }
       }
     },
@@ -763,7 +763,7 @@
           "status": "ok",
           "linux": 27,
           "method": "anchored",
-          "func_va": "0x15d2ca0"
+          "func_va": "0x15e59a0"
         }
       }
     },
@@ -779,7 +779,7 @@
           "status": "ok",
           "linux": 28,
           "method": "anchored",
-          "func_va": "0x15d2de0"
+          "func_va": "0x15e5ae0"
         }
       }
     },
@@ -811,7 +811,7 @@
           "status": "ok",
           "linux": 26,
           "method": "anchored",
-          "func_va": "0x19a37e0"
+          "func_va": "0x19b64a0"
         }
       }
     },
@@ -860,7 +860,7 @@
           "status": "ok",
           "linux": 387,
           "method": "anchored",
-          "func_va": "0x1863850"
+          "func_va": "0x1876510"
         }
       }
     },
@@ -876,7 +876,7 @@
           "status": "ok",
           "linux": 164,
           "method": "anchored",
-          "func_va": "0xd6a580"
+          "func_va": "0xd7d040"
         }
       }
     },
@@ -940,7 +940,7 @@
           "status": "ok",
           "linux": 29,
           "method": "anchored",
-          "func_va": "0xa3dcf0"
+          "func_va": "0xa3fd70"
         }
       }
     },

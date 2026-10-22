@@ -1,8 +1,8 @@
 {
   "project": "WeaponPaints",
   "manifest": {
-    "2347771": "1274005252265906612",
-    "2347773": "4676054823281784086"
+    "2347771": "5751660862748360256",
+    "2347773": "5491505037461703699"
   },
   "reference": null,
   "gamedata_source": "mikkel/weaponpaints gamedata/weaponpaints.json",
@@ -247,7 +247,7 @@
           "status": "ok",
           "linux": 29,
           "method": "anchored",
-          "func_va": "0x15ee650"
+          "func_va": "0x1601350"
         }
       }
     }

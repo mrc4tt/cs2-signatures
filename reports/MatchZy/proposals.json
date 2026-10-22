@@ -1,0 +1,42 @@
+{
+  "project": "MatchZy",
+  "manifest": {
+    "2347771": "5751660862748360256",
+    "2347773": "5491505037461703699"
+  },
+  "proposals": [
+    {
+      "name": "CSmokeGrenadeProjectile_Create",
+      "platform": "linux",
+      "library": "server",
+      "reason": "broken",
+      "old_sig": "55 4C 89 C1 48 89 E5 41 57 49 89 FF 41 56 45 89 CE",
+      "error": "function not found in new binary (score < 0.55)"
+    },
+    {
+      "name": "CSmokeGrenadeProjectile_Create",
+      "platform": "windows",
+      "library": "server",
+      "reason": "broken",
+      "old_sig": "48 8B C4 48 89 58 ? 48 89 68 ? 48 89 70 ? 57 41 56 41 57 48 81 EC ? ? ? ? 48 8B B4 24 ? ? ? ?",
+      "error": "function not found in new binary (score < 0.55)"
+    },
+    {
+      "name": "CDecoyProjectile_Create",
+      "platform": "windows",
+      "library": "server",
+      "reason": "broken",
+      "old_sig": "48 8B C4 55 56 48 81 EC ? ? ? ? 48 89 58 ? 48 8B D9",
+      "old_pos": [
+        0,
+        10148832
+      ],
+      "new_pos": [
+        0,
+        10204671
+      ],
+      "score": 0.68,
+      "error": "could not build unique candidate at mapped position"
+    }
+  ]
+}
