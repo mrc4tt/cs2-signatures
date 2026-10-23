@@ -82,15 +82,25 @@ if [ "$UPD" -eq 0 ] \
    && ! echo "$FETCH_OUT" | grep -q " gamedata changed" \
    && [ -z "$(git status --porcelain data/ reports/)" ]; then
   BROKEN=$(REF="${GAMEVER:-}" python3 - <<'PY'
-import json, os, sys
+import json, os, subprocess, sys
 sys.path.insert(0, "scripts")
 import projects as P
 want = os.environ.get("REF") or None
+
+def committed_at(path):
+    out = subprocess.run(["git", "log", "-1", "--format=%ct", "--", path],
+                         capture_output=True, text=True).stdout.strip()
+    return int(out) if out else 0
+
 broken = 0
 for proj in P.load():
     path = P.status_path(proj)
     if not os.path.isfile(path):
         sys.exit(2)  # new project - needs a full run
+    # Gamedata committed by hand (not by a pipeline run) was never validated:
+    # fetch now reports it unchanged, so only the commit order gives it away.
+    if committed_at(P.gamedata_path(proj)) > committed_at(path):
+        sys.exit(2)
     with open(path) as fh:
         status = json.load(fh)
     # The reference moved (or arrived, or went away) since the last run, so a
