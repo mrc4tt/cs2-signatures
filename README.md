@@ -12,35 +12,17 @@ points at exactly one function in the binaries Valve ships right now.
 <!-- STATUS:START -->
 ## Current status
 
-> ❌ **9 of 108 signature checks are broken** on CS2 `1.41.9.2` - the affected plugins need regenerated signatures.
+> ❌ **3 of 108 signature checks are broken** on CS2 `1.41.9.2` - the affected plugins need regenerated signatures.
 >
-> Last checked October 22, 2026 at 22:55:01 GMT &middot; 4 project(s) tracked
+> Last checked October 23, 2026 at 03:30:01 GMT &middot; 4 project(s) tracked
 
 <table>
 <tr><th>Project</th><th>Health</th><th>Signatures</th><th>Linux</th><th>Windows</th><th></th></tr>
-<tr><td><a href="https://github.com/mrc4tt/CounterStrikeSharp">CounterStrikeSharp</a></td><td><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fgit.miksen.me%2Fmikkel%2Fcs2-signatures%2Fraw%2Fbranch%2Fmain%2Freports%2FCounterStrikeSharp%2Fbadge.json" alt="CounterStrikeSharp"></td><td align="center">67/72</td><td align="center">❌</td><td align="center">❌</td><td><a href="https://git.miksen.me/mikkel/cs2-signatures/src/branch/main/docs/CounterStrikeSharp.md">details &rarr;</a></td></tr>
-<tr><td><a href="https://github.com/mrc4tt/cs2-retakes-allocator">cs2-retakes-allocator</a></td><td><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fgit.miksen.me%2Fmikkel%2Fcs2-signatures%2Fraw%2Fbranch%2Fmain%2Freports%2FRetakesAllocator%2Fbadge.json" alt="cs2-retakes-allocator"></td><td align="center">5/6</td><td align="center">❌</td><td align="center">✅</td><td><a href="https://git.miksen.me/mikkel/cs2-signatures/src/branch/main/docs/RetakesAllocator.md">details &rarr;</a></td></tr>
+<tr><td><a href="https://github.com/mrc4tt/CounterStrikeSharp">CounterStrikeSharp</a></td><td><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fgit.miksen.me%2Fmikkel%2Fcs2-signatures%2Fraw%2Fbranch%2Fmain%2Freports%2FCounterStrikeSharp%2Fbadge.json" alt="CounterStrikeSharp"></td><td align="center">72/72</td><td align="center">✅</td><td align="center">✅</td><td><a href="https://git.miksen.me/mikkel/cs2-signatures/src/branch/main/docs/CounterStrikeSharp.md">details &rarr;</a></td></tr>
+<tr><td><a href="https://github.com/mrc4tt/cs2-retakes-allocator">cs2-retakes-allocator</a></td><td><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fgit.miksen.me%2Fmikkel%2Fcs2-signatures%2Fraw%2Fbranch%2Fmain%2Freports%2FRetakesAllocator%2Fbadge.json" alt="cs2-retakes-allocator"></td><td align="center">6/6</td><td align="center">✅</td><td align="center">✅</td><td><a href="https://git.miksen.me/mikkel/cs2-signatures/src/branch/main/docs/RetakesAllocator.md">details &rarr;</a></td></tr>
 <tr><td><a href="https://git.miksen.me/mikkel/matchzy">MatchZy</a></td><td><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fgit.miksen.me%2Fmikkel%2Fcs2-signatures%2Fraw%2Fbranch%2Fmain%2Freports%2FMatchZy%2Fbadge.json" alt="MatchZy"></td><td align="center">9/12</td><td align="center">❌</td><td align="center">❌</td><td><a href="https://git.miksen.me/mikkel/cs2-signatures/src/branch/main/docs/MatchZy.md">details &rarr;</a></td></tr>
 <tr><td><a href="https://git.miksen.me/mikkel/weaponpaints">WeaponPaints</a></td><td><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fgit.miksen.me%2Fmikkel%2Fcs2-signatures%2Fraw%2Fbranch%2Fmain%2Freports%2FWeaponPaints%2Fbadge.json" alt="WeaponPaints"></td><td align="center">18/18</td><td align="center">✅</td><td align="center">✅</td><td><a href="https://git.miksen.me/mikkel/cs2-signatures/src/branch/main/docs/WeaponPaints.md">details &rarr;</a></td></tr>
 </table>
-
-<details open><summary>&#9660; CounterStrikeSharp broken / ambiguous signatures (3)</summary>
-
-<table>
-<tr><th>Linux</th><th>Windows</th><th>Subroutine</th></tr>
-<tr><td>❌</td><td>❌</td><td>CCSPlayerPawnBase_PostThink</td></tr>
-<tr><td>❌</td><td>✅</td><td>GetCSWeaponDataFromKey</td></tr>
-<tr><td>❌</td><td>❌</td><td>CCSPointScript_OnCustomHudClicked</td></tr>
-</table>
-</details>
-
-<details open><summary>&#9660; cs2-retakes-allocator broken / ambiguous signatures (1)</summary>
-
-<table>
-<tr><th>Linux</th><th>Windows</th><th>Subroutine</th></tr>
-<tr><td>❌</td><td>✅</td><td>GetCSWeaponDataFromKey</td></tr>
-</table>
-</details>
 
 <details open><summary>&#9660; MatchZy broken / ambiguous signatures (2)</summary>
 
@@ -51,11 +33,23 @@ points at exactly one function in the binaries Valve ships right now.
 </table>
 </details>
 
+<details><summary>&#9660; MatchZy outdated vs reference (2)</summary>
+
+These still resolve in the current binaries. The upstream analysis has moved to a different pattern.
+
+<table>
+<tr><th>Subroutine</th><th>Platform</th></tr>
+<tr><td>CSmokeGrenadeProjectile_Create</td><td>linux, windows</td></tr>
+<tr><td>CDecoyProjectile_Create</td><td>windows</td></tr>
+</table>
+</details>
+
 <details><summary>&#9660; Run details</summary>
 
 * **CS2 build:** `1.41.9.2`
-* **Signatures:** 99 ok, 0 ambiguous, 9 broken (0 not-yet-validated)
-* **Offsets:** 15 ok, 0 stale, 6 without a reference
+* **Signatures:** 105 ok, 0 ambiguous, 3 broken (0 not-yet-validated)
+* **Offsets:** 42 ok, 0 stale, 0 without a reference
+* **Outdated:** 3 signature(s) still resolve but have been replaced upstream
 * **Depot manifests:** [5751660862748360256](https://steamdb.info/depot/2347771/history/?changeid=M:5751660862748360256), [5491505037461703699](https://steamdb.info/depot/2347773/history/?changeid=M:5491505037461703699)
 * **Fragility over time:** [docs/stats.md](docs/stats.md)
 
