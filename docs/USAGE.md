@@ -26,10 +26,7 @@ signatures break update after update - is in [stats.md](stats.md).
 2. **A red mark is not a crash report** - it means one function the plugin hooks
    can no longer be found. In practice the plugin loads but that feature
    misbehaves or the server crashes when the code path is hit.
-3. **What to do:** wait for the plugin author's update, or take the proposed
-   replacement signature from the linked issue. The tracker
-   verifies a proposal matches exactly once; it does not run it, so treat it as
-   a candidate, not a fix.
+3. **What to do:** wait for the plugin author's update.
 4. **The binaries used for a check** are published as releases, tagged by CS2
    version, if you want to reproduce a result yourself.
 
@@ -88,7 +85,7 @@ python3 scripts/validate_sigs.py --project MyPlugin \
 4. **Report**: the [README dashboard](../README.md), the per-project pages under
    `docs/`, the status
    badges, the fragility history, and - when configured - a Discord post and an
-   issue with proposed replacement signatures.
+   issue.
 
 The whole pipeline is Python 3 standard library plus DepotDownloader, so it runs
 on a bare VPS with no package installs.

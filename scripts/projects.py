@@ -52,10 +52,6 @@ def status_path(p):
     return os.path.join("reports", p["id"], "status.json")
 
 
-def proposals_path(p):
-    return os.path.join("reports", p["id"], "proposals.json")
-
-
 def docs_path(p):
     return os.path.join("docs", "%s.md" % p["id"])
 
