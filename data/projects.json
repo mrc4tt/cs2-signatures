@@ -20,8 +20,7 @@
   {
     "id": "MatchZy",
     "name": "MatchZy",
-    "repo": "mikkel/matchzy",
-    "host": "git.miksen.me",
+    "repo": "mrc4tt/MatchZy",
     "branch": "main",
     "path": "gamedata/matchzy.json",
     "private": false,
@@ -30,8 +29,7 @@
   {
     "id": "WeaponPaints",
     "name": "WeaponPaints",
-    "repo": "mikkel/weaponpaints",
-    "host": "git.miksen.me",
+    "repo": "mrc4tt/cs2-WeaponPaints",
     "branch": "main",
     "path": "gamedata/weaponpaints.json",
     "private": false,
