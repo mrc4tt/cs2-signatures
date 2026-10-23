@@ -1,10 +1,10 @@
 # WeaponPaints
 
-Last updated: October 23, 2026 at 03:30:01 GMT
+Last updated: October 23, 2026 at 03:50:02 GMT
 
 * Manifests: [5751660862748360256](https://steamdb.info/depot/2347771/history/?changeid=M:5751660862748360256), [5491505037461703699](https://steamdb.info/depot/2347773/history/?changeid=M:5491505037461703699)
-* Repository: https://git.miksen.me/mikkel/weaponpaints
-* Gamedata: https://git.miksen.me/mikkel/weaponpaints/src/branch/main/gamedata/weaponpaints.json
+* Repository: https://github.com/mrc4tt/cs2-WeaponPaints
+* Gamedata: https://github.com/mrc4tt/cs2-WeaponPaints/blob/main/gamedata/weaponpaints.json
 
 Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ broken (0) &middot; ❔ binary not downloaded.
 

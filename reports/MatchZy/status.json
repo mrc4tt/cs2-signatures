@@ -5,10 +5,10 @@
     "2347773": "5491505037461703699"
   },
   "reference": "14192",
-  "gamedata_source": "mikkel/matchzy gamedata/matchzy.json",
+  "gamedata_source": "mrc4tt/MatchZy gamedata/matchzy.json",
   "tally": {
-    "ok": 9,
-    "broken": 3,
+    "ok": 12,
+    "broken": 0,
     "ambiguous": 0,
     "no_binary": 0,
     "missing_sig": 0,
@@ -16,7 +16,7 @@
     "offset_stale": 0,
     "offset_review": 0,
     "offset_no_recipe": 0,
-    "sig_outdated": 3
+    "sig_outdated": 0
   },
   "results": [
     {
@@ -79,25 +79,23 @@
       "library": "server",
       "platforms": {
         "linux": {
-          "status": "broken",
-          "matches": 0,
+          "status": "ok",
+          "matches": 1,
           "library": "server",
-          "sig": "55 4C 89 C1 48 89 E5 41 57 49 89 FF 41 56 45 89 CE",
+          "sig": "55 4C 89 C1 48 89 E5 41 57 41 56",
           "reference": {
-            "status": "outdated",
-            "sig": "55 4C 89 C1 48 89 E5 41 57 41 56",
-            "relation": "conflict"
+            "status": "match",
+            "relation": "equal"
           }
         },
         "windows": {
-          "status": "broken",
-          "matches": 0,
+          "status": "ok",
+          "matches": 1,
           "library": "server",
-          "sig": "48 8B C4 48 89 58 ? 48 89 68 ? 48 89 70 ? 57 41 56 41 57 48 81 EC ? ? ? ? 48 8B B4 24 ? ? ? ?",
+          "sig": "48 89 5C 24 ? 48 89 6C 24 ? 48 89 74 24 ? 57 41 56 41 57 48 83 EC ? 48 8B B4 24 ? ? ? ?",
           "reference": {
-            "status": "outdated",
-            "sig": "48 89 5C 24 ?? 48 89 6C 24 ?? 48 89 74 24 ?? 57 41 56 41 57 48 83 EC ?? 48 8B B4 24 ?? ?? ?? ??",
-            "relation": "conflict"
+            "status": "match",
+            "relation": "equal"
           }
         }
       }
@@ -172,14 +170,13 @@
           }
         },
         "windows": {
-          "status": "broken",
-          "matches": 0,
+          "status": "ok",
+          "matches": 1,
           "library": "server",
-          "sig": "48 8B C4 55 56 48 81 EC ? ? ? ? 48 89 58 ? 48 8B D9",
+          "sig": "40 55 56 48 83 EC ? 48 89 5C 24 ? 48 8B D9",
           "reference": {
-            "status": "outdated",
-            "sig": "40 55 56 48 83 EC ?? 48 89 5C 24 ?? 48 8B D9",
-            "relation": "conflict"
+            "status": "match",
+            "relation": "equal"
           }
         }
       }

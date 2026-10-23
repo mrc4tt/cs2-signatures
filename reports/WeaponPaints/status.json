@@ -5,7 +5,7 @@
     "2347773": "5491505037461703699"
   },
   "reference": "14192",
-  "gamedata_source": "mikkel/weaponpaints gamedata/weaponpaints.json",
+  "gamedata_source": "mrc4tt/cs2-WeaponPaints gamedata/weaponpaints.json",
   "tally": {
     "ok": 18,
     "broken": 0,

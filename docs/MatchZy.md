@@ -1,10 +1,10 @@
 # MatchZy
 
-Last updated: October 23, 2026 at 03:30:01 GMT
+Last updated: October 23, 2026 at 03:50:02 GMT
 
 * Manifests: [5751660862748360256](https://steamdb.info/depot/2347771/history/?changeid=M:5751660862748360256), [5491505037461703699](https://steamdb.info/depot/2347773/history/?changeid=M:5491505037461703699)
-* Repository: https://git.miksen.me/mikkel/matchzy
-* Gamedata: https://git.miksen.me/mikkel/matchzy/src/branch/main/gamedata/matchzy.json
+* Repository: https://github.com/mrc4tt/MatchZy
+* Gamedata: https://github.com/mrc4tt/MatchZy/blob/main/gamedata/matchzy.json
 
 Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ broken (0) &middot; ❔ binary not downloaded.
 
@@ -64,37 +64,25 @@ Reference column: ✅ matches the 14192 analysis &middot; 🕓 the analysis uses
 
 <table>
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>❌</td><td>🕓</td><td>Windows</td><td>server</td><td>0</td><td>
+<tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
-\x48\x8B\xC4\x48\x89\x58\x2A\x48\x89\x68\x2A\x48\x89\x70\x2A\x57\x41\x56\x41\x57\x48\x81\xEC\x2A\x2A\x2A\x2A\x48\x8B\xB4\x24\x2A\x2A\x2A\x2A
+\x48\x89\x5C\x24\x2A\x48\x89\x6C\x24\x2A\x48\x89\x74\x24\x2A\x57\x41\x56\x41\x57\x48\x83\xEC\x2A\x48\x8B\xB4\x24\x2A\x2A\x2A\x2A
 </pre>
 </td><td>
 <pre>
-48 8B C4 48 89 58 ? 48 89 68 ? 48 89 70 ? 57 41 56 41 57 48 81 EC ? ? ? ? 48 8B B4 24 ? ? ? ?
+48 89 5C 24 ? 48 89 6C 24 ? 48 89 74 24 ? 57 41 56 41 57 48 83 EC ? 48 8B B4 24 ? ? ? ?
 </pre>
 </td></tr>
-<tr><td>❌</td><td>🕓</td><td>Linux</td><td>server</td><td>0</td><td>
+<tr><td>✅</td><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
-\x55\x4C\x89\xC1\x48\x89\xE5\x41\x57\x49\x89\xFF\x41\x56\x45\x89\xCE
+\x55\x4C\x89\xC1\x48\x89\xE5\x41\x57\x41\x56
 </pre>
 </td><td>
 <pre>
-55 4C 89 C1 48 89 E5 41 57 49 89 FF 41 56 45 89 CE
+55 4C 89 C1 48 89 E5 41 57 41 56
 </pre>
 </td></tr>
 </table>
-
-🕓 Reference linux pattern (14192):
-
-```
-55 4C 89 C1 48 89 E5 41 57 41 56
-```
-
-🕓 Reference windows pattern (14192):
-
-```
-48 89 5C 24 ?? 48 89 6C 24 ?? 48 89 74 24 ?? 57 41 56 41 57 48 83 EC ?? 48 8B B4 24 ?? ?? ?? ??
-```
 
 ### CHEGrenadeProjectile_Create
 
@@ -148,13 +136,13 @@ Reference column: ✅ matches the 14192 analysis &middot; 🕓 the analysis uses
 
 <table>
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>❌</td><td>🕓</td><td>Windows</td><td>server</td><td>0</td><td>
+<tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
-\x48\x8B\xC4\x55\x56\x48\x81\xEC\x2A\x2A\x2A\x2A\x48\x89\x58\x2A\x48\x8B\xD9
+\x40\x55\x56\x48\x83\xEC\x2A\x48\x89\x5C\x24\x2A\x48\x8B\xD9
 </pre>
 </td><td>
 <pre>
-48 8B C4 55 56 48 81 EC ? ? ? ? 48 89 58 ? 48 8B D9
+40 55 56 48 83 EC ? 48 89 5C 24 ? 48 8B D9
 </pre>
 </td></tr>
 <tr><td>✅</td><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
@@ -167,12 +155,6 @@ Reference column: ✅ matches the 14192 analysis &middot; 🕓 the analysis uses
 </pre>
 </td></tr>
 </table>
-
-🕓 Reference windows pattern (14192):
-
-```
-40 55 56 48 83 EC ?? 48 89 5C 24 ?? 48 8B D9
-```
 
 ## Offsets
 

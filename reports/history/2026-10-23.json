@@ -1,9 +1,9 @@
 {
-  "date": "October 23, 2026 at 03:30:01 GMT",
+  "date": "October 23, 2026 at 03:50:02 GMT",
   "version": "1.41.9.2",
   "tally": {
-    "ok": 105,
-    "broken": 3,
+    "ok": 108,
+    "broken": 0,
     "ambiguous": 0,
     "no_binary": 0,
     "missing_sig": 0,
@@ -11,7 +11,7 @@
     "offset_stale": 0,
     "offset_review": 0,
     "offset_no_recipe": 0,
-    "sig_outdated": 3
+    "sig_outdated": 0
   },
   "manifest": {
     "2347771": "5751660862748360256",
@@ -43,8 +43,8 @@
       "sig_outdated": 0
     },
     "MatchZy": {
-      "ok": 9,
-      "broken": 3,
+      "ok": 12,
+      "broken": 0,
       "ambiguous": 0,
       "no_binary": 0,
       "missing_sig": 0,
@@ -52,7 +52,7 @@
       "offset_stale": 0,
       "offset_review": 0,
       "offset_no_recipe": 0,
-      "sig_outdated": 3
+      "sig_outdated": 0
     },
     "WeaponPaints": {
       "ok": 18,
