@@ -130,24 +130,20 @@ class RepostReason(unittest.TestCase):
 
     def test_a_quiet_change_is_an_edit(self):
         delta = [change("A", "linux", "resigned")]
-        self.assertIsNone(repost_reason(delta, [], [{}], False))
+        self.assertIsNone(repost_reason(delta, [{}], False))
 
     def test_a_new_break_gets_its_own_message(self):
         # Discord fires no notification for an edit, so a mention buried in one
         # would never reach anyone.
         delta = [change("A", "linux", "broke", "ok", "broken")]
-        self.assertIsNotNone(repost_reason(delta, [], [{}], False))
-
-    def test_attachments_force_a_new_message(self):
-        self.assertIsNotNone(repost_reason([], [("g.json", b"{}")], [{}],
-                                           False))
+        self.assertIsNotNone(repost_reason(delta, [{}], False))
 
     def test_multi_message_report_is_never_edited(self):
         embeds = [{} for _ in range(EMBEDS_PER_MSG + 1)]
-        self.assertIsNotNone(repost_reason([], [], embeds, False))
+        self.assertIsNotNone(repost_reason([], embeds, False))
 
     def test_new_flag_overrides(self):
-        self.assertIsNotNone(repost_reason([], [], [{}], True))
+        self.assertIsNotNone(repost_reason([], [{}], True))
 
 
 class FitsStanding(unittest.TestCase):

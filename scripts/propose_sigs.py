@@ -12,8 +12,7 @@ binaries) and emit a candidate signature for the new build via resig.
 Writes reports/<id>/proposals.json per affected project (no timestamps -
 see the status.json rule in the docs) and deletes it again once nothing is
 broken, so stale proposals never linger. The candidates are ADVISORY: they
-are surfaced in the tracker issue and Discord post for a human to verify
-and PR upstream - nothing edits gamedata automatically.
+are surfaced in the tracker issue for a human to verify and PR upstream - nothing edits gamedata automatically.
 
 Exit 0 always; failing to propose is never a pipeline error. stdlib only.
 """
@@ -66,32 +65,9 @@ def problem_entries(status):
     return out
 
 
-def write_patched_gamedata(proj, proposals):
-    """Drop-in gamedata.json with candidate sigs applied, for projects with at
-    least one candidate. Attached to the Discord post as an UNVERIFIED file -
-    candidates are unique-match checked but not runtime-tested."""
-    gpath = P.proposed_gamedata_path(proj)
-    candidates = [pr for pr in proposals if pr.get("candidate")]
-    if not candidates:
-        if os.path.isfile(gpath):
-            os.remove(gpath)
-        return
-    with open(P.gamedata_path(proj)) as fh:
-        gamedata = json.load(fh)
-    for pr in candidates:
-        entry = gamedata.get(pr["name"], {}).get("signatures")
-        if entry is not None:
-            entry[pr["platform"]] = pr["candidate"]
-    with open(gpath, "w") as fh:
-        json.dump(gamedata, fh, indent=2)
-        fh.write("\n")
-    print("[%s] patched gamedata (%d candidate sig(s)) -> %s"
-          % (proj["id"], len(candidates), gpath))
-
-
 def propose_project(proj, bins):
-    """Write/refresh or remove reports/<id>/proposals.json (+ patched
-    gamedata). Return count of candidates."""
+    """Write/refresh or remove reports/<id>/proposals.json. Return count of
+    candidates."""
     spath = P.status_path(proj)
     ppath = P.proposals_path(proj)
     if not os.path.isfile(spath):
@@ -101,12 +77,8 @@ def propose_project(proj, bins):
 
     problems = problem_entries(status)
     if not problems:
-        removed = False
-        for stale in (ppath, P.proposed_gamedata_path(proj)):
-            if os.path.isfile(stale):
-                os.remove(stale)
-                removed = True
-        if removed:
+        if os.path.isfile(ppath):
+            os.remove(ppath)
             print("[%s] nothing broken/ambiguous - removed stale proposals"
                   % proj["id"])
         return 0
@@ -130,8 +102,6 @@ def propose_project(proj, bins):
     os.makedirs(os.path.dirname(ppath) or ".", exist_ok=True)
     with open(ppath, "w") as fh:
         json.dump(out, fh, indent=2)
-
-    write_patched_gamedata(proj, proposals)
 
     got = sum(1 for pr in proposals if pr.get("candidate"))
     print("[%s] proposed %d/%d replacement sig(s) -> %s"

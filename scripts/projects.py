@@ -56,10 +56,6 @@ def proposals_path(p):
     return os.path.join("reports", p["id"], "proposals.json")
 
 
-def proposed_gamedata_path(p):
-    return os.path.join("reports", p["id"], "gamedata.proposed.json")
-
-
 def docs_path(p):
     return os.path.join("docs", "%s.md" % p["id"])
 

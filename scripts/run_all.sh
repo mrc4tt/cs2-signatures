@@ -238,13 +238,6 @@ if [ -n "${FORGEJO_TOKEN:-}" ]; then
   python3 scripts/open_issue.py || true
 fi
 
-# 7.5 Optional: draft PR with the patched gamedata against each project repo
-#     that opts in via "propose_pr": true (needs a push-capable token). Stable
-#     branch -> re-runs update the same PR. Human reviews and merges.
-if ls reports/*/proposals.json >/dev/null 2>&1; then
-  python3 scripts/open_pr.py || true
-fi
-
 # 7.6 Opt-in (GAP_ISSUE=1): also mirror the gap page into one GitHub issue in the
 #     analysis repo. Off by default - docs/ReferenceGaps.md (written above) is the
 #     place to look, and the issue flipped open/closed whenever the set moved.

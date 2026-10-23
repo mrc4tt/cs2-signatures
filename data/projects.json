@@ -5,8 +5,7 @@
     "repo": "mrc4tt/CounterStrikeSharp",
     "branch": "main",
     "path": "configs/addons/counterstrikesharp/gamedata/gamedata.json",
-    "private": false,
-    "propose_pr": true
+    "private": false
   },
   {
     "id": "RetakesAllocator",
@@ -14,8 +13,7 @@
     "repo": "mrc4tt/cs2-retakes-allocator",
     "branch": "main",
     "path": "Resources/RetakesAllocator_gamedata.json",
-    "private": false,
-    "propose_pr": true
+    "private": false
   },
   {
     "id": "MatchZy",
@@ -23,8 +21,7 @@
     "repo": "mrc4tt/MatchZy",
     "branch": "main",
     "path": "gamedata/matchzy.json",
-    "private": false,
-    "propose_pr": true
+    "private": false
   },
   {
     "id": "WeaponPaints",
@@ -32,7 +29,6 @@
     "repo": "mrc4tt/cs2-WeaponPaints",
     "branch": "main",
     "path": "gamedata/weaponpaints.json",
-    "private": false,
-    "propose_pr": true
+    "private": false
   }
 ]

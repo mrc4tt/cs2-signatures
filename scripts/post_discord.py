@@ -42,7 +42,6 @@ discover:
     the CS2 build changed          one card per build keeps the history readable
     something newly broke          edits do not notify, so an @mention in an
                                    edited message would never reach anyone
-    gamedata files are attached    attachments cannot be added to an edit
     --new was passed               manual override
     the remembered message is gone deleted upstream; the edit 404s, so re-post
 
@@ -62,7 +61,6 @@ import sys
 import subprocess
 import urllib.error
 import urllib.request
-import uuid
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import projects as P  # noqa: E402
@@ -221,29 +219,6 @@ def bar(ok, total, n=10):
         return "─" * n
     filled = round(ok / total * n)
     return "█" * filled + "░" * (n - filled)
-
-
-def load_proposal_keys(projects_path):
-    """{(project_id, name, platform), ...} of broken sigs that have a
-    replacement candidate in proposals.json (written by propose_sigs.py)."""
-    out = set()
-    try:
-        projects = P.load(projects_path)
-    except Exception:  # noqa: BLE001 - proposals are optional decoration
-        return out
-    for proj in projects:
-        path = P.proposals_path(proj)
-        if not os.path.isfile(path):
-            continue
-        try:
-            with open(path) as fh:
-                data = json.load(fh)
-        except (OSError, ValueError):
-            continue
-        for pr in data.get("proposals", []):
-            if pr.get("candidate"):
-                out.add((proj["id"], pr["name"], pr["platform"]))
-    return out
 
 
 def sum_tallies(statuses):
@@ -421,8 +396,7 @@ def project_lines(statuses, projects_path):
 
 
 def problem_rows(statuses, projects_path, frag):
-    """Every broken/ambiguous entry, worst first, with fix/fragility markers."""
-    props = load_proposal_keys(projects_path)
+    """Every broken/ambiguous entry, worst first, with fragility markers."""
     rows = []
     for pid, name, plat, st in sorted(issue_list(statuses),
                                       key=lambda x: (x[3] != "broken",
@@ -431,8 +405,6 @@ def problem_rows(statuses, projects_path, frag):
         if (pid, name, plat) in frag:
             row += " 🔥"
         row += " · %s · %s" % (plat, st)
-        if (pid, name, plat) in props:
-            row += " · 🔧 fix proposed"
         rows.append(row)
     return rows
 
@@ -522,8 +494,7 @@ def build_report_embed(statuses, version, projects_path, delta, frag,
         "color": color,
         "description": "\n".join(lines),
         "fields": fields,
-        "footer": {"text": "%s  ·  🔥 breaks often  ·  🔧 fix proposed"
-                           % LEGEND},
+        "footer": {"text": "%s  ·  🔥 breaks often" % LEGEND},
     }
 
 
@@ -724,40 +695,16 @@ UA = ("cs2-signatures-tracker (urllib, "
       "+https://git.miksen.me/mikkel/cs2-signatures)")
 
 
-def post(webhook, payload, files=None):
-    """POST a webhook message. With `files` ([(filename, bytes), ...]) the
-    payload is sent as multipart/form-data with attachments; otherwise plain
-    JSON. Discord allows up to 10 files per message.
+def post(webhook, payload):
+    """POST a webhook message as JSON.
 
     Posts with ?wait=true so Discord returns the created message; prints and
     returns its id, which `--delete-message <id>` accepts to remove a post
     again and which the state file remembers so the next run can edit it."""
     webhook = "%s%swait=true" % (webhook, "&" if "?" in webhook else "?")
-    if files:
-        boundary = "----cs2sigtracker%s" % uuid.uuid4().hex
-        body = bytearray()
-
-        def part(headers, content):
-            body.extend(b"--%s\r\n" % boundary.encode())
-            body.extend(("\r\n".join(headers) + "\r\n\r\n").encode())
-            body.extend(content)
-            body.extend(b"\r\n")
-
-        part(['Content-Disposition: form-data; name="payload_json"',
-              "Content-Type: application/json"],
-             json.dumps(payload).encode())
-        for i, (fname, data) in enumerate(files[:10]):
-            part(['Content-Disposition: form-data; name="files[%d]"; '
-                  'filename="%s"' % (i, fname),
-                  "Content-Type: application/json"], data)
-        body.extend(b"--%s--\r\n" % boundary.encode())
-        req = urllib.request.Request(webhook, data=bytes(body), method="POST")
-        req.add_header("Content-Type",
-                       "multipart/form-data; boundary=%s" % boundary)
-    else:
-        req = urllib.request.Request(webhook, data=json.dumps(payload).encode(),
-                                     method="POST")
-        req.add_header("Content-Type", "application/json")
+    req = urllib.request.Request(webhook, data=json.dumps(payload).encode(),
+                                 method="POST")
+    req.add_header("Content-Type", "application/json")
     # Discord's Cloudflare edge 403s the default urllib UA (error 1010).
     req.add_header("User-Agent", UA)
     try:
@@ -786,7 +733,7 @@ def split_webhooks(values):
     return out
 
 
-def repost_reason(delta, files, embeds, force_new):
+def repost_reason(delta, embeds, force_new):
     """Why this run must start a NEW message instead of editing the standing
     one, as a short phrase for the log - or None when an edit is fine.
 
@@ -798,8 +745,6 @@ def repost_reason(delta, files, embeds, force_new):
     if any(c.get("change") == "broke" for c in delta):
         # An edit fires no notification, so a mention on one is never seen.
         return "new breakage (an edit would not notify)"
-    if files:
-        return "gamedata attachments (cannot be added to an edit)"
     if len(embeds) > EMBEDS_PER_MSG:
         return "report spans several messages"
     return None
@@ -877,23 +822,6 @@ def delete_message(webhook, message_id):
         print("webhook DELETE -> %s: %s" % (e.code, e.read()[:300]),
               file=sys.stderr)
         raise
-
-
-def proposed_files(projects_path):
-    """[(attachment_name, bytes), ...] of patched gamedata files written by
-    propose_sigs.py - drop-in gamedata with candidate sigs applied."""
-    out = []
-    try:
-        projects = P.load(projects_path)
-    except Exception:  # noqa: BLE001 - attachments are optional decoration
-        return out
-    for proj in projects:
-        path = P.proposed_gamedata_path(proj)
-        if os.path.isfile(path):
-            with open(path, "rb") as fh:
-                out.append(("%s-gamedata-proposed.json" % proj["id"],
-                            fh.read()))
-    return out
 
 
 def now_iso():
@@ -1019,15 +947,6 @@ def main():
         else:
             content, allowed = "<@%s>" % m, {"users": [m]}
 
-    # Patched gamedata files (candidate sigs applied) ride the first message.
-    # Unique-match verified, NOT runtime-tested - say so in the message.
-    files = [] if args.example else proposed_files(args.projects)
-    if files:
-        warn = ("⚠️ Auto-generated gamedata with proposed replacement "
-                "signatures attached - unique-match verified, not "
-                "runtime-tested. Review before use.")
-        content = "%s\n%s" % (content, warn) if content else warn
-
     if args.preview:
         payload = {"username": args.username, "embeds": embeds}
         if content:
@@ -1035,9 +954,6 @@ def main():
             if allowed:
                 payload["allowed_mentions"] = allowed
         print(json.dumps(payload, indent=2, ensure_ascii=False))
-        for fname, data in files:
-            print("attachment: %s (%d bytes)" % (fname, len(data)),
-                  file=sys.stderr)
         return 0
 
     if not webhooks:
@@ -1047,14 +963,14 @@ def main():
     # Reasons this run must start a new message rather than edit the standing
     # one - see the module docstring. A break has to be its own post because an
     # edit fires no notification, so the @mention would land silently.
-    reason = repost_reason(delta, files, embeds, args.new)
+    reason = repost_reason(delta, embeds, args.new)
     if reason and not args.example:
         print("posting a new message: %s" % reason, file=sys.stderr)
     can_edit = reason is None and not args.example
     state = load_state(args.state) if not args.example else {}
 
-    # Discord caps embeds per message; batch into chunks. Ping + attachments
-    # ride the first message. Each webhook is independent (own rate limit), and
+    # Discord caps embeds per message; batch into chunks. The ping rides
+    # the first message. Each webhook is independent (own rate limit), and
     # one dead URL must not cost the other servers their report.
     failed = edited = 0
     for n, hook in enumerate(webhooks, 1):
@@ -1085,8 +1001,7 @@ def main():
                                            standing["message_id"]),
                               file=sys.stderr)
                 payload["username"] = args.username
-                msg_id = post(hook, payload,
-                              files=files if start == 0 else None)
+                msg_id = post(hook, payload)
                 if start == 0 and msg_id:
                     state[key] = {"message_id": msg_id,
                                   "version": version or ""}
@@ -1106,9 +1021,8 @@ def main():
         how.append("edited %d" % edited)
     if delivered - edited:
         how.append("posted %d" % (delivered - edited))
-    print("%s discord webhook(s) of %d: %d embed(s), %d attachment(s)"
-          % (", ".join(how) or "delivered to 0", len(webhooks), len(embeds),
-             len(files)))
+    print("%s discord webhook(s) of %d: %d embed(s)"
+          % (", ".join(how) or "delivered to 0", len(webhooks), len(embeds)))
     return 1 if failed else 0
 
 

@@ -272,7 +272,7 @@ Changes (2)
   🔴 `CDecoyProjectile_Create` · linux · ok → broken
   🔁 `CMolotovProjectile_Create` · windows · re-signed
 Broken / ambiguous (1)
-  🔴 `CDecoyProjectile_Create` 🔥 · linux · broken · 🔧 fix proposed
+  🔴 `CDecoyProjectile_Create` 🔥 · linux · broken
 Projects (4)
   🟢 CounterStrikeSharp     `██████████` 70/70 · W 35/35 · L 35/35
   🔴 MatchZy                `█████████░` 11/12 · W 6/6 · L 5/6
@@ -352,7 +352,6 @@ scroll up to find the news:
 |---|---|
 | the CS2 build changed | one card per build keeps the channel readable |
 | something newly broke | an edit fires no notification, so the `@mention` would go unseen |
-| proposed gamedata attached | attachments cannot be added to an edit |
 | `--new` | manual override |
 | the remembered message is gone | the PATCH 404s, so the run re-posts and re-remembers |
 
@@ -399,12 +398,11 @@ GAP_ISSUE=1 bash scripts/run_all.sh                # also sync the issue
 Target repo defaults to the one `fetch_symbols.py` reads (`SYMBOLS_ISSUE_REPO`
 overrides). Needs `GITHUB_TOKEN`/`GH_TOKEN` with issue write.
 
-### Issues and pull requests
+### Issues
 
 `open_issue.py` opens a Forgejo issue on breakage and closes it when the
-signatures pass again. `open_pr.py` opens a draft PR with the patched gamedata
-against each project that sets `"propose_pr": true`. Both need `FORGEJO_TOKEN`
-and are skipped silently when it is unset.
+signatures pass again. It needs `FORGEJO_TOKEN` and is skipped silently when it
+is unset.
 
 ## VPS setup (x86-64)
 

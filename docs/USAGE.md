@@ -27,7 +27,7 @@ signatures break update after update - is in [stats.md](stats.md).
    can no longer be found. In practice the plugin loads but that feature
    misbehaves or the server crashes when the code path is hit.
 3. **What to do:** wait for the plugin author's update, or take the proposed
-   replacement signature from the linked issue or pull request. The tracker
+   replacement signature from the linked issue. The tracker
    verifies a proposal matches exactly once; it does not run it, so treat it as
    a candidate, not a fix.
 4. **The binaries used for a check** are published as releases, tagged by CS2
@@ -39,11 +39,8 @@ A run that changes a result can announce itself:
 
 * **Discord** - one embed per run, delta-first: the verdict, what changed since
   the previous report, per-project health, and the broken entries in full.
-  Healthy signatures are counted, not listed. When a replacement signature can
-  be derived automatically, a patched `gamedata.json` is attached to the post.
+  Healthy signatures are counted, not listed.
 * **Forgejo issue** - opened on breakage, closed when the signatures pass again.
-* **Pull request** - projects that opt in with `"propose_pr": true` get a draft
-  PR with the patched gamedata for review.
 
 Runs that change nothing stay silent. See
 [DEVELOPMENT.md](DEVELOPMENT.md#notifications) for the layout and the
@@ -61,8 +58,7 @@ Adding a plugin is a JSON append - no code change. Add an entry to
   "repo": "owner/my-plugin",
   "branch": "main",
   "path": "gamedata/myplugin.json",
-  "private": false,
-  "propose_pr": false
+  "private": false
 }
 ```
 
@@ -91,8 +87,8 @@ python3 scripts/validate_sigs.py --project MyPlugin \
    Offsets are checked against a reference analysis where one is available.
 4. **Report**: the [README dashboard](../README.md), the per-project pages under
    `docs/`, the status
-   badges, the fragility history, and - when configured - a Discord post, an
-   issue, and a draft PR with proposed replacement signatures.
+   badges, the fragility history, and - when configured - a Discord post and an
+   issue with proposed replacement signatures.
 
 The whole pipeline is Python 3 standard library plus DepotDownloader, so it runs
 on a bare VPS with no package installs.
