@@ -206,7 +206,7 @@ def write_page(report, path, date=None):
     L = ["# Reference coverage gaps", ""]
     if date:
         L += ["Last updated: %s" % date, ""]
-    body = render_markdown(report, "https://git.miksen.me/mikkel/cs2-signatures")
+    body = render_markdown(report, "https://github.com/mrc4tt/cs2-signatures")
     os.makedirs(os.path.dirname(path) or ".", exist_ok=True)
     with open(path, "w") as fh:
         fh.write("\n".join(L) + "\n" + body)

@@ -37,7 +37,7 @@ import reference_gaps as G  # noqa: E402
 from fetch_symbols import REPO as SYMBOLS_REPO  # noqa: E402
 
 TITLE = "Symbol coverage gaps reported by the cs2-signatures tracker"
-TRACKER_URL = "https://git.miksen.me/mikkel/cs2-signatures"
+TRACKER_URL = "https://github.com/mrc4tt/cs2-signatures"
 MARKER = "<!-- gap-fingerprint: %s -->"
 MARKER_RE = re.compile(r"<!-- gap-fingerprint: ([0-9a-f]{64}) -->")
 UA = "cs2-sig-tracker (+%s)" % TRACKER_URL

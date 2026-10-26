@@ -36,7 +36,7 @@ MARKER = "<!-- cs2-sig-tracker:bins -->"
 
 # Forgejo behind Cloudflare 403s the default urllib UA (error 1010) - send a
 # real UA like post_discord.py does.
-UA = "cs2-signatures-tracker (urllib, +https://git.miksen.me/mikkel/cs2-signatures)"
+UA = "cs2-signatures-tracker (urllib, +https://github.com/mrc4tt/cs2-signatures)"
 
 # The assets, resolved from the download dirs by run_all / CLI. libclient.so is
 # linux-only (no windows client.dll counterpart tracked).

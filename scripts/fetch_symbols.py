@@ -42,7 +42,7 @@ REPO = "https://github.com/mrc4tt/CS2_VibeSignatures.git"
 UPSTREAM = "https://github.com/HLND2T/CS2_VibeSignatures.git"
 OUT_DIR = os.path.join("data", "symbols")
 CLONE_DIR = os.path.join(OUT_DIR, ".repo")
-UA = "cs2-sig-tracker (+https://git.miksen.me/mikkel/cs2-signatures)"
+UA = "cs2-sig-tracker (+https://github.com/mrc4tt/cs2-signatures)"
 
 
 def get(url):

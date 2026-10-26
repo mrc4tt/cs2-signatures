@@ -204,9 +204,10 @@ if [ "${NO_PUSH:-0}" != "1" ]; then
   fi
 fi
 
-# 7. Optional Forgejo auto-issue on broken sigs, across all projects (needs
-#    FORGEJO_TOKEN + FORGEJO_SERVER + FORGEJO_REPO in .env). Silent if unset.
-if [ -n "${FORGEJO_TOKEN:-}" ]; then
+# 7. Optional auto-issue on broken sigs, across all projects. Needs ISSUE_REPO
+#    (e.g. mrc4tt/cs2-signatures) + GITHUB_TOKEN in .env, or the FORGEJO_*
+#    trio. Silent if unset.
+if [ -n "${ISSUE_REPO:-}${FORGEJO_TOKEN:-}" ]; then
   python3 scripts/open_issue.py || true
 fi
 

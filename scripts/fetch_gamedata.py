@@ -48,7 +48,7 @@ def fetch(proj, token):
     req = urllib.request.Request(url)
     # Descriptive UA - some hosts (Cloudflare) 403 the default urllib UA.
     req.add_header("User-Agent",
-                   "cs2-sig-tracker (+https://git.miksen.me/mikkel/cs2-signatures)")
+                   "cs2-sig-tracker (+https://github.com/mrc4tt/cs2-signatures)")
     if accept:
         req.add_header("Accept", accept)
     if token:

@@ -24,10 +24,10 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from depots import DEPOTS, steamdb_link  # noqa: E402
 import projects as P  # noqa: E402
 
-DOCS_URL_TMPL = ("https://git.miksen.me/mikkel/cs2-signatures/src/branch/main/"
+DOCS_URL_TMPL = ("https://github.com/mrc4tt/cs2-signatures/blob/main/"
                  "docs/%s.md")
-# Raw badge.json served by Forgejo -> wrapped by shields.io's endpoint badge.
-BADGE_RAW_TMPL = ("https://git.miksen.me/mikkel/cs2-signatures/raw/branch/main/"
+# Raw badge.json served by GitHub -> wrapped by shields.io's endpoint badge.
+BADGE_RAW_TMPL = ("https://raw.githubusercontent.com/mrc4tt/cs2-signatures/main/"
                   "reports/%s/badge.json")
 
 

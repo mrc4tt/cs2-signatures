@@ -33,7 +33,7 @@ import urllib.request
 URL = "https://sig.miksen.me/latest.json"
 STATE = os.path.join("reports", ".last_seen.json")
 # Cloudflare 403s the default urllib UA (error 1010), so identify ourselves.
-UA = "cs2-sig-tracker (+https://git.miksen.me/mikkel/cs2-signatures)"
+UA = "cs2-sig-tracker (+https://github.com/mrc4tt/cs2-signatures)"
 SCHEMA = 1
 # The fields that mean "re-compare". lastPublishTime is deliberately NOT one of
 # them: a rebuild that changes nothing would otherwise force a full run.

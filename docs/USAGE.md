@@ -37,7 +37,7 @@ A run that changes a result can announce itself:
 * **Discord** - one embed per run, delta-first: the verdict, what changed since
   the previous report, per-project health, and the broken entries in full.
   Healthy signatures are counted, not listed.
-* **Forgejo issue** - opened on breakage, closed when the signatures pass again.
+* **GitHub issue** - opened on breakage, closed when the signatures pass again.
 
 Runs that change nothing stay silent. See
 [DEVELOPMENT.md](DEVELOPMENT.md#notifications) for the layout and the

@@ -58,7 +58,7 @@ below for the snapshot-driven one that also covers Windows.
 - **Match count, not boolean.** ianlucas stops at the first hit (✅/❌). We count
   hits per executable section, so we also catch **⚠️ ambiguous** sigs.
 - **History trend** (`reports/history/*.json`) - per-run tally over time.
-- **Auto-issue** on Forgejo when a sig breaks; auto-closes when green again.
+- **Auto-issue** on GitHub when a sig breaks; auto-closes when green again.
 - **Status badge** driven by `reports/badge.json`.
 
 ### Reference validation (CS2_VibeSignatures)
@@ -400,9 +400,9 @@ overrides). Needs `GITHUB_TOKEN`/`GH_TOKEN` with issue write.
 
 ### Issues
 
-`open_issue.py` opens a Forgejo issue on breakage and closes it when the
-signatures pass again. It needs `FORGEJO_TOKEN` and is skipped silently when it
-is unset.
+`open_issue.py` opens a GitHub issue on breakage and closes it when the
+signatures pass again. It needs `ISSUE_REPO` + `GITHUB_TOKEN` (or the legacy
+`FORGEJO_*` trio) and is skipped silently when they are unset.
 
 ## VPS setup (x86-64)
 
@@ -412,10 +412,10 @@ token; set `GITHUB_TOKEN` only if a project is marked `"private": true`.
 
 1. Clone + configure env:
    ```bash
-   git clone https://git.miksen.me/mikkel/cs2-signatures.git
+   git clone https://github.com/mrc4tt/cs2-signatures.git
    cd cs2-signatures
    cp .env.example .env && nano .env      # GITHUB_TOKEN + DEPOTDOWNLOADER path
-   git config --global credential.helper store   # cache Forgejo push creds once
+   git config --global credential.helper store   # cache GitHub push creds once
    ```
 2. Run once by hand:
    ```bash
@@ -423,7 +423,8 @@ token; set `GITHUB_TOKEN` only if a project is marked `"private": true`.
    ```
    It validates, regenerates the README/docs, and auto-commits + pushes results
    (`NO_PUSH=1` to skip the push).
-3. Automate with cron (every 30 min):
+3. Automate. On the RE server this is `cs2-sig-tracker.timer` (every 15 min,
+   managed by server-ops). Elsewhere, cron works the same:
    ```bash
    crontab -e
    */30 * * * * /root/cs2-signatures/scripts/cron.sh

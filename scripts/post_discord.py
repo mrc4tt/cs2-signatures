@@ -71,9 +71,9 @@ COLOR_WARN = 0xF1C40F
 COLOR_BAD = 0xE74C3C
 
 STEAMDB = "https://steamdb.info/depot/%s/history/?changeid=M:%s"
-REPO_URL = "https://git.miksen.me/mikkel/cs2-signatures"
-DOCS_URL = REPO_URL + "/src/branch/main/docs/%s.md"
-STATS_URL = REPO_URL + "/src/branch/main/docs/stats.md"
+REPO_URL = "https://github.com/mrc4tt/cs2-signatures"
+DOCS_URL = REPO_URL + "/blob/main/docs/%s.md"
+STATS_URL = REPO_URL + "/blob/main/docs/stats.md"
 
 # A signature that has broken this many times before is worth a warning even
 # while it is currently healthy.
@@ -692,7 +692,7 @@ def display_name(pid, projects_path):
 
 
 UA = ("cs2-signatures-tracker (urllib, "
-      "+https://git.miksen.me/mikkel/cs2-signatures)")
+      "+https://github.com/mrc4tt/cs2-signatures)")
 
 
 def post(webhook, payload):

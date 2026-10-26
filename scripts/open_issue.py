@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Open (or update) a Forgejo issue when signatures are broken.
+"""Open (or update) a GitHub (or Forgejo) issue when signatures are broken.
 
 Reads reports/status.json. If any entry/platform is `broken`, ensures there is
 a single open tracking issue:
@@ -9,9 +9,10 @@ a single open tracking issue:
 De-dupes on the title marker so game updates don't spam a new issue each run.
 When nothing is broken, closes any open tracker issue.
 
-Auth: Forgejo API token via env FORGEJO_TOKEN. Server + repo from env
-GITHUB_SERVER_URL + GITHUB_REPOSITORY (Forgejo Actions set these), or pass
---server / --repo explicitly.
+Auth: GITHUB_TOKEN/GH_TOKEN (Issues: read+write) for github.com, or
+FORGEJO_TOKEN for a Forgejo server. Server + repo from env ISSUE_REPO /
+GITHUB_REPOSITORY (default server https://github.com), or pass --server /
+--repo explicitly.
 
 stdlib only (urllib). Never hard-code the token.
 """
@@ -29,15 +30,17 @@ MARKER = "[sig-tracker] Broken signatures"
 
 
 def api(server, token, method, path, body=None):
-    url = "%s/api/v1%s" % (server.rstrip("/"), path)
+    server = server.rstrip("/")
+    github = server in ("https://github.com", "https://api.github.com")
+    url = ("https://api.github.com%s" if github else server + "/api/v1%s") % path
     data = json.dumps(body).encode() if body is not None else None
     req = urllib.request.Request(url, data=data, method=method)
-    req.add_header("Authorization", "token %s" % token)
+    req.add_header("Authorization", ("Bearer %s" if github else "token %s") % token)
     req.add_header("Content-Type", "application/json")
     # Forgejo behind Cloudflare 403s the default urllib UA (error 1010).
     req.add_header("User-Agent",
                    "cs2-signatures-tracker (urllib, "
-                   "+https://git.miksen.me/mikkel/cs2-signatures)")
+                   "+https://github.com/mrc4tt/cs2-signatures)")
     try:
         with urllib.request.urlopen(req, timeout=60) as r:
             raw = r.read()
@@ -92,9 +95,11 @@ def body_text(statuses, broken):
 
 def find_open_issue(server, token, repo):
     issues = api(server, token, "GET",
-                 "/repos/%s/issues?state=open&type=issues&limit=50" % repo) or []
+                 "/repos/%s/issues?state=open&type=issues&limit=50&per_page=50"
+                 % repo) or []
     for it in issues:
-        if it.get("title", "").startswith(MARKER):
+        # GitHub lists pull requests as issues too
+        if "pull_request" not in it and it.get("title", "").startswith(MARKER):
             return it
     return None
 
@@ -105,10 +110,14 @@ def main():
     ap.add_argument("--status", default=None,
                     help="single status.json override (default: all projects)")
     ap.add_argument("--server", default=os.environ.get("FORGEJO_SERVER")
-                    or os.environ.get("GITHUB_SERVER_URL"))
-    ap.add_argument("--repo", default=os.environ.get("FORGEJO_REPO")
+                    or os.environ.get("GITHUB_SERVER_URL")
+                    or "https://github.com")
+    ap.add_argument("--repo", default=os.environ.get("ISSUE_REPO")
+                    or os.environ.get("FORGEJO_REPO")
                     or os.environ.get("GITHUB_REPOSITORY"))
-    ap.add_argument("--token", default=os.environ.get("FORGEJO_TOKEN"))
+    ap.add_argument("--token", default=os.environ.get("FORGEJO_TOKEN")
+                    or os.environ.get("GITHUB_TOKEN")
+                    or os.environ.get("GH_TOKEN"))
     args = ap.parse_args()
 
     if not (args.server and args.repo and args.token):

@@ -4,7 +4,7 @@ Last updated: October 23, 2026 at 03:50:02 GMT
 
 Symbols tracked by the signature tracker that the analysis cannot currently answer for.
 
-Snapshot: `14192`. Tracker: https://git.miksen.me/mikkel/cs2-signatures
+Snapshot: `14192`. Tracker: https://github.com/mrc4tt/cs2-signatures
 
 ## Signatures whose symbol is not in the snapshot (1)
 
