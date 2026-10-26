@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Full local run: check update -> fetch gamedata -> download bins -> validate ->
-# report. Safe to run by hand on the VPS. CI does the same steps individually.
+# report. Safe to run by hand on the server. CI does the same steps individually.
 set -euo pipefail
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ROOT="$(cd "$HERE/.." && pwd)"

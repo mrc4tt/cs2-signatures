@@ -35,7 +35,7 @@ CLAUDE.md
 # Drop these two lines if you want the reference history committed.
 data/symbols/
 
-# VPS-local upstream build poller (crontab) and its state
+# Server-local upstream build poller (crontab) and its state
 /.last_seen
 /.poll.lock
 /poll.log

@@ -404,7 +404,7 @@ overrides). Needs `GITHUB_TOKEN`/`GH_TOKEN` with issue write.
 signatures pass again. It needs `ISSUE_REPO` + `GITHUB_TOKEN` (or the legacy
 `FORGEJO_*` trio) and is skipped silently when they are unset.
 
-## VPS setup (x86-64)
+## Server setup (x86-64)
 
 Depots `2347771` (Windows) / `2347773` (Linux) download **anonymously** - no
 Steam login. Every tracked GitHub repo is public, so the gamedata fetch needs no
@@ -423,16 +423,16 @@ token; set `GITHUB_TOKEN` only if a project is marked `"private": true`.
    ```
    It validates, regenerates the README/docs, and auto-commits + pushes results
    (`NO_PUSH=1` to skip the push).
-3. Automate. On the RE server this is `cs2-sig-tracker.timer` (every 15 min,
+3. Automate. On the RE server this is `cs2-sig-tracker.timer` (every 5 min,
    managed by server-ops). Elsewhere, cron works the same:
    ```bash
    crontab -e
    */30 * * * * /root/cs2-signatures/scripts/cron.sh
    ```
    `cron.sh` loads `.env`, runs the pipeline, logs to `reports/cron.log`.
-4. Optional auto-issue on broken sigs: set `FORGEJO_TOKEN` + `FORGEJO_SERVER` +
-   `FORGEJO_REPO` in `.env` (token needs write-issue scope). `run_all.sh` opens
-   the issue automatically and closes it when green again.
+4. Optional auto-issue on broken sigs: set `ISSUE_REPO` + `GITHUB_TOKEN` in
+   `.env` (token needs issues write). `run_all.sh` opens the issue automatically
+   and closes it when green again.
 
 > Binaries are git-ignored - only derived reports/docs are committed. Badge
 > needs the repo **public** so shields.io can read `reports/badge.json`.

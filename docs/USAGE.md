@@ -88,6 +88,6 @@ python3 scripts/validate_sigs.py --project MyPlugin \
    issue.
 
 The whole pipeline is Python 3 standard library plus DepotDownloader, so it runs
-on a bare VPS with no package installs.
+on a bare server with no package installs.
 
 </details>

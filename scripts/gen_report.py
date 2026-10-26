@@ -317,7 +317,7 @@ def render_docs_index(projects, updated):
     L += ["* [USAGE.md](USAGE.md) - what the marks mean, what to do about a "
           "broken signature, and how to get a plugin tracked.",
           "* [DEVELOPMENT.md](DEVELOPMENT.md) - how the pipeline works, "
-          "notifications, reference validation, VPS setup, and the repository "
+          "notifications, reference validation, server setup, and the repository "
           "layout.",
           "* [stats.md](stats.md) - signature fragility: which signatures break "
           "most often across the tracked history.",
