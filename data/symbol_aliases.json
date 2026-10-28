@@ -1,4 +1,5 @@
 {
+  "CBaseEntity_TakeDamage": "CBaseEntity_TakeDamageOld",
   "CCSPlayerPawnBase_PostThink": "CCSPlayerPawn_PostThink",
   "CTakeDamageInfo_HitGroup": "CTakeDamageInfo_HitGroupInfo",
   "CheckTransmit": "CSource2GameEntities_CheckTransmit",

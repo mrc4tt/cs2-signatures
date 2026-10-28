@@ -92,6 +92,10 @@ def committed_at(path):
                          capture_output=True, text=True).stdout.strip()
     return int(out) if out else 0
 
+# An alias added since the last run changes which reference record a symbol
+# is checked against, with no game or gamedata change to give it away.
+aliases_at = committed_at(os.path.join("data", "symbol_aliases.json"))
+
 broken = 0
 for proj in P.load():
     path = P.status_path(proj)
@@ -99,7 +103,7 @@ for proj in P.load():
         sys.exit(2)  # new project - needs a full run
     # Gamedata committed by hand (not by a pipeline run) was never validated:
     # fetch now reports it unchanged, so only the commit order gives it away.
-    if committed_at(P.gamedata_path(proj)) > committed_at(path):
+    if max(committed_at(P.gamedata_path(proj)), aliases_at) > committed_at(path):
         sys.exit(2)
     with open(path) as fh:
         status = json.load(fh)
