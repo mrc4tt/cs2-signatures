@@ -4,7 +4,7 @@
     "2347771": "5218696177408015009",
     "2347773": "3474977783625240452"
   },
-  "reference": null,
+  "reference": "14193",
   "gamedata_source": "mrc4tt/cs2-retakes-allocator Resources/RetakesAllocator_gamedata.json",
   "tally": {
     "ok": 6,
@@ -28,13 +28,21 @@
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "45 31 C9 45 31 C0 31 C9 31 D2 E9 ? ? ? ? CC 55 45 31 C9"
+          "sig": "45 31 C9 45 31 C0 31 C9 31 D2 E9 ? ? ? ? CC 55 45 31 C9",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
         },
         "windows": {
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "48 83 EC ? 48 C7 44 24 ? ? ? ? ? 45 33 C9 45 33 C0 C6 44 24 ? ? E8 ? ? ? ? 48 83 C4 ? C3 CC CC CC CC CC CC CC CC CC CC CC CC CC CC 48 83 EC ?"
+          "sig": "48 83 EC ? 48 C7 44 24 ? ? ? ? ? 45 33 C9 45 33 C0 C6 44 24 ? ? E8 ? ? ? ? 48 83 C4 ? C3 CC CC CC CC CC CC CC CC CC CC CC CC CC CC 48 83 EC ?",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
         }
       }
     },
@@ -47,13 +55,21 @@
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "55 31 D2 48 89 E5 41 57 41 56 41 55 41 54 41 89 FC"
+          "sig": "55 31 D2 48 89 E5 41 57 41 56 41 55 41 54 41 89 FC",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
         },
         "windows": {
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "48 89 5C 24 ? 57 48 83 EC ? 33 FF 4C 8B CA 8B D9"
+          "sig": "48 89 5C 24 ? 57 48 83 EC ? 33 FF 4C 8B CA 8B D9",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
         }
       }
     },
@@ -66,13 +82,21 @@
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "55 48 89 E5 41 57 41 56 49 89 F6 41 55 41 54 49 89 CC 53 48 89 FB 48 83 EC ? 4C 8B 6F ?"
+          "sig": "55 48 89 E5 41 57 41 56 49 89 F6 41 55 41 54 49 89 CC 53 48 89 FB 48 83 EC ? 4C 8B 6F ?",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
         },
         "windows": {
           "status": "ok",
           "matches": 1,
           "library": "server",
-          "sig": "44 89 44 24 ? 48 89 54 24 ? 48 89 4C 24 ? 55 53 56 57 41 54 41 55 41 56 41 57 48 8B EC"
+          "sig": "44 89 44 24 ? 48 89 54 24 ? 48 89 4C 24 ? 55 53 56 57 41 54 41 55 41 56 41 57 48 8B EC",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
         }
       }
     }
