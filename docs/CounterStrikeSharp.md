@@ -1,6 +1,6 @@
 # CounterStrikeSharp
 
-Last updated: October 28, 2026 at 21:55:03 GMT
+Last updated: October 28, 2026 at 22:35:06 GMT
 
 * Manifests: [5218696177408015009](https://steamdb.info/depot/2347771/history/?changeid=M:5218696177408015009), [3474977783625240452](https://steamdb.info/depot/2347773/history/?changeid=M:3474977783625240452)
 * Repository: https://github.com/mrc4tt/CounterStrikeSharp
@@ -806,13 +806,13 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 
 <table>
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>❌</td><td>❔</td><td>Windows</td><td>server</td><td>0</td><td>
+<tr><td>✅</td><td>❔</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
-\x4C\x89\x44\x24\x2A\x55\x53\x56\x41\x55\x41\x57\x48\x8B\xEC\x48\x81\xEC\x2A\x2A\x2A\x2A\x44\x8B\x15\xD3\x46\x2A\x2A
+\x4C\x89\x44\x24\x2A\x55\x53\x56\x41\x55\x41\x57\x48\x8B\xEC\x48\x81\xEC\x2A\x2A\x2A\x2A\x44\x8B\x15\x2A\x2A\x2A\x2A\x4C\x8B\xF9\x65\x48\x8B\x04\x25\x2A\x2A\x2A\x2A\x4D\x8B\xE9\xB9\x2A\x2A\x2A\x2A\x48\x8B\xDA\x4A\x8B\x04\x2A\x8B\x04\x2A\x39\x05\x2A\x2A\x2A\x2A\x0F\x8F\x2A\x2A\x2A\x2A\x41\x80\x7F\x2A\x2A\x48\x8B\x35\x2A\x2A\x2A\x2A\x0F\x84\x2A\x2A\x2A\x2A\x48\x8D\x55\x2A\x48\x89\x75\x2A\x49\x8B\xCF\xE8\x2A\x2A\x2A\x2A\x84\xC0\x0F\x84\x2A\x2A\x2A\x2A\x48\x89\xBC\x24\x2A\x2A\x2A\x2A\x49\x8B\xCF\x4C\x89\x64\x24\x2A\x4C\x89\x74\x24\x2A\xE8\x2A\x2A\x2A\x2A\xE8\x2A\x2A\x2A\x2A\x48\x8B\xC8\x4C\x8B\xE0\xE8\x2A\x2A\x2A\x2A\x49\x8B\xD4\x48\x8D\x4D\x2A\xE8\x2A\x2A\x2A\x2A\x48\x8D\x55\x2A\x49\x8B\xCF\xE8\x2A\x2A\x2A\x2A\x4C\x8B\x75\x2A\x49\x8B\xCE\xE8\x2A\x2A\x2A\x2A\x49\x8B\xD4\x48\x8D\x4D\x2A\xE8\x2A\x2A\x2A\x2A\x48\x8B\x7D\x2A\x48\x8D\x4D\xD0
 </pre>
 </td><td>
 <pre>
-4C 89 44 24 ? 55 53 56 41 55 41 57 48 8B EC 48 81 EC ? ? ? ? 44 8B 15 D3 46 ? ?
+4C 89 44 24 ? 55 53 56 41 55 41 57 48 8B EC 48 81 EC ? ? ? ? 44 8B 15 ? ? ? ? 4C 8B F9 65 48 8B 04 25 ? ? ? ? 4D 8B E9 B9 ? ? ? ? 48 8B DA 4A 8B 04 ? 8B 04 ? 39 05 ? ? ? ? 0F 8F ? ? ? ? 41 80 7F ? ? 48 8B 35 ? ? ? ? 0F 84 ? ? ? ? 48 8D 55 ? 48 89 75 ? 49 8B CF E8 ? ? ? ? 84 C0 0F 84 ? ? ? ? 48 89 BC 24 ? ? ? ? 49 8B CF 4C 89 64 24 ? 4C 89 74 24 ? E8 ? ? ? ? E8 ? ? ? ? 48 8B C8 4C 8B E0 E8 ? ? ? ? 49 8B D4 48 8D 4D ? E8 ? ? ? ? 48 8D 55 ? 49 8B CF E8 ? ? ? ? 4C 8B 75 ? 49 8B CE E8 ? ? ? ? 49 8B D4 48 8D 4D ? E8 ? ? ? ? 48 8B 7D ? 48 8D 4D D0
 </pre>
 </td></tr>
 <tr><td>✅</td><td>❔</td><td>Linux</td><td>server</td><td>1</td><td>
