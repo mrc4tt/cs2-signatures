@@ -23,8 +23,13 @@ fi
 # pulls this checkout, so without it a pushed fix never reached the box, and the
 # next results push was rejected as non-fast-forward (silently: it is inside an
 # `if`). Rebase, not ff-only: this box's own track: commits may be unpushed.
+# GITHUB_TOKEN from .env is for the API (issues, releases) and has no Contents write on
+# this repo; the gh credential helper prefers it over the gh login, so every push was a
+# 403 "Permission to mrc4tt/cs2-signatures.git denied". Git talks to the remote as the
+# gh login; run_all.sh strips the same two variables for its pull and push.
+git_remote() { env -u GITHUB_TOKEN -u GH_TOKEN git "$@"; }
 if [ "${SIG_TRACKER_UPDATED:-0}" != "1" ]; then
-  git -c user.name="${GIT_NAME:-sig-tracker}" -c user.email="${GIT_EMAIL:-sig-tracker@localhost}" \
+  git_remote -c user.name="${GIT_NAME:-sig-tracker}" -c user.email="${GIT_EMAIL:-sig-tracker@localhost}" \
     pull -q --rebase --autostash origin main \
     || echo "WARN: self-update failed - running the checked-out version"
   SIG_TRACKER_UPDATED=1 exec bash "$0" "$@"
