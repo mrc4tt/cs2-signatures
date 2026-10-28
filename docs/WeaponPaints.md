@@ -1,8 +1,8 @@
 # WeaponPaints
 
-Last updated: October 23, 2026 at 03:50:02 GMT
+Last updated: October 28, 2026 at 21:50:34 GMT
 
-* Manifests: [5751660862748360256](https://steamdb.info/depot/2347771/history/?changeid=M:5751660862748360256), [5491505037461703699](https://steamdb.info/depot/2347773/history/?changeid=M:5491505037461703699)
+* Manifests: [5218696177408015009](https://steamdb.info/depot/2347771/history/?changeid=M:5218696177408015009), [3474977783625240452](https://steamdb.info/depot/2347773/history/?changeid=M:3474977783625240452)
 * Repository: https://github.com/mrc4tt/cs2-WeaponPaints
 * Gamedata: https://github.com/mrc4tt/cs2-WeaponPaints/blob/main/gamedata/weaponpaints.json
 
