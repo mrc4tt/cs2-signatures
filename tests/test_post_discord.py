@@ -8,10 +8,11 @@ import unittest
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                 "..", "scripts"))
-from post_discord import (CHANGE_ICON, EMBEDS_PER_MSG, bar,  # noqa: E402
-                          change_row, clamp_rows, delta_headline,
+from post_discord import (CHANGE_ICON, CIRCLE, EMBEDS_PER_MSG, bar,  # noqa: E402
+                          change_row, clamp_rows,
                           fits_standing, load_fragility, load_state,
-                          prev_version, repost_reason, save_state, state_key)
+                          problem_rows, repost_reason,
+                          save_state, state_key)
 
 
 def change(name, plat, kind, old=None, new=None, project="P"):
@@ -19,21 +20,26 @@ def change(name, plat, kind, old=None, new=None, project="P"):
             "platform": plat, "change": kind, "old": old, "new": new}
 
 
-class Headline(unittest.TestCase):
-    def test_empty(self):
-        self.assertIsNone(delta_headline([]))
+def status(*rows):
+    return {"results": [{"name": n, "platforms": {p: {"status": st}}}
+                        for n, p, st in rows]}
 
-    def test_counts_and_pluralises_breaks(self):
-        head = delta_headline([change("A", "linux", "broke", "ok", "broken"),
-                               change("B", "linux", "broke", "ok", "broken"),
-                               change("C", "linux", "fixed", "broken", "ok")])
-        self.assertIn("**2** new breaks", head)
-        self.assertIn("**1** fixed", head)
 
-    def test_breaks_come_first(self):
-        head = delta_headline([change("C", "linux", "fixed", "broken", "ok"),
-                               change("A", "linux", "broke", "ok", "broken")])
-        self.assertLess(head.index("new break"), head.index("fixed"))
+class Problems(unittest.TestCase):
+    def test_not_validated_is_listed_last_with_its_own_word(self):
+        rows = problem_rows([("P", status(("A", "linux", "no_binary"),
+                                          ("B", "linux", "broken")))],
+                            "/nonexistent", set())
+        self.assertIn("`B`", rows[0])
+        self.assertTrue(rows[1].startswith("⚪"))
+        self.assertIn("not validated", rows[1])
+
+    def test_entries_already_in_changes_are_skipped(self):
+        rows = problem_rows([("P", status(("A", "linux", "broken"),
+                                          ("B", "linux", "ambiguous")))],
+                            "/nonexistent", set(), {("P", "A", "linux")})
+        self.assertEqual(len(rows), 1)
+        self.assertIn("`B`", rows[0])
 
 
 class Rows(unittest.TestCase):
@@ -41,8 +47,19 @@ class Rows(unittest.TestCase):
         row = change_row(change("A", "linux", "broke", "ok", "broken"),
                          multi=False, frag=set())
         self.assertIn("`A`", row)
-        self.assertIn("ok → broken", row)
+        self.assertNotIn("→", row)
         self.assertIn(CHANGE_ICON["broke"], row)
+
+    def test_fixed_row_says_fixed(self):
+        row = change_row(change("A", "linux", "fixed", "broken", "ok"),
+                         multi=False, frag=set())
+        self.assertTrue(row.startswith(CIRCLE["ok"]))
+        self.assertIn("fixed", row)
+
+    def test_transition_dot_is_the_current_state(self):
+        row = change_row(change("A", "linux", "broke", "ok", "ambiguous"),
+                         multi=False, frag=set())
+        self.assertTrue(row.startswith(CIRCLE["ambiguous"]))
 
     def test_labelled_row_has_no_arrow(self):
         row = change_row(change("A", "linux", "resigned", "ok", "ok"),
@@ -91,17 +108,6 @@ class Inputs(unittest.TestCase):
 
     def test_fragility_missing_file_is_empty(self):
         self.assertEqual(load_fragility("/nonexistent/f.json"), set())
-
-    def test_previous_version_is_the_newest_differing_snapshot(self):
-        with tempfile.TemporaryDirectory() as d:
-            for name, ver in (("2026-01-01.json", "1.0"),
-                              ("2026-01-02.json", "1.1"),
-                              ("2026-01-03.json", "1.2")):
-                with open(os.path.join(d, name), "w") as fh:
-                    json.dump({"version": ver}, fh)
-            self.assertEqual(prev_version(d, "1.2"), "1.1")
-            self.assertIsNone(prev_version(d, None))
-            self.assertIsNone(prev_version(None, "1.2"))
 
 
 class ChangeIcons(unittest.TestCase):

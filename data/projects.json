@@ -3,6 +3,7 @@
     "id": "CounterStrikeSharp",
     "name": "CounterStrikeSharp",
     "repo": "mrc4tt/CounterStrikeSharp",
+    "upstream": "roflmuffin/CounterStrikeSharp",
     "branch": "main",
     "path": "configs/addons/counterstrikesharp/gamedata/gamedata.json",
     "private": false
@@ -11,6 +12,7 @@
     "id": "RetakesAllocator",
     "name": "cs2-retakes-allocator",
     "repo": "mrc4tt/cs2-retakes-allocator",
+    "upstream": "yonilerner/cs2-retakes-allocator",
     "branch": "main",
     "path": "Resources/RetakesAllocator_gamedata.json",
     "private": false
@@ -19,6 +21,7 @@
     "id": "MatchZy",
     "name": "MatchZy",
     "repo": "mrc4tt/MatchZy",
+    "upstream": "shobhit-pathak/MatchZy",
     "branch": "main",
     "path": "gamedata/matchzy.json",
     "private": false
@@ -27,6 +30,7 @@
     "id": "WeaponPaints",
     "name": "WeaponPaints",
     "repo": "mrc4tt/cs2-WeaponPaints",
+    "upstream": "Nereziel/cs2-WeaponPaints",
     "branch": "main",
     "path": "gamedata/weaponpaints.json",
     "private": false

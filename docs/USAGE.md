@@ -34,12 +34,14 @@ signatures break update after update - is in [stats.md](stats.md).
 
 A run that changes a result can announce itself:
 
-* **Discord** - one embed per run, delta-first: the verdict, what changed since
-  the previous report, per-project health, and the broken entries in full.
-  Healthy signatures are counted, not listed.
+* **Discord** - one short embed per run: a one-line verdict, what changed
+  since the previous report (state transitions listed, added/removed/re-signed
+  counted), anything still not ok, and one `ok/total` line per project linked
+  to its tracked repo. Healthy signatures are counted, not listed.
 * **GitHub issue** - opened on breakage, closed when the signatures pass again.
 
-Runs that change nothing stay silent. See
+Runs that change nothing stay silent: they only edit the standing card in
+place (`post_discord.py --heartbeat`) so its "Checked" time stays current. See
 [DEVELOPMENT.md](DEVELOPMENT.md#notifications) for the layout and the
 environment variables.
 

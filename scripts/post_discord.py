@@ -73,7 +73,6 @@ COLOR_BAD = 0xE74C3C
 STEAMDB = "https://steamdb.info/depot/%s/history/?changeid=M:%s"
 REPO_URL = "https://github.com/mrc4tt/cs2-signatures"
 DOCS_URL = REPO_URL + "/blob/main/docs/%s.md"
-STATS_URL = REPO_URL + "/blob/main/docs/stats.md"
 
 # A signature that has broken this many times before is worth a warning even
 # while it is currently healthy.
@@ -102,7 +101,12 @@ HEADLINE = ("broke", "fixed")
 
 CIRCLE = {"ok": "\U0001F7E2", "broken": "\U0001F534", "ambiguous": "\U0001F7E1"}
 UNTRACKED = "⚪"
-LEGEND = "\U0001F7E2 Valid | \U0001F534 Failed | \U0001F7E1 Multi-match | ⚪ Untracked"
+# Same words as the tally line and the rows, so a colour means one thing.
+LEGEND = ("\U0001F7E2 ok | \U0001F534 broken | \U0001F7E1 ambiguous | "
+          "⚪ not validated")
+# Transition kinds whose dot shows the state the entry is IN NOW (`new`), not
+# the kind of change - "ok -> ambiguous" is yellow, like in the problem list.
+STATE_ICON_KINDS = ("broke", "fixed", "changed")
 
 # Discord hard limits we stay under.
 DESC_MAX = 4000        # embed description (spec 4096)
@@ -267,7 +271,7 @@ def delta_is_fresh(path, projects_path):
     return os.path.getmtime(path) >= newest
 
 
-def load_delta(path, projects_path):
+def load_delta(path, projects_path, any_age=False):
     """[{project, name, platform, change, old, new}, ...] since the last report.
 
     Prefers the file written by post_gate.py: by the time this script runs,
@@ -275,12 +279,16 @@ def load_delta(path, projects_path):
     is no longer computable here. Falls back to computing it live, which is
     what a manual pre-commit `--preview` wants.
 
+    `any_age` takes the file however old: a heartbeat re-renders the standing
+    card, whose Changed list is the last REPORT's delta, not this quiet run's.
+
     Change kinds this script has no icon for are dropped rather than rendered
     as a bullet with an `ok -> ok` transition: a retired kind left over in a
     stale delta.json would otherwise show up as a change that says nothing.
     """
     changes = None
-    if path and os.path.isfile(path) and delta_is_fresh(path, projects_path):
+    if path and os.path.isfile(path) and (
+            any_age or delta_is_fresh(path, projects_path)):
         try:
             with open(path) as fh:
                 changes = json.load(fh).get("changes", [])
@@ -295,40 +303,17 @@ def load_delta(path, projects_path):
     return [c for c in changes if c.get("change") in CHANGE_ICON]
 
 
-def prev_version(history_dir, current):
-    """The CS2 version of the newest history snapshot that is not `current`.
-
-    gen_report.py stamps each snapshot with the version it validated, so the
-    most recent differing one is the build we were on before this run.
-    """
-    if not current or not history_dir or not os.path.isdir(history_dir):
-        return None
-    for name in sorted(os.listdir(history_dir), reverse=True):
-        if not name.endswith(".json"):
-            continue
-        try:
-            with open(os.path.join(history_dir, name)) as fh:
-                ver = json.load(fh).get("version")
-        except (OSError, ValueError):
-            continue
-        if ver and ver != current:
-            return ver
-    return None
-
-
-def commit_link():
-    """Link to the commit this report describes, or None outside a checkout.
-
-    run_all.sh commits in step 6 and posts in step 8, so HEAD is exactly the
-    run being reported - one click from the post to the changed status.json.
-    """
+def last_change_ts():
+    """Unix time of the newest commit that touched a project status.json -
+    when a result last moved - or None outside a checkout."""
     try:
-        sha = subprocess.run(["git", "rev-parse", "HEAD"], cwd=P.ROOT,
+        out = subprocess.run(["git", "log", "-1", "--format=%ct", "--",
+                              "reports/*/status.json"], cwd=P.ROOT,
                              capture_output=True, check=True,
                              text=True).stdout.strip()
     except (OSError, subprocess.CalledProcessError):
         return None
-    return "%s/commit/%s" % (REPO_URL, sha) if sha else None
+    return int(out) if out.isdigit() else None
 
 
 def clamp_rows(rows, limit=1024):
@@ -344,158 +329,194 @@ def clamp_rows(rows, limit=1024):
     return "\n".join(out)
 
 
-def change_row(c, multi, frag):
-    """One line in the Changes field."""
-    bits = ["%s `%s`" % (CHANGE_ICON.get(c["change"], "•"), c["name"])]
+def change_row(c, multi, frag, names=None):
+    """One line in the Changes field. `names` maps project id -> display name,
+    so rows say the same thing as the project cards."""
+    names = names or {}
+    icon = CHANGE_ICON.get(c["change"], "•")
+    if c["change"] in STATE_ICON_KINDS and c.get("new") in CIRCLE:
+        icon = CIRCLE[c["new"]]
+    bits = ["%s `%s`" % (icon, c["name"])]
     if (c["project"], c["name"], c["platform"]) in frag:
         bits[0] += " 🔥"
     if multi:
-        bits.append(c["project"])
+        bits.append(names.get(c["project"], c["project"]))
     bits.append(c["platform"])
+    if c.get("kind") == "offset":
+        bits[0] += " offset"
+    # The dot already shows where a transition landed; only "fixed" earns a
+    # word, so a green row reads as good news rather than as "still ok".
     if c["change"] in CHANGE_LABEL:
         bits.append(CHANGE_LABEL[c["change"]])
-    else:
-        bits.append("%s → %s" % (c.get("old") or "?", c.get("new") or "?"))
+    elif c["change"] == "fixed":
+        bits.append("fixed")
     return " · ".join(bits)
 
 
-def delta_headline(changes):
-    """"2 fixed · 1 new break · 3 re-signed", or None when nothing moved."""
-    counts = {}
-    for c in changes:
-        counts[c["change"]] = counts.get(c["change"], 0) + 1
-    words = {"broke": "new break", "fixed": "fixed", "changed": "changed",
-             "added": "added", "removed": "removed",
-             "resigned": "re-signed", "moved": "offset moved"}
-    parts = []
-    for kind in CHANGE_ICON:
-        n = counts.get(kind, 0)
-        if not n:
-            continue
-        word = words[kind]
-        parts.append("**%d** %s%s" % (n, word,
-                                      "s" if n > 1 and word.endswith("break")
-                                      else ""))
-    return " · ".join(parts) or None
+# Order and wording of the "needs attention" list: worst first, and the same
+# words the legend and the rows use.
+ATTENTION = ("broken", "ambiguous", "no_binary")
+STATUS_WORD = {"no_binary": "not validated"}
 
 
-def project_lines(statuses, projects_path):
-    """One health line per project: verdict dot, link, bar, per-platform count."""
+def attention_list(statuses):
+    """(project, name, platform, status) for every entry that is not ok:
+    broken, ambiguous, or not validated (no binary to check it against)."""
     out = []
     for pid, status in statuses:
-        c = platform_counts(sig_entries(status))
-        pok = c["windows"][0] + c["linux"][0]
-        ptot = c["windows"][1] + c["linux"][1]
-        out.append("%s [**%s**](%s)\n`%s` %d/%d  ·  W %d/%d · L %d/%d"
-                   % (verdict_dot(status.get("tally", {})),
-                      display_name(pid, projects_path), DOCS_URL % pid,
-                      bar(pok, ptot), pok, ptot,
-                      c["windows"][0], c["windows"][1],
-                      c["linux"][0], c["linux"][1]))
+        for r in status.get("results", []):
+            for plat, info in r.get("platforms", {}).items():
+                if info.get("status") in ATTENTION:
+                    out.append((pid, r["name"], plat, info["status"]))
     return out
 
 
-def problem_rows(statuses, projects_path, frag):
-    """Every broken/ambiguous entry, worst first, with fragility markers."""
+def problem_rows(statuses, projects_path, frag, skip=()):
+    """Every entry needing attention, worst first, with fragility markers.
+    Rows name their project once more than one is tracked, like Changes.
+    `skip` holds (project, name, platform) keys already shown in Changes."""
+    multi = len(statuses) > 1
     rows = []
-    for pid, name, plat, st in sorted(issue_list(statuses),
-                                      key=lambda x: (x[3] != "broken",
+    for pid, name, plat, st in sorted(attention_list(statuses),
+                                      key=lambda x: (ATTENTION.index(x[3]),
                                                      x[0], x[1])):
+        if (pid, name, plat) in skip:
+            continue
         row = "%s `%s`" % (circle(st), name)
         if (pid, name, plat) in frag:
             row += " 🔥"
-        row += " · %s · %s" % (plat, st)
+        if multi:
+            row += " · %s" % display_name(pid, projects_path)
+        row += " · %s · %s" % (plat, STATUS_WORD.get(st, st))
         rows.append(row)
     return rows
 
 
+def minor_summary(delta):
+    """"+ 1 added · 1 removed · 1 re-signed" for the changes nobody has to act
+    on, collapsed so the Changed list only holds state transitions."""
+    counts = {}
+    for c in delta:
+        if c.get("change") in CHANGE_LABEL:
+            counts[c["change"]] = counts.get(c["change"], 0) + 1
+    parts = ["%d %s" % (counts[k], CHANGE_LABEL[k])
+             for k in CHANGE_LABEL if counts.get(k)]
+    return "+ " + " · ".join(parts) if parts else None
+
+
+def project_rows(statuses, projects_path):
+    """One line per project: dot, name linked to the tracked repo, ok/total.
+    The per-platform split is only shown for a platform that is not clean."""
+    rows = []
+    for pid, status in statuses:
+        c = platform_counts(sig_entries(status))
+        pok = c["windows"][0] + c["linux"][0]
+        ptot = c["windows"][1] + c["linux"][1]
+        proj = find_project(pid, projects_path)
+        name = display_name(pid, projects_path)
+        if proj and proj.get("repo"):
+            name = "[%s](%s)" % (name, P.repo_url(proj))
+        row = "%s %s  %d/%d" % (verdict_dot(status.get("tally", {})), name,
+                               pok, ptot)
+        split = ["%s %d/%d" % (plat[0].upper(), ok_, tot)
+                 for plat, (ok_, tot) in sorted(c.items(),
+                                                key=lambda x: x[0] != "windows")
+                 if ok_ != tot]
+        if split:
+            row += "  (%s)" % " · ".join(split)
+        rows.append(row)
+    return rows
+
+
+def forks_footer(statuses, projects_path):
+    """"Tracking mrc4tt forks" when every tracked repo with an upstream shares
+    one owner; the card titles then need no per-project fork tag."""
+    owners = set()
+    for pid, _ in statuses:
+        proj = find_project(pid, projects_path)
+        if proj and proj.get("upstream"):
+            owners.add(proj["repo"].split("/")[0])
+    if len(owners) == 1:
+        return "Tracking %s forks" % owners.pop()
+    return "Tracking %s forks" % ", ".join(sorted(owners)) if owners else None
+
+
 def build_report_embed(statuses, version, projects_path, delta, frag,
                        history_dir):
-    """The default report: verdict, what changed, project health, problems.
+    """The default report, kept short: one verdict line, when it was checked,
+    what changed, what is still not ok, and one line per project.
 
     Healthy signatures are counted, not listed - the full per-signature table
-    is one click away in docs/<project>.md, and repeating it every run is what
-    made the old layout unreadable.
+    (and the depot manifests) are one click away via the title link.
     """
     total = sum_tallies(statuses)
     ok, amb, brk = (total.get("ok", 0), total.get("ambiguous", 0),
                     total.get("broken", 0))
     novb = total.get("no_binary", 0)
     sigs = ok + amb + brk + novb
-
-    if brk:
-        color = COLOR_BAD
-        verdict = ("%s **%d broken** of %d signature checks - regenerate"
-                   % (CIRCLE["broken"], brk, sigs))
-    elif amb:
-        color = COLOR_WARN
-        verdict = ("%s **%d ambiguous** of %d signature checks - weak patterns"
-                   % (CIRCLE["ambiguous"], amb, sigs))
-    else:
-        color = COLOR_OK
-        verdict = ("%s **All %d signature checks valid** across %d project(s)"
-                   % (CIRCLE["ok"], sigs, len(statuses)))
-
-    lines = [verdict,
-             "`%d ok`  ·  `%d ambiguous`  ·  `%d broken`  ·  `%d not validated`"
-             % (ok, amb, brk, novb)]
-
     off_ok = total.get("offset_ok", 0)
     off_bad = total.get("offset_stale", 0)
-    off_none = total.get("offset_no_recipe", 0) + total.get("offset_review", 0)
-    if off_ok or off_bad or off_none:
-        lines.append("Offsets: `%d ok`  ·  `%d stale`  ·  `%d no reference`"
-                     % (off_ok, off_bad, off_none))
 
-    head = delta_headline(delta)
-    lines.append("Since last report: %s" % head if head
-                 else "_No signature or offset result changed since the last "
-                      "report._")
+    if brk or amb:
+        color = COLOR_BAD if brk else COLOR_WARN
+        bad = []
+        if brk:
+            bad.append("**%d broken**" % brk)
+        if amb:
+            bad.append("**%d ambiguous**" % amb)
+        verdict = "%s %s of %d" % (CIRCLE["broken" if brk else "ambiguous"],
+                                   " · ".join(bad), sigs)
+    else:
+        color = COLOR_OK
+        verdict = "%s **All %d signatures OK**" % (CIRCLE["ok"], sigs)
+        if off_ok and not off_bad:
+            verdict += " · %d offsets OK" % off_ok
+    if off_bad:
+        verdict += " · **%d offsets stale**" % off_bad
 
-    prev = prev_version(history_dir, version)
-    if prev:
-        lines.append("Game build: `%s` → `%s`" % (prev, version))
-
-    nav = ["[Full report](%s)" % REPO_URL, "[Fragility](%s)" % STATS_URL]
-    commit = commit_link()
-    if commit:
-        nav.append("[This run](%s)" % commit)
-    lines.append("Updated <t:%d:R>  ·  %s"
-                 % (int(datetime.datetime.now(datetime.timezone.utc)
-                        .timestamp()), "  ·  ".join(nav)))
+    checked = "Checked <t:%d:R>" % int(datetime.datetime.now(
+        datetime.timezone.utc).timestamp())
+    changed = last_change_ts()
+    if changed:
+        checked += " · last change <t:%d:R>" % changed
 
     fields = []
-    if delta:
-        multi = len({c["project"] for c in delta}) > 1
-        fields.append({"name": "Changes (%d)" % len(delta),
-                       "value": clamp_rows([change_row(c, multi, frag)
-                                            for c in delta]),
+    moved = [c for c in delta if c.get("change") in STATE_ICON_KINDS]
+    minor = minor_summary(delta)
+    if moved or minor:
+        multi = len(statuses) > 1
+        names = {pid: display_name(pid, projects_path) for pid, _ in statuses}
+        rows = [change_row(c, multi, frag, names) for c in moved]
+        if minor:
+            rows.append(minor)
+        fields.append({"name": "Changed", "value": clamp_rows(rows),
                        "inline": False})
 
-    issues = issue_list(statuses)
-    if issues:
-        fields.append({"name": "Broken / ambiguous (%d)" % len(issues),
-                       "value": clamp_rows(problem_rows(statuses,
-                                                        projects_path, frag)),
-                       "inline": False})
+    # Entries whose change row already shows their current state are not
+    # repeated; the field then only lists what was ALREADY wrong before this
+    # report, and disappears when Changed covers everything.
+    shown = {(c["project"], c["name"], c["platform"]) for c in moved
+             if c.get("kind", "signature") == "signature"}
+    rows = problem_rows(statuses, projects_path, frag, shown)
+    if rows:
+        fields.append({"name": "Still not ok" if moved else "Not ok",
+                       "value": clamp_rows(rows), "inline": False})
 
-    fields.append({"name": "Projects (%d)" % len(statuses),
-                   "value": clamp_rows(project_lines(statuses, projects_path))
+    fields.append({"name": "Projects",
+                   "value": clamp_rows(project_rows(statuses, projects_path))
                    or "none", "inline": False})
 
-    links = manifest_links(next((s.get("manifest") for _, s in statuses
-                                 if s.get("manifest")), None))
-    if links:
-        fields.append({"name": "Manifests", "value": links, "inline": False})
-
-    return {
-        "title": "CS2 Signatures - %s" % (version or "unknown build"),
+    embed = {
+        "title": "CS2 Signatures · %s" % (version or "unknown build"),
         "url": REPO_URL,
         "color": color,
-        "description": "\n".join(lines),
+        "description": "%s\n%s" % (verdict, checked),
         "fields": fields,
-        "footer": {"text": "%s  ·  🔥 breaks often" % LEGEND},
     }
+    footer = forks_footer(statuses, projects_path)
+    if footer:
+        embed["footer"] = {"text": footer}
+    return embed
 
 
 def verdict_dot(tally):
@@ -680,15 +701,21 @@ def example_fragility():
     return {("CounterStrikeSharp", "CCSNavArea_IsValidNavMesh", "windows")}
 
 
-def display_name(pid, projects_path):
-    """Human project name from the registry, falling back to the id."""
+def find_project(pid, projects_path):
+    """Registry entry for `pid`, or None (missing/corrupt registry, example)."""
     try:
         for proj in P.load(projects_path):
             if proj["id"] == pid:
-                return P.name(proj)
+                return proj
     except (OSError, ValueError, KeyError):
         pass
-    return pid
+    return None
+
+
+def display_name(pid, projects_path):
+    """Human project name from the registry, falling back to the id."""
+    proj = find_project(pid, projects_path)
+    return P.name(proj) if proj else pid
 
 
 UA = ("cs2-signatures-tracker (urllib, "
@@ -828,6 +855,36 @@ def now_iso():
     return datetime.datetime.now(datetime.timezone.utc).isoformat()
 
 
+def heartbeat(webhooks, embeds, content, allowed, version, state):
+    """Edit each webhook's standing message with a fresh render; never post.
+
+    A heartbeat that posted would spam the channel every tick, so a webhook
+    whose card is missing, deleted, or from an older build is left alone - the
+    next real report posts a new one.
+    """
+    if len(embeds) > EMBEDS_PER_MSG:
+        print("heartbeat: report spans several messages - skipped",
+              file=sys.stderr)
+        return 0
+    payload = {"embeds": embeds, "content": content or ""}
+    if content and allowed:
+        payload["allowed_mentions"] = allowed
+    edited = failed = 0
+    for n, hook in enumerate(webhooks, 1):
+        standing = state.get(state_key(hook)) or {}
+        if not fits_standing(standing, version):
+            continue
+        try:
+            edit_message(hook, standing["message_id"], payload)
+            edited += 1
+        except (urllib.error.HTTPError, urllib.error.URLError) as e:
+            print("heartbeat webhook %d/%d failed: %s" % (n, len(webhooks), e),
+                  file=sys.stderr)
+            failed += 1
+    print("heartbeat: edited %d of %d webhook(s)" % (edited, len(webhooks)))
+    return 1 if failed else 0
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--projects", default=P.REGISTRY)
@@ -857,6 +914,11 @@ def main():
                          "one")
     ap.add_argument("--example", action="store_true",
                     help="use synthetic data (for --preview, or a live test post)")
+    ap.add_argument("--heartbeat", action="store_true",
+                    help="refresh the standing message in place (no new post, "
+                         "no ping) so 'Checked' stays current on quiet runs; "
+                         "webhooks without a standing message for this build "
+                         "are skipped")
     ap.add_argument("--full", action="store_true",
                     help="list every signature (one combined card) instead of "
                          "the default delta-first report")
@@ -905,7 +967,7 @@ def main():
     else:
         statuses = load_statuses(args.projects, args.status)
         version = read_version(args.steam_inf, args.version)
-        delta = load_delta(args.delta, args.projects)
+        delta = load_delta(args.delta, args.projects, any_age=args.heartbeat)
         frag = load_fragility(args.fragility)
         history = args.history_dir
 
@@ -963,6 +1025,12 @@ def main():
     # Reasons this run must start a new message rather than edit the standing
     # one - see the module docstring. A break has to be its own post because an
     # edit fires no notification, so the @mention would land silently.
+    if args.heartbeat:
+        # Nothing moved: the standing card already carries the last delta and
+        # any ping, so re-render it as-is and only ever edit.
+        return heartbeat(webhooks, embeds, content, allowed, version,
+                         load_state(args.state))
+
     reason = repost_reason(delta, embeds, args.new)
     if reason and not args.example:
         print("posting a new message: %s" % reason, file=sys.stderr)

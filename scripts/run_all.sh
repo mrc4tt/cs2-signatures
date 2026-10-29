@@ -157,8 +157,17 @@ for f in reports/*/status.json; do
   fi
 done
 
+# Quiet run: refresh the standing Discord card in place so its "Checked"
+# time shows the tracker is alive. Edit-only - never posts, never pings.
+heartbeat() {
+  if [ -n "${DISCORD_WEBHOOK:-}" ]; then
+    python3 scripts/post_discord.py --heartbeat || true
+  fi
+}
+
 if [ "$CHANGED" -eq 0 ]; then
   echo "no signature/manifest change - skipping report + push"
+  heartbeat
   echo "done (validate exit=$VAL, update=$UPD)"
   exit "$VAL"
 fi
@@ -232,6 +241,7 @@ if [ -n "${DISCORD_WEBHOOK:-}" ] && [ "$ANNOUNCE" -eq 10 ]; then
   python3 scripts/post_discord.py || true
 elif [ -n "${DISCORD_WEBHOOK:-}" ]; then
   echo "no post-worthy result change - skipping discord post"
+  heartbeat
 fi
 
 # 9. Optional: publish the CS2 binaries as Forgejo release assets so users can

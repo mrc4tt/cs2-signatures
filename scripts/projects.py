@@ -5,6 +5,7 @@
     id       stable slug -> data/<id>/, reports/<id>/, docs/<id>.md
     name     display name (defaults to id)
     repo     "owner/name" on `host`
+    upstream optional "owner/name" (github.com) the tracked repo is forked from
     host     forge hostname (default "github.com"; e.g. "git.miksen.me")
     branch   branch to pull the gamedata from
     path     path to the gamedata.json inside that repo
