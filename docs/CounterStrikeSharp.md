@@ -1,8 +1,8 @@
 # CounterStrikeSharp
 
-Last updated: October 28, 2026 at 23:20:34 GMT
+Last updated: October 30, 2026 at 22:15:31 GMT
 
-* Manifests: [5218696177408015009](https://steamdb.info/depot/2347771/history/?changeid=M:5218696177408015009), [3474977783625240452](https://steamdb.info/depot/2347773/history/?changeid=M:3474977783625240452)
+* Manifests: [4494425425081083634](https://steamdb.info/depot/2347771/history/?changeid=M:4494425425081083634), [6232960523750647649](https://steamdb.info/depot/2347773/history/?changeid=M:6232960523750647649)
 * Repository: https://github.com/mrc4tt/CounterStrikeSharp
 * Gamedata: https://github.com/mrc4tt/CounterStrikeSharp/blob/main/configs/addons/counterstrikesharp/gamedata/gamedata.json
 
@@ -808,7 +808,7 @@ Reference column: ✅ matches the 14193 analysis &middot; 🕓 the analysis uses
 
 <table>
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
+<tr><td>❌</td><td>✅</td><td>Windows</td><td>server</td><td>0</td><td>
 <pre>
 \x4C\x89\x44\x24\x2A\x55\x53\x56\x41\x55\x41\x57\x48\x8B\xEC\x48\x81\xEC\x2A\x2A\x2A\x2A\x44\x8B\x15\xD3\x47\x2A\x2A
 </pre>
