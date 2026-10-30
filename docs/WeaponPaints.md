@@ -1,12 +1,14 @@
 # WeaponPaints
 
-Last updated: October 30, 2026 at 22:20:09 GMT
+Last updated: October 30, 2026 at 22:55:14 GMT
 
 * Manifests: [4494425425081083634](https://steamdb.info/depot/2347771/history/?changeid=M:4494425425081083634), [6232960523750647649](https://steamdb.info/depot/2347773/history/?changeid=M:6232960523750647649)
 * Repository: https://github.com/mrc4tt/cs2-WeaponPaints
 * Gamedata: https://github.com/mrc4tt/cs2-WeaponPaints/blob/main/gamedata/weaponpaints.json
 
 Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ broken (0) &middot; ❔ binary not downloaded.
+
+Reference column: ✅ matches the 14194 analysis &middot; 🕓 the analysis uses a different pattern &middot; ❔ no reference for this symbol.
 
 ## Signatures
 
@@ -23,7 +25,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 48 89 4C 24 ? 53 41 55 41 56
 </pre>
 </td></tr>
-<tr><td>✅</td><td>❔</td><td>Linux</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
 \x55\x48\x89\xE5\x41\x57\x41\x56\x41\x55\x49\x89\xFD\x41\x54\x53\x48\x89\xF3\x48\x83\xEC\x2A\xF3\x0F\x11\x85\x2A\x2A\x2A\x2A
 </pre>
@@ -47,7 +49,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 48 89 54 24 ? 48 89 4C 24 ? 53 57 48 81 EC ? ? ? ?
 </pre>
 </td></tr>
-<tr><td>✅</td><td>❔</td><td>Linux</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
 \x55\x49\x89\xF0\x48\x89\xE5\x41\x57\x41\x56\x49\x89\xFE
 </pre>
@@ -71,7 +73,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 48 8B C4 56 48 83 EC ? 49 63 F0
 </pre>
 </td></tr>
-<tr><td>✅</td><td>❔</td><td>Linux</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
 \x55\x48\x89\xE5\x41\x57\x41\x56\x41\x55\x41\x54\x53\x48\x83\xEC\x2A\x83\xFA\x2A
 </pre>
@@ -95,7 +97,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 48 89 5C 24 ? 48 89 6C 24 ? 48 89 74 24 ? 57 41 54 41 55 41 56 41 57 48 83 EC ? 48 8B F9 48 8D 05 ? ? ? ?
 </pre>
 </td></tr>
-<tr><td>✅</td><td>❔</td><td>Linux</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
 \x55\x48\x8D\x05\x2A\x2A\x2A\x2A\x66\x0F\xEF\xC0\x48\x89\xE5\x41\x57\x41\x56\x4C\x8D\x35\x2A\x2A\x2A\x2A\x41\x55\x41\x54\x45\x31\xE4
 </pre>
@@ -119,7 +121,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 48 89 5C 24 ? 48 89 6C 24 ? 48 89 74 24 ? 48 89 7C 24 ? 41 56 48 83 EC ? 48 8B F9 48 8B F2
 </pre>
 </td></tr>
-<tr><td>✅</td><td>❔</td><td>Linux</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
 \x55\x48\x89\xE5\x41\x57\x41\x56\x41\x55\x41\x54\x49\x89\xF4\x53\x48\x89\xFB\x48\x83\xEC\x2A\x48\x8B\x7F\x2A\x48\x85\xFF\x74\x2A
 </pre>
@@ -143,7 +145,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 83 79 ? ? 0F 10 49 ?
 </pre>
 </td></tr>
-<tr><td>✅</td><td>❔</td><td>Linux</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
 \x31\xC0\x83\x7F\x2A\x2A\x75\x2A\x48\x8B\x47\x2A\x48\x89\xC7
 </pre>
@@ -167,7 +169,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 40 55 56 48 83 EC ? 48 83 79 ? ?
 </pre>
 </td></tr>
-<tr><td>✅</td><td>❔</td><td>Linux</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
 \x55\x48\x89\xE5\x41\x57\x41\x56\x41\x55\x41\x54\x49\x89\xFC\x53\x48\x83\xEC\x2A\x48\x8B\x5F\x2A\x48\x85\xDB
 </pre>
@@ -191,7 +193,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 48 89 5C 24 ? 56 57 41 56 48 83 EC ? 48 8B D9 48 81 C1 ? ? ? ?
 </pre>
 </td></tr>
-<tr><td>✅</td><td>❔</td><td>Linux</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
 \x55\x48\x89\xE5\x41\x56\x41\x55\x4C\x8D\xAF\x2A\x2A\x2A\x2A\x41\x54\x53\x48\x89\xFB
 </pre>
@@ -215,7 +217,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 40 56 57 41 54 48 83 EC ? 48 8B F9 45 33 E4
 </pre>
 </td></tr>
-<tr><td>✅</td><td>❔</td><td>Linux</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
 \x55\x48\x89\xE5\x41\x57\x41\x56\x41\x55\x41\x54\x53\x48\x89\xFB\x48\x83\xEC\x2A\x8B\x8F\x2A\x2A\x2A\x2A\x83\xF9\x2A\x0F\x84\x2A\x2A\x2A\x2A\x48\x8B\x35\x2A\x2A\x2A\x2A\x48\x85\xF6\x0F\x84\x2A\x2A\x2A\x2A\x83\xF9\x2A\x0F\x84\x2A\x2A\x2A\x2A\x0F\xB7\x87\x2A\x2A\x00\x00\x48\x89\xC2\x48\xC1\xEA\x2A\x83\xE2\x2A\x48\x8B\x14\xD6\x48\x85\xD2\x0F\x84\x2A\x2A\x2A\x2A\x25\x2A\x2A\x2A\x2A\x48\x6B\xC0\x2A\x48\x01\xD0\x3B\x48\x2A\x0F\x85\x2A\x2A\x2A\x2A\x4C\x8B\x28
 </pre>
@@ -232,8 +234,8 @@ A vtable slot index or a struct-member byte offset. There are no bytes to scan, 
 
 <table>
 <tr><th>Entry</th><th>Windows</th><th>Linux</th><th>Checked by</th></tr>
-<tr><td>CCSPlayerController_InventoryServices::m_pInventory</td><td>❔ -</td><td>✅ 112</td><td>structoffset</td></tr>
-<tr><td>CCSPlayerInventory::m_pSOCache</td><td>❔ -</td><td>✅ 104</td><td>structoffset</td></tr>
-<tr><td>CGCClientSharedObjectCache::m_Owner</td><td>❔ -</td><td>✅ 40</td><td>structoffset</td></tr>
-<tr><td>CCSPlayer_WeaponServices::DropWeapon</td><td>❔ -</td><td>✅ 29</td><td>anchored</td></tr>
+<tr><td>CCSPlayerController_InventoryServices::m_pInventory</td><td>❔ 112</td><td>✅ 112</td><td>reference / anchor</td></tr>
+<tr><td>CCSPlayerInventory::m_pSOCache</td><td>❔ 104</td><td>✅ 104</td><td>reference / anchor</td></tr>
+<tr><td>CGCClientSharedObjectCache::m_Owner</td><td>❔ 40</td><td>✅ 40</td><td>reference / anchor</td></tr>
+<tr><td>CCSPlayer_WeaponServices::DropWeapon</td><td>❔ 28</td><td>✅ 29</td><td>reference / anchor</td></tr>
 </table>
