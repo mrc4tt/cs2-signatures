@@ -1,5 +1,5 @@
 {
-  "date": "October 30, 2026 at 22:15:31 GMT",
+  "date": "October 30, 2026 at 22:20:09 GMT",
   "version": "1.41.9.4",
   "tally": {
     "ok": 107,
@@ -7,10 +7,10 @@
     "ambiguous": 0,
     "no_binary": 0,
     "missing_sig": 0,
-    "offset_ok": 42,
+    "offset_ok": 15,
     "offset_stale": 0,
-    "offset_review": 0,
-    "offset_no_recipe": 0,
+    "offset_review": 3,
+    "offset_no_recipe": 3,
     "sig_outdated": 0
   },
   "manifest": {
@@ -24,10 +24,10 @@
       "ambiguous": 0,
       "no_binary": 0,
       "missing_sig": 0,
-      "offset_ok": 32,
+      "offset_ok": 11,
       "offset_stale": 0,
-      "offset_review": 0,
-      "offset_no_recipe": 0,
+      "offset_review": 3,
+      "offset_no_recipe": 2,
       "sig_outdated": 0
     },
     "RetakesAllocator": {
@@ -48,10 +48,10 @@
       "ambiguous": 0,
       "no_binary": 0,
       "missing_sig": 0,
-      "offset_ok": 2,
+      "offset_ok": 0,
       "offset_stale": 0,
       "offset_review": 0,
-      "offset_no_recipe": 0,
+      "offset_no_recipe": 1,
       "sig_outdated": 0
     },
     "WeaponPaints": {
@@ -60,7 +60,7 @@
       "ambiguous": 0,
       "no_binary": 0,
       "missing_sig": 0,
-      "offset_ok": 8,
+      "offset_ok": 4,
       "offset_stale": 0,
       "offset_review": 0,
       "offset_no_recipe": 0,
