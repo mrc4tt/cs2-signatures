@@ -7,8 +7,8 @@
   "reference": "14194",
   "gamedata_source": "mrc4tt/CounterStrikeSharp configs/addons/counterstrikesharp/gamedata/gamedata.json",
   "tally": {
-    "ok": 71,
-    "broken": 1,
+    "ok": 72,
+    "broken": 0,
     "ambiguous": 0,
     "no_binary": 0,
     "missing_sig": 0,
@@ -893,10 +893,10 @@
           }
         },
         "windows": {
-          "status": "broken",
-          "matches": 0,
+          "status": "ok",
+          "matches": 1,
           "library": "server",
-          "sig": "4C 89 44 24 ? 55 53 56 41 55 41 57 48 8B EC 48 81 EC ? ? ? ? 44 8B 15 D3 47 ? ?",
+          "sig": "4C 89 44 24 ? 55 53 56 41 55 41 57 48 8B EC 48 81 EC ? ? ? ? 44 8B 15 F3 47 ? ?",
           "reference": {
             "status": "no_reference"
           }
