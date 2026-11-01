@@ -1,0 +1,75 @@
+{
+  "project": "GameBanFix",
+  "manifest": {
+    "2347771": "4494425425081083634",
+    "2347773": "6232960523750647649"
+  },
+  "reference": "14194",
+  "gamedata_source": "mrc4tt/GameBanFix gamedata/gamebanfix.games.txt",
+  "tally": {
+    "ok": 4,
+    "broken": 0,
+    "ambiguous": 0,
+    "no_binary": 0,
+    "missing_sig": 0,
+    "offset_ok": 0,
+    "offset_stale": 0,
+    "offset_review": 0,
+    "offset_no_recipe": 0,
+    "sig_outdated": 0
+  },
+  "results": [
+    {
+      "name": "GameSystem_Think_CheckSteamBan",
+      "kind": "signature",
+      "library": "server",
+      "platforms": {
+        "linux": {
+          "status": "ok",
+          "matches": 1,
+          "library": "server",
+          "sig": "55 48 89 E5 41 57 41 56 41 55 41 54 53 48 83 EC ? 48 8B 05 ? ? ? ? 44 8B 68 ? 45 85 ED 0F 8E ? ? ? ? 8B 15 ? ? ? ?",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
+        },
+        "windows": {
+          "status": "ok",
+          "matches": 1,
+          "library": "server",
+          "sig": "41 54 48 81 EC ? ? ? ? 48 8B 05 ? ? ? ? 44 8B 60 ?",
+          "reference": {
+            "status": "no_reference"
+          }
+        }
+      }
+    },
+    {
+      "name": "CCSGameRules__sm_mapGcBanInformation",
+      "kind": "signature",
+      "library": "server",
+      "platforms": {
+        "linux": {
+          "status": "ok",
+          "matches": 1,
+          "library": "server",
+          "sig": "48 8D 35 ? ? ? ? 89 C2 48 63 46 ?",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
+        },
+        "windows": {
+          "status": "ok",
+          "matches": 1,
+          "library": "server",
+          "sig": "48 8D 0D ? ? ? ? 45 33 C0 4C 89 74 24 ?",
+          "reference": {
+            "status": "no_reference"
+          }
+        }
+      }
+    }
+  ]
+}

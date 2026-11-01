@@ -1,0 +1,16 @@
+{
+  "GameSystem_Think_CheckSteamBan": {
+    "signatures": {
+      "library": "server",
+      "linux": "55 48 89 E5 41 57 41 56 41 55 41 54 53 48 83 EC ? 48 8B 05 ? ? ? ? 44 8B 68 ? 45 85 ED 0F 8E ? ? ? ? 8B 15 ? ? ? ?",
+      "windows": "41 54 48 81 EC ? ? ? ? 48 8B 05 ? ? ? ? 44 8B 60 ?"
+    }
+  },
+  "CCSGameRules__sm_mapGcBanInformation": {
+    "signatures": {
+      "library": "server",
+      "linux": "48 8D 35 ? ? ? ? 89 C2 48 63 46 ?",
+      "windows": "48 8D 0D ? ? ? ? 45 33 C0 4C 89 74 24 ?"
+    }
+  }
+}

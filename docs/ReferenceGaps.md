@@ -1,6 +1,6 @@
 # Reference coverage gaps
 
-Last updated: October 30, 2026 at 23:30:22 GMT
+Last updated: November 1, 2026 at 10:30:20 GMT
 
 Symbols tracked by the signature tracker that the analysis cannot currently answer for.
 
@@ -34,7 +34,7 @@ Neither an anchor/recipe nor the reference can produce a value for these, so the
 | `ISource2GameEntities::CheckTransmit` | windows | CounterStrikeSharp | windows `12` | no_reference |
 | `SetStateChanged` | windows | CounterStrikeSharp | windows `28` | no_reference |
 
-## Signatures whose symbol is not in the snapshot (52)
+## Signatures whose symbol is not in the snapshot (54)
 
 These signatures resolve in the binaries, but the snapshot has no record under this name, so nothing can say whether the pattern is still the one the analysis uses.
 
@@ -58,6 +58,7 @@ These signatures resolve in the binaries, but the snapshot has no record under t
 | `CCSCustomHudLayout_SetInputCaptureEnabled` | windows | CounterStrikeSharp |
 | `CCSGameRules_PostCleanUp` | windows | MatchZy |
 | `CCSGameRules_TerminateRound` | windows | CounterStrikeSharp |
+| `CCSGameRules__sm_mapGcBanInformation` | windows | GameBanFix |
 | `CCSNavArea_IsValidNavMesh` | windows | CounterStrikeSharp |
 | `CCSPlayerController_SwitchTeam` | windows | CounterStrikeSharp |
 | `CCSPlayerInventory::GetItemInLoadout` | windows | WeaponPaints |
@@ -81,6 +82,7 @@ These signatures resolve in the binaries, but the snapshot has no record under t
 | `CSmokeGrenadeProjectile_Create` | windows | MatchZy |
 | `CheckTransmit` | windows | CounterStrikeSharp |
 | `ClientPrint` | windows | CounterStrikeSharp |
+| `GameSystem_Think_CheckSteamBan` | windows | GameBanFix |
 | `GetCSWeaponDataFromKey` | windows | CounterStrikeSharp, RetakesAllocator |
 | `GiveNamedItem` | windows | CounterStrikeSharp |
 | `GiveNamedItem2` | windows | RetakesAllocator |

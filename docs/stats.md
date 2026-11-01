@@ -1,6 +1,6 @@
 # Signature fragility
 
-Last updated: October 30, 2026 at 23:30:22 GMT
+Last updated: November 1, 2026 at 10:30:20 GMT
 
 How often each signature has gone broken or ambiguous across the tracked history (each counted transition is one episode, not one run). Signatures with no episodes are summarised, not listed.
 
@@ -11,7 +11,7 @@ How often each signature has gone broken or ambiguous across the tracked history
 | CounterStrikeSharp | `CBaseModelEntity_SetModel` | windows | 3 | 0 | ok |
 | CounterStrikeSharp | `CCSPlayerPawnBase_PostThink` | linux | 3 | 0 | ok |
 | CounterStrikeSharp | `CCSPointScript_OnCustomHudClicked` | linux | 3 | 0 | ok |
-| CounterStrikeSharp | `CCSPointScript_OnCustomHudClicked` | windows | 3 | 0 | broken |
+| CounterStrikeSharp | `CCSPointScript_OnCustomHudClicked` | windows | 3 | 0 | ok |
 | CounterStrikeSharp | `CCSCustomHudLayout_SetDialogVariableStringForPlayer` | linux | 2 | 0 | ok |
 | CounterStrikeSharp | `CCSCustomHudLayout_SetDialogVariableStringForPlayer` | windows | 2 | 0 | ok |
 | CounterStrikeSharp | `CCSCustomHudLayout_SetHasClass` | linux | 2 | 0 | ok |
@@ -31,7 +31,7 @@ How often each signature has gone broken or ambiguous across the tracked history
 
 ## Per project
 
-- **CounterStrikeSharp** - 118 tracked sig/platform pairs, 43 breakage episode(s), 89 never broken, 82 snapshot(s) of history.
+- **CounterStrikeSharp** - 118 tracked sig/platform pairs, 43 breakage episode(s), 89 never broken, 83 snapshot(s) of history.
 - **RetakesAllocator** - 6 tracked sig/platform pairs, 3 breakage episode(s), 3 never broken, 58 snapshot(s) of history.
 - **MatchZy** - 16 tracked sig/platform pairs, 6 breakage episode(s), 10 never broken, 61 snapshot(s) of history.
 - **WeaponPaints** - 28 tracked sig/platform pairs, 7 breakage episode(s), 22 never broken, 56 snapshot(s) of history.

@@ -12,9 +12,9 @@ points at exactly one function in the binaries Valve ships right now.
 <!-- STATUS:START -->
 ## Current status
 
-> ✅ **All 108 signature checks pass** on CS2 `1.41.9.4`.
+> ✅ **All 112 signature checks pass** on CS2 `1.41.9.4`.
 >
-> Last checked October 30, 2026 at 23:30:22 GMT &middot; 4 project(s) tracked
+> Last checked November 1, 2026 at 10:30:20 GMT &middot; 5 project(s) tracked
 
 <table>
 <tr><th>Project</th><th>Health</th><th>Signatures</th><th>Linux</th><th>Windows</th><th></th></tr>
@@ -22,12 +22,13 @@ points at exactly one function in the binaries Valve ships right now.
 <tr><td><a href="https://github.com/mrc4tt/cs2-retakes-allocator">cs2-retakes-allocator</a></td><td><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fmrc4tt%2Fcs2-signatures%2Fmain%2Freports%2FRetakesAllocator%2Fbadge.json" alt="cs2-retakes-allocator"></td><td align="center">6/6</td><td align="center">✅</td><td align="center">✅</td><td><a href="https://github.com/mrc4tt/cs2-signatures/blob/main/docs/RetakesAllocator.md">details &rarr;</a></td></tr>
 <tr><td><a href="https://github.com/mrc4tt/MatchZy">MatchZy</a></td><td><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fmrc4tt%2Fcs2-signatures%2Fmain%2Freports%2FMatchZy%2Fbadge.json" alt="MatchZy"></td><td align="center">12/12</td><td align="center">✅</td><td align="center">✅</td><td><a href="https://github.com/mrc4tt/cs2-signatures/blob/main/docs/MatchZy.md">details &rarr;</a></td></tr>
 <tr><td><a href="https://github.com/mrc4tt/cs2-WeaponPaints">WeaponPaints</a></td><td><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fmrc4tt%2Fcs2-signatures%2Fmain%2Freports%2FWeaponPaints%2Fbadge.json" alt="WeaponPaints"></td><td align="center">18/18</td><td align="center">✅</td><td align="center">✅</td><td><a href="https://github.com/mrc4tt/cs2-signatures/blob/main/docs/WeaponPaints.md">details &rarr;</a></td></tr>
+<tr><td><a href="https://github.com/mrc4tt/GameBanFix">GameBanFix</a></td><td><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fmrc4tt%2Fcs2-signatures%2Fmain%2Freports%2FGameBanFix%2Fbadge.json" alt="GameBanFix"></td><td align="center">4/4</td><td align="center">✅</td><td align="center">✅</td><td><a href="https://github.com/mrc4tt/cs2-signatures/blob/main/docs/GameBanFix.md">details &rarr;</a></td></tr>
 </table>
 
 <details><summary>&#9660; Run details</summary>
 
 * **CS2 build:** `1.41.9.4`
-* **Signatures:** 108 ok, 0 ambiguous, 0 broken (0 not-yet-validated)
+* **Signatures:** 112 ok, 0 ambiguous, 0 broken (0 not-yet-validated)
 * **Offsets:** 21 ok, 0 stale, 21 without a reference
 * **Depot manifests:** [4494425425081083634](https://steamdb.info/depot/2347771/history/?changeid=M:4494425425081083634), [6232960523750647649](https://steamdb.info/depot/2347773/history/?changeid=M:6232960523750647649)
 * **Fragility over time:** [docs/stats.md](docs/stats.md)
