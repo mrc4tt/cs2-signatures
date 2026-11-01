@@ -1,9 +1,10 @@
 # CounterStrikeSharp
 
-Last updated: November 1, 2026 at 10:30:20 GMT
+Last updated: November 1, 2026 at 10:52:31 GMT
 
 * Manifests: [4494425425081083634](https://steamdb.info/depot/2347771/history/?changeid=M:4494425425081083634), [6232960523750647649](https://steamdb.info/depot/2347773/history/?changeid=M:6232960523750647649)
 * Repository: https://github.com/mrc4tt/CounterStrikeSharp
+* Fork of: [roflmuffin/CounterStrikeSharp](https://github.com/roflmuffin/CounterStrikeSharp)
 * Gamedata: https://github.com/mrc4tt/CounterStrikeSharp/blob/main/configs/addons/counterstrikesharp/gamedata/gamedata.json
 
 Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ broken (0) &middot; ❔ binary not downloaded.
@@ -16,7 +17,7 @@ Reference column: ✅ matches the 14194 analysis &middot; 🕓 the analysis uses
 
 <table>
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>✅</td><td>❔</td><td>Windows</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x48\x89\x5C\x24\x2A\x48\x89\x6C\x24\x2A\x48\x89\x74\x24\x2A\x57\x48\x83\xEC\x2A\x8B\xE9\x49\x8B\xD9
 </pre>
@@ -40,7 +41,7 @@ Reference column: ✅ matches the 14194 analysis &middot; 🕓 the analysis uses
 
 <table>
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>✅</td><td>❔</td><td>Windows</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x48\x85\xC9\x0F\x84\x2A\x2A\x2A\x2A\x48\x89\x5C\x24\x2A\x48\x89\x74\x24\x2A
 </pre>
@@ -64,7 +65,7 @@ Reference column: ✅ matches the 14194 analysis &middot; 🕓 the analysis uses
 
 <table>
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>✅</td><td>❔</td><td>Windows</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x40\x53\x57\x48\x81\xEC\x2A\x2A\x2A\x2A\x48\x8B\xD9\x8B\xFA
 </pre>
@@ -88,7 +89,7 @@ Reference column: ✅ matches the 14194 analysis &middot; 🕓 the analysis uses
 
 <table>
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>✅</td><td>❔</td><td>Windows</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x44\x88\x4C\x24\x2A\x53
 </pre>
@@ -112,7 +113,7 @@ Reference column: ✅ matches the 14194 analysis &middot; 🕓 the analysis uses
 
 <table>
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>✅</td><td>❔</td><td>Windows</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x40\x55\x53\x56\x57\x41\x54\x48\x8B\xEC\x48\x83\xEC\x2A\x4C\x89\xAC\x24\x2A\x2A\x2A\x2A
 </pre>
@@ -136,7 +137,7 @@ Reference column: ✅ matches the 14194 analysis &middot; 🕓 the analysis uses
 
 <table>
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>✅</td><td>❔</td><td>Windows</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x40\x53\x48\x83\xEC\x2A\x48\x8B\x01\x48\x8B\xD9\xFF\x50\x2A\x48\x8B\x03
 </pre>
@@ -160,7 +161,7 @@ Reference column: ✅ matches the 14194 analysis &middot; 🕓 the analysis uses
 
 <table>
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>✅</td><td>❔</td><td>Windows</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x48\x89\x5C\x24\x2A\x48\x89\x74\x24\x2A\x48\x89\x7C\x24\x2A\x44\x89\x44\x24\x2A
 </pre>
@@ -184,7 +185,7 @@ Reference column: ✅ matches the 14194 analysis &middot; 🕓 the analysis uses
 
 <table>
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>✅</td><td>❔</td><td>Windows</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x48\x85\xC9\x74\x2A\x48\x8B\xD1\x48\x8B\x0D\x2A\x2A\x2A\x2A
 </pre>
@@ -208,7 +209,7 @@ Reference column: ✅ matches the 14194 analysis &middot; 🕓 the analysis uses
 
 <table>
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>✅</td><td>❔</td><td>Windows</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x40\x53\x48\x83\xEC\x2A\x48\x8B\xD9\x4C\x8B\xC2\x48\x8B\x0D\x2A\x2A\x2A\x2A\x48\x8D\x54\x24\x2A\x48\x8B\x01\xFF\x50\x2A\x48\x8B\x54\x24\x2A\x48\x8B\xCB\xE8\x2A\x2A\x2A\x2A\x48\x83\xC4\x2A\x5B\xC3\xCC\xCC\xCC\xCC\xCC\xCC\xCC\xCC\xCC\xCC\xCC\xCC\xCC\xCC\xCC\x48\x89\x5C\x24\x2A
 </pre>
@@ -232,7 +233,7 @@ Reference column: ✅ matches the 14194 analysis &middot; 🕓 the analysis uses
 
 <table>
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>✅</td><td>❔</td><td>Windows</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x48\x89\x5C\x24\x2A\x48\x89\x6C\x24\x2A\x56\x57\x41\x54\x41\x56\x41\x57\x48\x83\xEC\x2A\x48\x8B\x01\x48\x8B\xFA
 </pre>
@@ -256,7 +257,7 @@ Reference column: ✅ matches the 14194 analysis &middot; 🕓 the analysis uses
 
 <table>
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>✅</td><td>❔</td><td>Windows</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x44\x89\x44\x24\x2A\x48\x89\x54\x24\x2A\x48\x89\x4C\x24\x2A\x55\x53\x56\x57\x41\x54\x41\x55\x41\x56\x41\x57\x48\x8B\xEC
 </pre>
@@ -280,7 +281,7 @@ Reference column: ✅ matches the 14194 analysis &middot; 🕓 the analysis uses
 
 <table>
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>✅</td><td>❔</td><td>Windows</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x48\x89\x5C\x24\x2A\x57\x48\x83\xEC\x2A\x33\xFF\x4C\x8B\xCA\x8B\xD9
 </pre>
@@ -304,7 +305,7 @@ Reference column: ✅ matches the 14194 analysis &middot; 🕓 the analysis uses
 
 <table>
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>✅</td><td>❔</td><td>Windows</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x48\x8B\xC4\x4C\x89\x48\x2A\x48\x89\x48\x2A\x55\x41\x54
 </pre>
@@ -328,7 +329,7 @@ Reference column: ✅ matches the 14194 analysis &middot; 🕓 the analysis uses
 
 <table>
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>✅</td><td>❔</td><td>Windows</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x48\x83\xEC\x2A\xC6\x44\x24\x2A\x2A\x4C\x8B\xC1
 </pre>
@@ -352,7 +353,7 @@ Reference column: ✅ matches the 14194 analysis &middot; 🕓 the analysis uses
 
 <table>
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>✅</td><td>❔</td><td>Windows</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x48\x89\x5C\x24\x2A\x57\x48\x83\xEC\x2A\x48\x8B\xDA\x48\x8B\xF9\x48\x85\xC9\x0F\x84\x2A\x2A\x2A\x2A\x48\x85\xD2
 </pre>
@@ -376,7 +377,7 @@ Reference column: ✅ matches the 14194 analysis &middot; 🕓 the analysis uses
 
 <table>
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>✅</td><td>❔</td><td>Windows</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x40\x53\x48\x83\xEC\x2A\x4C\x89\x4C\x24\x2A\x48\x8B\xD9\x45\x8B\xC8
 </pre>
@@ -400,7 +401,7 @@ Reference column: ✅ matches the 14194 analysis &middot; 🕓 the analysis uses
 
 <table>
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>✅</td><td>❔</td><td>Windows</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x48\x89\x5C\x24\x2A\x48\x89\x6C\x24\x2A\x56\x57\x41\x56\x48\x81\xEC\x2A\x2A\x2A\x2A\x4D\x8B\xF0\x48\x8B\xF1
 </pre>
@@ -424,7 +425,7 @@ Reference column: ✅ matches the 14194 analysis &middot; 🕓 the analysis uses
 
 <table>
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>✅</td><td>❔</td><td>Windows</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x48\x89\x5C\x24\x2A\x48\x89\x74\x24\x2A\x57\x48\x83\xEC\x2A\x49\x8B\xF1\x48\x8B\xF9
 </pre>
@@ -448,7 +449,7 @@ Reference column: ✅ matches the 14194 analysis &middot; 🕓 the analysis uses
 
 <table>
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>✅</td><td>❔</td><td>Windows</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x48\x8B\x15\x2A\x2A\x2A\x2A\x48\x85\xD2\x74\x2A\x85\xC9
 </pre>
@@ -472,7 +473,7 @@ Reference column: ✅ matches the 14194 analysis &middot; 🕓 the analysis uses
 
 <table>
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>✅</td><td>❔</td><td>Windows</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x48\x85\xD2\x0F\x84\x2A\x2A\x2A\x2A\x48\x89\x5C\x24\x2A\x57\x48\x83\xEC\x2A\x48\x8B\xDA\x48\x8B\xF9\xE8\x2A\x2A\x2A\x2A
 </pre>
@@ -496,7 +497,7 @@ Reference column: ✅ matches the 14194 analysis &middot; 🕓 the analysis uses
 
 <table>
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>✅</td><td>❔</td><td>Windows</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x40\x55\x53\x56\x57\x41\x54\x48\x8D\x6C\x24\x2A\x48\x81\xEC\x2A\x2A\x2A\x2A\x4D\x8B\xE0
 </pre>
@@ -520,7 +521,7 @@ Reference column: ✅ matches the 14194 analysis &middot; 🕓 the analysis uses
 
 <table>
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>✅</td><td>❔</td><td>Windows</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x40\x57\x41\x56\x48\x83\xEC\x2A\x48\x8B\x01
 </pre>
@@ -544,7 +545,7 @@ Reference column: ✅ matches the 14194 analysis &middot; 🕓 the analysis uses
 
 <table>
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>✅</td><td>❔</td><td>Windows</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x48\x85\xD2\x0F\x84\x2A\x2A\x2A\x2A\x53\x55\x48\x83\xEC\x2A\x4C\x8B\x42\x10
 </pre>
@@ -568,7 +569,7 @@ Reference column: ✅ matches the 14194 analysis &middot; 🕓 the analysis uses
 
 <table>
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>✅</td><td>❔</td><td>Windows</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x48\x8B\xC4\x48\x89\x58\x2A\x48\x89\x70\x2A\x48\x89\x48\x2A\x55
 </pre>
@@ -592,7 +593,7 @@ Reference column: ✅ matches the 14194 analysis &middot; 🕓 the analysis uses
 
 <table>
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>✅</td><td>❔</td><td>Windows</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x48\x8B\x1D\x2A\x2A\x2A\x2A\x48\x85\xDB\x0F\x84\x2A\x2A\x2A\x2A\xBD\x2A\x2A\x2A\x2A
 </pre>
@@ -616,7 +617,7 @@ Reference column: ✅ matches the 14194 analysis &middot; 🕓 the analysis uses
 
 <table>
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>✅</td><td>❔</td><td>Windows</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x48\x8B\xC4\x4C\x89\x48\x2A\x48\x89\x50\x2A\x48\x89\x48\x2A\x55\x48\x8D\xA8\x2A\x2A\x2A\x2A
 </pre>
@@ -640,7 +641,7 @@ Reference column: ✅ matches the 14194 analysis &middot; 🕓 the analysis uses
 
 <table>
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>✅</td><td>❔</td><td>Windows</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x4C\x8B\xC2\x48\x8B\xD1\x48\x8B\x09
 </pre>
@@ -664,7 +665,7 @@ Reference column: ✅ matches the 14194 analysis &middot; 🕓 the analysis uses
 
 <table>
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>✅</td><td>❔</td><td>Windows</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x44\x89\x4C\x24\x2A\x44\x88\x44\x24\x2A
 </pre>
@@ -688,7 +689,7 @@ Reference column: ✅ matches the 14194 analysis &middot; 🕓 the analysis uses
 
 <table>
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>✅</td><td>❔</td><td>Windows</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x48\x83\x3D\x2A\x2A\x2A\x2A\x2A\x0F\x95\xC0\xC3\x2A\x2A\x2A\x2A\xC2\x2A\x2A
 </pre>
@@ -712,7 +713,7 @@ Reference column: ✅ matches the 14194 analysis &middot; 🕓 the analysis uses
 
 <table>
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>✅</td><td>❔</td><td>Windows</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x48\x89\x5C\x24\x2A\x48\x89\x6C\x24\x2A\x48\x89\x74\x24\x2A\x57\x48\x83\xEC\x2A\x49\x8B\xF0\x33\xED\x4C\x8D\x44\x24\x2A\x66\x89\x6C\x24\x2A\x49\x8B\xF9
 </pre>
@@ -736,7 +737,7 @@ Reference column: ✅ matches the 14194 analysis &middot; 🕓 the analysis uses
 
 <table>
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>✅</td><td>❔</td><td>Windows</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x85\xD2\x0F\x88\x2A\x2A\x2A\x2A\x53\x55\x56\x48\x83\xEC\x2A\x48\x63\xDA\x49\x8B\xE9\x49\x8B\xC0\x48\x8B\xF1\x48\x89\x7C\x24\x2A\x3B\x99\x2A\x2A\x2A\x2A\x0F\x8D\x2A\x2A\x2A\x2A\x4C\x89\x74\x24\x2A\x4C\x8D\x44\x24\x2A\x45\x33\xF6\x48\x8B\xD0\x66\x44\x89\x74\x24\x2A\xE8\x2A\x2A\x2A\x2A\x84\xC0\x74\x2A\x4C\x8D\x44\x24\x2A\x66\x44\x89\x74\x24\x2A\x48\x8B\xD5\x48\x8B\xCE\xE8\x2A\x2A\x2A\x2A\x84\xC0\x74\x2A\x0F\xB6\x86\x2A\x2A\x2A\x2A\xA8\x02\x74\x2A\xA8\x01\x75\x2A\x4C\x8D\x44\x24\x2A\x48\xC7\x44\x24\x2A\xFF\xFF\xFF\xFF\xB2\x03\x48\x8D\x8E\x2A\x2A\x2A\x2A\xE8\x2A\x2A\x2A\x2A\x4C\x8B\x4C\x24\x2A
 </pre>
@@ -760,7 +761,7 @@ Reference column: ✅ matches the 14194 analysis &middot; 🕓 the analysis uses
 
 <table>
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>✅</td><td>❔</td><td>Windows</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x48\x89\x5C\x24\x2A\x48\x89\x6C\x24\x2A\x48\x89\x74\x24\x2A\x57\x48\x83\xEC\x2A\x49\x8B\xF0\x33\xED\x4C\x8D\x44\x24\x2A\x66\x89\x6C\x24\x2A\x41\x8B\xF9
 </pre>
@@ -784,7 +785,7 @@ Reference column: ✅ matches the 14194 analysis &middot; 🕓 the analysis uses
 
 <table>
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>✅</td><td>❔</td><td>Windows</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x85\xD2\x0F\x88\x2A\x2A\x2A\x2A\x53\x55\x56\x48\x83\xEC\x2A\x48\x63\xDA\x49\x8B\xE9\x49\x8B\xC0\x48\x8B\xF1\x48\x89\x7C\x24\x2A\x3B\x99\x2A\x2A\x2A\x2A\x0F\x8D\x2A\x2A\x2A\x2A\x4C\x89\x74\x24\x2A\x4C\x8D\x44\x24\x2A\x45\x33\xF6\x48\x8B\xD0\x66\x44\x89\x74\x24\x2A\xE8\x2A\x2A\x2A\x2A\x84\xC0\x74\x2A\x4C\x8D\x44\x24\x2A\x66\x44\x89\x74\x24\x2A\x48\x8B\xD5\x48\x8B\xCE\xE8\x2A\x2A\x2A\x2A\x84\xC0\x74\x2A\x0F\xB6\x86\x2A\x2A\x2A\x2A\xA8\x02\x74\x2A\xA8\x01\x75\x2A\x4C\x8D\x44\x24\x2A\x48\xC7\x44\x24\x2A\xFF\xFF\xFF\xFF\xB2\x03\x48\x8D\x8E\x2A\x2A\x2A\x2A\xE8\x2A\x2A\x2A\x2A\x44\x8B\x4C\x24\x2A
 </pre>
@@ -808,7 +809,7 @@ Reference column: ✅ matches the 14194 analysis &middot; 🕓 the analysis uses
 
 <table>
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>✅</td><td>❔</td><td>Windows</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x4C\x89\x44\x24\x2A\x55\x53\x56\x41\x55\x41\x57\x48\x8B\xEC\x48\x81\xEC\x2A\x2A\x2A\x2A\x44\x8B\x15\xF3\x47\x2A\x2A
 </pre>
@@ -832,7 +833,7 @@ Reference column: ✅ matches the 14194 analysis &middot; 🕓 the analysis uses
 
 <table>
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>✅</td><td>❔</td><td>Windows</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x85\xD2\x78\x2A\x48\x89\x5C\x24\x2A\x56
 </pre>
@@ -856,7 +857,7 @@ Reference column: ✅ matches the 14194 analysis &middot; 🕓 the analysis uses
 
 <table>
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>✅</td><td>❔</td><td>Windows</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x40\x55\x53\x56\x57\x41\x54\x48\x8D\x6C\x24\x2A\x48\x81\xEC\x2A\x2A\x2A\x2A\x4D\x8B\xE0
 </pre>
@@ -882,20 +883,20 @@ A vtable slot index or a struct-member byte offset. There are no bytes to scan, 
 
 <table>
 <tr><th>Entry</th><th>Windows</th><th>Linux</th><th>Checked by</th></tr>
-<tr><td>CCSPlayerController_ChangeTeam</td><td>❔ 105</td><td>✅ 104</td><td>reference</td></tr>
-<tr><td>CCSPlayerController_Respawn</td><td>❔ 274</td><td>✅ 276</td><td>reference / anchored</td></tr>
-<tr><td>CCSPlayer_ItemServices_GiveNamedItem</td><td>❔ 23</td><td>✅ 24</td><td>reference / structural</td></tr>
-<tr><td>CCSPlayer_ItemServices_DropActivePlayerWeapon</td><td>❔ 26</td><td>✅ 27</td><td>reference / anchor</td></tr>
-<tr><td>CCSPlayer_ItemServices_RemoveWeapons</td><td>❔ 27</td><td>✅ 28</td><td>reference / anchored</td></tr>
-<tr><td>CGameSceneNode_GetSkeletonInstance</td><td>❔ 12</td><td>✅ 14</td><td>reference / anchor</td></tr>
-<tr><td>CCSGameRules_FindPickerEntity</td><td>❔ 25</td><td>✅ 26</td><td>reference / anchored</td></tr>
-<tr><td>CTakeDamageInfo_HitGroup</td><td>❔ 104</td><td>✅ 104</td><td>reference / anchor</td></tr>
-<tr><td>CBaseEntity_IsPlayerPawn</td><td>❔ 171</td><td>✅ 170</td><td>reference / anchor</td></tr>
-<tr><td>CBasePlayerPawn_CommitSuicide</td><td>❔ 387</td><td>✅ 387</td><td>reference / anchor</td></tr>
-<tr><td>CBaseEntity_Teleport</td><td>❔ 165</td><td>✅ 164</td><td>reference / anchor</td></tr>
-<tr><td>GameEntitySystem</td><td>❔ 88</td><td>✅ 80</td><td>reference / anchor</td></tr>
-<tr><td>CEntityResourceManifest_AddResource</td><td>❔ 2</td><td>✅ 0</td><td>reference</td></tr>
-<tr><td>CheckTransmitPlayerSlot</td><td>❔ 576</td><td>✅ 576</td><td>reference / anchor</td></tr>
-<tr><td>SetStateChanged</td><td>❔ 28</td><td>✅ 29</td><td>reference / anchored</td></tr>
-<tr><td>ISource2GameEntities::CheckTransmit</td><td>❔ 12</td><td>✅ 13</td><td>reference</td></tr>
+<tr><td>CCSPlayerController_ChangeTeam</td><td>✅ 105</td><td>✅ 104</td><td>reference</td></tr>
+<tr><td>CCSPlayerController_Respawn</td><td>✅ 274</td><td>✅ 276</td><td>reference / anchored</td></tr>
+<tr><td>CCSPlayer_ItemServices_GiveNamedItem</td><td>✅ 23</td><td>✅ 24</td><td>reference / structural</td></tr>
+<tr><td>CCSPlayer_ItemServices_DropActivePlayerWeapon</td><td>✅ 26</td><td>✅ 27</td><td>anchor</td></tr>
+<tr><td>CCSPlayer_ItemServices_RemoveWeapons</td><td>✅ 27</td><td>✅ 28</td><td>reference / anchored</td></tr>
+<tr><td>CGameSceneNode_GetSkeletonInstance</td><td>✅ 12</td><td>✅ 14</td><td>anchor</td></tr>
+<tr><td>CCSGameRules_FindPickerEntity</td><td>✅ 25</td><td>✅ 26</td><td>reference / anchored</td></tr>
+<tr><td>CTakeDamageInfo_HitGroup</td><td>✅ 104</td><td>✅ 104</td><td>anchor</td></tr>
+<tr><td>CBaseEntity_IsPlayerPawn</td><td>✅ 171</td><td>✅ 170</td><td>anchor</td></tr>
+<tr><td>CBasePlayerPawn_CommitSuicide</td><td>✅ 387</td><td>✅ 387</td><td>anchor</td></tr>
+<tr><td>CBaseEntity_Teleport</td><td>✅ 165</td><td>✅ 164</td><td>anchor</td></tr>
+<tr><td>GameEntitySystem</td><td>✅ 88</td><td>✅ 80</td><td>anchor</td></tr>
+<tr><td>CEntityResourceManifest_AddResource</td><td>✅ 2</td><td>✅ 0</td><td>reference</td></tr>
+<tr><td>CheckTransmitPlayerSlot</td><td>✅ 576</td><td>✅ 576</td><td>anchor</td></tr>
+<tr><td>SetStateChanged</td><td>✅ 28</td><td>✅ 29</td><td>reference / anchored</td></tr>
+<tr><td>ISource2GameEntities::CheckTransmit</td><td>✅ 12</td><td>✅ 13</td><td>reference</td></tr>
 </table>

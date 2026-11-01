@@ -1,9 +1,10 @@
 # cs2-retakes-allocator
 
-Last updated: November 1, 2026 at 10:30:20 GMT
+Last updated: November 1, 2026 at 10:52:31 GMT
 
 * Manifests: [4494425425081083634](https://steamdb.info/depot/2347771/history/?changeid=M:4494425425081083634), [6232960523750647649](https://steamdb.info/depot/2347773/history/?changeid=M:6232960523750647649)
 * Repository: https://github.com/mrc4tt/cs2-retakes-allocator
+* Fork of: [yonilerner/cs2-retakes-allocator](https://github.com/yonilerner/cs2-retakes-allocator)
 * Gamedata: https://github.com/mrc4tt/cs2-retakes-allocator/blob/main/Resources/RetakesAllocator_gamedata.json
 
 Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ broken (0) &middot; ❔ binary not downloaded.
@@ -16,7 +17,7 @@ Reference column: ✅ matches the 14194 analysis &middot; 🕓 the analysis uses
 
 <table>
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>✅</td><td>❔</td><td>Windows</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x48\x83\xEC\x2A\x48\xC7\x44\x24\x2A\x2A\x2A\x2A\x2A\x45\x33\xC9\x45\x33\xC0\xC6\x44\x24\x2A\x2A\xE8\x2A\x2A\x2A\x2A\x48\x83\xC4\x2A\xC3\xCC\xCC\xCC\xCC\xCC\xCC\xCC\xCC\xCC\xCC\xCC\xCC\xCC\xCC\x48\x83\xEC\x2A
 </pre>
@@ -40,7 +41,7 @@ Reference column: ✅ matches the 14194 analysis &middot; 🕓 the analysis uses
 
 <table>
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>✅</td><td>❔</td><td>Windows</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x48\x89\x5C\x24\x2A\x57\x48\x83\xEC\x2A\x33\xFF\x4C\x8B\xCA\x8B\xD9
 </pre>
@@ -64,7 +65,7 @@ Reference column: ✅ matches the 14194 analysis &middot; 🕓 the analysis uses
 
 <table>
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>✅</td><td>❔</td><td>Windows</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x44\x89\x44\x24\x2A\x48\x89\x54\x24\x2A\x48\x89\x4C\x24\x2A\x55\x53\x56\x57\x41\x54\x41\x55\x41\x56\x41\x57\x48\x8B\xEC
 </pre>

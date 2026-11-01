@@ -323,6 +323,33 @@ def write(snapshot, gamever):
     return out
 
 
+def stale_reason(gamever, site_entry=None):
+    """Why data/symbols/<gamever>.json must be pulled again, or None.
+
+    The git backend reads whatever the analysis repo has committed, and the
+    analysis commits linux before windows: a snapshot fetched in between holds
+    one platform, and every windows row read "no reference" for as long as the
+    build lasted (14194: 1630 linux records, 0 windows). So a cached snapshot
+    is stale when it lacks a platform, or holds fewer records than the site
+    publishes for that version (site_entry, from its index).
+    """
+    path = os.path.join(OUT_DIR, "%s.json" % gamever)
+    if not os.path.isfile(path):
+        return "missing"
+    try:
+        with open(path) as fh:
+            records = json.load(fh).get("records") or []
+    except (OSError, ValueError):
+        return "unreadable"
+    platforms = {r.get("platform") for r in records}
+    lacking = sorted({"linux", "windows"} - platforms)
+    if lacking:
+        return "no %s records" % "/".join(lacking)
+    if site_entry and len(records) < int(site_entry.get("fileCount") or 0):
+        return "%d records, site has %d" % (len(records), site_entry["fileCount"])
+    return None
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--backend", choices=("site", "git"), default="site")
@@ -337,6 +364,9 @@ def main():
                     help="print the game version matching data/manifest.json "
                          "and exit; empty output means no analysis covers this "
                          "build yet")
+    ap.add_argument("--stale", action="store_true",
+                    help="with --gamever: exit 0 (and say why) when the cached "
+                         "snapshot must be fetched again, 1 when it is current")
     ap.add_argument("--manifest", default="data/manifest.json")
     ap.add_argument("--linux-root", default="bin_linux",
                     help="download dir hashed when no lock matches the "
@@ -353,6 +383,21 @@ def main():
             return 0
         print("no binary_lock in %s matches %s" % (repo, args.manifest),
               file=sys.stderr)
+        return 1
+
+    if args.stale:
+        if not args.gamever:
+            ap.error("--stale needs --gamever")
+        entry = None
+        try:
+            entry = next((v for v in site_index()["versions"]
+                          if v["gameVersion"] == args.gamever), None)
+        except (urllib.error.URLError, ValueError, KeyError):
+            pass  # offline: the platform check alone
+        reason = stale_reason(args.gamever, entry)
+        if reason:
+            print(reason)
+            return 0
         return 1
 
     if args.backend == "site":

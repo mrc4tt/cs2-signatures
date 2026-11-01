@@ -12,10 +12,10 @@
     "ambiguous": 0,
     "no_binary": 0,
     "missing_sig": 0,
-    "offset_ok": 16,
+    "offset_ok": 32,
     "offset_stale": 0,
     "offset_review": 0,
-    "offset_no_recipe": 16,
+    "offset_no_recipe": 0,
     "sig_outdated": 0
   },
   "results": [
@@ -40,7 +40,8 @@
           "library": "server",
           "sig": "48 89 5C 24 ? 48 89 6C 24 ? 48 89 74 24 ? 57 48 83 EC ? 8B E9 49 8B D9",
           "reference": {
-            "status": "no_reference"
+            "status": "match",
+            "relation": "equal"
           }
         }
       }
@@ -66,7 +67,8 @@
           "library": "server",
           "sig": "48 85 C9 0F 84 ? ? ? ? 48 89 5C 24 ? 48 89 74 24 ?",
           "reference": {
-            "status": "no_reference"
+            "status": "match",
+            "relation": "equal"
           }
         }
       }
@@ -92,7 +94,8 @@
           "library": "server",
           "sig": "40 53 57 48 81 EC ? ? ? ? 48 8B D9 8B FA",
           "reference": {
-            "status": "no_reference"
+            "status": "match",
+            "relation": "equal"
           }
         }
       }
@@ -118,7 +121,8 @@
           "library": "server",
           "sig": "44 88 4C 24 ? 53",
           "reference": {
-            "status": "no_reference"
+            "status": "match",
+            "relation": "equal"
           }
         }
       }
@@ -144,7 +148,8 @@
           "library": "server",
           "sig": "40 55 53 56 57 41 54 48 8B EC 48 83 EC ? 4C 89 AC 24 ? ? ? ?",
           "reference": {
-            "status": "no_reference"
+            "status": "match",
+            "relation": "equal"
           }
         }
       }
@@ -170,7 +175,8 @@
           "library": "server",
           "sig": "40 53 48 83 EC ? 48 8B 01 48 8B D9 FF 50 ? 48 8B 03",
           "reference": {
-            "status": "no_reference"
+            "status": "match",
+            "relation": "equal"
           }
         }
       }
@@ -196,7 +202,8 @@
           "library": "server",
           "sig": "48 89 5C 24 ? 48 89 74 24 ? 48 89 7C 24 ? 44 89 44 24 ?",
           "reference": {
-            "status": "no_reference"
+            "status": "match",
+            "relation": "equal"
           }
         }
       }
@@ -222,7 +229,8 @@
           "library": "server",
           "sig": "48 85 C9 74 ? 48 8B D1 48 8B 0D ? ? ? ?",
           "reference": {
-            "status": "no_reference"
+            "status": "match",
+            "relation": "equal"
           }
         }
       }
@@ -248,7 +256,8 @@
           "library": "server",
           "sig": "40 53 48 83 EC ? 48 8B D9 4C 8B C2 48 8B 0D ? ? ? ? 48 8D 54 24 ? 48 8B 01 FF 50 ? 48 8B 54 24 ? 48 8B CB E8 ? ? ? ? 48 83 C4 ? 5B C3 CC CC CC CC CC CC CC CC CC CC CC CC CC CC CC 48 89 5C 24 ?",
           "reference": {
-            "status": "no_reference"
+            "status": "match",
+            "relation": "equal"
           }
         }
       }
@@ -274,7 +283,8 @@
           "library": "server",
           "sig": "48 89 5C 24 ? 48 89 6C 24 ? 56 57 41 54 41 56 41 57 48 83 EC ? 48 8B 01 48 8B FA",
           "reference": {
-            "status": "no_reference"
+            "status": "match",
+            "relation": "equal"
           }
         }
       }
@@ -300,7 +310,8 @@
           "library": "server",
           "sig": "44 89 44 24 ? 48 89 54 24 ? 48 89 4C 24 ? 55 53 56 57 41 54 41 55 41 56 41 57 48 8B EC",
           "reference": {
-            "status": "no_reference"
+            "status": "match",
+            "relation": "equal"
           }
         }
       }
@@ -326,7 +337,8 @@
           "library": "server",
           "sig": "48 89 5C 24 ? 57 48 83 EC ? 33 FF 4C 8B CA 8B D9",
           "reference": {
-            "status": "no_reference"
+            "status": "match",
+            "relation": "equal"
           }
         }
       }
@@ -352,7 +364,8 @@
           "library": "server",
           "sig": "48 8B C4 4C 89 48 ? 48 89 48 ? 55 41 54",
           "reference": {
-            "status": "no_reference"
+            "status": "match",
+            "relation": "equal"
           }
         }
       }
@@ -378,7 +391,8 @@
           "library": "server",
           "sig": "48 83 EC ? C6 44 24 ? ? 4C 8B C1",
           "reference": {
-            "status": "no_reference"
+            "status": "match",
+            "relation": "equal"
           }
         }
       }
@@ -404,7 +418,8 @@
           "library": "server",
           "sig": "48 89 5C 24 ? 57 48 83 EC ? 48 8B DA 48 8B F9 48 85 C9 0F 84 ? ? ? ? 48 85 D2",
           "reference": {
-            "status": "no_reference"
+            "status": "match",
+            "relation": "equal"
           }
         }
       }
@@ -430,7 +445,8 @@
           "library": "server",
           "sig": "40 53 48 83 EC ? 4C 89 4C 24 ? 48 8B D9 45 8B C8",
           "reference": {
-            "status": "no_reference"
+            "status": "match",
+            "relation": "equal"
           }
         }
       }
@@ -456,7 +472,8 @@
           "library": "server",
           "sig": "48 89 5C 24 ? 48 89 6C 24 ? 56 57 41 56 48 81 EC ? ? ? ? 4D 8B F0 48 8B F1",
           "reference": {
-            "status": "no_reference"
+            "status": "match",
+            "relation": "equal"
           }
         }
       }
@@ -482,7 +499,8 @@
           "library": "server",
           "sig": "48 89 5C 24 ? 48 89 74 24 ? 57 48 83 EC ? 49 8B F1 48 8B F9",
           "reference": {
-            "status": "no_reference"
+            "status": "match",
+            "relation": "equal"
           }
         }
       }
@@ -508,7 +526,8 @@
           "library": "server",
           "sig": "48 8B 15 ? ? ? ? 48 85 D2 74 ? 85 C9",
           "reference": {
-            "status": "no_reference"
+            "status": "match",
+            "relation": "equal"
           }
         }
       }
@@ -534,7 +553,8 @@
           "library": "server",
           "sig": "48 85 D2 0F 84 ? ? ? ? 48 89 5C 24 ? 57 48 83 EC ? 48 8B DA 48 8B F9 E8 ? ? ? ?",
           "reference": {
-            "status": "no_reference"
+            "status": "match",
+            "relation": "equal"
           }
         }
       }
@@ -560,7 +580,8 @@
           "library": "server",
           "sig": "40 55 53 56 57 41 54 48 8D 6C 24 ? 48 81 EC ? ? ? ? 4D 8B E0",
           "reference": {
-            "status": "no_reference"
+            "status": "match",
+            "relation": "equal"
           }
         }
       }
@@ -586,7 +607,8 @@
           "library": "server",
           "sig": "40 57 41 56 48 83 EC ? 48 8B 01",
           "reference": {
-            "status": "no_reference"
+            "status": "match",
+            "relation": "equal"
           }
         }
       }
@@ -612,7 +634,8 @@
           "library": "server",
           "sig": "48 85 D2 0F 84 ? ? ? ? 53 55 48 83 EC ? 4C 8B 42 10",
           "reference": {
-            "status": "no_reference"
+            "status": "match",
+            "relation": "equal"
           }
         }
       }
@@ -638,7 +661,8 @@
           "library": "server",
           "sig": "48 8B C4 48 89 58 ? 48 89 70 ? 48 89 48 ? 55",
           "reference": {
-            "status": "no_reference"
+            "status": "match",
+            "relation": "equal"
           }
         }
       }
@@ -664,7 +688,8 @@
           "library": "server",
           "sig": "48 8B 1D ? ? ? ? 48 85 DB 0F 84 ? ? ? ? BD ? ? ? ?",
           "reference": {
-            "status": "no_reference"
+            "status": "match",
+            "relation": "equal"
           }
         }
       }
@@ -690,7 +715,8 @@
           "library": "server",
           "sig": "48 8B C4 4C 89 48 ? 48 89 50 ? 48 89 48 ? 55 48 8D A8 ? ? ? ?",
           "reference": {
-            "status": "no_reference"
+            "status": "match",
+            "relation": "equal"
           }
         }
       }
@@ -716,7 +742,8 @@
           "library": "server",
           "sig": "4C 8B C2 48 8B D1 48 8B 09",
           "reference": {
-            "status": "no_reference"
+            "status": "match",
+            "relation": "equal"
           }
         }
       }
@@ -742,7 +769,8 @@
           "library": "server",
           "sig": "44 89 4C 24 ? 44 88 44 24 ?",
           "reference": {
-            "status": "no_reference"
+            "status": "match",
+            "relation": "equal"
           }
         }
       }
@@ -768,7 +796,8 @@
           "library": "server",
           "sig": "48 83 3D ? ? ? ? ? 0F 95 C0 C3 ? ? ? ? C2 ? ?",
           "reference": {
-            "status": "no_reference"
+            "status": "match",
+            "relation": "equal"
           }
         }
       }
@@ -794,7 +823,8 @@
           "library": "server",
           "sig": "48 89 5C 24 ? 48 89 6C 24 ? 48 89 74 24 ? 57 48 83 EC ? 49 8B F0 33 ED 4C 8D 44 24 ? 66 89 6C 24 ? 49 8B F9",
           "reference": {
-            "status": "no_reference"
+            "status": "match",
+            "relation": "equal"
           }
         }
       }
@@ -820,7 +850,8 @@
           "library": "server",
           "sig": "85 D2 0F 88 ? ? ? ? 53 55 56 48 83 EC ? 48 63 DA 49 8B E9 49 8B C0 48 8B F1 48 89 7C 24 ? 3B 99 ? ? ? ? 0F 8D ? ? ? ? 4C 89 74 24 ? 4C 8D 44 24 ? 45 33 F6 48 8B D0 66 44 89 74 24 ? E8 ? ? ? ? 84 C0 74 ? 4C 8D 44 24 ? 66 44 89 74 24 ? 48 8B D5 48 8B CE E8 ? ? ? ? 84 C0 74 ? 0F B6 86 ? ? ? ? A8 02 74 ? A8 01 75 ? 4C 8D 44 24 ? 48 C7 44 24 ? FF FF FF FF B2 03 48 8D 8E ? ? ? ? E8 ? ? ? ? 4C 8B 4C 24 ?",
           "reference": {
-            "status": "no_reference"
+            "status": "match",
+            "relation": "equal"
           }
         }
       }
@@ -846,7 +877,8 @@
           "library": "server",
           "sig": "48 89 5C 24 ? 48 89 6C 24 ? 48 89 74 24 ? 57 48 83 EC ? 49 8B F0 33 ED 4C 8D 44 24 ? 66 89 6C 24 ? 41 8B F9",
           "reference": {
-            "status": "no_reference"
+            "status": "match",
+            "relation": "equal"
           }
         }
       }
@@ -872,7 +904,8 @@
           "library": "server",
           "sig": "85 D2 0F 88 ? ? ? ? 53 55 56 48 83 EC ? 48 63 DA 49 8B E9 49 8B C0 48 8B F1 48 89 7C 24 ? 3B 99 ? ? ? ? 0F 8D ? ? ? ? 4C 89 74 24 ? 4C 8D 44 24 ? 45 33 F6 48 8B D0 66 44 89 74 24 ? E8 ? ? ? ? 84 C0 74 ? 4C 8D 44 24 ? 66 44 89 74 24 ? 48 8B D5 48 8B CE E8 ? ? ? ? 84 C0 74 ? 0F B6 86 ? ? ? ? A8 02 74 ? A8 01 75 ? 4C 8D 44 24 ? 48 C7 44 24 ? FF FF FF FF B2 03 48 8D 8E ? ? ? ? E8 ? ? ? ? 44 8B 4C 24 ?",
           "reference": {
-            "status": "no_reference"
+            "status": "match",
+            "relation": "equal"
           }
         }
       }
@@ -898,7 +931,8 @@
           "library": "server",
           "sig": "4C 89 44 24 ? 55 53 56 41 55 41 57 48 8B EC 48 81 EC ? ? ? ? 44 8B 15 F3 47 ? ?",
           "reference": {
-            "status": "no_reference"
+            "status": "match",
+            "relation": "equal"
           }
         }
       }
@@ -924,7 +958,8 @@
           "library": "server",
           "sig": "85 D2 78 ? 48 89 5C 24 ? 56",
           "reference": {
-            "status": "no_reference"
+            "status": "match",
+            "relation": "equal"
           }
         }
       }
@@ -950,7 +985,8 @@
           "library": "server",
           "sig": "40 55 53 56 57 41 54 48 8D 6C 24 ? 48 81 EC ? ? ? ? 4D 8B E0",
           "reference": {
-            "status": "no_reference"
+            "status": "match",
+            "relation": "equal"
           }
         }
       }
@@ -982,12 +1018,20 @@
           }
         },
         "windows": {
-          "status": "no_recipe",
+          "status": "ok",
           "windows": 105,
           "method": "reference",
           "reference": {
-            "status": "no_reference",
-            "reason": "no_reference"
+            "value": 105,
+            "source": "vfunc_index",
+            "status": "match"
+          },
+          "anchor": {
+            "status": "anchor_unlocatable"
+          },
+          "bounds": {
+            "vtable_len": 277,
+            "in_range": true
           }
         }
       }
@@ -1019,12 +1063,20 @@
           }
         },
         "windows": {
-          "status": "no_recipe",
+          "status": "ok",
           "windows": 274,
           "method": "reference",
           "reference": {
-            "status": "no_reference",
-            "reason": "no_reference"
+            "value": 274,
+            "source": "vfunc_index",
+            "status": "match"
+          },
+          "anchor": {
+            "status": "anchor_unlocatable"
+          },
+          "bounds": {
+            "vtable_len": 277,
+            "in_range": true
           }
         }
       }
@@ -1056,12 +1108,20 @@
           }
         },
         "windows": {
-          "status": "no_recipe",
+          "status": "ok",
           "windows": 23,
           "method": "reference",
           "reference": {
-            "status": "no_reference",
-            "reason": "no_reference"
+            "value": 23,
+            "source": "vfunc_index",
+            "status": "match"
+          },
+          "anchor": {
+            "status": "anchor_unlocatable"
+          },
+          "bounds": {
+            "vtable_len": 28,
+            "in_range": true
           }
         }
       }
@@ -1096,12 +1156,23 @@
           }
         },
         "windows": {
-          "status": "no_recipe",
+          "status": "ok",
           "windows": 26,
-          "method": "reference",
+          "method": "anchor",
           "reference": {
-            "status": "no_reference",
-            "reason": "no_reference"
+            "value": 26,
+            "source": "vfunc_index",
+            "status": "match"
+          },
+          "anchor": {
+            "status": "confirmed",
+            "value": 26,
+            "kind": "vfunc",
+            "via": "vfunc_sig"
+          },
+          "bounds": {
+            "vtable_len": 28,
+            "in_range": true
           }
         }
       }
@@ -1133,12 +1204,20 @@
           }
         },
         "windows": {
-          "status": "no_recipe",
+          "status": "ok",
           "windows": 27,
           "method": "reference",
           "reference": {
-            "status": "no_reference",
-            "reason": "no_reference"
+            "value": 27,
+            "source": "vfunc_index",
+            "status": "match"
+          },
+          "anchor": {
+            "status": "anchor_unlocatable"
+          },
+          "bounds": {
+            "vtable_len": 28,
+            "in_range": true
           }
         }
       }
@@ -1173,12 +1252,23 @@
           }
         },
         "windows": {
-          "status": "no_recipe",
+          "status": "ok",
           "windows": 12,
-          "method": "reference",
+          "method": "anchor",
           "reference": {
-            "status": "no_reference",
-            "reason": "no_reference"
+            "value": 12,
+            "source": "vfunc_index",
+            "status": "match"
+          },
+          "anchor": {
+            "status": "confirmed",
+            "value": 12,
+            "kind": "vfunc",
+            "via": "vfunc_sig"
+          },
+          "bounds": {
+            "vtable_len": 31,
+            "in_range": true
           }
         }
       }
@@ -1210,12 +1300,20 @@
           }
         },
         "windows": {
-          "status": "no_recipe",
+          "status": "ok",
           "windows": 25,
           "method": "reference",
           "reference": {
-            "status": "no_reference",
-            "reason": "no_reference"
+            "value": 25,
+            "source": "vfunc_index",
+            "status": "match"
+          },
+          "anchor": {
+            "status": "anchor_unlocatable"
+          },
+          "bounds": {
+            "vtable_len": 130,
+            "in_range": true
           }
         }
       }
@@ -1248,12 +1346,19 @@
           }
         },
         "windows": {
-          "status": "no_recipe",
+          "status": "ok",
           "windows": 104,
-          "method": "reference",
+          "method": "anchor",
           "reference": {
-            "status": "no_reference",
-            "reason": "no_reference"
+            "value": 104,
+            "source": "struct_member",
+            "status": "match"
+          },
+          "anchor": {
+            "status": "confirmed",
+            "value": 104,
+            "kind": "member",
+            "via": "offset_sig"
           }
         }
       }
@@ -1288,12 +1393,23 @@
           }
         },
         "windows": {
-          "status": "no_recipe",
+          "status": "ok",
           "windows": 171,
-          "method": "reference",
+          "method": "anchor",
           "reference": {
-            "status": "no_reference",
-            "reason": "no_reference"
+            "value": 171,
+            "source": "vfunc_index",
+            "status": "match"
+          },
+          "anchor": {
+            "status": "confirmed",
+            "value": 171,
+            "kind": "vfunc",
+            "via": "vfunc_sig"
+          },
+          "bounds": {
+            "vtable_len": 238,
+            "in_range": true
           }
         }
       }
@@ -1328,12 +1444,23 @@
           }
         },
         "windows": {
-          "status": "no_recipe",
+          "status": "ok",
           "windows": 387,
-          "method": "reference",
+          "method": "anchor",
           "reference": {
-            "status": "no_reference",
-            "reason": "no_reference"
+            "value": 387,
+            "source": "vfunc_index",
+            "status": "match"
+          },
+          "anchor": {
+            "status": "confirmed",
+            "value": 387,
+            "kind": "vfunc",
+            "via": "vfunc_sig"
+          },
+          "bounds": {
+            "vtable_len": 400,
+            "in_range": true
           }
         }
       }
@@ -1368,12 +1495,23 @@
           }
         },
         "windows": {
-          "status": "no_recipe",
+          "status": "ok",
           "windows": 165,
-          "method": "reference",
+          "method": "anchor",
           "reference": {
-            "status": "no_reference",
-            "reason": "no_reference"
+            "value": 165,
+            "source": "vfunc_index",
+            "status": "match"
+          },
+          "anchor": {
+            "status": "confirmed",
+            "value": 165,
+            "kind": "vfunc",
+            "via": "vfunc_sig"
+          },
+          "bounds": {
+            "vtable_len": 238,
+            "in_range": true
           }
         }
       }
@@ -1406,12 +1544,19 @@
           }
         },
         "windows": {
-          "status": "no_recipe",
+          "status": "ok",
           "windows": 88,
-          "method": "reference",
+          "method": "anchor",
           "reference": {
-            "status": "no_reference",
-            "reason": "no_reference"
+            "value": 88,
+            "source": "struct_member",
+            "status": "match"
+          },
+          "anchor": {
+            "status": "read",
+            "value": 88,
+            "kind": "member",
+            "via": "offset_sig"
           }
         }
       }
@@ -1440,12 +1585,16 @@
           }
         },
         "windows": {
-          "status": "no_recipe",
+          "status": "ok",
           "windows": 2,
           "method": "reference",
           "reference": {
-            "status": "no_reference",
-            "reason": "no_reference"
+            "value": 2,
+            "source": "vfunc_index",
+            "status": "match"
+          },
+          "anchor": {
+            "status": "anchor_unlocatable"
           }
         }
       }
@@ -1475,12 +1624,19 @@
           }
         },
         "windows": {
-          "status": "no_recipe",
+          "status": "ok",
           "windows": 576,
-          "method": "reference",
+          "method": "anchor",
           "reference": {
-            "status": "no_reference",
-            "reason": "no_reference"
+            "value": 576,
+            "source": "struct_member",
+            "status": "match"
+          },
+          "anchor": {
+            "status": "confirmed",
+            "value": 576,
+            "kind": "member",
+            "via": "offset_sig"
           }
         }
       }
@@ -1509,12 +1665,17 @@
           }
         },
         "windows": {
-          "status": "no_recipe",
+          "status": "ok",
           "windows": 28,
           "method": "reference",
           "reference": {
-            "status": "no_reference",
-            "reason": "no_reference"
+            "value": 28,
+            "source": "vfunc_index",
+            "status": "match"
+          },
+          "bounds": {
+            "vtable_len": 48,
+            "in_range": true
           }
         }
       }
@@ -1546,12 +1707,20 @@
           }
         },
         "windows": {
-          "status": "no_recipe",
+          "status": "ok",
           "windows": 12,
           "method": "reference",
           "reference": {
-            "status": "no_reference",
-            "reason": "no_reference"
+            "value": 12,
+            "source": "vfunc_index",
+            "status": "match"
+          },
+          "anchor": {
+            "status": "anchor_unlocatable"
+          },
+          "bounds": {
+            "vtable_len": 18,
+            "in_range": true
           }
         }
       }

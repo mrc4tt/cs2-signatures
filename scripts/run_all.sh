@@ -58,7 +58,11 @@ if [ "${NO_SYMBOLS:-0}" != "1" ]; then
     # since the last tick. The version string can be the same one we already
     # have on disk - a re-publish of the same build - so the cached snapshot is
     # stale and has to be pulled again rather than reused.
-    if [ ! -f "data/symbols/$GAMEVER.json" ] || [ "${REFERENCE_CHANGED:-0}" = "1" ]; then
+    # A snapshot cached while the analysis had committed only one platform (or
+    # less than the site now publishes) is stale too.
+    STALE="$(python3 scripts/fetch_symbols.py --stale --gamever "$GAMEVER" 2>/dev/null || true)"
+    [ -n "$STALE" ] && echo "reference snapshot $GAMEVER is stale: $STALE"
+    if [ -n "$STALE" ] || [ "${REFERENCE_CHANGED:-0}" = "1" ]; then
       python3 scripts/fetch_symbols.py --backend git --gamever "$GAMEVER" \
         "${SYM_ARGS[@]+"${SYM_ARGS[@]}"}" || true
     fi
