@@ -15,11 +15,16 @@ expired or revoked token makes the forge reject the request outright (GitHub
 answers 401 even for a public file), so a rejected token on a public project is
 retried once without it.
 
+A project with "format": "keyvalues" (a Metamod plugin's .games.txt) is
+converted by lib_kv into the same JSON shape; "game" picks the block (default
+"csgo").
+
 Use --project ID to fetch a single project. stdlib only. Exit non-zero if any
 project fails to fetch (existing snapshots are left untouched for those).
 """
 import argparse
 import hashlib
+import json
 import os
 import sys
 import urllib.error
@@ -27,6 +32,7 @@ import urllib.request
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import projects as P  # noqa: E402
+import lib_kv  # noqa: E402
 
 
 def sha(b):
@@ -99,6 +105,17 @@ def fetch_project(proj, gh_token, fj_token):
             print("[%s] HTTP %d fetching %s: %s"
                   % (proj["id"], e.code, proj["path"], e.reason), file=sys.stderr)
             return False
+
+    if proj.get("format") == "keyvalues":
+        # A Metamod/SourceMod .games.txt: stored as the same JSON shape as the
+        # others, so validate/report/diff read it unchanged.
+        data = lib_kv.to_gamedata(new.decode("utf-8"), proj.get("game", "csgo"))
+        if not data:
+            print("[%s] no Signatures/Offsets for game %r in %s"
+                  % (proj["id"], proj.get("game", "csgo"), proj["path"]),
+                  file=sys.stderr)
+            return False
+        new = (json.dumps(data, indent=2) + "\n").encode("utf-8")
 
     os.makedirs(os.path.dirname(out) or ".", exist_ok=True)
     with open(out, "wb") as fh:

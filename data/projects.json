@@ -34,5 +34,15 @@
     "branch": "main",
     "path": "gamedata/weaponpaints.json",
     "private": false
+  },
+  {
+    "id": "GameBanFix",
+    "name": "GameBanFix",
+    "repo": "mrc4tt/GameBanFix",
+    "upstream": "Cruze03/GameBanFix",
+    "branch": "main",
+    "path": "gamedata/gamebanfix.games.txt",
+    "format": "keyvalues",
+    "private": false
   }
 ]

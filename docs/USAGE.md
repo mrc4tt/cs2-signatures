@@ -61,6 +61,11 @@ Adding a plugin is a JSON append - no code change. Add an entry to
 }
 ```
 
+A Metamod plugin with a Valve KeyValues `.games.txt` (`"Games" { "csgo" {
+"Signatures" ... "Offsets" ... } }`) works too: add `"format": "keyvalues"`
+(and `"game"` if its block is not `csgo`). Signatures may be IDA style or
+escaped `\x` bytes.
+
 * `id` names the report files (`reports/MyPlugin/`, `docs/MyPlugin.md`).
 * `path` points at a CounterStrikeSharp-format `gamedata.json` in that repo.
 * `host` is optional and defaults to `github.com`; a Forgejo/Gitea host works
