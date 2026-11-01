@@ -45,6 +45,15 @@ STALE_REF = "🕓"
 START, END = "<!-- STATUS:START -->", "<!-- STATUS:END -->"
 
 
+def project_cell(proj):
+    """Project link for the README table, with the fork's origin under it."""
+    cell = '<a href="%s">%s</a>' % (P.repo_url(proj), P.name(proj))
+    up = P.upstream_url(proj)
+    if up:
+        cell += '<br><sub>fork of <a href="%s">%s</a></sub>' % (up, proj["upstream"])
+    return cell
+
+
 def docs_url(proj):
     return DOCS_URL_TMPL % proj["id"]
 
@@ -236,11 +245,11 @@ def render_readme_block(projects, statuses, updated, version=None):
         results = status["results"]
         lok, ltot = sig_counts(results, "linux")
         wok, wtot = sig_counts(results, "windows")
-        L.append('<tr><td><a href="%s">%s</a></td><td>%s</td>'
+        L.append('<tr><td>%s</td><td>%s</td>'
                  '<td align="center">%d/%d</td><td align="center">%s</td>'
                  '<td align="center">%s</td>'
                  '<td><a href="%s">details &rarr;</a></td></tr>'
-                 % (P.repo_url(proj), P.name(proj),
+                 % (project_cell(proj),
                     badge_md(proj["id"], P.name(proj)),
                     lok + wok, ltot + wtot,
                     platform_agg(results, "linux"),
@@ -329,8 +338,11 @@ def render_docs_index(projects, updated):
           "the byte pattern in CODE-style and IDA-style.",
           ""]
     for proj in projects:
-        L.append("* [%s](%s.md) - `%s`" % (P.name(proj), proj["id"],
-                                           P.repo_url(proj)))
+        line = "* [%s](%s.md) - `%s`" % (P.name(proj), proj["id"],
+                                          P.repo_url(proj))
+        if proj.get("upstream"):
+            line += " (fork of [%s](%s))" % (proj["upstream"], P.upstream_url(proj))
+        L.append(line)
     L += ["",
           "The project list lives in [`data/projects.json`]"
           "(../data/projects.json); adding one there adds a page here on the "
@@ -346,6 +358,8 @@ def render_docs(proj, status, updated):
     L.append("")
     L.append("* Manifests: %s" % manifest_links(status.get("manifest")))
     L.append("* Repository: %s" % P.repo_url(proj))
+    if proj.get("upstream"):
+        L.append("* Fork of: [%s](%s)" % (proj["upstream"], P.upstream_url(proj)))
     L.append("* Gamedata: %s" % P.blob_url(proj))
     L.append("")
     L.append("Cell status: %s unique (1 match) &middot; %s ambiguous (>1) "

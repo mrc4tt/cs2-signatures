@@ -61,6 +61,12 @@ def repo_url(p):
     return "https://%s/%s" % (host(p), p["repo"])
 
 
+def upstream_url(p):
+    """github.com URL of the repo the tracked one is forked from, or None."""
+    up = p.get("upstream")
+    return "https://github.com/%s" % up if up else None
+
+
 def blob_url(p):
     if is_github(p):
         return "https://github.com/%s/blob/%s/%s" % (
