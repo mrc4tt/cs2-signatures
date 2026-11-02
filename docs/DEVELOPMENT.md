@@ -460,6 +460,7 @@ scripts/download_bins.sh  DepotDownloader depot download (shared bins)
 scripts/validate_sigs.py  scan + classify per project -> reports/<id>/status.json
 scripts/gen_report.py     -> README block + docs/<id>.md + aggregate badge + history
 scripts/open_issue.py     Forgejo auto-issue on broken sigs (across all projects)
+scripts/publish_site.py   static download site + RSS for the binaries (bins.miksen.me)
 scripts/post_gate.py      is the change worth announcing? (exit 10 = yes)
 scripts/post_discord.py   Discord webhook report (across all projects)
 scripts/gen_stats.py      signature fragility mined from git history -> docs/stats.md

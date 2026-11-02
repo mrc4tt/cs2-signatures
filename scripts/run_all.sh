@@ -265,5 +265,20 @@ elif [ -n "${FORGEJO_TOKEN:-}" ]; then
   echo "no game update (UPD=$UPD) - skipping binary release"
 fi
 
+# 10. Optional: publish the same binaries to the static download site
+#     (bins.miksen.me, nginx serves $BINS_DIR) and announce the new version on
+#     DISCORD_BINS_WEBHOOK. The forge-free replacement for step 9. Same gate:
+#     only a real game update brings new files. Needs BINS_DIR in .env.
+if [ -n "${BINS_DIR:-}" ] && [ "$UPD" -eq 10 ]; then
+  python3 scripts/publish_site.py \
+    --linux "${LINUX_SO:-}" --windows "${WIN_DLL:-}" \
+    --linux-engine2 "${LINUX_ENGINE2:-}" --windows-engine2 "${WIN_ENGINE2:-}" \
+    --linux-client "${LINUX_CLIENT:-}" --iso "$ISO" || true
+elif [ -n "${BINS_DIR:-}" ]; then
+  echo "no game update (UPD=$UPD) - refreshing download page only"
+  # Keeps the page's signature-health pill in step with reports/badge.json.
+  python3 scripts/publish_site.py --rebuild-index || true
+fi
+
 echo "done (validate exit=$VAL, update=$UPD)"
 exit "$VAL"

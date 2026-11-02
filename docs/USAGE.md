@@ -27,8 +27,10 @@ signatures break update after update - is in [stats.md](stats.md).
    can no longer be found. In practice the plugin loads but that feature
    misbehaves or the server crashes when the code path is hit.
 3. **What to do:** wait for the plugin author's update.
-4. **The binaries used for a check** are published as releases, tagged by CS2
-   version, if you want to reproduce a result yourself.
+4. **The binaries used for a check** are downloadable from
+   [bins.miksen.me](https://bins.miksen.me/), one set per CS2 version (RSS:
+   `https://bins.miksen.me/releases.rss`), if you want to reproduce a result
+   yourself.
 
 ## Notifications
 
