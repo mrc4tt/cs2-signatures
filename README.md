@@ -14,7 +14,7 @@ points at exactly one function in the binaries Valve ships right now.
 
 > ❌ **1 of 112 signature checks are broken** on CS2 `1.41.9.5` - the affected plugins need regenerated signatures.
 >
-> Last checked November 3, 2026 at 01:35:18 GMT &middot; 5 project(s) tracked
+> Last checked November 3, 2026 at 02:00:09 GMT &middot; 5 project(s) tracked
 
 <table>
 <tr><th>Project</th><th>Health</th><th>Signatures</th><th>Linux</th><th>Windows</th><th></th></tr>
@@ -37,7 +37,7 @@ points at exactly one function in the binaries Valve ships right now.
 
 * **CS2 build:** `1.41.9.5`
 * **Signatures:** 111 ok, 0 ambiguous, 1 broken (0 not-yet-validated)
-* **Offsets:** 15 ok, 0 stale, 6 without a reference
+* **Offsets:** 21 ok, 0 stale, 21 without a reference
 * **Depot manifests:** [5808144614069275570](https://steamdb.info/depot/2347771/history/?changeid=M:5808144614069275570), [4551386601247986792](https://steamdb.info/depot/2347773/history/?changeid=M:4551386601247986792)
 * **Fragility over time:** [docs/stats.md](docs/stats.md)
 
