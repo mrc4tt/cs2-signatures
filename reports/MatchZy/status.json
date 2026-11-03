@@ -12,10 +12,10 @@
     "ambiguous": 0,
     "no_binary": 0,
     "missing_sig": 0,
-    "offset_ok": 1,
+    "offset_ok": 2,
     "offset_stale": 0,
     "offset_review": 0,
-    "offset_no_recipe": 1,
+    "offset_no_recipe": 0,
     "sig_outdated": 0
   },
   "results": [
@@ -40,7 +40,8 @@
           "library": "server",
           "sig": "48 89 5C 24 ? 44 88 44 24 ? 55 56 57 41 54 41 55 41 56 41 57 48 8D 6C 24 ? 48 81 EC ? ? ? ? 48 8B 3D ? ? ? ?",
           "reference": {
-            "status": "no_reference"
+            "status": "match",
+            "relation": "equal"
           }
         }
       }
@@ -66,7 +67,8 @@
           "library": "server",
           "sig": "48 8B C4 55 41 57 48 8D A8 ? ? ? ? 48 81 EC ? ? ? ? 80 B9 ? ? ? ? ?",
           "reference": {
-            "status": "no_reference"
+            "status": "match",
+            "relation": "equal"
           }
         }
       }
@@ -92,7 +94,8 @@
           "library": "server",
           "sig": "48 89 5C 24 ? 48 89 6C 24 ? 48 89 74 24 ? 57 41 56 41 57 48 83 EC ? 48 8B B4 24 ? ? ? ?",
           "reference": {
-            "status": "no_reference"
+            "status": "match",
+            "relation": "equal"
           }
         }
       }
@@ -118,7 +121,8 @@
           "library": "server",
           "sig": "48 89 5C 24 ? 48 89 6C 24 ? 48 89 74 24 ? 57 48 83 EC ? 48 8B AC 24 ? ? ? ? 49 8B F8",
           "reference": {
-            "status": "no_reference"
+            "status": "match",
+            "relation": "equal"
           }
         }
       }
@@ -144,7 +148,8 @@
           "library": "server",
           "sig": "48 8B C4 48 89 58 ? 48 89 70 ? 48 89 78 ? 4C 89 40 ? 55 41 54 41 55 41 56 41 57 48 8D 6C 24 ?",
           "reference": {
-            "status": "no_reference"
+            "status": "match",
+            "relation": "equal"
           }
         }
       }
@@ -170,7 +175,8 @@
           "library": "server",
           "sig": "40 55 56 48 83 EC ? 48 89 5C 24 ? 48 8B D9",
           "reference": {
-            "status": "no_reference"
+            "status": "match",
+            "relation": "equal"
           }
         }
       }
@@ -204,12 +210,20 @@
           }
         },
         "windows": {
-          "status": "no_recipe",
+          "status": "ok",
           "windows": 30,
           "method": "reference",
           "reference": {
-            "status": "no_reference",
-            "reason": "no_reference"
+            "value": 30,
+            "source": "vfunc_index",
+            "status": "match"
+          },
+          "anchor": {
+            "status": "anchor_unlocatable"
+          },
+          "bounds": {
+            "vtable_len": 45,
+            "in_range": true
           }
         }
       }

@@ -1,6 +1,6 @@
 # WeaponPaints
 
-Last updated: November 3, 2026 at 02:00:09 GMT
+Last updated: November 3, 2026 at 02:30:51 GMT
 
 * Manifests: [5808144614069275570](https://steamdb.info/depot/2347771/history/?changeid=M:5808144614069275570), [4551386601247986792](https://steamdb.info/depot/2347773/history/?changeid=M:4551386601247986792)
 * Repository: https://github.com/mrc4tt/cs2-WeaponPaints
@@ -17,7 +17,7 @@ Reference column: ✅ matches the 14195 analysis &middot; 🕓 the analysis uses
 
 <table>
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>✅</td><td>❔</td><td>Windows</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x48\x89\x4C\x24\x2A\x53\x41\x55\x41\x56
 </pre>
@@ -41,7 +41,7 @@ Reference column: ✅ matches the 14195 analysis &middot; 🕓 the analysis uses
 
 <table>
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>✅</td><td>❔</td><td>Windows</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x48\x89\x54\x24\x2A\x48\x89\x4C\x24\x2A\x53\x57\x48\x81\xEC\x2A\x2A\x2A\x2A
 </pre>
@@ -65,7 +65,7 @@ Reference column: ✅ matches the 14195 analysis &middot; 🕓 the analysis uses
 
 <table>
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>✅</td><td>❔</td><td>Windows</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x48\x8B\xC4\x56\x48\x83\xEC\x2A\x49\x63\xF0
 </pre>
@@ -89,7 +89,7 @@ Reference column: ✅ matches the 14195 analysis &middot; 🕓 the analysis uses
 
 <table>
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>✅</td><td>❔</td><td>Windows</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x48\x89\x5C\x24\x2A\x48\x89\x6C\x24\x2A\x48\x89\x74\x24\x2A\x57\x41\x54\x41\x55\x41\x56\x41\x57\x48\x83\xEC\x2A\x48\x8B\xF9\x48\x8D\x05\x2A\x2A\x2A\x2A
 </pre>
@@ -113,7 +113,7 @@ Reference column: ✅ matches the 14195 analysis &middot; 🕓 the analysis uses
 
 <table>
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>✅</td><td>❔</td><td>Windows</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x48\x89\x5C\x24\x2A\x48\x89\x6C\x24\x2A\x48\x89\x74\x24\x2A\x48\x89\x7C\x24\x2A\x41\x56\x48\x83\xEC\x2A\x48\x8B\xF9\x48\x8B\xF2
 </pre>
@@ -137,7 +137,7 @@ Reference column: ✅ matches the 14195 analysis &middot; 🕓 the analysis uses
 
 <table>
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>✅</td><td>❔</td><td>Windows</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x83\x79\x2A\x2A\x0F\x10\x49\x2A
 </pre>
@@ -161,7 +161,7 @@ Reference column: ✅ matches the 14195 analysis &middot; 🕓 the analysis uses
 
 <table>
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>✅</td><td>❔</td><td>Windows</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x40\x55\x56\x48\x83\xEC\x2A\x48\x83\x79\x2A\x2A
 </pre>
@@ -185,7 +185,7 @@ Reference column: ✅ matches the 14195 analysis &middot; 🕓 the analysis uses
 
 <table>
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>✅</td><td>❔</td><td>Windows</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x48\x89\x5C\x24\x2A\x56\x57\x41\x56\x48\x83\xEC\x2A\x48\x8B\xD9\x48\x81\xC1\x2A\x2A\x2A\x2A
 </pre>
@@ -209,7 +209,7 @@ Reference column: ✅ matches the 14195 analysis &middot; 🕓 the analysis uses
 
 <table>
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>✅</td><td>❔</td><td>Windows</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x40\x56\x57\x41\x54\x48\x83\xEC\x2A\x48\x8B\xF9\x45\x33\xE4
 </pre>
@@ -235,8 +235,8 @@ A vtable slot index or a struct-member byte offset. There are no bytes to scan, 
 
 <table>
 <tr><th>Entry</th><th>Windows</th><th>Linux</th><th>Checked by</th></tr>
-<tr><td>CCSPlayerController_InventoryServices::m_pInventory</td><td>❔ 112</td><td>✅ 112</td><td>reference / anchor</td></tr>
-<tr><td>CCSPlayerInventory::m_pSOCache</td><td>❔ 104</td><td>✅ 104</td><td>reference / anchor</td></tr>
-<tr><td>CGCClientSharedObjectCache::m_Owner</td><td>❔ 40</td><td>✅ 40</td><td>reference / anchor</td></tr>
-<tr><td>CCSPlayer_WeaponServices::DropWeapon</td><td>❔ 28</td><td>✅ 29</td><td>reference / anchor</td></tr>
+<tr><td>CCSPlayerController_InventoryServices::m_pInventory</td><td>✅ 112</td><td>✅ 112</td><td>anchor</td></tr>
+<tr><td>CCSPlayerInventory::m_pSOCache</td><td>✅ 104</td><td>✅ 104</td><td>anchor</td></tr>
+<tr><td>CGCClientSharedObjectCache::m_Owner</td><td>✅ 40</td><td>✅ 40</td><td>anchor</td></tr>
+<tr><td>CCSPlayer_WeaponServices::DropWeapon</td><td>✅ 28</td><td>✅ 29</td><td>anchor</td></tr>
 </table>
