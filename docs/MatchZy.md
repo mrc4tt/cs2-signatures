@@ -1,8 +1,8 @@
 # MatchZy
 
-Last updated: November 1, 2026 at 10:52:31 GMT
+Last updated: November 3, 2026 at 01:30:04 GMT
 
-* Manifests: [4494425425081083634](https://steamdb.info/depot/2347771/history/?changeid=M:4494425425081083634), [6232960523750647649](https://steamdb.info/depot/2347773/history/?changeid=M:6232960523750647649)
+* Manifests: [5808144614069275570](https://steamdb.info/depot/2347771/history/?changeid=M:5808144614069275570), [4551386601247986792](https://steamdb.info/depot/2347773/history/?changeid=M:4551386601247986792)
 * Repository: https://github.com/mrc4tt/MatchZy
 * Fork of: [shobhit-pathak/MatchZy](https://github.com/shobhit-pathak/MatchZy)
 * Gamedata: https://github.com/mrc4tt/MatchZy/blob/main/gamedata/matchzy.json
