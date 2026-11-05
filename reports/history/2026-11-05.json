@@ -1,13 +1,13 @@
 {
-  "date": "November 5, 2026 at 08:40:09 GMT",
+  "date": "November 5, 2026 at 09:05:19 GMT",
   "version": "1.41.9.6",
   "tally": {
-    "ok": 112,
+    "ok": 116,
     "broken": 0,
     "ambiguous": 0,
     "no_binary": 0,
     "missing_sig": 0,
-    "offset_ok": 42,
+    "offset_ok": 44,
     "offset_stale": 0,
     "offset_review": 0,
     "offset_no_recipe": 0,
@@ -19,12 +19,12 @@
   },
   "projects": {
     "CounterStrikeSharp": {
-      "ok": 72,
+      "ok": 76,
       "broken": 0,
       "ambiguous": 0,
       "no_binary": 0,
       "missing_sig": 0,
-      "offset_ok": 32,
+      "offset_ok": 34,
       "offset_stale": 0,
       "offset_review": 0,
       "offset_no_recipe": 0,

@@ -7,12 +7,12 @@
   "reference": "14196",
   "gamedata_source": "mrc4tt/CounterStrikeSharp configs/addons/counterstrikesharp/gamedata/gamedata.json",
   "tally": {
-    "ok": 72,
+    "ok": 76,
     "broken": 0,
     "ambiguous": 0,
     "no_binary": 0,
     "missing_sig": 0,
-    "offset_ok": 32,
+    "offset_ok": 34,
     "offset_stale": 0,
     "offset_review": 0,
     "offset_no_recipe": 0,
@@ -992,6 +992,56 @@
       }
     },
     {
+      "name": "CNavPhysicsInterface_vtable",
+      "kind": "signature",
+      "library": "server",
+      "platforms": {
+        "linux": {
+          "status": "ok",
+          "matches": 1,
+          "library": "server",
+          "sig": "48 8D 05 ? ? ? ? 48 89 06 E8 ? ? ? ? BF ? ? ? ? E8 ? ? ? ? 66 0F EF C9",
+          "reference": {
+            "status": "no_sig"
+          }
+        },
+        "windows": {
+          "status": "ok",
+          "matches": 1,
+          "library": "server",
+          "sig": "48 8D 0D ? ? ? ? 48 89 08 EB ? 48 8B C6 48 8B D0 48 8B CF E8 ? ? ? ? B9 ? ? ? ? E8 ? ? ? ? 48 8D 2D ? ? ? ?",
+          "reference": {
+            "status": "no_sig"
+          }
+        }
+      }
+    },
+    {
+      "name": "CTraceFilterLOS_vtable",
+      "kind": "signature",
+      "library": "server",
+      "platforms": {
+        "linux": {
+          "status": "ok",
+          "matches": 1,
+          "library": "server",
+          "sig": "48 8D 05 ? ? ? ? 49 89 04 24 48 83 C4 ?",
+          "reference": {
+            "status": "no_reference"
+          }
+        },
+        "windows": {
+          "status": "ok",
+          "matches": 1,
+          "library": "server",
+          "sig": "48 8D 05 ? ? ? ? 48 89 03 48 8B C3 48 83 C4 ? 5B C3 CC CC CC CC 0F B6 41 ?",
+          "reference": {
+            "status": "no_reference"
+          }
+        }
+      }
+    },
+    {
       "name": "CCSPlayerController_ChangeTeam",
       "kind": "offset",
       "offsets": {
@@ -1720,6 +1770,56 @@
           },
           "bounds": {
             "vtable_len": 18,
+            "in_range": true
+          }
+        }
+      }
+    },
+    {
+      "name": "CNavPhysicsInterface_TraceShape",
+      "kind": "offset",
+      "offsets": {
+        "windows": 3,
+        "linux": 5
+      },
+      "platforms": {
+        "linux": {
+          "status": "ok",
+          "linux": 5,
+          "kind": null,
+          "resolve": "gdt",
+          "note": null,
+          "reference": {
+            "value": 5,
+            "source": "vfunc_index",
+            "status": "match"
+          },
+          "method": "anchor",
+          "anchor": {
+            "status": "confirmed",
+            "value": 5,
+            "kind": "member",
+            "via": "func_sig"
+          },
+          "bounds": {
+            "vtable_len": 10,
+            "in_range": true
+          }
+        },
+        "windows": {
+          "status": "ok",
+          "windows": 3,
+          "method": "reference",
+          "reference": {
+            "value": 3,
+            "source": "vfunc_index",
+            "status": "match"
+          },
+          "anchor": {
+            "status": "anchor_unlocatable"
+          },
+          "bounds": {
+            "vtable_len": 9,
             "in_range": true
           }
         }

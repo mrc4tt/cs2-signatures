@@ -1,6 +1,6 @@
 # CounterStrikeSharp
 
-Last updated: November 5, 2026 at 08:40:09 GMT
+Last updated: November 5, 2026 at 09:05:19 GMT
 
 * Manifests: [3019944380727688040](https://steamdb.info/depot/2347771/history/?changeid=M:3019944380727688040), [8513165868182791792](https://steamdb.info/depot/2347773/history/?changeid=M:8513165868182791792)
 * Repository: https://github.com/mrc4tt/CounterStrikeSharp
@@ -877,6 +877,54 @@ Reference column: ✅ matches the 14196 analysis &middot; 🕓 the analysis uses
 </td></tr>
 </table>
 
+### CNavPhysicsInterface_vtable
+
+<table>
+<tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
+<tr><td>✅</td><td>❔</td><td>Windows</td><td>server</td><td>1</td><td>
+<pre>
+\x48\x8D\x0D\x2A\x2A\x2A\x2A\x48\x89\x08\xEB\x2A\x48\x8B\xC6\x48\x8B\xD0\x48\x8B\xCF\xE8\x2A\x2A\x2A\x2A\xB9\x2A\x2A\x2A\x2A\xE8\x2A\x2A\x2A\x2A\x48\x8D\x2D\x2A\x2A\x2A\x2A
+</pre>
+</td><td>
+<pre>
+48 8D 0D ? ? ? ? 48 89 08 EB ? 48 8B C6 48 8B D0 48 8B CF E8 ? ? ? ? B9 ? ? ? ? E8 ? ? ? ? 48 8D 2D ? ? ? ?
+</pre>
+</td></tr>
+<tr><td>✅</td><td>❔</td><td>Linux</td><td>server</td><td>1</td><td>
+<pre>
+\x48\x8D\x05\x2A\x2A\x2A\x2A\x48\x89\x06\xE8\x2A\x2A\x2A\x2A\xBF\x2A\x2A\x2A\x2A\xE8\x2A\x2A\x2A\x2A\x66\x0F\xEF\xC9
+</pre>
+</td><td>
+<pre>
+48 8D 05 ? ? ? ? 48 89 06 E8 ? ? ? ? BF ? ? ? ? E8 ? ? ? ? 66 0F EF C9
+</pre>
+</td></tr>
+</table>
+
+### CTraceFilterLOS_vtable
+
+<table>
+<tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
+<tr><td>✅</td><td>❔</td><td>Windows</td><td>server</td><td>1</td><td>
+<pre>
+\x48\x8D\x05\x2A\x2A\x2A\x2A\x48\x89\x03\x48\x8B\xC3\x48\x83\xC4\x2A\x5B\xC3\xCC\xCC\xCC\xCC\x0F\xB6\x41\x2A
+</pre>
+</td><td>
+<pre>
+48 8D 05 ? ? ? ? 48 89 03 48 8B C3 48 83 C4 ? 5B C3 CC CC CC CC 0F B6 41 ?
+</pre>
+</td></tr>
+<tr><td>✅</td><td>❔</td><td>Linux</td><td>server</td><td>1</td><td>
+<pre>
+\x48\x8D\x05\x2A\x2A\x2A\x2A\x49\x89\x04\x24\x48\x83\xC4\x2A
+</pre>
+</td><td>
+<pre>
+48 8D 05 ? ? ? ? 49 89 04 24 48 83 C4 ?
+</pre>
+</td></tr>
+</table>
+
 ## Offsets
 
 A vtable slot index or a struct-member byte offset. There are no bytes to scan, so these are checked by re-deriving the integer: `reference` reads it from the analysis snapshot (both platforms), `anchored` / `structural` / `structoffset` re-derive it from the binary itself (Linux only).
@@ -899,4 +947,5 @@ A vtable slot index or a struct-member byte offset. There are no bytes to scan, 
 <tr><td>CheckTransmitPlayerSlot</td><td>✅ 576</td><td>✅ 576</td><td>anchor</td></tr>
 <tr><td>SetStateChanged</td><td>✅ 28</td><td>✅ 29</td><td>reference / anchored</td></tr>
 <tr><td>ISource2GameEntities::CheckTransmit</td><td>✅ 12</td><td>✅ 13</td><td>reference</td></tr>
+<tr><td>CNavPhysicsInterface_TraceShape</td><td>✅ 3</td><td>✅ 5</td><td>reference / anchor</td></tr>
 </table>

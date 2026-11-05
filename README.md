@@ -12,13 +12,13 @@ points at exactly one function in the binaries Valve ships right now.
 <!-- STATUS:START -->
 ## Current status
 
-> ✅ **All 112 signature checks pass** on CS2 `1.41.9.6`.
+> ✅ **All 116 signature checks pass** on CS2 `1.41.9.6`.
 >
-> Last checked November 5, 2026 at 08:40:09 GMT &middot; 5 project(s) tracked
+> Last checked November 5, 2026 at 09:05:19 GMT &middot; 5 project(s) tracked
 
 <table>
 <tr><th>Project</th><th>Health</th><th>Signatures</th><th>Linux</th><th>Windows</th><th></th></tr>
-<tr><td><a href="https://github.com/mrc4tt/CounterStrikeSharp">CounterStrikeSharp</a><br><sub>fork of <a href="https://github.com/roflmuffin/CounterStrikeSharp">roflmuffin/CounterStrikeSharp</a></sub></td><td><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fmrc4tt%2Fcs2-signatures%2Fmain%2Freports%2FCounterStrikeSharp%2Fbadge.json" alt="CounterStrikeSharp"></td><td align="center">72/72</td><td align="center">✅</td><td align="center">✅</td><td><a href="https://github.com/mrc4tt/cs2-signatures/blob/main/docs/CounterStrikeSharp.md">details &rarr;</a></td></tr>
+<tr><td><a href="https://github.com/mrc4tt/CounterStrikeSharp">CounterStrikeSharp</a><br><sub>fork of <a href="https://github.com/roflmuffin/CounterStrikeSharp">roflmuffin/CounterStrikeSharp</a></sub></td><td><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fmrc4tt%2Fcs2-signatures%2Fmain%2Freports%2FCounterStrikeSharp%2Fbadge.json" alt="CounterStrikeSharp"></td><td align="center">76/76</td><td align="center">✅</td><td align="center">✅</td><td><a href="https://github.com/mrc4tt/cs2-signatures/blob/main/docs/CounterStrikeSharp.md">details &rarr;</a></td></tr>
 <tr><td><a href="https://github.com/mrc4tt/cs2-retakes-allocator">cs2-retakes-allocator</a><br><sub>fork of <a href="https://github.com/yonilerner/cs2-retakes-allocator">yonilerner/cs2-retakes-allocator</a></sub></td><td><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fmrc4tt%2Fcs2-signatures%2Fmain%2Freports%2FRetakesAllocator%2Fbadge.json" alt="cs2-retakes-allocator"></td><td align="center">6/6</td><td align="center">✅</td><td align="center">✅</td><td><a href="https://github.com/mrc4tt/cs2-signatures/blob/main/docs/RetakesAllocator.md">details &rarr;</a></td></tr>
 <tr><td><a href="https://github.com/mrc4tt/MatchZy">MatchZy</a><br><sub>fork of <a href="https://github.com/shobhit-pathak/MatchZy">shobhit-pathak/MatchZy</a></sub></td><td><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fmrc4tt%2Fcs2-signatures%2Fmain%2Freports%2FMatchZy%2Fbadge.json" alt="MatchZy"></td><td align="center">12/12</td><td align="center">✅</td><td align="center">✅</td><td><a href="https://github.com/mrc4tt/cs2-signatures/blob/main/docs/MatchZy.md">details &rarr;</a></td></tr>
 <tr><td><a href="https://github.com/mrc4tt/cs2-WeaponPaints">WeaponPaints</a><br><sub>fork of <a href="https://github.com/Nereziel/cs2-WeaponPaints">Nereziel/cs2-WeaponPaints</a></sub></td><td><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fmrc4tt%2Fcs2-signatures%2Fmain%2Freports%2FWeaponPaints%2Fbadge.json" alt="WeaponPaints"></td><td align="center">18/18</td><td align="center">✅</td><td align="center">✅</td><td><a href="https://github.com/mrc4tt/cs2-signatures/blob/main/docs/WeaponPaints.md">details &rarr;</a></td></tr>
@@ -28,8 +28,8 @@ points at exactly one function in the binaries Valve ships right now.
 <details><summary>&#9660; Run details</summary>
 
 * **CS2 build:** `1.41.9.6`
-* **Signatures:** 112 ok, 0 ambiguous, 0 broken (0 not-yet-validated)
-* **Offsets:** 42 ok, 0 stale, 0 without a reference
+* **Signatures:** 116 ok, 0 ambiguous, 0 broken (0 not-yet-validated)
+* **Offsets:** 44 ok, 0 stale, 0 without a reference
 * **Depot manifests:** [3019944380727688040](https://steamdb.info/depot/2347771/history/?changeid=M:3019944380727688040), [8513165868182791792](https://steamdb.info/depot/2347773/history/?changeid=M:8513165868182791792)
 * **Fragility over time:** [docs/stats.md](docs/stats.md)
 
