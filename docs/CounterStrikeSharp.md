@@ -1,8 +1,8 @@
 # CounterStrikeSharp
 
-Last updated: November 3, 2026 at 02:30:51 GMT
+Last updated: November 5, 2026 at 00:55:20 GMT
 
-* Manifests: [5808144614069275570](https://steamdb.info/depot/2347771/history/?changeid=M:5808144614069275570), [4551386601247986792](https://steamdb.info/depot/2347773/history/?changeid=M:4551386601247986792)
+* Manifests: [3019944380727688040](https://steamdb.info/depot/2347771/history/?changeid=M:3019944380727688040), [8513165868182791792](https://steamdb.info/depot/2347773/history/?changeid=M:8513165868182791792)
 * Repository: https://github.com/mrc4tt/CounterStrikeSharp
 * Fork of: [roflmuffin/CounterStrikeSharp](https://github.com/roflmuffin/CounterStrikeSharp)
 * Gamedata: https://github.com/mrc4tt/CounterStrikeSharp/blob/main/configs/addons/counterstrikesharp/gamedata/gamedata.json
@@ -809,7 +809,7 @@ Reference column: ✅ matches the 14195 analysis &middot; 🕓 the analysis uses
 
 <table>
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
+<tr><td>❌</td><td>✅</td><td>Windows</td><td>server</td><td>0</td><td>
 <pre>
 \x4C\x89\x44\x24\x2A\x55\x53\x56\x41\x55\x41\x57\x48\x8B\xEC\x48\x81\xEC\x2A\x2A\x2A\x2A\x44\x8B\x15\xA3\x48\x2A\x2A
 </pre>
@@ -818,7 +818,7 @@ Reference column: ✅ matches the 14195 analysis &middot; 🕓 the analysis uses
 4C 89 44 24 ? 55 53 56 41 55 41 57 48 8B EC 48 81 EC ? ? ? ? 44 8B 15 A3 48 ? ?
 </pre>
 </td></tr>
-<tr><td>✅</td><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
+<tr><td>❌</td><td>✅</td><td>Linux</td><td>server</td><td>0</td><td>
 <pre>
 \x55\x48\x89\xE5\x41\x57\x41\x56\x49\x89\xF6\x41\x55\x49\x89\xD5\x41\x54\x49\x89\xCC\x53\x48\x89\xFB\x48\x83\xEC\x2A\x0F\xB6\x05\x2A\x2A\x2A\x2A\x84\xC0\x0F\x84\x2A\x2A\x2A\x2A\x80\x7B\x30\x00\x75\x2A\x48\x83\xC4\x58\x5B\x41\x5C\x41\x5D\x41\x5E\x41\x5F\x5D\xC3\x0F\x1F\x80\x00\x00\x00\x00\x4C\x8B\x3D\x2A\x2A\x2A\x2A\x48\x8D\x45\xB0\x48\x89\xDF\x48\x89\xC6\x48\x89\x45\x90\x4C\x89\x7D\xB0\xE8\x2A\x2A\x2A\x2A\x84\xC0\x74\x2A\x48\x89\xDF\xE8\x2A\x2A\x2A\x2A\xE8\x2A\x2A\x2A\x2A\x48\x89\xC7\x48\x89\x45\x98\xE8\x2A\x2A\x2A\x2A\x48\x8B\x75\x98\x48\x8B\x7D\x90\xE8\x2A\x2A\x2A\x2A\x48\x89\xDF\xE8\x2A\x2A\x2A\x2A\x48\x89\xC7\x48\x89\x45\x80
 </pre>

@@ -1,6 +1,6 @@
 # Signature fragility
 
-Last updated: November 3, 2026 at 02:30:51 GMT
+Last updated: November 5, 2026 at 00:55:20 GMT
 
 How often each signature has gone broken or ambiguous across the tracked history (each counted transition is one episode, not one run). Signatures with no episodes are summarised, not listed.
 
@@ -8,7 +8,7 @@ How often each signature has gone broken or ambiguous across the tracked history
 
 | Project | Signature | Platform | Breaks | Ambiguous | Now |
 |---|---|---|---|---|---|
-| CounterStrikeSharp | `CCSPointScript_OnCustomHudClicked` | windows | 4 | 0 | broken |
+| CounterStrikeSharp | `CCSPointScript_OnCustomHudClicked` | windows | 4 | 0 | ok |
 | CounterStrikeSharp | `CBaseModelEntity_SetModel` | windows | 3 | 0 | ok |
 | CounterStrikeSharp | `CCSPlayerPawnBase_PostThink` | linux | 3 | 0 | ok |
 | CounterStrikeSharp | `CCSPointScript_OnCustomHudClicked` | linux | 3 | 0 | ok |
@@ -31,8 +31,8 @@ How often each signature has gone broken or ambiguous across the tracked history
 
 ## Per project
 
-- **CounterStrikeSharp** - 118 tracked sig/platform pairs, 44 breakage episode(s), 89 never broken, 87 snapshot(s) of history.
-- **RetakesAllocator** - 6 tracked sig/platform pairs, 3 breakage episode(s), 3 never broken, 62 snapshot(s) of history.
-- **MatchZy** - 16 tracked sig/platform pairs, 6 breakage episode(s), 10 never broken, 65 snapshot(s) of history.
-- **WeaponPaints** - 28 tracked sig/platform pairs, 7 breakage episode(s), 22 never broken, 60 snapshot(s) of history.
-- **GameBanFix** - 4 tracked sig/platform pairs, 0 breakage episode(s), 4 never broken, 5 snapshot(s) of history.
+- **CounterStrikeSharp** - 118 tracked sig/platform pairs, 44 breakage episode(s), 89 never broken, 88 snapshot(s) of history.
+- **RetakesAllocator** - 6 tracked sig/platform pairs, 3 breakage episode(s), 3 never broken, 63 snapshot(s) of history.
+- **MatchZy** - 16 tracked sig/platform pairs, 6 breakage episode(s), 10 never broken, 66 snapshot(s) of history.
+- **WeaponPaints** - 28 tracked sig/platform pairs, 7 breakage episode(s), 22 never broken, 61 snapshot(s) of history.
+- **GameBanFix** - 4 tracked sig/platform pairs, 0 breakage episode(s), 4 never broken, 6 snapshot(s) of history.
