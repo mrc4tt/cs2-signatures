@@ -1,6 +1,6 @@
 # cs2-retakes-allocator
 
-Last updated: November 5, 2026 at 01:00:04 GMT
+Last updated: November 5, 2026 at 01:20:13 GMT
 
 * Manifests: [3019944380727688040](https://steamdb.info/depot/2347771/history/?changeid=M:3019944380727688040), [8513165868182791792](https://steamdb.info/depot/2347773/history/?changeid=M:8513165868182791792)
 * Repository: https://github.com/mrc4tt/cs2-retakes-allocator
@@ -8,6 +8,8 @@ Last updated: November 5, 2026 at 01:00:04 GMT
 * Gamedata: https://github.com/mrc4tt/cs2-retakes-allocator/blob/main/Resources/RetakesAllocator_gamedata.json
 
 Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ broken (0) &middot; ❔ binary not downloaded.
+
+Reference column: ✅ matches the 14196 analysis &middot; 🕓 the analysis uses a different pattern &middot; ❔ no reference for this symbol.
 
 ## Signatures
 
@@ -24,7 +26,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 48 83 EC ? 48 C7 44 24 ? ? ? ? ? 45 33 C9 45 33 C0 C6 44 24 ? ? E8 ? ? ? ? 48 83 C4 ? C3 CC CC CC CC CC CC CC CC CC CC CC CC CC CC 48 83 EC ?
 </pre>
 </td></tr>
-<tr><td>✅</td><td>❔</td><td>Linux</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
 \x45\x31\xC9\x45\x31\xC0\x31\xC9\x31\xD2\xE9\x2A\x2A\x2A\x2A\xCC\x55\x45\x31\xC9
 </pre>
@@ -48,7 +50,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 48 89 5C 24 ? 57 48 83 EC ? 33 FF 4C 8B CA 8B D9
 </pre>
 </td></tr>
-<tr><td>✅</td><td>❔</td><td>Linux</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
 \x55\x31\xD2\x48\x89\xE5\x41\x57\x41\x56\x41\x55\x41\x54\x41\x89\xFC
 </pre>
@@ -72,7 +74,7 @@ Cell status: ✅ unique (1 match) &middot; ⚠️ ambiguous (>1) &middot; ❌ br
 44 89 44 24 ? 48 89 54 24 ? 48 89 4C 24 ? 55 53 56 57 41 54 41 55 41 56 41 57 48 8B EC
 </pre>
 </td></tr>
-<tr><td>✅</td><td>❔</td><td>Linux</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
 <pre>
 \x55\x48\x89\xE5\x41\x57\x41\x56\x49\x89\xF6\x41\x55\x41\x54\x49\x89\xCC\x53\x48\x89\xFB\x48\x83\xEC\x2A\x4C\x8B\x6F\x2A
 </pre>

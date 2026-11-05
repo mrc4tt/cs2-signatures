@@ -1,5 +1,5 @@
 {
-  "date": "November 5, 2026 at 01:00:04 GMT",
+  "date": "November 5, 2026 at 01:20:13 GMT",
   "version": "1.41.9.6",
   "tally": {
     "ok": 110,
@@ -7,11 +7,11 @@
     "ambiguous": 0,
     "no_binary": 0,
     "missing_sig": 0,
-    "offset_ok": 15,
+    "offset_ok": 21,
     "offset_stale": 0,
-    "offset_review": 3,
-    "offset_no_recipe": 3,
-    "sig_outdated": 0
+    "offset_review": 0,
+    "offset_no_recipe": 21,
+    "sig_outdated": 1
   },
   "manifest": {
     "2347771": "3019944380727688040",
@@ -24,11 +24,11 @@
       "ambiguous": 0,
       "no_binary": 0,
       "missing_sig": 0,
-      "offset_ok": 11,
+      "offset_ok": 16,
       "offset_stale": 0,
-      "offset_review": 3,
-      "offset_no_recipe": 2,
-      "sig_outdated": 0
+      "offset_review": 0,
+      "offset_no_recipe": 16,
+      "sig_outdated": 1
     },
     "RetakesAllocator": {
       "ok": 6,
@@ -48,7 +48,7 @@
       "ambiguous": 0,
       "no_binary": 0,
       "missing_sig": 0,
-      "offset_ok": 0,
+      "offset_ok": 1,
       "offset_stale": 0,
       "offset_review": 0,
       "offset_no_recipe": 1,
@@ -63,7 +63,7 @@
       "offset_ok": 4,
       "offset_stale": 0,
       "offset_review": 0,
-      "offset_no_recipe": 0,
+      "offset_no_recipe": 4,
       "sig_outdated": 0
     },
     "GameBanFix": {
