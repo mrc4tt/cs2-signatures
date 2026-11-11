@@ -7,12 +7,12 @@
   "reference": "14196",
   "gamedata_source": "mrc4tt/MatchZy gamedata/matchzy.json",
   "tally": {
-    "ok": 12,
+    "ok": 16,
     "broken": 0,
     "ambiguous": 0,
     "no_binary": 0,
     "missing_sig": 0,
-    "offset_ok": 2,
+    "offset_ok": 4,
     "offset_stale": 0,
     "offset_review": 0,
     "offset_no_recipe": 0,
@@ -182,6 +182,58 @@
       }
     },
     {
+      "name": "CCSGameRules_CanPlayerHear_CoachCommGate",
+      "kind": "signature",
+      "library": "server",
+      "platforms": {
+        "linux": {
+          "status": "ok",
+          "matches": 1,
+          "library": "server",
+          "sig": "0F 85 ? ? ? ? 80 B8 ? ? ? ? ? 0F 85 ? ? ? ? 80 B8 ? ? ? ? ? 0F 85 ? ? ? ? 83 B8 ? ? ? ? ?",
+          "reference": {
+            "status": "no_sig"
+          }
+        },
+        "windows": {
+          "status": "ok",
+          "matches": 1,
+          "library": "server",
+          "sig": "75 ? 80 B8 ? ? ? ? ? 75 ? 80 B8 ? ? ? ? ?",
+          "reference": {
+            "status": "no_sig"
+          }
+        }
+      }
+    },
+    {
+      "name": "CPlayer_ObserverServices::IsValidObserverTarget",
+      "kind": "signature",
+      "library": "server",
+      "platforms": {
+        "linux": {
+          "status": "ok",
+          "matches": 1,
+          "library": "server",
+          "sig": "55 48 89 E5 41 56 41 55 41 54 53 48 85 F6 0F 84 ? ? ? ? 48 8B 06",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
+        },
+        "windows": {
+          "status": "ok",
+          "matches": 1,
+          "library": "server",
+          "sig": "40 53 56 57 48 83 EC ? 48 8B FA 48 8B F1",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
+        }
+      }
+    },
+    {
       "name": "CCSPlayer_WeaponServices_SelectItem",
       "kind": "offset",
       "offsets": {
@@ -224,6 +276,45 @@
           "bounds": {
             "vtable_len": 45,
             "in_range": true
+          }
+        }
+      }
+    },
+    {
+      "name": "CPlayer_ObserverServices::IsValidObserverTarget",
+      "kind": "offset",
+      "offsets": {
+        "windows": 34,
+        "linux": 35
+      },
+      "platforms": {
+        "linux": {
+          "status": "ok",
+          "linux": 35,
+          "kind": null,
+          "resolve": "gdt",
+          "note": null,
+          "reference": {
+            "value": 35,
+            "source": "vfunc_index",
+            "status": "match"
+          },
+          "method": "reference",
+          "anchor": {
+            "status": "anchor_unlocatable"
+          }
+        },
+        "windows": {
+          "status": "ok",
+          "windows": 34,
+          "method": "reference",
+          "reference": {
+            "value": 34,
+            "source": "vfunc_index",
+            "status": "match"
+          },
+          "anchor": {
+            "status": "anchor_unlocatable"
           }
         }
       }

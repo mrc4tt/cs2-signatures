@@ -1,13 +1,13 @@
 {
-  "date": "November 11, 2026 at 14:00:11 GMT",
+  "date": "November 11, 2026 at 21:55:04 GMT",
   "version": "1.41.9.6",
   "tally": {
-    "ok": 116,
+    "ok": 120,
     "broken": 0,
     "ambiguous": 0,
     "no_binary": 0,
     "missing_sig": 0,
-    "offset_ok": 44,
+    "offset_ok": 46,
     "offset_stale": 0,
     "offset_review": 0,
     "offset_no_recipe": 0,
@@ -43,12 +43,12 @@
       "sig_outdated": 0
     },
     "MatchZy": {
-      "ok": 12,
+      "ok": 16,
       "broken": 0,
       "ambiguous": 0,
       "no_binary": 0,
       "missing_sig": 0,
-      "offset_ok": 2,
+      "offset_ok": 4,
       "offset_stale": 0,
       "offset_review": 0,
       "offset_no_recipe": 0,

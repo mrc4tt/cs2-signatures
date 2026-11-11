@@ -1,6 +1,6 @@
 # MatchZy
 
-Last updated: November 11, 2026 at 14:00:11 GMT
+Last updated: November 11, 2026 at 21:55:04 GMT
 
 * Manifests: [3019944380727688040](https://steamdb.info/depot/2347771/history/?changeid=M:3019944380727688040), [8513165868182791792](https://steamdb.info/depot/2347773/history/?changeid=M:8513165868182791792)
 * Repository: https://github.com/mrc4tt/MatchZy
@@ -157,6 +157,54 @@ Reference column: ✅ matches the 14196 analysis &middot; 🕓 the analysis uses
 </td></tr>
 </table>
 
+### CCSGameRules_CanPlayerHear_CoachCommGate
+
+<table>
+<tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
+<tr><td>✅</td><td>❔</td><td>Windows</td><td>server</td><td>1</td><td>
+<pre>
+\x75\x2A\x80\xB8\x2A\x2A\x2A\x2A\x2A\x75\x2A\x80\xB8\x2A\x2A\x2A\x2A\x2A
+</pre>
+</td><td>
+<pre>
+75 ? 80 B8 ? ? ? ? ? 75 ? 80 B8 ? ? ? ? ?
+</pre>
+</td></tr>
+<tr><td>✅</td><td>❔</td><td>Linux</td><td>server</td><td>1</td><td>
+<pre>
+\x0F\x85\x2A\x2A\x2A\x2A\x80\xB8\x2A\x2A\x2A\x2A\x2A\x0F\x85\x2A\x2A\x2A\x2A\x80\xB8\x2A\x2A\x2A\x2A\x2A\x0F\x85\x2A\x2A\x2A\x2A\x83\xB8\x2A\x2A\x2A\x2A\x2A
+</pre>
+</td><td>
+<pre>
+0F 85 ? ? ? ? 80 B8 ? ? ? ? ? 0F 85 ? ? ? ? 80 B8 ? ? ? ? ? 0F 85 ? ? ? ? 83 B8 ? ? ? ? ?
+</pre>
+</td></tr>
+</table>
+
+### CPlayer_ObserverServices::IsValidObserverTarget
+
+<table>
+<tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
+<tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
+<pre>
+\x40\x53\x56\x57\x48\x83\xEC\x2A\x48\x8B\xFA\x48\x8B\xF1
+</pre>
+</td><td>
+<pre>
+40 53 56 57 48 83 EC ? 48 8B FA 48 8B F1
+</pre>
+</td></tr>
+<tr><td>✅</td><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
+<pre>
+\x55\x48\x89\xE5\x41\x56\x41\x55\x41\x54\x53\x48\x85\xF6\x0F\x84\x2A\x2A\x2A\x2A\x48\x8B\x06
+</pre>
+</td><td>
+<pre>
+55 48 89 E5 41 56 41 55 41 54 53 48 85 F6 0F 84 ? ? ? ? 48 8B 06
+</pre>
+</td></tr>
+</table>
+
 ## Offsets
 
 A vtable slot index or a struct-member byte offset. There are no bytes to scan, so these are checked by re-deriving the integer: `reference` reads it from the analysis snapshot (both platforms), `anchored` / `structural` / `structoffset` re-derive it from the binary itself (Linux only).
@@ -164,4 +212,5 @@ A vtable slot index or a struct-member byte offset. There are no bytes to scan, 
 <table>
 <tr><th>Entry</th><th>Windows</th><th>Linux</th><th>Checked by</th></tr>
 <tr><td>CCSPlayer_WeaponServices_SelectItem</td><td>✅ 30</td><td>✅ 31</td><td>reference</td></tr>
+<tr><td>CPlayer_ObserverServices::IsValidObserverTarget</td><td>✅ 34</td><td>✅ 35</td><td>reference</td></tr>
 </table>
