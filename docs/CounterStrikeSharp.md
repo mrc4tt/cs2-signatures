@@ -1,6 +1,6 @@
 # CounterStrikeSharp
 
-Last updated: November 5, 2026 at 09:10:19 GMT
+Last updated: November 11, 2026 at 14:00:11 GMT
 
 * Manifests: [3019944380727688040](https://steamdb.info/depot/2347771/history/?changeid=M:3019944380727688040), [8513165868182791792](https://steamdb.info/depot/2347773/history/?changeid=M:8513165868182791792)
 * Repository: https://github.com/mrc4tt/CounterStrikeSharp
@@ -811,11 +811,11 @@ Reference column: ✅ matches the 14196 analysis &middot; 🕓 the analysis uses
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
 <tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
-\x4C\x89\x4C\x24\x2A\x55\x53\x41\x54
+\x4C\x89\x4C\x24\x2A\x55\x53\x41\x54\x41\x55\x41\x56\x48\x8D\x6C\x24\x2A\x48\x81\xEC\x2A\x2A\x2A\x2A\x44\x8B\x15\x2A\x2A\x2A\x2A\x4C\x8B\xF1
 </pre>
 </td><td>
 <pre>
-4C 89 4C 24 ? 55 53 41 54
+4C 89 4C 24 ? 55 53 41 54 41 55 41 56 48 8D 6C 24 ? 48 81 EC ? ? ? ? 44 8B 15 ? ? ? ? 4C 8B F1
 </pre>
 </td></tr>
 <tr><td>✅</td><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
