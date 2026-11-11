@@ -1,8 +1,8 @@
 {
   "project": "WeaponPaints",
   "manifest": {
-    "2347771": "3019944380727688040",
-    "2347773": "8513165868182791792"
+    "2347771": "5946971774180560324",
+    "2347773": "3634295490837307276"
   },
   "reference": "14196",
   "gamedata_source": "mrc4tt/cs2-WeaponPaints gamedata/weaponpaints.json",
@@ -400,7 +400,7 @@
           "status": "ok",
           "linux": 29,
           "method": "anchor",
-          "func_va": "0x160c590",
+          "func_va": "0x15e9e10",
           "reference": {
             "value": 29,
             "source": "vfunc_index",
