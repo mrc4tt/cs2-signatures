@@ -1,28 +1,19 @@
 # Reference coverage gaps
 
-Last updated: November 11, 2026 at 23:10:07 GMT
+Last updated: November 12, 2026 at 04:35:07 GMT
 
 Symbols tracked by the signature tracker that the analysis cannot currently answer for.
 
-## Offsets with no verdict from either route (8)
+Snapshot: `14197`. Tracker: https://github.com/mrc4tt/cs2-signatures
 
-Neither an anchor/recipe nor the reference can produce a value for these, so the number in the gamedata is taken on trust. A reference record - vtable index, struct member, or an anchor pattern spanning the access - would close it.
+## Symbols analysed without a byte pattern (3)
 
-| Symbol | Platforms | Used by | Value in gamedata | Reason |
-|---|---|---|---|---|
-| `CCSPlayerController_ChangeTeam` | linux | CounterStrikeSharp | linux `104` | target-sig-none |
-| `CCSPlayer_WeaponServices_SelectItem` | linux | MatchZy | linux `31` | - |
-| `CEntityResourceManifest_AddResource` | linux | CounterStrikeSharp | linux `0` | no-vtable |
-| `CNavPhysicsInterface_TraceShape` | linux | CounterStrikeSharp | linux `5` | - |
-| `CPlayer_ObserverServices::IsValidObserverTarget` | linux | MatchZy | linux `35` | - |
-| `CTakeDamageInfo_HitGroup` | linux | CounterStrikeSharp | linux `104` | offset_sig-missing |
-| `GameEntitySystem` | linux | CounterStrikeSharp | linux `80` | offset_sig-missing |
-| `ISource2GameEntities::CheckTransmit` | linux | CounterStrikeSharp | linux `13` | target-sig-none |
+The symbol is in the snapshot but its record carries no byte pattern, so there is nothing to compare the tracked signature against.
 
-Looked up under an alias, in case the analysis files these under a different name:
-
-* `CTakeDamageInfo_HitGroup` -> `CTakeDamageInfo_HitGroupInfo`
-* `GameEntitySystem` -> `CGameResourceService_m_pEntitySystem`
-* `ISource2GameEntities::CheckTransmit` -> `CSource2GameEntities_CheckTransmit`
+| Symbol | Platforms | Used by |
+|---|---|---|
+| `CCSGameRules_CanPlayerHear_CoachCommGate` | linux, windows | MatchZy |
+| `CNavPhysicsInterface_vtable` | linux, windows | CounterStrikeSharp |
+| `CTraceFilterLOS_vtable` | linux, windows | CounterStrikeSharp |
 
 Generated from the tracker's own reports; it updates itself as symbols get covered.
