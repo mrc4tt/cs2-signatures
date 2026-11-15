@@ -7,7 +7,7 @@
   "reference": "14197",
   "gamedata_source": "mrc4tt/MatchZy gamedata/matchzy.json",
   "tally": {
-    "ok": 16,
+    "ok": 18,
     "broken": 0,
     "ambiguous": 0,
     "no_binary": 0,
@@ -226,6 +226,33 @@
           "matches": 1,
           "library": "server",
           "sig": "40 53 56 57 48 83 EC ? 48 8B FA 48 8B F1",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
+        }
+      }
+    },
+    {
+      "name": "KickBotFromTeam",
+      "kind": "signature",
+      "library": "server",
+      "platforms": {
+        "linux": {
+          "status": "ok",
+          "matches": 1,
+          "library": "server",
+          "sig": "55 48 89 E5 41 57 41 56 41 55 41 89 FD 41 54 53 48 83 EC ?",
+          "reference": {
+            "status": "match",
+            "relation": "equal"
+          }
+        },
+        "windows": {
+          "status": "ok",
+          "matches": 1,
+          "library": "server",
+          "sig": "48 89 5C 24 ? 55 56 57 41 56 41 57 48 8B EC 48 83 EC ? 8B F9",
           "reference": {
             "status": "match",
             "relation": "equal"

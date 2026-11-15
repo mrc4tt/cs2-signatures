@@ -1,6 +1,6 @@
 # MatchZy
 
-Last updated: November 12, 2026 at 04:35:07 GMT
+Last updated: November 15, 2026 at 20:00:20 GMT
 
 * Manifests: [5946971774180560324](https://steamdb.info/depot/2347771/history/?changeid=M:5946971774180560324), [3634295490837307276](https://steamdb.info/depot/2347773/history/?changeid=M:3634295490837307276)
 * Repository: https://github.com/mrc4tt/MatchZy
@@ -201,6 +201,30 @@ Reference column: ✅ matches the 14197 analysis &middot; 🕓 the analysis uses
 </td><td>
 <pre>
 55 48 89 E5 41 56 41 55 41 54 53 48 85 F6 0F 84 ? ? ? ? 48 8B 06
+</pre>
+</td></tr>
+</table>
+
+### KickBotFromTeam
+
+<table>
+<tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
+<tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
+<pre>
+\x48\x89\x5C\x24\x2A\x55\x56\x57\x41\x56\x41\x57\x48\x8B\xEC\x48\x83\xEC\x2A\x8B\xF9
+</pre>
+</td><td>
+<pre>
+48 89 5C 24 ? 55 56 57 41 56 41 57 48 8B EC 48 83 EC ? 8B F9
+</pre>
+</td></tr>
+<tr><td>✅</td><td>✅</td><td>Linux</td><td>server</td><td>1</td><td>
+<pre>
+\x55\x48\x89\xE5\x41\x57\x41\x56\x41\x55\x41\x89\xFD\x41\x54\x53\x48\x83\xEC\x2A
+</pre>
+</td><td>
+<pre>
+55 48 89 E5 41 57 41 56 41 55 41 89 FD 41 54 53 48 83 EC ?
 </pre>
 </td></tr>
 </table>
