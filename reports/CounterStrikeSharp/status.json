@@ -1,14 +1,14 @@
 {
   "project": "CounterStrikeSharp",
   "manifest": {
-    "2347771": "5946971774180560324",
-    "2347773": "3634295490837307276"
+    "2347771": "1039356520811108867",
+    "2347773": "6590564568174469475"
   },
   "reference": "14197",
   "gamedata_source": "mrc4tt/CounterStrikeSharp configs/addons/counterstrikesharp/gamedata/gamedata.json",
   "tally": {
-    "ok": 76,
-    "broken": 0,
+    "ok": 75,
+    "broken": 1,
     "ambiguous": 0,
     "no_binary": 0,
     "missing_sig": 0,
@@ -791,8 +791,8 @@
           }
         },
         "windows": {
-          "status": "ok",
-          "matches": 1,
+          "status": "broken",
+          "matches": 0,
           "library": "server",
           "sig": "48 83 3D 90 39 56 ? ?",
           "reference": {
@@ -1098,7 +1098,7 @@
           "status": "ok",
           "linux": 276,
           "method": "anchored",
-          "func_va": "0x1538d90",
+          "func_va": "0x153a850",
           "reference": {
             "value": 276,
             "source": "vfunc_index",
@@ -1188,7 +1188,7 @@
           "status": "ok",
           "linux": 27,
           "method": "anchor",
-          "func_va": "0x15ce400",
+          "func_va": "0x15cfec0",
           "reference": {
             "value": 27,
             "source": "vfunc_index",
@@ -1239,7 +1239,7 @@
           "status": "ok",
           "linux": 28,
           "method": "anchored",
-          "func_va": "0x15ce540",
+          "func_va": "0x15d0000",
           "reference": {
             "value": 28,
             "source": "vfunc_index",
@@ -1335,7 +1335,7 @@
           "status": "ok",
           "linux": 26,
           "method": "anchored",
-          "func_va": "0x1994110",
+          "func_va": "0x1995bd0",
           "reference": {
             "value": 26,
             "source": "vfunc_index",
@@ -1476,7 +1476,7 @@
           "status": "ok",
           "linux": 387,
           "method": "anchor",
-          "func_va": "0x1854290",
+          "func_va": "0x1855d50",
           "reference": {
             "value": 387,
             "source": "vfunc_index",
@@ -1527,7 +1527,7 @@
           "status": "ok",
           "linux": 164,
           "method": "anchor",
-          "func_va": "0xd66980",
+          "func_va": "0xd67040",
           "reference": {
             "value": 164,
             "source": "vfunc_index",
@@ -1703,7 +1703,7 @@
           "status": "ok",
           "linux": 29,
           "method": "anchored",
-          "func_va": "0xa22cd0",
+          "func_va": "0xa23390",
           "reference": {
             "value": 29,
             "source": "vfunc_index",
