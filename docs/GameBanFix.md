@@ -1,6 +1,6 @@
 # GameBanFix
 
-Last updated: November 18, 2026 at 00:00:14 GMT
+Last updated: November 18, 2026 at 00:05:09 GMT
 
 * Manifests: [1039356520811108867](https://steamdb.info/depot/2347771/history/?changeid=M:1039356520811108867), [6590564568174469475](https://steamdb.info/depot/2347773/history/?changeid=M:6590564568174469475)
 * Repository: https://github.com/mrc4tt/GameBanFix
@@ -17,7 +17,7 @@ Reference column: ✅ matches the 14198 analysis &middot; 🕓 the analysis uses
 
 <table>
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>✅</td><td>❔</td><td>Windows</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x41\x54\x48\x81\xEC\x2A\x2A\x2A\x2A\x48\x8B\x05\x2A\x2A\x2A\x2A\x44\x8B\x60\x2A
 </pre>
@@ -41,7 +41,7 @@ Reference column: ✅ matches the 14198 analysis &middot; 🕓 the analysis uses
 
 <table>
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>✅</td><td>❔</td><td>Windows</td><td>server</td><td>1</td><td>
+<tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
 <pre>
 \x48\x8D\x0D\x2A\x2A\x2A\x2A\x45\x33\xC0\x4C\x89\x74\x24\x2A
 </pre>
