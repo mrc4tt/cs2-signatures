@@ -1,6 +1,6 @@
 # Reference coverage gaps
 
-Last updated: November 18, 2026 at 02:35:09 GMT
+Last updated: November 18, 2026 at 03:55:09 GMT
 
 Symbols tracked by the signature tracker that the analysis cannot currently answer for.
 

@@ -14,7 +14,7 @@ points at exactly one function in the binaries Valve ships right now.
 
 > ✅ **All 122 signature checks pass** on CS2 `1.41.9.8`.
 >
-> Last checked November 18, 2026 at 02:35:09 GMT &middot; 5 project(s) tracked
+> Last checked November 18, 2026 at 03:55:09 GMT &middot; 5 project(s) tracked
 
 <table>
 <tr><th>Project</th><th>Health</th><th>Signatures</th><th>Linux</th><th>Windows</th><th></th></tr>
@@ -30,7 +30,7 @@ points at exactly one function in the binaries Valve ships right now.
 * **CS2 build:** `1.41.9.8`
 * **Signatures:** 122 ok, 0 ambiguous, 0 broken (0 not-yet-validated)
 * **Offsets:** 15 ok, 0 stale, 8 without a reference
-* **Depot manifests:** [6729017085491141898](https://steamdb.info/depot/2347771/history/?changeid=M:6729017085491141898), [4838211175569621862](https://steamdb.info/depot/2347773/history/?changeid=M:4838211175569621862)
+* **Depot manifests:** [6054210037651104742](https://steamdb.info/depot/2347771/history/?changeid=M:6054210037651104742), [5185046280295927252](https://steamdb.info/depot/2347773/history/?changeid=M:5185046280295927252)
 * **Fragility over time:** [docs/stats.md](docs/stats.md)
 
 </details>
