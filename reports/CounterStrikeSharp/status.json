@@ -1,14 +1,14 @@
 {
   "project": "CounterStrikeSharp",
   "manifest": {
-    "2347771": "6054210037651104742",
-    "2347773": "5185046280295927252"
+    "2347771": "2106079474080930915",
+    "2347773": "9019027683964018897"
   },
   "reference": null,
   "gamedata_source": "mrc4tt/CounterStrikeSharp configs/addons/counterstrikesharp/gamedata/gamedata.json",
   "tally": {
-    "ok": 76,
-    "broken": 0,
+    "ok": 75,
+    "broken": 1,
     "ambiguous": 0,
     "no_binary": 0,
     "missing_sig": 0,
@@ -563,8 +563,8 @@
           "sig": "48 8D 05 ? ? ? ? 48 83 38 ? 0F 95 C0 C3"
         },
         "windows": {
-          "status": "ok",
-          "matches": 1,
+          "status": "broken",
+          "matches": 0,
           "library": "server",
           "sig": "48 83 3D F0 35 56 ? ?"
         }
