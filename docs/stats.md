@@ -1,6 +1,6 @@
 # Signature fragility
 
-Last updated: November 19, 2026 at 00:55:03 GMT
+Last updated: November 19, 2026 at 01:15:19 GMT
 
 How often each signature has gone broken or ambiguous across the tracked history (each counted transition is one episode, not one run). Signatures with no episodes are summarised, not listed.
 
@@ -11,13 +11,13 @@ How often each signature has gone broken or ambiguous across the tracked history
 | CounterStrikeSharp | `CCSPointScript_OnCustomHudClicked` | windows | 5 | 0 | ok |
 | CounterStrikeSharp | `CCSPointScript_OnCustomHudClicked` | linux | 4 | 0 | ok |
 | CounterStrikeSharp | `CBaseModelEntity_SetModel` | windows | 3 | 0 | ok |
+| CounterStrikeSharp | `CCSNavArea_IsValidNavMesh` | windows | 3 | 0 | broken |
 | CounterStrikeSharp | `CCSPlayerPawnBase_PostThink` | linux | 3 | 0 | ok |
 | CounterStrikeSharp | `CCSCustomHudLayout_SetDialogVariableStringForPlayer` | linux | 2 | 0 | ok |
 | CounterStrikeSharp | `CCSCustomHudLayout_SetDialogVariableStringForPlayer` | windows | 2 | 0 | ok |
 | CounterStrikeSharp | `CCSCustomHudLayout_SetHasClass` | linux | 2 | 0 | ok |
 | CounterStrikeSharp | `CCSCustomHudLayout_SetHasClassForPlayer` | windows | 2 | 0 | ok |
 | CounterStrikeSharp | `CCSGameRules_TerminateRound` | linux | 2 | 0 | ok |
-| CounterStrikeSharp | `CCSNavArea_IsValidNavMesh` | windows | 2 | 0 | ok |
 | CounterStrikeSharp | `CCSPlayerPawnBase_PostThink` | windows | 1 | 1 | ok |
 | CounterStrikeSharp | `CheckTransmit` | linux | 2 | 0 | ok |
 | WeaponPaints | `CCSPlayer_ItemServices::SetWearables` | linux | 2 | 0 | ok |
@@ -31,8 +31,8 @@ How often each signature has gone broken or ambiguous across the tracked history
 
 ## Per project
 
-- **CounterStrikeSharp** - 124 tracked sig/platform pairs, 49 breakage episode(s), 94 never broken, 106 snapshot(s) of history.
-- **RetakesAllocator** - 6 tracked sig/platform pairs, 3 breakage episode(s), 3 never broken, 77 snapshot(s) of history.
-- **MatchZy** - 22 tracked sig/platform pairs, 6 breakage episode(s), 16 never broken, 82 snapshot(s) of history.
-- **WeaponPaints** - 28 tracked sig/platform pairs, 7 breakage episode(s), 22 never broken, 75 snapshot(s) of history.
-- **GameBanFix** - 4 tracked sig/platform pairs, 0 breakage episode(s), 4 never broken, 20 snapshot(s) of history.
+- **CounterStrikeSharp** - 124 tracked sig/platform pairs, 50 breakage episode(s), 94 never broken, 107 snapshot(s) of history.
+- **RetakesAllocator** - 6 tracked sig/platform pairs, 3 breakage episode(s), 3 never broken, 78 snapshot(s) of history.
+- **MatchZy** - 22 tracked sig/platform pairs, 6 breakage episode(s), 16 never broken, 83 snapshot(s) of history.
+- **WeaponPaints** - 28 tracked sig/platform pairs, 7 breakage episode(s), 22 never broken, 76 snapshot(s) of history.
+- **GameBanFix** - 4 tracked sig/platform pairs, 0 breakage episode(s), 4 never broken, 21 snapshot(s) of history.
