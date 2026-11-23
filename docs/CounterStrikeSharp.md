@@ -1,8 +1,8 @@
 # CounterStrikeSharp
 
-Last updated: November 20, 2026 at 01:30:19 GMT
+Last updated: November 23, 2026 at 23:05:02 GMT
 
-* Manifests: [4200138934793327916](https://steamdb.info/depot/2347771/history/?changeid=M:4200138934793327916), [5121219979210617382](https://steamdb.info/depot/2347773/history/?changeid=M:5121219979210617382)
+* Manifests: [319757798029483889](https://steamdb.info/depot/2347771/history/?changeid=M:319757798029483889), [4380993310429599899](https://steamdb.info/depot/2347773/history/?changeid=M:4380993310429599899)
 * Repository: https://github.com/mrc4tt/CounterStrikeSharp
 * Fork of: [roflmuffin/CounterStrikeSharp](https://github.com/roflmuffin/CounterStrikeSharp)
 * Gamedata: https://github.com/mrc4tt/CounterStrikeSharp/blob/main/configs/addons/counterstrikesharp/gamedata/gamedata.json
@@ -41,7 +41,7 @@ Reference column: ✅ matches the 14200 analysis &middot; 🕓 the analysis uses
 
 <table>
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
+<tr><td>⚠️</td><td>✅</td><td>Windows</td><td>server</td><td>2</td><td>
 <pre>
 \x48\x85\xC9\x0F\x84\x2A\x2A\x2A\x2A\x48\x89\x5C\x24\x2A\x48\x89\x74\x24\x2A
 </pre>
@@ -473,7 +473,7 @@ Reference column: ✅ matches the 14200 analysis &middot; 🕓 the analysis uses
 
 <table>
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
+<tr><td>⚠️</td><td>✅</td><td>Windows</td><td>server</td><td>2</td><td>
 <pre>
 \x48\x85\xD2\x0F\x84\x2A\x2A\x2A\x2A\x48\x89\x5C\x24\x2A\x57\x48\x83\xEC\x2A\x48\x8B\xDA\x48\x8B\xF9\xE8\x2A\x2A\x2A\x2A
 </pre>
@@ -689,7 +689,7 @@ Reference column: ✅ matches the 14200 analysis &middot; 🕓 the analysis uses
 
 <table>
 <tr><th>Status</th><th>Ref</th><th>Platform</th><th>Library</th><th>Matches</th><th>CODE-Style</th><th>IDA-Style</th></tr>
-<tr><td>✅</td><td>✅</td><td>Windows</td><td>server</td><td>1</td><td>
+<tr><td>❌</td><td>✅</td><td>Windows</td><td>server</td><td>0</td><td>
 <pre>
 \x48\x83\x3D\xD0\x34\x56\x2A\x2A
 </pre>

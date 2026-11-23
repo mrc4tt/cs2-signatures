@@ -1,8 +1,8 @@
 # GameBanFix
 
-Last updated: November 20, 2026 at 01:30:19 GMT
+Last updated: November 23, 2026 at 23:05:02 GMT
 
-* Manifests: [4200138934793327916](https://steamdb.info/depot/2347771/history/?changeid=M:4200138934793327916), [5121219979210617382](https://steamdb.info/depot/2347773/history/?changeid=M:5121219979210617382)
+* Manifests: [319757798029483889](https://steamdb.info/depot/2347771/history/?changeid=M:319757798029483889), [4380993310429599899](https://steamdb.info/depot/2347773/history/?changeid=M:4380993310429599899)
 * Repository: https://github.com/mrc4tt/GameBanFix
 * Fork of: [Cruze03/GameBanFix](https://github.com/Cruze03/GameBanFix)
 * Gamedata: https://github.com/mrc4tt/GameBanFix/blob/main/gamedata/gamebanfix.games.txt

@@ -1,15 +1,15 @@
 {
   "project": "CounterStrikeSharp",
   "manifest": {
-    "2347771": "4200138934793327916",
-    "2347773": "5121219979210617382"
+    "2347771": "319757798029483889",
+    "2347773": "4380993310429599899"
   },
   "reference": "14200",
   "gamedata_source": "mrc4tt/CounterStrikeSharp configs/addons/counterstrikesharp/gamedata/gamedata.json",
   "tally": {
-    "ok": 76,
-    "broken": 0,
-    "ambiguous": 0,
+    "ok": 73,
+    "broken": 1,
+    "ambiguous": 2,
     "no_binary": 0,
     "missing_sig": 0,
     "offset_ok": 34,
@@ -62,8 +62,8 @@
           }
         },
         "windows": {
-          "status": "ok",
-          "matches": 1,
+          "status": "ambiguous",
+          "matches": 2,
           "library": "server",
           "sig": "48 85 C9 0F 84 ? ? ? ? 48 89 5C 24 ? 48 89 74 24 ?",
           "reference": {
@@ -548,8 +548,8 @@
           }
         },
         "windows": {
-          "status": "ok",
-          "matches": 1,
+          "status": "ambiguous",
+          "matches": 2,
           "library": "server",
           "sig": "48 85 D2 0F 84 ? ? ? ? 48 89 5C 24 ? 57 48 83 EC ? 48 8B DA 48 8B F9 E8 ? ? ? ?",
           "reference": {
@@ -791,8 +791,8 @@
           }
         },
         "windows": {
-          "status": "ok",
-          "matches": 1,
+          "status": "broken",
+          "matches": 0,
           "library": "server",
           "sig": "48 83 3D D0 34 56 ? ?",
           "reference": {
@@ -1098,7 +1098,7 @@
           "status": "ok",
           "linux": 276,
           "method": "anchored",
-          "func_va": "0x153a990",
+          "func_va": "0x153aa10",
           "reference": {
             "value": 276,
             "source": "vfunc_index",
@@ -1188,7 +1188,7 @@
           "status": "ok",
           "linux": 27,
           "method": "anchor",
-          "func_va": "0x15d0070",
+          "func_va": "0x15d0130",
           "reference": {
             "value": 27,
             "source": "vfunc_index",
@@ -1239,7 +1239,7 @@
           "status": "ok",
           "linux": 28,
           "method": "anchored",
-          "func_va": "0x15d01b0",
+          "func_va": "0x15d0270",
           "reference": {
             "value": 28,
             "source": "vfunc_index",
@@ -1335,7 +1335,7 @@
           "status": "ok",
           "linux": 26,
           "method": "anchored",
-          "func_va": "0x1995f90",
+          "func_va": "0x1995d70",
           "reference": {
             "value": 26,
             "source": "vfunc_index",
@@ -1476,7 +1476,7 @@
           "status": "ok",
           "linux": 387,
           "method": "anchor",
-          "func_va": "0x1856110",
+          "func_va": "0x18562d0",
           "reference": {
             "value": 387,
             "source": "vfunc_index",
@@ -1527,7 +1527,7 @@
           "status": "ok",
           "linux": 164,
           "method": "anchor",
-          "func_va": "0xd67180",
+          "func_va": "0xd67740",
           "reference": {
             "value": 164,
             "source": "vfunc_index",
@@ -1703,7 +1703,7 @@
           "status": "ok",
           "linux": 29,
           "method": "anchored",
-          "func_va": "0xa23450",
+          "func_va": "0xa22b10",
           "reference": {
             "value": 29,
             "source": "vfunc_index",
